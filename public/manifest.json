@@ -1,0 +1,300 @@
+{
+  "resources/fonts/fa-brands-400.eot": {
+    "file": "assets/fa-brands-400.e4299464.eot",
+    "src": "resources/fonts/fa-brands-400.eot"
+  },
+  "resources/fonts/fa-regular-400.eot": {
+    "file": "assets/fa-regular-400.79d08806.eot",
+    "src": "resources/fonts/fa-regular-400.eot"
+  },
+  "resources/fonts/Feather.ttf": {
+    "file": "assets/Feather.e103929d.ttf",
+    "src": "resources/fonts/Feather.ttf"
+  },
+  "resources/fonts/fa-solid-900.eot": {
+    "file": "assets/fa-solid-900.373c04fd.eot",
+    "src": "resources/fonts/fa-solid-900.eot"
+  },
+  "resources/fonts/lc_lightbox.eot": {
+    "file": "assets/lc_lightbox.8c8a6d3f.eot",
+    "src": "resources/fonts/lc_lightbox.eot"
+  },
+  "resources/fonts/flaticon.ttf": {
+    "file": "assets/flaticon.24960f14.ttf",
+    "src": "resources/fonts/flaticon.ttf"
+  },
+  "resources/fonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400.8ea87917.woff2",
+    "src": "resources/fonts/fa-brands-400.woff2"
+  },
+  "resources/fonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400.e42a8844.woff2",
+    "src": "resources/fonts/fa-regular-400.woff2"
+  },
+  "resources/fonts/Feather.woff": {
+    "file": "assets/Feather.aae1005a.woff",
+    "src": "resources/fonts/Feather.woff"
+  },
+  "resources/fonts/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900.9834b82a.woff2",
+    "src": "resources/fonts/fa-solid-900.woff2"
+  },
+  "resources/fonts/lc_lightbox.woff": {
+    "file": "assets/lc_lightbox.c4028b61.woff",
+    "src": "resources/fonts/lc_lightbox.woff"
+  },
+  "resources/fonts/flaticon.woff": {
+    "file": "assets/flaticon.51963781.woff",
+    "src": "resources/fonts/flaticon.woff"
+  },
+  "resources/fonts/fa-regular-400.woff": {
+    "file": "assets/fa-regular-400.cb9e9e69.woff",
+    "src": "resources/fonts/fa-regular-400.woff"
+  },
+  "resources/fonts/fa-brands-400.woff": {
+    "file": "assets/fa-brands-400.f9217f66.woff",
+    "src": "resources/fonts/fa-brands-400.woff"
+  },
+  "resources/fonts/fa-solid-900.woff": {
+    "file": "assets/fa-solid-900.3f6d3488.woff",
+    "src": "resources/fonts/fa-solid-900.woff"
+  },
+  "resources/fonts/Feather.svg": {
+    "file": "assets/Feather.75fae9bd.svg",
+    "src": "resources/fonts/Feather.svg"
+  },
+  "resources/fonts/lc_lightbox.ttf": {
+    "file": "assets/lc_lightbox.ab936398.ttf",
+    "src": "resources/fonts/lc_lightbox.ttf"
+  },
+  "resources/fonts/flaticon.woff2": {
+    "file": "assets/flaticon.faddc851.woff2",
+    "src": "resources/fonts/flaticon.woff2"
+  },
+  "resources/fonts/fa-regular-400.ttf": {
+    "file": "assets/fa-regular-400.e8711bbb.ttf",
+    "src": "resources/fonts/fa-regular-400.ttf"
+  },
+  "resources/fonts/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400.cda59d6e.ttf",
+    "src": "resources/fonts/fa-brands-400.ttf"
+  },
+  "resources/fonts/lc_lightbox.svg": {
+    "file": "assets/lc_lightbox.7d316488.svg",
+    "src": "resources/fonts/lc_lightbox.svg"
+  },
+  "resources/fonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900.af639750.ttf",
+    "src": "resources/fonts/fa-solid-900.ttf"
+  },
+  "resources/fonts/flaticon.eot": {
+    "file": "assets/flaticon.f5b66061.eot",
+    "src": "resources/fonts/flaticon.eot"
+  },
+  "resources/fonts/fa-regular-400.svg": {
+    "file": "assets/fa-regular-400.62f1f2b9.svg",
+    "src": "resources/fonts/fa-regular-400.svg"
+  },
+  "resources/fonts/flaticon.svg": {
+    "file": "assets/flaticon.f381e894.svg",
+    "src": "resources/fonts/flaticon.svg"
+  },
+  "resources/fonts/fa-brands-400.svg": {
+    "file": "assets/fa-brands-400.9b3a8965.svg",
+    "src": "resources/fonts/fa-brands-400.svg"
+  },
+  "resources/fonts/fa-solid-900.svg": {
+    "file": "assets/fa-solid-900.25630646.svg",
+    "src": "resources/fonts/fa-solid-900.svg"
+  },
+  "resources/js/jquery-3.6.0.min.js": {
+    "file": "assets/jquery-3.6.0.min.93eec42f.js",
+    "src": "resources/js/jquery-3.6.0.min.js",
+    "isEntry": true
+  },
+  "resources/js/popper.min.js": {
+    "file": "assets/popper.min.2466d682.js",
+    "src": "resources/js/popper.min.js",
+    "isEntry": true
+  },
+  "resources/js/bootstrap.min.js": {
+    "file": "assets/bootstrap.min.6e8e98d3.js",
+    "src": "resources/js/bootstrap.min.js",
+    "isEntry": true
+  },
+  "resources/js/magnific-popup.min.js": {
+    "file": "assets/magnific-popup.min.7399e518.js",
+    "src": "resources/js/magnific-popup.min.js",
+    "isEntry": true
+  },
+  "resources/js/waypoints.min.js": {
+    "file": "assets/waypoints.min.df9b1b05.js",
+    "src": "resources/js/waypoints.min.js",
+    "isEntry": true
+  },
+  "resources/js/counterup.min.js": {
+    "file": "assets/counterup.min.b9983cc1.js",
+    "src": "resources/js/counterup.min.js",
+    "isEntry": true
+  },
+  "resources/js/waypoints-sticky.min.js": {
+    "file": "assets/waypoints-sticky.min.c801e910.js",
+    "src": "resources/js/waypoints-sticky.min.js",
+    "isEntry": true
+  },
+  "resources/js/isotope.pkgd.min.js": {
+    "file": "assets/isotope.pkgd.min.28457bd5.js",
+    "src": "resources/js/isotope.pkgd.min.js",
+    "isEntry": true
+  },
+  "resources/js/imagesloaded.pkgd.min.js": {
+    "file": "assets/imagesloaded.pkgd.min.ac197c89.js",
+    "src": "resources/js/imagesloaded.pkgd.min.js",
+    "isEntry": true
+  },
+  "resources/js/owl.carousel.min.js": {
+    "file": "assets/owl.carousel.min.41ee63e2.js",
+    "src": "resources/js/owl.carousel.min.js",
+    "isEntry": true
+  },
+  "resources/js/theia-sticky-sidebar.js": {
+    "file": "assets/theia-sticky-sidebar.8345a64f.js",
+    "src": "resources/js/theia-sticky-sidebar.js",
+    "isEntry": true
+  },
+  "resources/js/lc_lightbox.lite.js": {
+    "file": "assets/lc_lightbox.lite.dc1e8371.js",
+    "src": "resources/js/lc_lightbox.lite.js",
+    "isEntry": true
+  },
+  "resources/js/bootstrap-select.min.js": {
+    "file": "assets/bootstrap-select.min.3bf7a346.js",
+    "src": "resources/js/bootstrap-select.min.js",
+    "isEntry": true
+  },
+  "resources/js/dropzone.js": {
+    "file": "assets/dropzone.ce339a18.js",
+    "src": "resources/js/dropzone.js",
+    "isEntry": true
+  },
+  "resources/js/jquery.scrollbar.js": {
+    "file": "assets/jquery.scrollbar.47c5c6f8.js",
+    "src": "resources/js/jquery.scrollbar.js",
+    "isEntry": true
+  },
+  "resources/js/bootstrap-datepicker.js": {
+    "file": "assets/bootstrap-datepicker.57ee1df2.js",
+    "src": "resources/js/bootstrap-datepicker.js",
+    "isEntry": true
+  },
+  "resources/js/jquery.dataTables.min.js": {
+    "file": "assets/jquery.dataTables.min.79609461.js",
+    "src": "resources/js/jquery.dataTables.min.js",
+    "isEntry": true
+  },
+  "resources/js/dataTables.bootstrap5.min.js": {
+    "file": "assets/dataTables.bootstrap5.min.7194ec1b.js",
+    "src": "resources/js/dataTables.bootstrap5.min.js",
+    "isEntry": true
+  },
+  "resources/js/anm.js": {
+    "file": "assets/anm.047b046b.js",
+    "src": "resources/js/anm.js",
+    "isEntry": true
+  },
+  "resources/js/notiflix.min.js": {
+    "file": "assets/notiflix.min.c467f035.js",
+    "src": "resources/js/notiflix.min.js",
+    "isEntry": true
+  },
+  "resources/js/bootstrap-slider.min.js": {
+    "file": "assets/bootstrap-slider.min.fcbc8359.js",
+    "src": "resources/js/bootstrap-slider.min.js",
+    "isEntry": true
+  },
+  "resources/js/chart.js": {
+    "file": "assets/chart.fa5d1b31.js",
+    "src": "resources/js/chart.js",
+    "isEntry": true
+  },
+  "resources/js/custom.js": {
+    "file": "assets/custom.4cff67cb.js",
+    "src": "resources/js/custom.js",
+    "isEntry": true
+  },
+  "resources/css/font-awesome.min.css": {
+    "file": "assets/font-awesome.min.999e0cd0.css",
+    "src": "resources/css/font-awesome.min.css",
+    "isEntry": true
+  },
+  "resources/css/flaticon.css": {
+    "file": "assets/flaticon.b85b3a2e.css",
+    "src": "resources/css/flaticon.css",
+    "isEntry": true
+  },
+  "resources/css/select.bootstrap5.min.css": {
+    "file": "assets/select.bootstrap5.min.b8af8795.css",
+    "src": "resources/css/select.bootstrap5.min.css",
+    "isEntry": true
+  },
+  "resources/css/dropzone.css": {
+    "file": "assets/dropzone.9a3ded05.css",
+    "src": "resources/css/dropzone.css",
+    "isEntry": true
+  },
+  "resources/css/feather.css": {
+    "file": "assets/feather.d5586036.css",
+    "src": "resources/css/feather.css",
+    "isEntry": true
+  },
+  "resources/css/dataTables.bootstrap5.min.css": {
+    "file": "assets/dataTables.bootstrap5.min.40d63914.css",
+    "src": "resources/css/dataTables.bootstrap5.min.css",
+    "isEntry": true
+  },
+  "resources/css/style.scss": {
+    "file": "assets/style.19f48741.css",
+    "src": "resources/css/style.scss",
+    "isEntry": true
+  },
+  "resources/css/bootstrap-select.min.css": {
+    "file": "assets/bootstrap-select.min.2f5b13f2.css",
+    "src": "resources/css/bootstrap-select.min.css",
+    "isEntry": true
+  },
+  "resources/css/scrollbar.css": {
+    "file": "assets/scrollbar.eb92a626.css",
+    "src": "resources/css/scrollbar.css",
+    "isEntry": true
+  },
+  "resources/css/owl.carousel.min.css": {
+    "file": "assets/owl.carousel.min.a67c730b.css",
+    "src": "resources/css/owl.carousel.min.css",
+    "isEntry": true
+  },
+  "resources/css/magnific-popup.min.css": {
+    "file": "assets/magnific-popup.min.00ebb45a.css",
+    "src": "resources/css/magnific-popup.min.css",
+    "isEntry": true
+  },
+  "resources/css/lc_lightbox.css": {
+    "file": "assets/lc_lightbox.eb062c5e.css",
+    "src": "resources/css/lc_lightbox.css",
+    "isEntry": true
+  },
+  "resources/css/notiflix.min.css": {
+    "file": "assets/notiflix.min.41f1d6dd.css",
+    "src": "resources/css/notiflix.min.css",
+    "isEntry": true
+  },
+  "resources/css/datepicker.css": {
+    "file": "assets/datepicker.b9f9f1c7.css",
+    "src": "resources/css/datepicker.css",
+    "isEntry": true
+  },
+  "resources/css/bootstrap.min.css": {
+    "file": "assets/bootstrap.min.96b382bc.css",
+    "src": "resources/css/bootstrap.min.css",
+    "isEntry": true
+  }
+}
