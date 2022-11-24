@@ -12,6 +12,7 @@
     <meta name="description" content="" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
     <!-- FAVICONS ICON -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
@@ -77,11 +78,11 @@
         'resources/js/custom.js',
         'resources/js/anm.js',
         'resources/js/notiflix.min.js',
+        'resources/js/init.js',
         //---
     ]);
 
-    <script defer src="{{ asset('js/init.js') }}"></script>r
-
+    {{-- <script defer src="{{ asset('js/init.js') }}"></script>r --}}
 
     {!! $scripts ?? '' !!}
 

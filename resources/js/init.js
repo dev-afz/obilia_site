@@ -46,7 +46,7 @@ const notificationManager = (type = "info", message = "No Message") => {
   }
 };
 
-const rebound = ({
+window.rebound = ({
   form = null,
   data = null,
   method = "POST",
@@ -162,6 +162,7 @@ const rebound = ({
           });
         $.each(xhr.responseJSON.errors, function (key, item) {
           notify.failure(item[0]);
+          console.log(item);
           $(form).find(`[name=${key}]`).addClass("is-invalid");
         });
       } else if (xhr.status == 500) {

@@ -13,6 +13,16 @@ $(document).ready(function () {
   mobile_nav();
   mobile_side_drawer();
   counter_section();
+  scroll_bar_custom();
+  sidebarCollapse();
+
+  setTimeout(function () {
+    $(".has-child")
+      .find("li.active")
+      .parents(".has-child")
+      .find(".submenu-toogle")
+      .click();
+  }, 100);
 });
 
 //custom functions
@@ -77,5 +87,15 @@ function counter_section() {
   $(".counter").counterUp({
     delay: 10,
     time: 3000,
+  });
+}
+
+function scroll_bar_custom() {
+  $(".scrollbar-macosx").scrollbar();
+}
+
+function sidebarCollapse() {
+  $("#sidebarCollapse").on("click", function () {
+    $("#header-admin, #sidebar-admin-wraper, #content").toggleClass("active");
   });
 }

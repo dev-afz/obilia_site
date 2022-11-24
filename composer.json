@@ -9,8 +9,11 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
+        "laravel/socialite": "^5.5",
         "laravel/tinker": "^2.7",
-        "league/flysystem-aws-s3-v3": "^3.10"
+        "league/flysystem-aws-s3-v3": "^3.10",
+        "rappasoft/laravel-livewire-tables": "^2.8",
+        "staudenmeir/belongs-to-through": "^2.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

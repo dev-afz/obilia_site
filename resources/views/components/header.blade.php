@@ -42,16 +42,27 @@
                     </div>
                     <div class="extra-cell">
                         <div class="header-nav-btn-section">
-                            <div class="twm-nav-btn-left">
-                                <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#sign_up_popup" role="button">
-                                    <i class="feather-user-plus"></i> Sign Up
-                                </a>
-                            </div>
-                            <div class="twm-nav-btn-right">
-                                <a href="#login_popup" data-bs-toggle="modal" class="twm-nav-post-a-job">
-                                    <i class="feather-log-in"></i> Login
-                                </a>
-                            </div>
+                            @guest()
+                                <div class="twm-nav-btn-left">
+                                    <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#sign_up_popup" role="button">
+                                        <i class="feather-user-plus"></i> Sign Up
+                                    </a>
+                                </div>
+                                <div class="twm-nav-btn-right">
+                                    <a href="#login_popup" data-bs-toggle="modal" class="twm-nav-post-a-job">
+                                        <i class="feather-log-in"></i> Login
+                                    </a>
+                                </div>
+                            @endguest
+
+                            @auth
+                                <div class="twm-nav-btn-left">
+                                    <a class="twm-nav-sign-up" href="#" role="button">
+                                        <i class="feather-user"></i> Dashboard
+                                    </a>
+                                </div>
+
+                            @endauth
                         </div>
                     </div>
 

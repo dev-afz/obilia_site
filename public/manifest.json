@@ -1,8 +1,4 @@
 {
-  "resources/fonts/fa-brands-400.eot": {
-    "file": "assets/fa-brands-400.e4299464.eot",
-    "src": "resources/fonts/fa-brands-400.eot"
-  },
   "resources/fonts/fa-regular-400.eot": {
     "file": "assets/fa-regular-400.79d08806.eot",
     "src": "resources/fonts/fa-regular-400.eot"
@@ -10,6 +6,10 @@
   "resources/fonts/Feather.ttf": {
     "file": "assets/Feather.e103929d.ttf",
     "src": "resources/fonts/Feather.ttf"
+  },
+  "resources/fonts/fa-brands-400.eot": {
+    "file": "assets/fa-brands-400.e4299464.eot",
+    "src": "resources/fonts/fa-brands-400.eot"
   },
   "resources/fonts/fa-solid-900.eot": {
     "file": "assets/fa-solid-900.373c04fd.eot",
@@ -23,21 +23,21 @@
     "file": "assets/flaticon.24960f14.ttf",
     "src": "resources/fonts/flaticon.ttf"
   },
-  "resources/fonts/fa-brands-400.woff2": {
-    "file": "assets/fa-brands-400.8ea87917.woff2",
-    "src": "resources/fonts/fa-brands-400.woff2"
+  "resources/fonts/Feather.woff": {
+    "file": "assets/Feather.aae1005a.woff",
+    "src": "resources/fonts/Feather.woff"
   },
   "resources/fonts/fa-regular-400.woff2": {
     "file": "assets/fa-regular-400.e42a8844.woff2",
     "src": "resources/fonts/fa-regular-400.woff2"
   },
-  "resources/fonts/Feather.woff": {
-    "file": "assets/Feather.aae1005a.woff",
-    "src": "resources/fonts/Feather.woff"
-  },
   "resources/fonts/fa-solid-900.woff2": {
     "file": "assets/fa-solid-900.9834b82a.woff2",
     "src": "resources/fonts/fa-solid-900.woff2"
+  },
+  "resources/fonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400.8ea87917.woff2",
+    "src": "resources/fonts/fa-brands-400.woff2"
   },
   "resources/fonts/lc_lightbox.woff": {
     "file": "assets/lc_lightbox.c4028b61.woff",
@@ -51,10 +51,6 @@
     "file": "assets/fa-regular-400.cb9e9e69.woff",
     "src": "resources/fonts/fa-regular-400.woff"
   },
-  "resources/fonts/fa-brands-400.woff": {
-    "file": "assets/fa-brands-400.f9217f66.woff",
-    "src": "resources/fonts/fa-brands-400.woff"
-  },
   "resources/fonts/fa-solid-900.woff": {
     "file": "assets/fa-solid-900.3f6d3488.woff",
     "src": "resources/fonts/fa-solid-900.woff"
@@ -67,6 +63,10 @@
     "file": "assets/lc_lightbox.ab936398.ttf",
     "src": "resources/fonts/lc_lightbox.ttf"
   },
+  "resources/fonts/fa-brands-400.woff": {
+    "file": "assets/fa-brands-400.f9217f66.woff",
+    "src": "resources/fonts/fa-brands-400.woff"
+  },
   "resources/fonts/flaticon.woff2": {
     "file": "assets/flaticon.faddc851.woff2",
     "src": "resources/fonts/flaticon.woff2"
@@ -75,10 +75,6 @@
     "file": "assets/fa-regular-400.e8711bbb.ttf",
     "src": "resources/fonts/fa-regular-400.ttf"
   },
-  "resources/fonts/fa-brands-400.ttf": {
-    "file": "assets/fa-brands-400.cda59d6e.ttf",
-    "src": "resources/fonts/fa-brands-400.ttf"
-  },
   "resources/fonts/lc_lightbox.svg": {
     "file": "assets/lc_lightbox.7d316488.svg",
     "src": "resources/fonts/lc_lightbox.svg"
@@ -86,6 +82,10 @@
   "resources/fonts/fa-solid-900.ttf": {
     "file": "assets/fa-solid-900.af639750.ttf",
     "src": "resources/fonts/fa-solid-900.ttf"
+  },
+  "resources/fonts/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400.cda59d6e.ttf",
+    "src": "resources/fonts/fa-brands-400.ttf"
   },
   "resources/fonts/flaticon.eot": {
     "file": "assets/flaticon.f5b66061.eot",
@@ -106,6 +106,11 @@
   "resources/fonts/fa-solid-900.svg": {
     "file": "assets/fa-solid-900.25630646.svg",
     "src": "resources/fonts/fa-solid-900.svg"
+  },
+  "resources/css/override.scss": {
+    "file": "assets/override.0eaaa846.js",
+    "src": "resources/css/override.scss",
+    "isEntry": true
   },
   "resources/js/jquery-3.6.0.min.js": {
     "file": "assets/jquery-3.6.0.min.93eec42f.js",
@@ -218,8 +223,18 @@
     "isEntry": true
   },
   "resources/js/custom.js": {
-    "file": "assets/custom.4cff67cb.js",
+    "file": "assets/custom.7c0a7602.js",
     "src": "resources/js/custom.js",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app.0b01b9af.js",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/init.js": {
+    "file": "assets/init.17163925.js",
+    "src": "resources/js/init.js",
     "isEntry": true
   },
   "resources/css/font-awesome.min.css": {
@@ -227,34 +242,14 @@
     "src": "resources/css/font-awesome.min.css",
     "isEntry": true
   },
+  "resources/css/scrollbar.css": {
+    "file": "assets/scrollbar.eb92a626.css",
+    "src": "resources/css/scrollbar.css",
+    "isEntry": true
+  },
   "resources/css/flaticon.css": {
     "file": "assets/flaticon.b85b3a2e.css",
     "src": "resources/css/flaticon.css",
-    "isEntry": true
-  },
-  "resources/css/select.bootstrap5.min.css": {
-    "file": "assets/select.bootstrap5.min.b8af8795.css",
-    "src": "resources/css/select.bootstrap5.min.css",
-    "isEntry": true
-  },
-  "resources/css/dropzone.css": {
-    "file": "assets/dropzone.9a3ded05.css",
-    "src": "resources/css/dropzone.css",
-    "isEntry": true
-  },
-  "resources/css/feather.css": {
-    "file": "assets/feather.d5586036.css",
-    "src": "resources/css/feather.css",
-    "isEntry": true
-  },
-  "resources/css/dataTables.bootstrap5.min.css": {
-    "file": "assets/dataTables.bootstrap5.min.40d63914.css",
-    "src": "resources/css/dataTables.bootstrap5.min.css",
-    "isEntry": true
-  },
-  "resources/css/style.scss": {
-    "file": "assets/style.19f48741.css",
-    "src": "resources/css/style.scss",
     "isEntry": true
   },
   "resources/css/bootstrap-select.min.css": {
@@ -262,9 +257,9 @@
     "src": "resources/css/bootstrap-select.min.css",
     "isEntry": true
   },
-  "resources/css/scrollbar.css": {
-    "file": "assets/scrollbar.eb92a626.css",
-    "src": "resources/css/scrollbar.css",
+  "resources/css/dataTables.bootstrap5.min.css": {
+    "file": "assets/dataTables.bootstrap5.min.40d63914.css",
+    "src": "resources/css/dataTables.bootstrap5.min.css",
     "isEntry": true
   },
   "resources/css/owl.carousel.min.css": {
@@ -272,14 +267,29 @@
     "src": "resources/css/owl.carousel.min.css",
     "isEntry": true
   },
+  "resources/css/select.bootstrap5.min.css": {
+    "file": "assets/select.bootstrap5.min.b8af8795.css",
+    "src": "resources/css/select.bootstrap5.min.css",
+    "isEntry": true
+  },
+  "resources/css/feather.css": {
+    "file": "assets/feather.d5586036.css",
+    "src": "resources/css/feather.css",
+    "isEntry": true
+  },
+  "resources/css/bootstrap.min.css": {
+    "file": "assets/bootstrap.min.96b382bc.css",
+    "src": "resources/css/bootstrap.min.css",
+    "isEntry": true
+  },
   "resources/css/magnific-popup.min.css": {
     "file": "assets/magnific-popup.min.00ebb45a.css",
     "src": "resources/css/magnific-popup.min.css",
     "isEntry": true
   },
-  "resources/css/lc_lightbox.css": {
-    "file": "assets/lc_lightbox.eb062c5e.css",
-    "src": "resources/css/lc_lightbox.css",
+  "resources/css/dropzone.css": {
+    "file": "assets/dropzone.9a3ded05.css",
+    "src": "resources/css/dropzone.css",
     "isEntry": true
   },
   "resources/css/notiflix.min.css": {
@@ -287,14 +297,19 @@
     "src": "resources/css/notiflix.min.css",
     "isEntry": true
   },
+  "resources/css/lc_lightbox.css": {
+    "file": "assets/lc_lightbox.eb062c5e.css",
+    "src": "resources/css/lc_lightbox.css",
+    "isEntry": true
+  },
   "resources/css/datepicker.css": {
     "file": "assets/datepicker.b9f9f1c7.css",
     "src": "resources/css/datepicker.css",
     "isEntry": true
   },
-  "resources/css/bootstrap.min.css": {
-    "file": "assets/bootstrap.min.96b382bc.css",
-    "src": "resources/css/bootstrap.min.css",
+  "resources/css/style.scss": {
+    "file": "assets/style.2fb78cf9.css",
+    "src": "resources/css/style.scss",
     "isEntry": true
   }
 }

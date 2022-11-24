@@ -38,19 +38,19 @@
                                             <input name="name" type="text" required="" class="form-control"
                                                 placeholder="Name*">
 
-                                            <input type="hidden" name="type" value="service_provider">
+                                            <input type="hidden" name="role" value="service_provider">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group mb-3">
-                                            <input name="phone" type="text" class="form-control" required=""
+                                            <input name="email" type="text" class="form-control" required=""
                                                 placeholder="Email*">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="form-group mb-3">
-                                            <input name="email" type="text" class="form-control" required=""
+                                            <input name="password" type="text" class="form-control" required=""
                                                 placeholder="Password*">
                                         </div>
                                     </div>
@@ -93,21 +93,21 @@
                                         <div class="form-group mb-3">
                                             <input name="username" type="text" required="" class="form-control"
                                                 placeholder="Usearname*">
-                                            <input type="hidden" name="type" value="client">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group mb-3">
-                                            <input name="phone" type="text" class="form-control" required=""
-                                                placeholder="Email*">
+                                            <input type="hidden" name="role" value="client">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="form-group mb-3">
                                             <input name="email" type="text" class="form-control" required=""
-                                                placeholder="Password*">
+                                                placeholder="Email*">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="form-group mb-3">
+                                            <input name="password" type="text" class="form-control"
+                                                required="" placeholder="Password*">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -169,14 +169,14 @@
 
                         <div class="col-lg-12">
                             <div class="form-group mb-3">
-                                <input name="username" type="text" required="" class="form-control"
+                                <input name="email" type="text" required="" class="form-control"
                                     placeholder="Usearname*">
                             </div>
                         </div>
 
                         <div class="col-lg-12">
                             <div class="form-group mb-3">
-                                <input name="email" type="text" class="form-control" required=""
+                                <input name="password" type="text" class="form-control" required=""
                                     placeholder="Password*">
                             </div>
                         </div>
@@ -185,8 +185,8 @@
                         <div class="col-lg-12">
                             <div class="form-group mb-3">
                                 <div class=" form-check">
-                                    <input type="checkbox" class="form-check-input" id="Password3">
-                                    <label class="form-check-label rem-forgot" for="Password3">Remember me
+                                    <input name="remember" type="checkbox" class="form-check-input" id="remember">
+                                    <label class="form-check-label rem-forgot" for="remember">Remember me
                                         <a href="javascript:;">Forgot
                                             Password</a></label>
 
@@ -213,7 +213,8 @@
                     <li><a href="javascript" class="twitter-clr"><i class="fab fa-twitter"></i></a></li>
                     <li><a href="javascript" class="linkedin-clr"><i class="fab fa-linkedin-in"></i></a>
                     </li>
-                    <li><a href="javascript" class="google-clr"><i class="fab fa-google"></i></a></li>
+                    <li><a href="{{ route('auth.google') }}" class="google-clr"><i class="fab fa-google"></i></a>
+                    </li>
                 </ul>
             </div>
 
@@ -226,9 +227,9 @@
     <script>
         $(document).on('submit', '[data-sign-up]', function(e) {
             e.preventDefault();
-            rebound({
+            window.rebound({
                 form: $(this),
-                url: "{{ route('register') }}",
+                url: "{{ route('auth.register') }}",
                 notification: false,
                 successCallback: function(res) {
                     console.log(res);
@@ -238,12 +239,12 @@
         });
         $(document).on('submit', '[data-login]', function(e) {
             e.preventDefault();
-            rebound({
+            window.rebound({
                 form: $(this),
-                url: "{{ route('login') }}",
+                url: "{{ route('auth.login') }}",
                 notification: false,
                 successCallback: function(res) {
-                    console.log(res);
+                    location.reload();
                 }
 
             });
