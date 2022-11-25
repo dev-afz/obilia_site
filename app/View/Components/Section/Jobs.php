@@ -11,9 +11,12 @@ class Jobs extends Component
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
+
+    public $jobs;
+    public function __construct(
+        $jobs
+    ) {
+        $this->jobs = $jobs;
     }
 
     /**

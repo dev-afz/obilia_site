@@ -3303,9 +3303,10 @@ ol.comment-list {
 }
 
 .twm-jobs-grid-style1 {
-  background-color: $card-bg;
+  background: $clr-primary !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(10px);
   border: 10px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   position: relative;
   padding: 20px;
   border-radius: 10px;
@@ -3319,7 +3320,7 @@ ol.comment-list {
     width: 90px;
     height: 90px;
     line-height: 90px;
-    display: inline-block;
+    display: flex;
     text-align: center;
     background-color: $clr-white;
     border-radius: 10px;
@@ -7310,6 +7311,7 @@ strong {
   position: relative;
   overflow: hidden;
   display: inline-block;
+  max-width: 100%;
   input[type="file"] {
     font-size: 100%;
     position: absolute;
@@ -7505,6 +7507,7 @@ strong {
   border-radius: 10px;
   border: 1px solid $clr-light-purple;
   overflow: hidden;
+  box-shadow: $shadow;
   img {
     border-radius: 10px;
     display: block;
@@ -7519,7 +7522,11 @@ strong {
     bottom: 5px;
     button {
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, 50px);
+
+      &:hover {
+        transform: translate(-50%, 0px);
+      }
     }
     #upload-image-grid {
       img {
@@ -9991,7 +9998,7 @@ h3.twm-title {
     bottom: 10px;
     button {
       left: 50%;
-      transform: translateX(-50%);
+      //   transform: translateX(-50%);
     }
   }
 }
@@ -10004,6 +10011,7 @@ h3.twm-title {
   border-radius: 10px;
   top: 30px;
   position: relative;
+  max-width: 100%;
   img {
     object-fit: cover;
     object-position: center;
@@ -11673,6 +11681,13 @@ h3.twm-title {
     }
   }
 }
+.header-style-3.site-header {
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  z-index: 999;
+}
 
 /*Dashboard Card*/
 .dashboard-card-2 {
@@ -11813,4 +11828,42 @@ Fixed header glass effect
 }
 [x-cloak] {
   display: none !important;
+}
+.upload-btn-wrapper:hover > button {
+  transform: translate(-50%, -10px);
+}
+.custom-notiflix-report-content {
+  max-width: 600px !important;
+}
+.custom-notiflix-report-message {
+  text-align: center;
+}
+.row.match-height > [class*="col"] {
+  display: flex;
+  flex-flow: column;
+}
+.row.match-height > [class*="col"] > div {
+  flex: 1 1 auto;
+}
+.text-small {
+  font-size: 12px;
+}
+.text-white {
+  color: #fff !important;
+}
+.text-yellow {
+  color: $clr-yellow !important;
+}
+.bg-primary {
+  background: $clr-primary !important;
+}
+.text-primary {
+  color: $clr-primary !important;
+}
+.bg-yellow {
+  background: $clr-yellow !important;
+}
+.tagify.form-control {
+  display: flex;
+  align-items: center;
 }

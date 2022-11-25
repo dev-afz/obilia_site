@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Section;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
 
 class Category extends Component
@@ -11,9 +12,12 @@ class Category extends Component
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
+
+    public $categories;
+    public function __construct(
+        array|Collection   $categories
+    ) {
+        $this->categories = $categories;
     }
 
     /**

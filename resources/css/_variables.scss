@@ -11,6 +11,7 @@ $clr-white: #fff;
 $card-bg: #e0eeff;
 $card-bg-alt: #ffe9ef;
 $clr-primary: #941f3a;
+$clr-yellow: #f49d1a;
 $clr-orange: #fd7e14;
 $clr-gray: #f9fcff;
 $clr-light-purple: #f0f6fe;
@@ -18,3 +19,25 @@ $transition: 0.5s all ease;
 $outline-none: 0px none;
 $inherit: inherit;
 $none: none;
+
+// extended variables
+$primary-color: $clr-primary;
+$secondary-color: $clr-secondry;
+$success-color: #28c76f;
+$warning-color: #ff9f43;
+$info-color: #00cfe8;
+$dark-color: #4b4b4b;
+
+$shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+
+$card-gradient-1: linear-gradient(
+  135deg,
+  rgb(4, 0, 75) 0%,
+  rgb(148, 31, 58) 99%
+);
+
+$card-gradient-2: linear-gradient(
+  68deg,
+  rgba(255, 225, 93, 1) 0%,
+  rgba(220, 53, 53, 1) 84%
+);

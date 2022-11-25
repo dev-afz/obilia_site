@@ -41,27 +41,29 @@
         </table>
     </div>
 @elseif ($theme === 'bootstrap-4' || $theme === 'bootstrap-5')
-    <div
-        {{ $attributes->merge($customAttributes['wrapper'])->class(['table-responsive dataTable' => $customAttributes['wrapper']['default'] ?? true])->except('default') }}>
-        <table
-            {{ $attributes->merge($customAttributes['table'])->class(['table table-striped' => $customAttributes['table']['default'] ?? true])->except('default') }}>
-            <thead
-                {{ $attributes->merge($customAttributes['thead'])->class(['' => $customAttributes['thead']['default'] ?? true])->except('default') }}>
-                <tr>
-                    {{ $thead }}
-                </tr>
-            </thead>
+    <div class="dataTables_wrapper">
+        <div
+            {{ $attributes->merge($customAttributes['wrapper'])->class(['table-responsive dataTable' => $customAttributes['wrapper']['default'] ?? true])->except('default') }}>
+            <table
+                {{ $attributes->merge($customAttributes['table'])->class(['table' => $customAttributes['table']['default'] ?? true])->except('default') }}>
+                <thead
+                    {{ $attributes->merge($customAttributes['thead'])->class(['' => $customAttributes['thead']['default'] ?? true])->except('default') }}>
+                    <tr>
+                        {{ $thead }}
+                    </tr>
+                </thead>
 
-            <tbody @if ($component->reorderIsEnabled()) wire:sortable="{{ $component->getReorderMethod() }}" @endif
-                {{ $attributes->merge($customAttributes['tbody'])->class(['' => $customAttributes['tbody']['default'] ?? true])->except('default') }}>
-                {{ $slot }}
-            </tbody>
+                <tbody @if ($component->reorderIsEnabled()) wire:sortable="{{ $component->getReorderMethod() }}" @endif
+                    {{ $attributes->merge($customAttributes['tbody'])->class(['' => $customAttributes['tbody']['default'] ?? true])->except('default') }}>
+                    {{ $slot }}
+                </tbody>
 
-            @if (isset($tfoot))
-                <tfoot>
-                    {{ $tfoot }}
-                </tfoot>
-            @endif
-        </table>
+                @if (isset($tfoot))
+                    <tfoot>
+                        {{ $tfoot }}
+                    </tfoot>
+                @endif
+            </table>
+        </div>
     </div>
 @endif

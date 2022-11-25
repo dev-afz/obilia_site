@@ -14,8 +14,8 @@
                             <div class="form-group col-xl-8 col-lg-8 col-md-8">
                                 <label>What</label>
                                 <div class="twm-single-iput">
-                                    <input name="username" type="text" required class="form-control  bg-none"
-                                        placeholder="Job title, Keywords, or company">
+                                    <input autocomplete="off" name="username" type="text" required
+                                        class="form-control  bg-none" placeholder="Job title, Keywords, or company">
                                 </div>
                             </div>
 

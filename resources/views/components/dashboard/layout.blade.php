@@ -33,7 +33,7 @@
         'resources/css/scrollbar.css',
         'resources/css/notiflix.min.css',
         'resources/css/override.scss',
-        'resources/scss/bootstrap-extended.scss',
+        'resources/css/bootstrap-extended.scss',
         //++
     ])
     {!! $styles ?? '' !!}

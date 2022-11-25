@@ -5,7 +5,7 @@
         <x-section.hero />
 
         <!-- JOBS CATEGORIES SECTION START -->
-        <x-section.category />
+        <x-section.category :categories="$categories" />
         <!-- JOBS CATEGORIES SECTION END -->
 
         <!-- ABOUT SECTION START -->
@@ -17,7 +17,7 @@
         <!-- How It Work END -->
 
         <!-- JOB POST START -->
-        <x-section.jobs />
+        <x-section.jobs :jobs="$jobs" />
         <!-- JOB POST END -->
 
         <!-- EXPLORE NEW LIFE START -->

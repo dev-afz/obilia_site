@@ -1,6 +1,6 @@
 <nav id="sidebar-admin-wraper">
     <div class="page-logo">
-        <a href="index.html"><img src="/images/logo-dark.png" alt=""></a>
+        <a href="/"><img src="/images/logo-dark.png" alt=""></a>
     </div>
 
     <div class="admin-nav scrollbar-macosx">

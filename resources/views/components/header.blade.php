@@ -57,7 +57,7 @@
 
                             @auth
                                 <div class="twm-nav-btn-left">
-                                    <a class="twm-nav-sign-up" href="#" role="button">
+                                    <a class="twm-nav-sign-up" href="{{ auth()->user()->role }}" role="button">
                                         <i class="feather-user"></i> Dashboard
                                     </a>
                                 </div>

@@ -21,8 +21,21 @@ class JobDataTable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->sortable(),
-            Column::make("Description")
+            Column::make("Title")
+                ->searchable()
                 ->sortable(),
+            Column::make("Banner")
+                ->format(function ($v, $c, $r) {
+                    return '<div data-view-onclick class="dashboard-message-avtar"><img src="' . (($v) ? asset($v) : 'https://via.placeholder.com/200') . '" alt=""></div>';
+                })
+                ->html(),
+            Column::make("Description")
+
+                ->format(function ($v, $c, $r) {
+                    return view('components.helper.description-viewer', ['desc' => $v]);
+                })
+                ->sortable()
+                ->html(),
             Column::make("Payment Type")
                 ->sortable(),
             Column::make("Size")

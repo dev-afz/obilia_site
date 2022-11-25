@@ -15,6 +15,14 @@ Notiflix.Notify.init({
   cssAnimationStyle: "zoom",
 });
 
+Notiflix.Report.init({
+  zindex: 999999999,
+  plainText: false,
+  width: "auto",
+  className: "custom-notiflix-report",
+  svgSize: "0px",
+});
+
 const notify = Notiflix.Notify;
 
 /*
@@ -243,4 +251,10 @@ $(document).on("change", "[data-uncheckable]", function () {
   if ($(this).is(":checked")) {
     $(this).prop("checked", false).trigger("change");
   }
+});
+
+$(document).on("click", "[data-view-onclick]", function () {
+  const html = $(this).html();
+  console.log(html);
+  Notiflix.Report.info("Image", html, "Ok");
 });
