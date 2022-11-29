@@ -196,6 +196,55 @@ window.rebound = ({
   });
 };
 
+window.validateRequired = (form) => {
+  let required = $(form).find("[required]");
+  let error = false;
+  let first_required = null;
+  required.each(function () {
+    if ($(this).val() == "" || $(this).val() == null) {
+      console.log($(this));
+      //check if has tagify class
+      if ($(this).hasClass("tagify")) {
+        return;
+      }
+      error = true;
+      if (first_required == null) {
+        first_required = $(this);
+      }
+      $(this).addClass("is-invalid");
+      $(this)
+        .closest(".form-group")
+        .find(".dropdown-toggle")
+        .addClass("invalid-select");
+      $(this)
+        .closest(".form-group")
+        .find(".dashboard-profile-photo")
+        .addClass("invalid-uploader");
+    } else {
+      $(this).removeClass("is-invalid");
+      $(this)
+        .closest(".form-group")
+        .find(".dropdown-toggle ")
+        .removeClass("invalid-select");
+      $(this)
+        .closest(".form-group")
+        .find(".dashboard-profile-photo")
+        .removeClass("invalid-uploader");
+    }
+  });
+  if (error) {
+    first_required.focus();
+    $("html, body").animate(
+      {
+        scrollTop: first_required.offset().top - 100,
+      },
+      200
+    );
+  }
+
+  return error;
+};
+
 // remove is-invalid class from input if it is valid
 $(document).on("keyup change", "form input,select,textarea", function () {
   if ($(this).val()) {

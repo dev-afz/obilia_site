@@ -2,8 +2,10 @@
 
 namespace App\Action\Client;
 
+use App\Jobs\AddMetadataJob;
 use App\Managers\FileManager;
 use App\Models\Job;
+use App\Models\JobResponsibility;
 use App\Models\User;
 use App\Models\JobSkill;
 use Illuminate\Support\Str;
@@ -37,6 +39,7 @@ class ClientJobAction
             'status' => 'active',
         ]);
         $data = [];
+        $responsibilities = [];
 
         // Log::info(json_decode($request->skills, true));
         foreach (json_decode($request->skills, true) as $key => $value) {
@@ -48,15 +51,21 @@ class ClientJobAction
                 'created_at' => now(),
             ];
         }
+        foreach ($request->responsibilities as $key => $res) {
+            $responsibilities[] = [
+                'job_id' => $job->id,
+                'responsibility' => $res,
+                'created_at' => now(),
+            ];
+        }
+        JobResponsibility::insert($responsibilities);
         JobSkill::insert($data);
         DB::commit();
     }
 
 
-
-
-
     public function makeMetadata(Job $job)
     {
+        return  AddMetadataJob::dispatch($job);
     }
 }

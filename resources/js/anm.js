@@ -246,6 +246,6 @@
     console.log("module.exports");
     module.exports = anm;
   } else {
-    this.anm = anm;
+    // this.anm = anm;
   }
 }.call(this);

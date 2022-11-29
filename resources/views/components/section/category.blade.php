@@ -36,8 +36,8 @@
                                         </div>
                                     </div>
                                     <div class="twm-content">
-                                        <div class="twm-jobs-available">3,205 Jobs</div>
-                                        <a href="/">{{ $cat->name }}</a>
+                                        <div class="twm-jobs-available">{{ number_format(rand(1111, 9999)) }} Jobs</div>
+                                        <a href="/category/{{ $cat->slug }}">{{ $cat->name }}</a>
                                     </div>
                                 </div>
                             </div>

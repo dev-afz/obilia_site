@@ -50,6 +50,8 @@ class JobController extends Controller
             'budget_to' => 'required|integer|gte:budget_from',
             'total_hours' => 'required|integer',
             'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:200',
+            'responsibilities' => 'required|array',
+            'responsibilities.*' => 'required|string|max:1000',
 
         ]);
 

@@ -1,7 +1,7 @@
 <div class="desc__wrapper ">
     <div class="text-center">
 
-        <button type="button" class="btn btn btn-flat-info" data-bs-toggle="modal"
+        <button type="button" class="btn btn-sm btn btn-flat-info" data-bs-toggle="modal"
             data-bs-target="#id-{{ $uuid = mt_rand(99999, 100000000000) }}">
             View
         </button>
@@ -13,11 +13,11 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="{{ $uuid }}Label">Description</h5>
+                    <h5 class="modal-title" id="{{ $uuid }}Label">{{ $title ?? 'Description' }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="w-s-normal"> {{ $desc }}</p>
+                    <p class="w-s-normal"> {{ $body ?? 'No Data' }}</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

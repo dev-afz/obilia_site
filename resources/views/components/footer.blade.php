@@ -1,28 +1,6 @@
 <footer class="footer-light">
     <div class="container">
-
-        <!-- NEWS LETTER SECTION START -->
-        <div class="ftr-nw-content">
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="ftr-nw-title">
-                        Join our email subscription now to get updates
-                        on new jobs and notifications.
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <form>
-                        <div class="ftr-nw-form">
-                            <input name="news-letter" class="form-control" placeholder="Enter Your Email" type="text">
-                            <button class="ftr-nw-subcribe-btn">Subscribe Now</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- NEWS LETTER SECTION END -->
-        <!-- FOOTER BLOCKES START -->
-        <div class="footer-top">
+        <div class="">
             <div class="row">
 
                 <div class="col-lg-3 col-md-12">

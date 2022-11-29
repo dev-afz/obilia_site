@@ -47,7 +47,7 @@ trait FileManager
      * This function is used to upload file to s3 bucket of digital ocean
      */
 
-    public  function uploadFileToDO($file, string $path = "images", string $initials = "img"): string
+    public  function uploadFileToDO($file, string $path = null, string $initials = "img"): string
     {
         $file_path = Storage::disk('do')
             ->putFileAs('public/' . $path ?? 'images/', $file, $initials . '-' . rand(1, 1000) . sha1(time()) . "." . $file

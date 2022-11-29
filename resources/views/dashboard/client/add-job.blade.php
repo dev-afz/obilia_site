@@ -27,8 +27,8 @@
 
                         <div class="col-md-12 text-center">
                             <label for="banner">Job Banner</label>
-                            <x-utils.image-uploader width="200px" height="200px" name="banner"
-                                instructions="Banner Should be <span class='text-danger'><strong>200px</strong> by <strong>200px</strong></span>" />
+                            <x-utils.image-uploader width="1200px" height="500px" name="banner"
+                                instructions="Banner Should be <span class='text-danger'><strong>1200px</strong> by <strong>500px</strong></span>" />
                         </div>
 
                         <div class="col-md-6">
@@ -63,26 +63,49 @@
                             <x-utils.input name="skills" />
                         </div>
                         <div class="col-lg-6">
-                            <x-utils.input name="total_hours" type="number" :attrs="[['step', '0.01']]" />
+                            <x-utils.input name="total_hours" type="number" :attrs="['step' => '0.01']" />
                         </div>
 
                         <div class="col-lg-12">
                             <x-utils.input name="description" type="textarea" />
                         </div>
+                        <div class="col-12 mb-3">
+                            <h4 class="text-center">Add Responsibilities</h4>
+                            <hr>
+                            <div data-repeater data-repeater-min="1">
+                                <div data-repeat class="row">
+                                    <div class="col-md-10">
+                                        <x-utils.input :multiple="true" name="responsibilities" />
+                                    </div>
+                                    <div class="col-md-2 d-flex align-items-center justify-content-center">
+                                        <div>
+                                            <button type="button" class="btn btn-danger" data-repeater-delete>
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="col-12 text-center">
+                                    <button type="button" data-repeater-btn class="btn btn-success">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </div>
                         <div class="col-12 text-center">
                             <button type="submit" class="site-button">Save Changes</button>
                         </div>
-
-
                     </div>
                 </form>
             </div>
         </div>
 
 
-
         <x-slot name="scripts">
+
             <script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.17.4/tagify.min.js"></script>
             <script>
                 const skills = @json($skills).map(rec => {
@@ -93,28 +116,7 @@
                 });
                 $('[data-add-job]').submit(function(e) {
                     e.preventDefault();
-                    var required = $(this).find('[required]');
-                    var error = false;
-                    required.each(function() {
-                        if ($(this).val() == '' || $(this).val() == null) {
-                            console.log($(this));
-                            //check if has tagify class
-                            if ($(this).hasClass('tagify')) {
-                                return;
-                            }
-                            error = true;
-                            $(this).addClass('is-invalid');
-                            $(this).closest('.form-group').find('.dropdown-toggle').addClass('invalid-select');
-                            $(this).closest('.form-group').find('.dashboard-profile-photo').addClass(
-                                'invalid-uploader');
-                        } else {
-                            $(this).removeClass('is-invalid');
-                            $(this).closest('.form-group').find('.dropdown-toggle ').removeClass('invalid-select');
-                            $(this).closest('.form-group').find('.dashboard-profile-photo').removeClass(
-                                'invalid-uploader');
-                        }
-                    });
-                    if (error) {
+                    if (window.validateRequired($(this))) {
                         return;
                     }
                     window.rebound({
@@ -167,6 +169,23 @@
                             closeOnSelect: false
                         }
                     })
+                const repeater_data = $('[data-repeater] > [data-repeat]').clone();
+                $('[data-repeater-btn]').on('click', function() {
+                    $('[data-repeater] > [data-repeat]').last().after(repeater_data.clone());
+                });
+                $('[data-repeater]').on('click', '[data-repeater-delete]', function() {
+                    const min = $(this).closest('[data-repeater]').data('repeater-min');
+
+                    if ($('[data-repeater] > [data-repeat]').length > min) {
+                        $(this).closest('[data-repeat]').slideUp(300, function() {
+                            $(this).remove();
+                        });
+                    } else {
+                        alert('You must have at least ' + min + ' responsibilities');
+                    }
+
+
+                });
             </script>
         </x-slot>
 

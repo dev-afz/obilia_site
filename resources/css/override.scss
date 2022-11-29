@@ -409,3 +409,33 @@ button.dt-btn {
 .w-s-normal {
   white-space: normal !important;
 }
+.badge {
+  .badge-light-success {
+    background-color: #e2f0dd;
+    color: #1b554a;
+  }
+  .badge-light-danger {
+    background-color: #f8e0e0;
+    color: #a94442;
+  }
+  .badge-light-warning {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  .badge-light-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+  }
+  .badge-light-primary {
+    background-color: #d1ecf1;
+    color: #0c5460;
+  }
+  .badge-light-secondary {
+    background-color: #f8f9fa;
+    color: #383d41;
+  }
+  .badge-light-dark {
+    background-color: #d6d8d9;
+    color: #1b1e21;
+  }
+}

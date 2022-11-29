@@ -63,6 +63,17 @@ class Job extends Model
         return $this->hasMany(JobApplication::class, 'job_id');
     }
 
+    public function application()
+    {
+        return $this->hasOne(JobApplication::class, 'job_id');
+    }
+
+    public function responsibilities()
+    {
+        return $this->hasMany(JobResponsibility::class, 'job_id');
+    }
+
+
 
 
     public function invites()
@@ -76,18 +87,32 @@ class Job extends Model
     }
 
 
+
+    public function direct_skill()
+    {
+        return $this->hasManyThrough(Skill::class, JobSkill::class, 'job_id', 'id', 'id', 'skill_id');
+    }
+
+
     /*
     |--------------------------------------------------------------------------
     |scopes
     |--------------------------------------------------------------------------
     */
-    public function scopeActive()
+    public function scopeActive($q)
     {
-        return $this->where('status', 'active')
-            ->whereHas('client', function ($query) {
-                $query->where('status', 'active');
-            });
+        return $q->where('status', 'active');
     }
+
+    public function scopeIsPublic($q)
+    {
+        return $q->where('visibility', 'public');
+    }
+
+
+
+
+
 
 
     public function scopeWithLikedByUser($user_id)

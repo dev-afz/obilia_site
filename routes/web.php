@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\OauthController;
 use App\Http\Controllers\Site\BasicController;
+use App\Http\Controllers\Site\JobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,17 @@ Route::controller(AuthController::class)
 Route::controller(BasicController::class)
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/category/{slug}', 'categories')->name('categories');
         Route::get('/about', 'about');
-        Route::get('/contact', 'contact');
+        Route::get('/search', 'search')->name('search');
+        Route::get('/contact', 'contact')->name('contact');
+        Route::controller(JobController::class)
+            ->prefix('jobs')
+            ->name('jobs.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::put('/toggle-like', 'toggleLike')->name('toggle-like')
+                    ->middleware('auth');
+                Route::get('/{job}/details', 'show')->name('show');
+            });
     });

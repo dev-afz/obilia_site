@@ -13,10 +13,13 @@ class Jobs extends Component
      */
 
     public $jobs;
+    public $class;
     public function __construct(
-        $jobs
+        $jobs,
+        $class = null,
     ) {
         $this->jobs = $jobs;
+        $this->class = $class;
     }
 
     /**

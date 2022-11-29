@@ -70,14 +70,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     @vite([
-        // 'resources/js/jquery-3.6.0.min.js',
         'resources/js/popper.min.js',
         'resources/js/bootstrap.min.js',
         'resources/js/bootstrap-select.min.js',
-        'resources/js/waypoints.min.js',
-        'resources/js/counterup.min.js',
         'resources/js/custom.js',
-        'resources/js/anm.js',
         'resources/js/notiflix.min.js',
         'resources/js/init.js',
         //---

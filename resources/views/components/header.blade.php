@@ -7,8 +7,8 @@
 
                 <div class="logo-header">
                     <div class="logo-header-inner logo-header-one">
-                        <a href="index.html">
-                            <img src="images/logo-dark.png" alt="">
+                        <a href="{{ route('index') }}">
+                            <img src="/images/logo-dark.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -27,8 +27,10 @@
                     <div class="p-3 d-md-none">
                         <img class="d-md-none" width="50%" src="images/logo-dark.png" alt="">
                     </div>
-                    <ul class=" nav navbar-nav">
-                        <li class="has-child"><a href="javascript:;">Home</a></li>
+                    <ul class=" nav navbar-nav flex-row">
+                        <li class="has-child"><a href="{{ route('index') }}">Home</a></li>
+                        <li class="has-child"><a href="{{ route('contact') }}">Contact</a></li>
+                        <li class="has-child"><a href="{{ route('contact') }}">About</a></li>
                     </ul>
 
                 </div>
@@ -57,7 +59,8 @@
 
                             @auth
                                 <div class="twm-nav-btn-left">
-                                    <a class="twm-nav-sign-up" href="{{ auth()->user()->role }}" role="button">
+                                    <a class="twm-nav-sign-up" href="/{{ Str::replace('_', '-', auth()->user()->role) }}"
+                                        role="button">
                                         <i class="feather-user"></i> Dashboard
                                     </a>
                                 </div>
@@ -75,18 +78,6 @@
 
         </div>
 
-        <!-- SITE Search -->
-        <div id="search">
-            <span class="close"></span>
-            <form role="search" id="searchform" action="/search" method="get" class="radius-xl">
-                <input class="form-control" value="" name="q" type="search" placeholder="Type to search" />
-                <span class="input-group-append">
-                    <button type="button" class="search-btn">
-                        <i class="fa fa-paper-plane"></i>
-                    </button>
-                </span>
-            </form>
-        </div>
     </div>
 
 

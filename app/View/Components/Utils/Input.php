@@ -23,6 +23,7 @@ class Input extends Component
     public $class;
     public $icon;
     public $attrs;
+    public $multiple;
 
     public function __construct(
         $name,
@@ -35,7 +36,8 @@ class Input extends Component
         $disabled = false,
         $class = '',
         $icon = false,
-        array $attrs = null
+        array $attrs = null,
+        bool $multiple = false
     ) {
         $this->id = $id;
         $this->name = $name;
@@ -48,6 +50,7 @@ class Input extends Component
         $this->class = $class;
         $this->icon = $icon;
         $this->attrs = $attrs;
+        $this->multiple = $multiple;
     }
 
     /**

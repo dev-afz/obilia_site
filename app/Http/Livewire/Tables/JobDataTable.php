@@ -32,7 +32,7 @@ class JobDataTable extends DataTableComponent
             Column::make("Description")
 
                 ->format(function ($v, $c, $r) {
-                    return view('components.helper.description-viewer', ['desc' => $v]);
+                    return view('components.helper.description-viewer', ['body' => $v]);
                 })
                 ->sortable()
                 ->html(),

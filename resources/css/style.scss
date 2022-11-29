@@ -1225,75 +1225,86 @@ button {
   .pagination-style1 {
     position: relative;
     display: inline-block;
-    ul {
-      list-style: none;
-      margin-bottom: 0px;
-      li {
-        position: relative;
-        margin: 0px 3px 0px;
-        display: inline-block;
-        @include breakpoint-400 {
-          margin: 0px 1px 0px;
-        }
-        &.prev {
-          a {
-            width: 50px;
-            height: 50px;
-            font-size: 16px;
-            color: $clr-dark;
-            font-weight: 500;
-            transition: $transition;
-            letter-spacing: 1px;
-            @include breakpoint_420 {
-              width: 30px;
-              height: 30px;
-            }
-          }
-        }
-        &.next {
-          a {
-            width: 50px;
-            height: 50px;
-            font-size: 16px;
-            color: $clr-dark;
-            font-weight: 500;
-            transition: $transition;
-            letter-spacing: 1px;
-            @include breakpoint_420 {
-              width: 30px;
-              height: 30px;
-            }
-          }
-        }
-        a {
+    width: 100%;
+    .page-item.active .page-link {
+      background-color: $clr-primary;
+      border-color: $clr-primary;
+      color: $clr-white;
+    }
+    .full__width_nav {
+      ul {
+        list-style: none;
+        margin-bottom: 0px;
+
+        li {
           position: relative;
-          width: 50px;
-          height: 50px;
-          color: $clr-dark;
-          font-size: 16px;
-          line-height: 50px;
-          text-align: center;
+          margin: 0px 3px 0px;
           display: inline-block;
-          transition: $transition;
-          font-family: $heading-font;
-          font-weight: 400;
-          border-radius: 10px;
-          @include breakpoint-480 {
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
+          @include breakpoint-400 {
+            margin: 0px 1px 0px;
           }
-        }
-        &.active {
-          a {
-            background-color: $clr-primary;
-            color: $clr-white;
+          &.prev {
+            a {
+              width: 50px;
+              height: 50px;
+              font-size: 16px;
+              color: $clr-dark;
+              font-weight: 500;
+              transition: $transition;
+              letter-spacing: 1px;
+              @include breakpoint_420 {
+                width: 30px;
+                height: 30px;
+              }
+            }
           }
-        }
-        &:hover {
-          a {
-            background-color: $clr-primary;
-            color: $clr-white;
+          &.next {
+            a {
+              width: 50px;
+              height: 50px;
+              font-size: 16px;
+              color: $clr-dark;
+              font-weight: 500;
+              transition: $transition;
+              letter-spacing: 1px;
+              @include breakpoint_420 {
+                width: 30px;
+                height: 30px;
+              }
+            }
+          }
+
+          a,
+          span.page-link {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            color: $clr-dark;
+            font-size: 16px;
+            line-height: 50px;
+            text-align: center;
+            display: inline-block;
+            transition: $transition;
+            font-family: $heading-font;
+            font-weight: 400;
+            border-radius: 10px !important;
+            @include breakpoint-480 {
+              width: 30px;
+              height: 30px;
+              line-height: 30px;
+            }
+          }
+          &.active {
+            a {
+              background-color: $clr-primary;
+              color: $clr-white;
+            }
+          }
+          &:hover {
+            a {
+              background-color: $clr-primary;
+              color: $clr-white;
+            }
           }
         }
       }
@@ -2218,7 +2229,6 @@ ol.comment-list {
     max-width: 500px;
     width: 100%;
     color: $clr-primary;
-    border: 1px solid #ddd;
     border-radius: 10px;
     font-size: 30px;
     font-weight: 300;
@@ -2239,7 +2249,6 @@ ol.comment-list {
     outline: none;
     color: $clr-dark;
     font-size: 24px;
-    text-align: center;
     @include breakpoint_575 {
       font-size: 14px;
     }
@@ -3303,8 +3312,7 @@ ol.comment-list {
 }
 
 .twm-jobs-grid-style1 {
-  background: $clr-primary !important;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+  background: $card-bg !important;
   backdrop-filter: blur(10px);
   border: 10px;
   position: relative;
@@ -3312,6 +3320,10 @@ ol.comment-list {
   border-radius: 10px;
   width: 100%;
   margin-top: 30px;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    box-shadow: $shadow;
+  }
   @include breakpoint-420 {
     text-align: center;
     margin-top: 0px;
@@ -4158,8 +4170,8 @@ ol.comment-list {
 
 .job-categories-block-2 {
   padding: 30px;
-  background-color: $clr-white;
-  box-shadow: 0px 0px 25px rgba(56, 152, 226, 0.3);
+  background-color: $card-bg;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   border-radius: 10px;
   position: relative;
   z-index: 1;
@@ -4251,6 +4263,12 @@ ol.comment-list {
   }
   &:hover {
     background-color: $clr-primary;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+      rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+      rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+      rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+      rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+      rgba(0, 0, 0, 0.09) 0px 32px 16px;
     &:after {
       background-color: $clr-white;
       opacity: 0.1;
@@ -8910,7 +8928,7 @@ h3.twm-title {
     width: 100px;
     height: 100px;
     line-height: 100px;
-    border-radius: 10px;
+    border-radius: 50%;
     box-shadow: 0px 0px 4px 0px rgb(56 152 226 / 30%);
     display: table;
     margin-bottom: -40px;
@@ -8949,6 +8967,12 @@ h3.twm-title {
   }
   &:hover {
     background-color: $clr-primary;
+    border: none;
+    box-shadow: rgb(0 0 0 / 17%) 0px -23px 25px 0px inset,
+      rgb(0 0 0 / 15%) 0px -36px 30px 0px inset,
+      rgb(0 0 0 / 10%) 0px -79px 40px 0px inset, rgb(0 0 0 / 6%) 0px 2px 1px,
+      rgb(0 0 0 / 9%) 0px 4px 2px, rgb(0 0 0 / 9%) 0px 8px 4px,
+      rgb(0 0 0 / 9%) 0px 16px 8px, rgb(0 0 0 / 9%) 0px 32px 16px;
     .twm-content {
       .twm-jobs-available {
         background-color: $clr-white;
@@ -11866,4 +11890,152 @@ Fixed header glass effect
 .tagify.form-control {
   display: flex;
   align-items: center;
+}
+.job__banner {
+  object-fit: cover;
+  height: 500px !important;
+  width: 1200px !important;
+}
+.job__section {
+  margin-top: 100px !important;
+}
+
+.job-categories-block-2.no-data:hover h2 {
+  color: #fff !important;
+}
+.twm-jobs-grid-style1 {
+  .multi-button {
+    z-index: 0;
+    position: absolute;
+    opacity: 0;
+    top: 1.25rem;
+    left: 1.25rem;
+    border-radius: 100%;
+    width: 0rem;
+    height: 0rem;
+    transform: translate(-50%, -50%);
+    transition: 0.25s cubic-bezier(0.25, 0, 0, 1);
+
+    @include breakpoint-420 {
+      opacity: 1;
+      top: 2rem !important;
+      left: 2rem !important;
+      width: 0rem !important;
+      height: 0rem !important;
+    }
+
+    @include breakpoint_575 {
+      top: 1rem;
+      right: 0px;
+      left: auto;
+      transform: translate(50%, -50%);
+    }
+
+    button {
+      display: grid;
+      place-items: center;
+      position: absolute;
+      width: 2rem;
+      height: 2rem;
+      border: none;
+      border-radius: 100%;
+      background: $clr-primary;
+      color: white;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      transition: 0.25s cubic-bezier(0.25, 0, 0, 1);
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+      &:first-child:nth-last-child(1) {
+        //If there is 1 child
+        left: 25%;
+        top: 25%;
+      }
+      &:first-child:nth-last-child(2),
+      &:first-child:nth-last-child(2) ~ * {
+        //If there are 2 children
+        &:nth-child(1) {
+          left: 37.5%;
+          top: 18.75%;
+        }
+        &:nth-child(2) {
+          left: 18.75%;
+          top: 37.5%;
+        }
+      }
+      &:first-child:nth-last-child(3),
+      &:first-child:nth-last-child(3) ~ * {
+        //If there are 3 children
+        &:nth-child(1) {
+          left: 50%;
+          top: 15.625%;
+        }
+        &:nth-child(2) {
+          left: 25%;
+          top: 25%;
+        }
+        &:nth-child(3) {
+          left: 15.625%;
+          top: 50%;
+        }
+      }
+      &:first-child:nth-last-child(4), //If there are 4 children, if first child is also 4th item from bottom get self, and
+                &:first-child:nth-last-child(4) ~ * {
+        //If there are 4 children, if first child is also 4th item from bottom get siblings
+        &:nth-child(1) {
+          left: 62.5%;
+          top: 18.75%;
+        }
+        &:nth-child(2) {
+          left: 37.5%;
+          top: 18.75%;
+        }
+        &:nth-child(3) {
+          left: 18.75%;
+          top: 37.5%;
+        }
+        &:nth-child(4) {
+          left: 18.75%;
+          top: 62.5%;
+        }
+      }
+    }
+  }
+  &:hover .multi-button,
+  .multi-button:focus-within {
+    //Hover or a button inside is focused
+    width: 10rem;
+    height: 10rem;
+    opacity: 1;
+    @include breakpoint-420 {
+      width: 0rem !important;
+      height: 0rem !important;
+      transform: none !important;
+    }
+  }
+}
+
+[data-liked="true"] {
+  color: $clr-primary !important;
+  background: #e0eeff !important;
+}
+.search-modal {
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  background-color: rgba(17, 25, 40, 0.75) !important;
+
+  form {
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+    border-radius: 10px;
+
+    .dropdown {
+      width: 30% !important;
+    }
+    .filter-option-inner-inner {
+      text-align: center !important;
+    }
+  }
 }

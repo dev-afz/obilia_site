@@ -34,6 +34,7 @@
         'resources/css/notiflix.min.css',
         //++
     ])
+    {!! $styles ?? '' !!}
     @stack('component-styles')
 
 </head>
@@ -63,13 +64,28 @@
         <x-footer />
 
         <button class="scroltop"><span class="fa fa-angle-up  relative" id="btn-vibrate"></span></button>
-
+        <div class="search-modal" id="search">
+            <span class="close"></span>
+            <form role="search" id="searchform" action="{{ route('search') }}" method="get" class="radius-xl">
+                <select name="type" class="wt-search-bar-select selectpicker" data-live-search="false"
+                    id="work__type">
+                    <option selected value="work">Work</option>
+                    <option value="talent">Talent</option>
+                </select>
+                <input class="form-control" value="" name="q" type="search" placeholder="Type to search" />
+                <span class="input-group-append">
+                    <button type="submit" class="search-btn">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </form>
+        </div>
         @guest
             <x-auth />
         @endguest
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     @vite([
-        'resources/js/jquery-3.6.0.min.js',
         'resources/js/popper.min.js',
         'resources/js/bootstrap.min.js',
         'resources/js/bootstrap-select.min.js',
@@ -81,8 +97,6 @@
         'resources/js/init.js',
         //---
     ]);
-
-    {{-- <script defer src="{{ asset('js/init.js') }}"></script>r --}}
 
     {!! $scripts ?? '' !!}
 

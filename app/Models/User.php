@@ -133,7 +133,7 @@ class User extends Authenticatable
             ->delete();
     }
 
-    public function isUser()
+    public function isServiceProvider()
     {
         return $this->role === 'user';
     }
