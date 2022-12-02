@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Utils;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
 
 class Select extends Component
@@ -33,6 +34,7 @@ class Select extends Component
     public $optionPrepend;
     public $showTill;
     public $maxSelect;
+    public $labelClass;
 
 
     public function __construct(
@@ -43,7 +45,7 @@ class Select extends Component
         $disabled = false,
         $class = '',
         $multiple = false,
-        array $options = [],
+        array|Collection $options = [],
         $appendOptionText = null,
         $appendOptionValue = null,
         array $attrs = null,
@@ -55,7 +57,8 @@ class Select extends Component
         $optionName = 'name',
         $optionPrepend = null,
         int $showTill = null,
-        int $maxSelect = null
+        int $maxSelect = null,
+        string $labelClass = null
 
     ) {
         $this->id = $id;
@@ -78,6 +81,7 @@ class Select extends Component
         $this->optionPrepend = $optionPrepend;
         $this->showTill = $showTill;
         $this->maxSelect = $maxSelect;
+        $this->labelClass = $labelClass;
     }
 
     /**

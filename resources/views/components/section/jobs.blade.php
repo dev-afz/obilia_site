@@ -16,7 +16,7 @@
                     <!-- TITLE END-->
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-12 wt-separator-two-part-right text-right">
-                    <a href="job-list.html" class=" site-button">Browse All Jobs</a>
+                    <a href="{{ route('search') }}?type=work" class=" site-button">Browse All Jobs</a>
                 </div>
             </div>
         </div>

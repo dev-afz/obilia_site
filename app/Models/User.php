@@ -96,7 +96,7 @@ class User extends Authenticatable
 
     public function scopeIsUser($q)
     {
-        return $q->where('role', 'user');
+        return $q->where('role', 'service_provider');
     }
 
     public function scopeActive($q)

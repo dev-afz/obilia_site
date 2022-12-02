@@ -14,8 +14,8 @@
 
 
     <!-- FAVICONS ICON -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+    <link rel="icon" href="{{ asset('images/logo/logo.ico') }}" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo/logo.ico') }}" />
 
     <!-- PAGE TITLE HERE -->
     <title>{{ config('app.name') }} |
@@ -67,12 +67,13 @@
         <div class="search-modal" id="search">
             <span class="close"></span>
             <form role="search" id="searchform" action="{{ route('search') }}" method="get" class="radius-xl">
-                <select name="type" class="wt-search-bar-select selectpicker" data-live-search="false"
+                <select required name="type" class="wt-search-bar-select selectpicker" data-live-search="false"
                     id="work__type">
                     <option selected value="work">Work</option>
                     <option value="talent">Talent</option>
                 </select>
-                <input class="form-control" value="" name="q" type="search" placeholder="Type to search" />
+                <input required class="form-control" value="" name="q" type="search"
+                    placeholder="Type to search" />
                 <span class="input-group-append">
                     <button type="submit" class="search-btn">
                         <i class="fa fa-search"></i>

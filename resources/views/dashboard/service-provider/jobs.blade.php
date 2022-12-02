@@ -10,7 +10,7 @@
                         </div>
                         <div class="panel-body wt-panel-body p-a20 m-b30 ">
                             <div class="twm-D_table p-a20 table-responsive">
-                                <livewire:tables.job-application-data-table />
+                                <livewire:tables.service-provider.job-application-data-table />
                             </div>
                         </div>
                     </div>

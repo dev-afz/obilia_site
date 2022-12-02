@@ -62,4 +62,18 @@ class JobController extends Controller
             'message' => 'Job created successfully'
         ]);
     }
+
+
+    public function show($slug)
+    {
+        $user = auth()->user();
+
+        $job = $user->posted_jobs()->where('slug', $slug)
+            ->with([
+                'sub_category', 'experience', 'work_length', 'skills' => ['skill'], 'responsibilities',
+            ])
+            ->withCount(['applications'])
+            ->firstOrFail();
+        return view('dashboard.client.job-details', compact('job'));
+    }
 }

@@ -22,8 +22,14 @@ class JobDataTable extends DataTableComponent
             Column::make("Id", "id")
                 ->sortable(),
             Column::make("Title")
+                ->format(function ($job, $c) {
+                    return '<a target="_blank" href="' . route('client.job.show', $c->slug) . '">' . $c->title . '</a>';
+                })
                 ->searchable()
-                ->sortable(),
+
+                ->sortable()
+
+                ->html(),
             Column::make("Banner")
                 ->format(function ($v, $c, $r) {
                     return '<div data-view-onclick class="dashboard-message-avtar"><img src="' . (($v) ? asset($v) : 'https://via.placeholder.com/200') . '" alt=""></div>';
@@ -34,19 +40,26 @@ class JobDataTable extends DataTableComponent
                 ->format(function ($v, $c, $r) {
                     return view('components.helper.description-viewer', ['body' => $v]);
                 })
+                ->collapseOnMobile()
                 ->sortable()
                 ->html(),
             Column::make("Payment Type")
+                ->collapseOnMobile()
                 ->sortable(),
             Column::make("Size")
+                ->collapseOnMobile()
                 ->sortable(),
             Column::make("Rate from")
+                ->collapseOnMobile()
                 ->sortable(),
             Column::make("Rate to")
+                ->collapseOnMobile()
                 ->sortable(),
             Column::make("Created at", "created_at")
+                ->collapseOnMobile()
                 ->sortable(),
             Column::make("Updated at", "updated_at")
+                ->collapseOnMobile()
                 ->sortable(),
         ];
     }

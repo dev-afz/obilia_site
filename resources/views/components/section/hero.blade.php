@@ -8,13 +8,14 @@
                 </div>
                 <div class="twm-bnr-discription">Find jobs that match your interests with us.</div>
                 <div class="twm-bnr-search-bar">
-                    <form>
+                    <form action="{{ route('search') }}">
                         <div class="row">
                             <!--Title-->
                             <div class="form-group col-xl-8 col-lg-8 col-md-8">
                                 <label>What</label>
                                 <div class="twm-single-iput">
-                                    <input autocomplete="off" name="username" type="text" required
+                                    <input type="hidden" class="d-none" name="type" value="work">
+                                    <input autocomplete="off" name="q" type="text"
                                         class="form-control  bg-none" placeholder="Job title, Keywords, or company">
                                 </div>
                             </div>

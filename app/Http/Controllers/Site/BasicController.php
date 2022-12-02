@@ -6,9 +6,8 @@ use App\Models\Job;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Jobs\AddMetadataJob;
-use App\Managers\SanitaryManager;
 use App\Models\SubCategory;
+use App\Services\SearchService;
 use Illuminate\Support\Facades\Log;
 
 class BasicController extends Controller
@@ -47,34 +46,14 @@ class BasicController extends Controller
     }
 
 
-    public function search(Request $request, SanitaryManager $manager)
+    public function search(Request $request, SearchService $service)
     {
         $request->validate([
-            'q' => 'required|string|min:3|max:255'
+            'type' => 'required|in:work,talent',
         ]);
 
-        Log::info($request->all());
+        // Log::info($request->all());
 
-        $data = $manager->sanitize($request);
-
-
-
-        if ($request->ajax()) {
-            $jobs = Job::active()->isPublic()->paginate(2, ['*'], 'page', $request->page);
-            $html = '';
-            $showBtn = false;
-            $class = "col-md-6";
-            foreach ($jobs as $key => $job) {
-                $html .= view('components.elements.job-card', compact('job', 'showBtn', 'class'))->render();
-            }
-
-            $url_link_html  = view('components.helper.url-links', compact('jobs'))->render();
-
-
-            return response()->json(['html' => $html, 'links' => $url_link_html]);
-        }
-        $jobs = Job::active()->isPublic()->paginate(2);
-
-        return view('browse.jobs', compact('jobs'));
+        return $service->search($request);
     }
 }

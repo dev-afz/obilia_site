@@ -138,13 +138,15 @@
 
                     </div>
 
-                    <div class="twm-advertisment m-b0" style="background-image:url(images/add-bg.jpg);">
-                        <div class="overlay"></div>
-                        <h4 class="twm-title">Looking for talent?</h4>
-                        <p>Get Best Matched Jobs On your <br>
-                            Email. Add Resume NOW!</p>
-                        <a href="javascript:;" class="site-button white">Read More</a>
-                    </div>
+                    @if ($showAd)
+                        <div class="twm-advertisment m-b0" style="background-image:url(images/add-bg.jpg);">
+                            <div class="overlay"></div>
+                            <h4 class="twm-title">Looking for talent?</h4>
+                            <p>Get Best Matched Jobs On your <br>
+                                Email. Add Resume NOW!</p>
+                            <a href="javascript:;" class="site-button white">Read More</a>
+                        </div>
+                    @endif
 
 
                 </div>

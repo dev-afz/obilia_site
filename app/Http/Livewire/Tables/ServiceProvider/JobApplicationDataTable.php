@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Tables;
+namespace App\Http\Livewire\Tables\ServiceProvider;
 
 use App\Models\JobApplication;
 use Illuminate\Database\Eloquent\Builder;
@@ -59,7 +59,7 @@ class JobApplicationDataTable extends DataTableComponent
 
             Column::make("Status", "status")
                 ->format(function ($v, $c, $r) {
-                    ($v == 'pending') ? $class = 'badge-light-warning' : (($v == 'accepted') ? $class = 'badge-light-success' : $class = 'badge-light-danger');
+                    ($v == 'pending') ? $class = 'bg-warning' : (($v == 'accepted') ? $class = 'bg-success' : $class = 'bg-danger');
                     return '<span class="badge text-capitalize ' . $class . '">' . $v . '</span>';
                 })
                 ->sortable()
@@ -67,7 +67,7 @@ class JobApplicationDataTable extends DataTableComponent
 
 
             Column::make("Created at", "created_at")
-                ->format(fn ($v, $c, $r) => $v->format('H:i a , d M y'))
+                ->format(fn ($v, $c, $r) => $v->format('H:i a, d M y'))
                 ->sortable(),
         ];
     }

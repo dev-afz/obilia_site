@@ -14,10 +14,13 @@ class JobDetails extends Component
      */
 
     public $job;
+    public $showAd;
     public function __construct(
-        array|Job  $job
+        array|Job  $job,
+        bool $showAd = true
     ) {
         $this->job = $job;
+        $this->showAd = $showAd;
     }
 
     /**

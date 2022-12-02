@@ -180,6 +180,27 @@ This files [Table of contents] are outlined below
   }
 }
 
+.logo__container {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-footer {
+  img {
+    height: 100px;
+  }
+}
+img.header__logo {
+  height: 55px;
+}
+.logo__text {
+  color: $clr-primary;
+}
+.page-content {
+  margin-top: 100px;
+}
+
 /*Center title*/
 .section-head {
   &.left {
@@ -1485,9 +1506,26 @@ button {
         color: $clr-white;
       }
     }
+    a[data-tag-applied="true"] {
+      background-color: $clr-primary;
+      color: $clr-white;
+    }
   }
 }
-
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $clr-dark !important;
+}
 /*Comment list section*/
 ol.comment-list {
   list-style: none;
@@ -3240,6 +3278,7 @@ ol.comment-list {
     }
     img {
       display: inline-block;
+      object-fit: cover;
     }
   }
   p {
@@ -3348,6 +3387,7 @@ ol.comment-list {
     }
     img {
       display: block;
+      object-fit: cover;
     }
   }
   .twm-mid-content {
@@ -4875,8 +4915,9 @@ ol.comment-list {
 
 /*Candidate grid*/
 .twm-candidates-grid-style1 {
-  background-color: $clr-white;
-  border: 1px solid #ddd;
+  background-color: $card-bg;
+  backdrop-filter: blur(10px);
+  border: none;
   position: relative;
   padding: 20px;
   border-radius: 10px;
@@ -4892,16 +4933,20 @@ ol.comment-list {
       position: relative;
       top: -50px;
       margin-bottom: -30px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 0px 4px 0px rgba(56, 152, 226, 0.3);
+      padding: 2px;
       img {
         display: inline-block;
       }
     }
     .twm-candidates-tag {
       span {
-        color: $clr-primary;
+        background-color: $clr-primary;
+        color: white;
         border-radius: 5px;
         padding: 5px 12px;
-        background-color: $clr-light-purple;
       }
     }
   }
@@ -7441,6 +7486,8 @@ strong {
   }
   img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
@@ -9581,6 +9628,11 @@ h3.twm-title {
     }
     .twm-how-it-work-1-section {
       margin-bottom: 40px;
+
+      h2,
+      h4 {
+        color: $clr-yellow-light !important;
+      }
 
       .section-head {
         .wt-small-separator {
@@ -11903,7 +11955,8 @@ Fixed header glass effect
 .job-categories-block-2.no-data:hover h2 {
   color: #fff !important;
 }
-.twm-jobs-grid-style1 {
+.twm-jobs-grid-style1,
+.twm-candidates-grid-style1 {
   .multi-button {
     z-index: 0;
     position: absolute;
@@ -12016,7 +12069,7 @@ Fixed header glass effect
 }
 
 [data-liked="true"] {
-  color: $clr-primary !important;
+  color: #850e35 !important;
   background: #e0eeff !important;
 }
 .search-modal {
@@ -12039,3 +12092,75 @@ Fixed header glass effect
     }
   }
 }
+
+.page-item:not(.active) > a[disabled] {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.5;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: $clr-primary !important;
+}
+.wt-select-bar-large .btn-light {
+  color: $clr-primary !important;
+}
+
+.check__accept,
+.cross__reject,
+.apl_view {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $card-bg;
+  border-radius: 50%;
+  color: $clr-primary;
+  transition: all ease 0.4s;
+}
+
+.check__accept {
+  &:hover {
+    background: $success-color;
+    color: #fff;
+  }
+}
+
+.cross__reject {
+  &:hover {
+    background: $danger-color;
+    color: #fff;
+  }
+}
+
+.apl_view {
+  background: white;
+  &:hover {
+    background: $clr-primary;
+    color: #fff;
+  }
+}
+
+.no-boder {
+  .table > :not(caption) > * > * > * {
+    border: none !important;
+  }
+}
+
+table.seprated-row {
+  border-collapse: separate;
+  border-spacing: 0px 5px;
+  td {
+    background: $card-bg;
+  }
+  th {
+    border-right: 1px solid #e0eeff !important;
+    border-bottom: none !important;
+    background: #09596f !important;
+    color: white !important;
+    border-radius: 5px !important;
+  }
+}
+

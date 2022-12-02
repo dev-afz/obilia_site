@@ -17,5 +17,6 @@ Route::controller(DashboardController::class)
             ->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::post('/apply', 'apply')->name('apply');
+                Route::get('/liked', 'likedJobs')->name('liked');
             });
     });

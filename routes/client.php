@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Client\DashboardController;
 use App\Http\Controllers\Client\JobController;
+use App\Http\Controllers\Client\ChatController;
+use App\Http\Controllers\Client\DashboardController;
+use App\Http\Controllers\Client\JobApplicationController;
 
 Route::controller(DashboardController::class)
     ->middleware(['auth', 'client'])
@@ -19,6 +21,26 @@ Route::controller(DashboardController::class)
             ->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::get('add', 'add')->name('add');
+                Route::get('show/{slog}', 'show')->name('show');
                 Route::post('store', 'store')->name('store');
+
+
+                Route::controller(JobApplicationController::class)
+                    ->group(function () {
+                        Route::get('/applications', 'applications')->name('applications');
+                        Route::post('/application-action', 'applicationAction')->name('application-action');
+                        Route::post('/invite-candidate', 'inviteCandidate')->name('invite-candidate');
+                        Route::get('/invited-candidates', 'invitedCandidates')->name('invited-candidates');
+                        Route::get('/hired-candidates', 'hiredCandidates')->name('hired-candidates');
+                        Route::get('/suggested-candidates', 'suggestedCandidates')->name('suggested-candidates');
+                    });
+            });
+
+
+        Route::controller(ChatController::class)
+            ->prefix('chat')
+            ->name('chat.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
             });
     });

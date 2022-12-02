@@ -43,8 +43,11 @@ Route::controller(BasicController::class)
             ->name('jobs.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
+
                 Route::put('/toggle-like', 'toggleLike')->name('toggle-like')
                     ->middleware('auth');
-                Route::get('/{job}/details', 'show')->name('show');
+
+
+                Route::get('/{job}', 'show')->name('show');
             });
     });

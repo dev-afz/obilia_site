@@ -27,6 +27,7 @@ export default defineConfig({
         "resources/css/flaticon.css",
         "resources/css/notiflix.min.css",
         "resources/css/style.scss",
+        "resources/css/chat.scss",
         "resources/css/bootstrap-extended.scss",
         "resources/css/override.scss",
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

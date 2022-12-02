@@ -1,6 +1,7 @@
 <nav id="sidebar-admin-wraper">
-    <div class="page-logo">
-        <a href="/"><img src="/images/logo-dark.png" alt=""></a>
+    <div class="page-logo logo__container">
+        <a href="/"><img class="header__logo" src="{{ asset('images/logo/logo.png') }}" alt=""></a>
+        <span class="logo__text fs-3">Obilia</span>
     </div>
 
     <div class="admin-nav scrollbar-macosx">

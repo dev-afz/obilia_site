@@ -28,7 +28,7 @@
         </div>
 
         <div class="d-none flex-sm-fill d-sm-flex align-items-sm-center justify-content-sm-between full__width_nav">
-            <div>
+            <div class="result__counter">
                 <p class="small text-muted m-0">
                     {!! __('Showing') !!}
                     <span class="fw-semibold">{{ $paginator->firstItem() }}</span>

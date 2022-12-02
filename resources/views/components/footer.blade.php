@@ -7,7 +7,7 @@
 
                     <div class="widget widget_about">
                         <div class="logo-footer clearfix">
-                            <a href="index.html"><img src="images/logo-light-2.png" alt=""></a>
+                            <a href="/"><img src="{{ asset('images/logo/logo.png') }}" alt=""></a>
                         </div>
                         <p>Many desktop publishing packages and web page editors now.</p>
                         <ul class="ftr-list">
@@ -92,7 +92,7 @@
             <div class="footer-bottom-info">
 
                 <div class="footer-copy-right">
-                    <span class="copyrights-text">Copyright © 2022 by thewebmax All Rights Reserved.</span>
+                    <span class="copyrights-text">Copyright © 2022 by Obilia All Rights Reserved.</span>
                 </div>
                 <ul class="social-icons">
                     <li><a href="javascript:void(0);" class="fab fa-facebook-f"></a></li>

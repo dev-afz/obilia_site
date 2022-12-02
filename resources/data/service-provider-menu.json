@@ -16,6 +16,12 @@
                     "name": "Applied Jobs",
                     "icon": null,
                     "slug": "service-provider.job.index"
+                },
+                {
+                    "url": "service-provider/job/liked",
+                    "name": "Liked Jobs",
+                    "icon": null,
+                    "slug": "service-provider.job.liked"
                 }
             ]
         }

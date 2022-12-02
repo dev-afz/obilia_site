@@ -24,6 +24,10 @@ class Job extends Model
     {
         return $this->morphMany(Like::class, 'likeable');
     }
+    public function like()
+    {
+        return $this->morphOne(Like::class, 'likeable');
+    }
 
 
     public function client()
@@ -139,4 +143,11 @@ class Job extends Model
     {
         return substr($this->description, 0, 120) . '...';
     }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    |custom methods
+    |--------------------------------------------------------------------------
+    */
 }

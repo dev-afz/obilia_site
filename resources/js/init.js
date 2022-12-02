@@ -152,8 +152,8 @@ window.rebound = ({
       return true;
     },
     error: function (xhr, status, error) {
-      // (logging) ? console.error(error) : null;
-      console.log(xhr);
+      logging ? console.error(xhr) : null;
+      //   console.log(xhr);
       if (block) {
         block !== "empty"
           ? Notiflix.Block.remove(block)
@@ -170,7 +170,7 @@ window.rebound = ({
           });
         $.each(xhr.responseJSON.errors, function (key, item) {
           notify.failure(item[0]);
-          console.log(item);
+          logging ? console.error(xhr) : null;
           $(form).find(`[name=${key}]`).addClass("is-invalid");
         });
       } else if (xhr.status == 500) {
@@ -245,8 +245,11 @@ window.validateRequired = (form) => {
   return error;
 };
 
-// remove is-invalid class from input if it is valid
 $(document).on("keyup change", "form input,select,textarea", function () {
+  //check if required
+  if (!$(this).attr("required")) {
+    return;
+  }
   if ($(this).val()) {
     if ($(this).is("input")) {
       $(this).removeClass("is-invalid");
@@ -294,12 +297,6 @@ $(document).on("change", "[data-like-toggle]", function () {
       $(checkbox).prop("disabled", false);
     },
   });
-});
-
-$(document).on("change", "[data-uncheckable]", function () {
-  if ($(this).is(":checked")) {
-    $(this).prop("checked", false).trigger("change");
-  }
 });
 
 $(document).on("click", "[data-view-onclick]", function () {

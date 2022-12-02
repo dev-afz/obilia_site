@@ -7,8 +7,10 @@
 
                 <div class="logo-header">
                     <div class="logo-header-inner logo-header-one">
-                        <a href="{{ route('index') }}">
-                            <img src="/images/logo-dark.png" alt="">
+                        <a class="logo__container" href="{{ route('index') }}">
+                            <img class="header__logo" height="55" src="{{ asset('images/logo/logo.png') }}"
+                                alt="">
+                            <span class="logo__text">Obilia</span>
                         </a>
                     </div>
                 </div>
@@ -24,13 +26,14 @@
 
                 <!-- MAIN Vav -->
                 <div class="nav-animation header-nav navbar-collapse collapse d-flex flex-column align-items-center">
-                    <div class="p-3 d-md-none">
-                        <img class="d-md-none" width="50%" src="images/logo-dark.png" alt="">
+                    <div class="p-3 d-md-none d-flex align-items-center gap-2 w-100">
+                        <img class="d-md-none  header__logo" src="{{ asset('images/logo/logo.png') }}" alt="">
+                        <h4 class="d-md-none logo__text m-0">Obilia</h4>
                     </div>
                     <ul class=" nav navbar-nav flex-row">
-                        <li class="has-child"><a href="{{ route('index') }}">Home</a></li>
-                        <li class="has-child"><a href="{{ route('contact') }}">Contact</a></li>
-                        <li class="has-child"><a href="{{ route('contact') }}">About</a></li>
+                        <li class=""><a href="{{ route('index') }}">Home</a></li>
+                        <li class=""><a href="{{ route('contact') }}">Contact</a></li>
+                        <li class=""><a href="{{ route('contact') }}">About</a></li>
                     </ul>
 
                 </div>
@@ -39,7 +42,7 @@
                 <div class="extra-nav header-2-nav">
                     <div class="extra-cell">
                         <div class="header-search">
-                            <a href="#search" class="header-search-icon"><i class="feather-search"></i></a>
+                            <a href="#search" class="header-search-icon "><i class="feather-search"></i></a>
                         </div>
                     </div>
                     <div class="extra-cell">

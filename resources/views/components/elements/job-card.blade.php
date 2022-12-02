@@ -20,8 +20,8 @@
         <div class="twm-jobs-category green"><span class="bg-primary  ">{{ $job->sub_category->name }}</span></div>
         <div class="twm-mid-content">
             <span class="twm-job-post-duration  m-0">{{ $job->created_at->diffForHumans() }}</span>
-            <a href="j#" class="twm-job-title">
-                <h4 class="">{{ $job->title }}r</h4>
+            <a href="{{ route('jobs.show', $job->slug) }}" class="twm-job-title">
+                <h4 class="">{{ $job->title }}</h4>
             </a>
             <p class="twm-job-address ">
                 {{ //get only first 20 words

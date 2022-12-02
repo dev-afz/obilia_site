@@ -40,4 +40,10 @@ class JobController extends Controller
             'message' => 'Proposal sent successfully',
         ]);
     }
+
+
+    public function likedJobs()
+    {
+        return view('dashboard.service-provider.liked-jobs');
+    }
 }

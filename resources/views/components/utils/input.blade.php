@@ -1,6 +1,6 @@
 <div class="form-group {{ $class }}">
     @if ($type !== 'hidden')
-        <label>{{ $label ?? ucwords(str_replace('_', ' ', $name)) }}</label>
+        <label class="{{ $labelClass }}">{{ $label ?? ucwords(str_replace('_', ' ', $name)) }}</label>
     @endif
     <div class=" @if ($icon) ls-inputicon-box @endif ">
 
@@ -11,7 +11,7 @@
                 @if ($required) required @endif id="{{ $id ?? $name }}"
                 @if ($disabled) disabled @endif
                 @if (!empty($attrs)) @forelse ($attrs as $key=> $atr) {{ $key }}="{{ $atr }}" @empty @endforelse @endif
-                placeholder="Enter  {{ $placeholder ?? ucwords(str_replace('_', ' ', $name)) }}" />
+                placeholder="{{ $placeholder ?? ucwords(str_replace('_', ' ', $name)) }}" />
             @if ($icon)
                 {!! $icon !!}
             @endif

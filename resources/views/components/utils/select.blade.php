@@ -1,5 +1,5 @@
 <div class="form-group  has-feedback {{ $class }}">
-    <label>{{ $label ?? ucwords(str_replace('_', ' ', $name)) }}</label>
+    <label class="{{ $labelClass }}">{{ $label ?? ucwords(str_replace('_', ' ', $name)) }}</label>
     <div class="  @if ($icon) ls-inputicon-box @endif ">
         <select class="wt-select-box selectpicker" @if ($multiple) multiple @endif
             data-live-search="{{ $search }}" title=""
@@ -12,7 +12,7 @@
             <option disabled selected>Select {{ ucwords(str_replace('_', ' ', $name)) }}</option>
 
             @forelse ($options as $option)
-                <option value="{{ $option[$valueName] ?? $option }}" @if ($option[$valueName] ?? $option == $selected) selected @endif
+                <option value="{{ $option[$valueName] ?? $option }}" @if (($option[$valueName] ?? $option) == $selected) selected @endif
                     @if ($subtext) data-subtext="{{ $option[$subtext] ?? $subtext }}" @endif>
                     @if ($optionPrepend)
                         {!! $option[$optionPrepend] ?? $optionPrepend !!}
