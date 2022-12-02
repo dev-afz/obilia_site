@@ -244,12 +244,12 @@ a.add {
         transform: rotate(-37deg);
       }
       p {
-        color: $clr-white;
+        color: $common-font-color;
         font-size: 14px;
         line-height: 1.5;
         font-weight: 400;
         padding: 15px;
-        background: #a62b1f;
+        background: $clr-gray;
         display: inline-block;
         border-bottom-left-radius: 10px;
         border-top-right-radius: 10px;
