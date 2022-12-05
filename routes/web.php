@@ -33,6 +33,7 @@ Route::controller(AuthController::class)
 
 Route::controller(BasicController::class)
     ->group(function () {
+        Route::get('test', 'test')->name('test');
         Route::get('/', 'index')->name('index');
         Route::get('/category/{slug}', 'categories')->name('categories');
         Route::get('/about', 'about');

@@ -56,4 +56,9 @@ class BasicController extends Controller
 
         return $service->search($request);
     }
+
+    public function test()
+    {
+        return json_encode(broadcast(new \App\Events\TestEvent()));
+    }
 }

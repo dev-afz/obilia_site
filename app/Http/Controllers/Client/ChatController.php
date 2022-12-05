@@ -9,6 +9,7 @@ class ChatController extends Controller
 {
     public function index()
     {
+        event(new \App\Events\TestEvent());
         return view('dashboard.client.chat');
     }
 }

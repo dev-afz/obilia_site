@@ -2,6 +2,8 @@
     <x-slot:title> Chats </x-slot>
         <x-slot name="styles">
             @vite(['resources/css/chats.scss'])
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.9/simplebar.css">
+
         </x-slot>
         <div id="content">
             <!-- char-area -->
@@ -46,7 +48,7 @@
                                                             role="tabpanel" aria-labelledby="Open-tab">
                                                             <!-- chat-list -->
                                                             <div class="chat-list">
-                                                                <a href="#"
+                                                                <a href="#" data-user=""
                                                                     class="d-flex align-items-center chat__item">
                                                                     <div class="flex-shrink-0">
                                                                         <img class="img-fluid"
@@ -136,7 +138,24 @@
                                 <!-- chatbox -->
                                 <div class="chatbox">
                                     <div class="modal-dialog-scrollable">
-                                        <div class="modal-content">
+                                        <div class="empty__box">
+                                            <div class="p-5 w-75 rounded-3 bg-white text-center">
+                                                <span class="d-inline-block mb-3 message__icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        class="feather feather-message-square">
+                                                        <path
+                                                            d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z">
+                                                        </path>
+                                                    </svg>
+                                                </span>
+                                                <h3>Start a conversation</h3>
+                                                <p>Click on a user to start a conversation</p>
+                                            </div>
+                                        </div>
+                                        <div hidden class="modal-content d-none">
                                             <div class="msg-head">
                                                 <div class="row">
                                                     <div class="col-8">
@@ -256,19 +275,18 @@
 
 
         <x-slot name="scripts">
+            @vite(['resources/js/chat.js'])
             <script>
-                jQuery(document).ready(function() {
-
+                $(document).ready(function() {
                     $(".chat-list a").click(function() {
                         $(".chatbox").addClass('showbox');
+                        $(".chatbox .modal-content").removeClass('d-none').attr('hidden', false);
+                        $(".chatbox .empty__box").addClass('d-none').attr('hidden', true);
                         return false;
                     });
-
                     $(".chat-icon").click(function() {
                         $(".chatbox").removeClass('showbox');
                     });
-
-
                 });
             </script>
         </x-slot>
