@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Str;
 
 class UserService
 {
@@ -21,6 +21,7 @@ class UserService
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'uuid' => Str::uuid(),
         ]);
 
         Auth::login($user);

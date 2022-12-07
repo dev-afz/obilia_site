@@ -42,5 +42,7 @@ Route::controller(DashboardController::class)
             ->name('chat.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
+                Route::get('messages', 'messages')->name('messages');
+                Route::post('send-message', 'sendMessages')->name('send-messages');
             });
     });

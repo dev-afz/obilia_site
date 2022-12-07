@@ -72,6 +72,7 @@ window.rebound = ({
   logging = true,
   returnData = false,
   processData = false,
+  appendData = false,
 }) => {
   if (form === null && data === null) {
     throw new Error("No form or data provided in rebound()");
@@ -84,6 +85,13 @@ window.rebound = ({
     const formData = $(form)[0];
     form_data = new FormData(formData);
   }
+
+  if (appendData) {
+    for (const key in appendData) {
+      form_data.append(key, appendData[key]);
+    }
+  }
+
   $.ajaxSetup({
     headers: {
       "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),

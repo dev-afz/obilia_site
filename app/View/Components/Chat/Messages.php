@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components\Elements;
+namespace App\View\Components\Chat;
 
 use Illuminate\View\Component;
 
-class ServiceProviderCard extends Component
+class Messages extends Component
 {
     /**
      * Create a new component instance.
@@ -12,15 +12,11 @@ class ServiceProviderCard extends Component
      * @return void
      */
 
-    public $users;
-    public $showInvite;
-
+    public $messages;
     public function __construct(
-        $users,
-        $showInvite = false
+        $messages
     ) {
-        $this->users = $users;
-        $this->showInvite = $showInvite;
+        $this->messages = $messages;
     }
 
     /**
@@ -30,6 +26,6 @@ class ServiceProviderCard extends Component
      */
     public function render()
     {
-        return view('components.elements.service-provider-card');
+        return view('components.chat.messages');
     }
 }

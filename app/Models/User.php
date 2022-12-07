@@ -75,6 +75,11 @@ class User extends Authenticatable
     }
 
 
+    public function chats()
+    {
+        return $this->hasManyThrough(Chat::class, ChatParticipant::class, 'user_id', 'id', 'id', 'chat_id');
+    }
+
 
 
 

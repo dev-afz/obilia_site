@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class TestEvent implements ShouldBroadcast
+class TestChatEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -21,6 +21,7 @@ class TestEvent implements ShouldBroadcast
      */
     public function __construct()
     {
+        //
     }
 
     /**
@@ -30,19 +31,18 @@ class TestEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('testing');
+        return new Channel('testing.test');
     }
 
     public function broadcastAs()
     {
-        return '.message';
+        return 'test';
     }
-
 
     public function broadcastWith()
     {
         return [
-            'message' => 'Hello World'
+            'data' => 'test'
         ];
     }
 }

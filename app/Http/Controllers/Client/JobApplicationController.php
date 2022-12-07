@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Models\Chat;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\JobApplication;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class JobApplicationController extends Controller
 {
@@ -32,6 +35,7 @@ class JobApplicationController extends Controller
 
         $html = view('components.elements.service-provider-card', [
             'users' => $suggestedCandidates,
+            'showInvite' => true,
             'class' => 'col-md-4 mt-5'
         ])->render();
 
@@ -89,7 +93,7 @@ class JobApplicationController extends Controller
         $user = auth()->user();
 
         $application = JobApplication::where('id', $request->id)
-            ->with(['job:id,user_id'])
+            ->with(['job:id,user_id,title'])
             ->firstOrFail();
 
         if ($application->job->user_id != $user->id) {
@@ -98,9 +102,31 @@ class JobApplicationController extends Controller
             ], 400);
         }
 
+        DB::beginTransaction();
         $application->update([
             'status' => $request->status
         ]);
+
+        $chat =   Chat::create([
+            'job_id' => $application->job_id,
+            'name' => $application->job->title . ' - ' . $application->user->name,
+            'uuid' => Str::uuid(),
+        ]);
+
+        $chat->participants()->createMany([
+            [
+                'user_id' => $application->user_id,
+                'role' => 'member',
+            ],
+            [
+                'user_id' => $user->id,
+                'role' => 'owner',
+            ]
+        ]);
+
+        DB::commit();
+
+
 
         return response()->json([
             'status' => 'success',

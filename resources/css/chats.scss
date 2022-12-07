@@ -171,17 +171,25 @@ a.add {
     margin-bottom: 5px;
   }
   .active {
-    display: block;
-    content: "";
-    clear: both;
-    position: absolute;
-    bottom: 3px;
-    left: 34px;
-    height: 12px;
-    width: 12px;
-    background: #00db75;
-    border-radius: 50%;
-    border: 2px solid #fff;
+    background-color: $clr-primary !important;
+    color: $clr-white !important;
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $clr-white !important;
+    }
+    p {
+      color: $clr-white !important;
+    }
   }
 }
 .msg-head {
@@ -262,7 +270,8 @@ a.add {
         -ms-transform: rotate(-37deg);
         transform: rotate(-37deg);
       }
-      p {
+      .chat-content,
+      .loader {
         color: $common-font-color;
         font-size: 14px;
         line-height: 1.5;
@@ -274,6 +283,7 @@ a.add {
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
         margin-bottom: 0;
+        text-align: start;
         b {
           display: block;
           color: $clr-primary;
@@ -281,9 +291,12 @@ a.add {
           line-height: 1.5;
           font-weight: 500;
         }
+        & > p {
+          margin-bottom: 5px;
+        }
       }
     }
-    li.repaly {
+    li.reply {
       display: block;
       width: 100%;
       text-align: right;
@@ -293,7 +306,7 @@ a.add {
         clear: both;
         content: "";
         position: absolute;
-        bottom: 15px;
+        bottom: -3px;
         right: -8px;
         width: 0;
         height: 0;
@@ -304,7 +317,8 @@ a.add {
         -ms-transform: rotate(37deg);
         transform: rotate(37deg);
       }
-      p {
+      .chat-content,
+      .loader {
         color: $clr-white;
         font-size: 14px;
         line-height: 1.5;
@@ -315,6 +329,7 @@ a.add {
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         border-bottom-left-radius: 10px;
+        text-align: start;
         margin-bottom: 0;
         b {
           display: block;
@@ -346,11 +361,11 @@ a.add {
 .time {
   display: block;
   color: $clr-black;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1.5;
   font-weight: 400;
 }
-li.repaly {
+li.reply {
   .time {
     margin-right: 20px;
   }
@@ -576,7 +591,7 @@ button {
   .msg-body {
     ul {
       li.sender {
-        p {
+        div {
           font-size: 13px;
           padding: 8px;
           border-bottom-left-radius: 6px;
@@ -584,8 +599,8 @@ button {
           border-bottom-right-radius: 6px;
         }
       }
-      li.repaly {
-        p {
+      li.reply {
+        div {
           font-size: 13px;
           padding: 8px;
           border-top-left-radius: 6px;
@@ -599,6 +614,7 @@ button {
 
 .chat__item {
   transition: all 0.3s ease-in-out, border-color 0s;
+  padding-left: 10px !important;
   &:hover {
     background-color: $clr-primary !important;
     color: $clr-white !important;
@@ -619,5 +635,24 @@ button {
     p {
       color: $clr-white !important;
     }
+  }
+}
+.color-primary {
+  color: $clr-primary !important;
+}
+.color-white {
+  color: $clr-white !important;
+}
+.btn-icon {
+  padding: 10px;
+  background: $clr-primary;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  color: white;
+  border: none;
+  &:hover {
+    background: $clr-primary-light;
+    color: $clr-yellow;
   }
 }
