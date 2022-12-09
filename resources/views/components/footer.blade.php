@@ -28,54 +28,40 @@
                 <div class="col-lg-9 col-md-12">
                     <div class="row">
 
-                        <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="widget widget_services ftr-list-center">
-                                <h3 class="widget-title">For Candidate</h3>
+                                <h3 class="widget-title">Links</h3>
                                 <ul>
-                                    <li><a href="dashboard.html">User Dashboard</a></li>
-                                    <li><a href="dash-resume-alert.html">Alert resume</a></li>
-                                    <li><a href="candidate-grid.html">Candidates</a></li>
-                                    <li><a href="blog-list.html">Blog List</a></li>
-                                    <li><a href="blog-single.html">Blog single</a></li>
+                                    <li><a href="#">User Dashboard</a></li>
+                                    <li><a href="#">Invites</a></li>
+                                    <li><a href="#">Jobs</a></li>
+                                    <li><a href="#">Chat</a></li>
                                 </ul>
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-md-6 col-sm-6">
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="widget widget_services ftr-list-center">
-                                <h3 class="widget-title">For Employers</h3>
+                                <h3 class="widget-title">Policies</h3>
                                 <ul>
-                                    <li><a href="dash-post-job.html">Post Jobs</a></li>
-                                    <li><a href="blog-grid.html">Blog Grid</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="job-list.html">Jobs Listing</a></li>
-                                    <li><a href="job-detail.html">Jobs details</a></li>
+                                    <li><a href="#">FAQs</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">T&C</a></li>
+                                    <li><a href="#">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
 
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="widget widget_services ftr-list-center">
-                                <h3 class="widget-title">Helpful Resources</h3>
-                                <ul>
-                                    <li><a href="faq.html">FAQs</a></li>
-                                    <li><a href="employer-detail.html">Employer detail</a></li>
-                                    <li><a href="dash-my-profile.html">Profile</a></li>
-                                    <li><a href="error-404.html">404 Page</a></li>
-                                    <li><a href="pricing.html">Pricing</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="widget widget_services ftr-list-center">
                                 <h3 class="widget-title">Quick Links</h3>
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about-1.html">About us</a></li>
-                                    <li><a href="dash-bookmark.html">Bookmark</a></li>
-                                    <li><a href="job-grid.html">Jobs</a></li>
-                                    <li><a href="employer-list.html">Employer</a></li>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">About us</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">Pricing</a></li>
                                 </ul>
                             </div>
                         </div>

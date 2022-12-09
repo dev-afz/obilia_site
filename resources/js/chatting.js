@@ -3,7 +3,7 @@ import Pusher from "pusher-js";
 
 window.Echo = new Echo({
   broadcaster: "pusher",
-  key: import.meta.env.VITE_PUSHER_APP_KEY,
+  key: "testKey",
   wsHost: window.location.hostname,
   wsPort: 6001,
   forceTLS: false,

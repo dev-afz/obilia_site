@@ -39,6 +39,7 @@ Route::controller(BasicController::class)
         Route::get('/about', 'about');
         Route::get('/search', 'search')->name('search');
         Route::get('/contact', 'contact')->name('contact');
+        Route::get('/about-us', 'aboutUs')->name('about-us');
         Route::controller(JobController::class)
             ->prefix('jobs')
             ->name('jobs.')

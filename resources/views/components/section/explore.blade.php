@@ -14,7 +14,7 @@
                                     <div class="wt-small-separator site-text-primary">
                                         <div>About </div>
                                     </div>
-                                    <h2>We help you connect with the organizer</h2>
+                                    <h2>We help you connect with the Providers</h2>
                                     <p>Get paid easily and security. Use our resources to become independent and
                                         showcase your professional skills.</p>
 

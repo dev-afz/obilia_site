@@ -24,18 +24,17 @@
     <!-- MOBILE SPECIFIC -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    @vite([
-        'resources/css/bootstrap.min.css',
-        'resources/css/font-awesome.min.css',
-        'resources/css/feather.css',
-        'resources/css/bootstrap-select.min.css',
-        'resources/css/style.scss',
-        'resources/css/scrollbar.css',
-        'resources/css/notiflix.min.css',
-        'resources/css/override.scss',
-        'resources/css/bootstrap-extended.scss',
-        //++
-    ])
+
+
+    <link rel="stylesheet" href="{{ asset(mix('css/bootstrap.min.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/font-awesome.min.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/feather.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/bootstrap-select.min.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/style.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/scrollbar.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/notiflix.min.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/bootstrap-extended.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/override.css')) }}" />
     {!! $styles ?? '' !!}
     @livewireStyles()
     @stack('component-styles')
@@ -69,15 +68,15 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    @vite([
-        'resources/js/popper.min.js',
-        'resources/js/bootstrap.min.js',
-        'resources/js/bootstrap-select.min.js',
-        'resources/js/custom.js',
-        'resources/js/notiflix.min.js',
-        'resources/js/init.js',
-        //---
-    ]);
+
+
+    <script src="{{ asset(mix('js/popper.min.js')) }}"></script>
+    <script src="{{ asset(mix('js/bootstrap.min.js')) }}"></script>
+    <script src="{{ asset(mix('js/bootstrap-select.min.js')) }}"></script>
+    <script src="{{ asset(mix('js/waypoints.min.js')) }}"></script>
+    <script src="{{ asset(mix('js/custom.js')) }}"></script>
+    <script src="{{ asset(mix('js/notiflix.min.js')) }}"></script>
+    <script src="{{ asset(mix('js/init.js')) }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollbar/0.2.11/jquery.scrollbar.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine-ie11.js"></script>r

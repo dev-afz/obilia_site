@@ -24,16 +24,13 @@
 
     <!-- MOBILE SPECIFIC -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ asset(mix('css/bootstrap.min.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/font-awesome.min.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/feather.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/bootstrap-select.min.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/style.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/notiflix.min.css')) }}" />
 
-    @vite([
-        'resources/css/bootstrap.min.css',
-        'resources/css/font-awesome.min.css',
-        'resources/css/feather.css',
-        'resources/css/bootstrap-select.min.css',
-        'resources/css/style.scss',
-        'resources/css/notiflix.min.css',
-        //++
-    ])
     {!! $styles ?? '' !!}
     @stack('component-styles')
 
@@ -86,23 +83,17 @@
         @endguest
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta3/js/bootstrap-select.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script> --}}
-    @vite([
-        'resources/js/popper.min.js',
-        'resources/js/bootstrap.min.js',
-        'resources/js/bootstrap-select.min.js',
-        'resources/js/waypoints.min.js',
-        'resources/js/counterup.min.js',
-        'resources/js/custom.js',
-        'resources/js/anm.js',
-        'resources/js/notiflix.min.js',
-        'resources/js/init.js',
-        //---
-    ]);
+
+    <script src="{{ asset(mix('js/popper.min.js')) }}"></script>
+    <script src="{{ asset(mix('js/bootstrap.min.js')) }}"></script>
+    <script src="{{ asset(mix('js/bootstrap-select.min.js')) }}"></script>
+    <script src="{{ asset(mix('js/waypoints.min.js')) }}"></script>
+    <script src="{{ asset(mix('js/counterup.min.js')) }}"></script>
+    <script src="{{ asset(mix('js/custom.js')) }}"></script>
+    <script src="{{ asset(mix('js/anm.js')) }}"></script>
+    <script src="{{ asset(mix('js/notiflix.min.js')) }}"></script>
+    <script src="{{ asset(mix('js/init.js')) }}"></script>
+
 
     {!! $scripts ?? '' !!}
 

@@ -834,13 +834,7 @@ button {
 
 /*Pricing Table*/
 
-.package-container{
-    &:nth-child(odd) {
-        &:after {
-          background-color: $pink-100;
-        }
-      }
-}
+
 
 .pricing-table-1 {
   background-color: $card-bg;
@@ -885,8 +879,8 @@ button {
     }
   }
 
-  
-  
+
+
 
   .p-table-title {
     position: relative;

@@ -9,7 +9,7 @@
                         <div class="wt-small-separator site-text-primary">
                             <div>Jobs by Categories</div>
                         </div>
-                        <h2 class="wt-title">Choose Your Desire Category</h2>
+                        <h2 class="wt-title">Choose Your Desire Industry</h2>
                     </div>
                     <!-- TITLE END-->
                 </div>

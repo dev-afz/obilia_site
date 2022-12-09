@@ -28,9 +28,9 @@
                 <div class="tab-content" id="myTab3Content">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="Monthly">
                         <div class="pricing-block-outer">
-                            <div class="row justify-content-center match-height  package-container ">
+                            <div class="row justify-content-center match-height">
                                 @forelse ($packages as $p)
-                                    <div class="col-lg-4 col-md-6 m-b30 ">
+                                    <div class="col-lg-4 col-md-6 m-b30 package-container">
                                         <div class="pricing-table-1">
                                             <div class="p-table-title">
                                                 <h4 class="wt-title">

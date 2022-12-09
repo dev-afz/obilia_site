@@ -1,9 +1,8 @@
 <x-dashboard.layout>
     <x-slot:title> Chats </x-slot>
         <x-slot name="styles">
-            @vite(['resources/css/chats.scss'])
+            <link rel="stylesheet" href="{{ asset(mix('css/chats.css')) }}">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.9/simplebar.css">
-
         </x-slot>
         <div id="content">
             <!-- char-area -->
@@ -145,8 +144,9 @@
                 const message_url = "{{ route('client.chat.messages') }}";
                 const send_url = "{{ route('client.chat.send-messages') }}";
             </script>
-            @vite(['resources/js/chat.js'])
 
+
+            <script src="{{ asset(mix('js/chat.js')) }}"></script>
         </x-slot>
 
 </x-dashboard.layout>

@@ -49,6 +49,12 @@ class BasicController extends Controller
     }
 
 
+    public function aboutUs()
+    {
+        $categories = Category::active()->take(6)->get();
+        return view('about-us', compact('categories'));
+    }
+
     public function search(Request $request, SearchService $service)
     {
         $request->validate([

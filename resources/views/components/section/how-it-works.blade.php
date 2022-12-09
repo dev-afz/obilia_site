@@ -49,9 +49,9 @@
                                         <li>
                                             <div class="twm-step-count bg-clr-green-light">04</div>
                                             <div class="twm-step-content">
-                                                <h4 class="twm-title">Upload Your Resume</h4>
-                                                <p>Upload your resume after filling all the relevant
-                                                    information.
+                                                <h4 class="twm-title">Create Workspace</h4>
+                                                <p>
+                                                    Manage your project in a systematic way.
                                                 </p>
                                             </div>
                                         </li>
@@ -75,7 +75,8 @@
                                     <img src="images/home-4/how-it-work/block-right.png" alt="">
                                 </div>
                                 <div class="twm-main-bg anm" data-wow-delay="1000ms" data-speed-x="2" data-speed-y="2">
-                                    <img src="images/home-4/how-it-work/main-bg.png" alt=""></div>
+                                    <img src="images/home-4/how-it-work/main-bg.png" alt="">
+                                </div>
                             </div>
 
                         </div>
