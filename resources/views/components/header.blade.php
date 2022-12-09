@@ -10,7 +10,7 @@
                         <a class="logo__container" href="{{ route('index') }}">
                             <img class="header__logo" height="55" src="{{ asset('images/logo/logo.png') }}"
                                 alt="">
-                            <span class="logo__text">Obilia</span>
+                            <span class="logo__text">Obillia</span>
                         </a>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                 <div class="nav-animation header-nav navbar-collapse collapse d-flex flex-column align-items-center">
                     <div class="p-3 d-md-none d-flex align-items-center gap-2 w-100">
                         <img class="d-md-none  header__logo" src="{{ asset('images/logo/logo.png') }}" alt="">
-                        <h4 class="d-md-none logo__text m-0">Obilia</h4>
+                        <h4 class="d-md-none logo__text m-0">Obillia</h4>
                     </div>
                     <ul class=" nav navbar-nav flex-row">
                         <li class=""><a href="{{ route('index') }}">Home</a></li>

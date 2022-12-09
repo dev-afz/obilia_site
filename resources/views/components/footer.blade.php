@@ -78,7 +78,7 @@
             <div class="footer-bottom-info">
 
                 <div class="footer-copy-right">
-                    <span class="copyrights-text">Copyright © 2022 by Obilia All Rights Reserved.</span>
+                    <span class="copyrights-text">Copyright © 2022 by Obillia All Rights Reserved.</span>
                 </div>
                 <ul class="social-icons">
                     <li><a href="javascript:void(0);" class="fab fa-facebook-f"></a></li>
