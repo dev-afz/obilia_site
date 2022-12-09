@@ -91,7 +91,7 @@
 
                                     <div class="col-lg-12">
                                         <div class="form-group mb-3">
-                                            <input name="username" type="text" required="" class="form-control"
+                                            <input name="name" type="text" required="" class="form-control"
                                                 placeholder="Usearname*">
                                             <input type="hidden" name="role" value="client">
                                         </div>
