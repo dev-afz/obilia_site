@@ -85,7 +85,7 @@ mix
   .css("resources/css/dropzone.css", "public/css")
   .css("resources/css/scrollbar.css", "public/css")
   .css("resources/css/datepicker.css", "public/css")
-  .css("resources/css/flaticon.css", "public/css")
+  .copy("resources/css/flaticon.css", "public/css")
   .css("resources/css/notiflix.min.css", "public/css")
 
   .js("resources/js/jquery-3.6.0.min.js", "public/js")
