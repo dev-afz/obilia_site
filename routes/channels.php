@@ -14,12 +14,14 @@ use Illuminate\Support\Facades\Log;
 |
 */
 
-Broadcast::channel('chat', function ($user) {
-    return ['id' => $user->id, 'name' => $user->name];
-});
+
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     Log::info($user);
     Log::info('id :' . $id);
     return (int) $user->id === (int) $id;
+    return true;
+});
+
+Broadcast::channel('chat.{id}', function ($user, $id) {
     return true;
 });

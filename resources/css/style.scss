@@ -833,6 +833,15 @@ button {
 }
 
 /*Pricing Table*/
+
+.package-container{
+    &:nth-child(odd) {
+        &:after {
+          background-color: $pink-100;
+        }
+      }
+}
+
 .pricing-table-1 {
   background-color: $card-bg;
   border-radius: 10px;
@@ -875,6 +884,9 @@ button {
       background-color: #f3e9f5;
     }
   }
+
+  
+  
 
   .p-table-title {
     position: relative;
@@ -12296,11 +12308,11 @@ table.seprated-row {
   min-width: 200px !important;
 }
 .w250 {
-    min-width: 250px !important;
-  }
+  min-width: 250px !important;
+}
 .w275 {
-    min-width: 275px !important;
-  }
+  min-width: 275px !important;
+}
 .m10 {
   margin-bottom: 10px !important;
 }

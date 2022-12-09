@@ -11,9 +11,11 @@ class Plan extends Component
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
+    public $packages;
+    public function __construct(
+        $packages
+    ) {
+        $this->packages = $packages;
     }
 
     /**

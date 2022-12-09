@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class TestChatEvent implements ShouldBroadcast
+class MessageEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -19,9 +19,25 @@ class TestChatEvent implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
+
+    public $message;
+    public $time;
+    public $to;
+    public $media;
+    public $chat;
+
+    public function __construct(
+        $message = null,
+        $time,
+        $media = null,
+        $chat,
+        $to
+    ) {
+        $this->message = $message;
+        $this->time = $time;
+        $this->media = $media;
+        $this->chat = $chat;
+        $this->to = $to;
     }
 
     /**
@@ -31,18 +47,22 @@ class TestChatEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('testing.test');
+        return new PrivateChannel('chat.' . $this->to);
     }
 
     public function broadcastAs()
     {
-        return 'test';
+        return 'message';
     }
 
     public function broadcastWith()
     {
         return [
-            'data' => 'test'
+            'message' => $this->message,
+            'from' => auth()->user()->only(['uuid', 'name', 'email']),
+            'time' => $this->time,
+            'media' => $this->media,
+            'chat' => $this->chat
         ];
     }
 }

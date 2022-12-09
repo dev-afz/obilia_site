@@ -24,7 +24,7 @@
                             <a href="javascript:;" class="dropdown-toggle jobzilla-admin-messange" id="ID-MSG_dropdown"
                                 data-bs-toggle="dropdown">
                                 <i class="far fa-envelope"></i>
-                                <span class="notification-animate">4</span>
+                                <span class="notification-animate msg-counter">0</span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="ID-MSG_dropdown">
                                 <div class="message-list dashboard-widget-scroll">

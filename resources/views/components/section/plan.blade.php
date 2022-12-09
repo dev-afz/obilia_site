@@ -14,7 +14,7 @@
         <div class="section-content">
 
             <div class="twm-tabs-style-1">
-                <ul class="nav nav-tabs" id="myTab3" role="tablist">
+                {{-- <ul class="nav nav-tabs" id="myTab3" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="Monthly" data-bs-toggle="tab" data-bs-target="#home"
                             type="button" role="tab">Monthly</button>
@@ -24,108 +24,53 @@
                             type="button" role="tab" aria-controls="profile">Annual</button>
                     </li>
 
-                </ul>
+                </ul> --}}
                 <div class="tab-content" id="myTab3Content">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="Monthly">
                         <div class="pricing-block-outer">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-4 col-md-6 m-b30">
-                                    <div class="pricing-table-1">
-                                        <div class="p-table-title">
-                                            <h4 class="wt-title">
-                                                Basic
-                                            </h4>
-                                        </div>
-                                        <div class="p-table-inner">
-                                            <div class="p-table-price">
-                                                <span>$90/</span>
-                                                <p>Monthly</p>
+                            <div class="row justify-content-center match-height  package-container ">
+                                @forelse ($packages as $p)
+                                    <div class="col-lg-4 col-md-6 m-b30 ">
+                                        <div class="pricing-table-1">
+                                            <div class="p-table-title">
+                                                <h4 class="wt-title">
+                                                    {{ $p->name }}
+                                                </h4>
                                             </div>
-                                            <div class="p-table-list">
-                                                <ul>
-                                                    <li><i class="feather-check"></i>1 job posting</li>
-                                                    <li class="disable"><i class="feather-x"></i>0 featured
-                                                        job
-                                                    </li>
-                                                    <li class="disable"><i class="feather-x"></i>job displayed
-                                                        fo
-                                                        20 days</li>
-                                                    <li class="disable"><i class="feather-x"></i>Premium
-                                                        support
-                                                        24/7</li>
-                                                </ul>
-                                            </div>
-                                            <div class="p-table-btn">
-                                                <a href="about-1.html" class="site-button">Purchase Now</a>
+                                            <div class="p-table-inner d-flex flex-column justify-content-between h-100">
+                                                <div>
+                                                    <div class="p-table-price">
+                                                        <span>₹{{ $p->price }}/</span>
+                                                        <p>Monthly</p>
+                                                    </div>
+                                                    <div class="p-table-list">
+                                                        <ul>
+                                                            @foreach ($p->perks as $perk)
+                                                                <li><i class="feather-check"></i>
+                                                                    {{ Str::ucfirst(Str::replace('_', ' ', $perk->name)) }}
+                                                                </li>
+                                                            @endforeach
+
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="p-table-btn">
+                                                    <a href="about-1.html" class="site-button">Purchase Now</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @empty
+                                    <span>No Packages Found</span>
+                                @endforelse
 
-                                <div class="col-lg-4 col-md-6 p-table-highlight m-b30">
-                                    <div class="pricing-table-1 circle-yellow">
-                                        <div class="p-table-recommended">Recommended</div>
-                                        <div class="p-table-title">
-                                            <h4 class="wt-title">
-                                                Standard
-                                            </h4>
-                                        </div>
-                                        <div class="p-table-inner">
 
-                                            <div class="p-table-price">
-                                                <span>$248/</span>
-                                                <p>Monthly</p>
-                                            </div>
-                                            <div class="p-table-list">
-                                                <ul>
-                                                    <li><i class="feather-check"></i>1 job posting</li>
-                                                    <li><i class="feather-check"></i>0 featured job</li>
-                                                    <li><i class="feather-check"></i>job displayed fo 20 days
-                                                    </li>
-                                                    <li class="disable"><i class="feather-x"></i>Premium
-                                                        support
-                                                        24/7</li>
-                                                </ul>
-                                            </div>
-                                            <div class="p-table-btn">
-                                                <a href="about-1.html" class="site-button">Purchase Now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6 m-b30">
-                                    <div class="pricing-table-1 circle-pink">
-                                        <div class="p-table-title">
-                                            <h4 class="wt-title">
-                                                Extended
-                                            </h4>
-                                        </div>
-                                        <div class="p-table-inner">
-                                            <div class="p-table-price">
-                                                <span>$499/</span>
-                                                <p>Monthly</p>
-                                            </div>
-                                            <div class="p-table-list">
-                                                <ul>
-                                                    <li><i class="feather-check"></i>1 job posting</li>
-                                                    <li><i class="feather-check"></i>0 featured job</li>
-                                                    <li><i class="feather-check"></i>job displayed fo 20 days
-                                                    </li>
-                                                    <li><i class="feather-check"></i>Premium support 24/7</li>
-                                                </ul>
-                                            </div>
-                                            <div class="p-table-btn">
-                                                <a href="about-1.html" class="site-button">Purchase Now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="annual">
+                    {{-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="annual">
                         <div class="pricing-block-outer">
                             <div class="row justify-content-center">
                                 <div class="col-lg-4 col-md-6 m-b30">
@@ -223,7 +168,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>

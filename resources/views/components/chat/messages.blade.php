@@ -22,10 +22,6 @@
                     <span>
                         {{ $m->created_at->format('d M y, h:i a') }}
                     </span>
-                    <span class="ms-2 d-flex align-items-center color-primary">
-                        <i class="fas fa-check-double"></i>
-                    </span>
-
                 </div>
             </div>
 

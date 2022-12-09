@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Site;
 
 use App\Models\Job;
+use App\Models\Package;
 use App\Models\Category;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\SubCategory;
+use Illuminate\Http\Request;
 use App\Services\SearchService;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 
 class BasicController extends Controller
 {
@@ -25,7 +26,9 @@ class BasicController extends Controller
             ->with(['sub_category'])
             ->take(6)->get();
 
-        return view('index', compact('categories', 'jobs'));
+        $packages = Package::active()->with(['perks'])->get();
+
+        return view('index', compact('categories', 'jobs', 'packages'));
     }
 
 
@@ -55,10 +58,5 @@ class BasicController extends Controller
         // Log::info($request->all());
 
         return $service->search($request);
-    }
-
-    public function test()
-    {
-        return json_encode(broadcast(new \App\Events\TestEvent()));
     }
 }

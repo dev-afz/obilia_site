@@ -49,7 +49,7 @@
                                                                     <a href="#" data-chat="{{ $chat->uuid }}"
                                                                         class="d-flex align-items-center chat__item">
                                                                         <div class="flex-shrink-0">
-                                                                            <img class="img-fluid rounded-circle"
+                                                                            <img class="img-fluid rounded-circle chat-avatar"
                                                                                 height="50px" width="50px"
                                                                                 src="{{ $chat->participant->user->images ?? 'https://ui-avatars.com/api/?name=' . $chat->participant->user->name }}"
                                                                                 alt="user img">
@@ -60,6 +60,7 @@
                                                                             <small
                                                                                 class="overflow-dots">{{ $chat->name }}</small>
                                                                         </div>
+                                                                        {{-- <span class="unread-count">4</span> --}}
                                                                     </a>
                                                                 @endforeach
                                                             </div>
@@ -117,6 +118,7 @@
                                                     <input disabled type="text" name="message" class="form-control"
                                                         aria-label="message…" placeholder="Write message…">
                                                     <input type="hidden" required name="id" id="id">
+                                                    <input type="hidden" required name="to" id="to">
                                                     <button disabled class="send__btn" type="submit"><i
                                                             class="fa fa-paper-plane" aria-hidden="true"></i>
                                                     </button>
@@ -139,6 +141,7 @@
 
         <x-slot name="scripts">
             <script>
+                window.me = "{{ auth()->user()->uuid }}";
                 const message_url = "{{ route('client.chat.messages') }}";
                 const send_url = "{{ route('client.chat.send-messages') }}";
             </script>

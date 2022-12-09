@@ -3,11 +3,11 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 import laravel from "laravel-vite-plugin";
 
 export default defineConfig({
-  base: "/",
-  build: {
-    outDir: "public",
-    emptyOutDir: false,
-  },
+  //   base: "/",
+  //   build: {
+  //     outDir: "public",
+  //     emptyOutDir: false,
+  //   },
 
   plugins: [
     laravel({

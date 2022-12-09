@@ -9,6 +9,7 @@ $(document).ready(function () {
       return;
     }
     const chatId = $(this).data("chat");
+
     setOnlyThisActive(chatId);
     fetchMessages(chatId);
     return false;
@@ -44,14 +45,14 @@ function showChatBox() {
 
 function setOnlyThisActive(id) {
   $(".chat-list a").removeClass("active");
-  $(`a[data-chat=${id}]`).addClass("active");
+  $(`a[data-chat=${id}]`).addClass("active").removeClass("unread");
 }
 
 function setChatData(response) {
   const user_avatar =
     response.chat_data.user.images ??
     "https://ui-avatars.com/api/?name=" + response.chat_data.user.name;
-  $("[data-user-image]").html(` <img class="img-fluid"
+  $("[data-user-image]").html(` <img class="img-fluid rounded-circle"
   height="50"
     width="50"
     src="${user_avatar}"
@@ -61,6 +62,7 @@ function setChatData(response) {
     <small>${response.chat_data.name}</small>`);
   $(".chatbox input,.chatbox button").attr("disabled", false);
   $("#message-box [name='id']").val(response.chat_data.id);
+  $("#message-box [name='to']").val(response.chat_data.user.uuid);
 
   $("[data-messages]").html(response.html);
   scrollToBottom();
@@ -70,6 +72,7 @@ $("#message-box").submit(function (e) {
   e.preventDefault();
   const message = $('#message-box [name="message"]').val();
   const id = $('#message-box [name="id"]').val();
+  const to = $('#message-box [name="to"]').val();
 
   const msg_uuid = uuidv4();
   if (!id || id == "" || id == "undefined") {
@@ -80,6 +83,12 @@ $("#message-box").submit(function (e) {
     console.error("Message not found");
     return;
   }
+
+  if (!to || to == "" || to == "undefined") {
+    console.error("Target user not found");
+    return;
+  }
+
   window.rebound({
     url: send_url,
     method: "POST",
