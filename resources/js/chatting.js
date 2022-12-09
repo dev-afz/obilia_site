@@ -85,13 +85,13 @@ function scrollToBottom() {
   } else {
     console.log("showing button");
 
-    $("#chat-holder").append(`
-        <div class="scroll-to-bottom">
-            <button class="btn btn-primary">
-            <i class="fa fa-arrow-down"></i>
-            </button>
-        </div>
-        `);
+    // $("#chat-holder").append(`
+    //     <div class="scroll-to-bottom">
+    //         <button class="btn btn-primary">
+    //         <i class="fa fa-arrow-down"></i>
+    //         </button>
+    //     </div>
+    //     `);
     $(".scroll-to-bottom").click(() => {
       $("#chat-holder").animate(
         { scrollTop: $("#chat-holder")[0].scrollHeight },
