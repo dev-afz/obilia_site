@@ -47,6 +47,7 @@
                                                         <ul>
                                                             @foreach ($p->perks as $perk)
                                                                 <li><i class="feather-check"></i>
+                                                                    {{ $perk->value == 'yes' ? '' : Str::ucfirst($perk->value) }}
                                                                     {{ Str::ucfirst(Str::replace('_', ' ', $perk->name)) }}
                                                                 </li>
                                                             @endforeach
