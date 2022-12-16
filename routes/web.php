@@ -36,6 +36,7 @@ Route::controller(BasicController::class)
         Route::get('test', 'test')->name('test');
         Route::get('/', 'index')->name('index');
         Route::get('/category/{slug}', 'categories')->name('categories');
+        Route::get('/subcategories/{slug}', 'subcategories')->name('subcategories');
         Route::get('/about', 'about');
         Route::get('/search', 'search')->name('search');
         Route::get('/contact', 'contact')->name('contact');

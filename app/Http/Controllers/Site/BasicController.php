@@ -10,13 +10,14 @@ use Illuminate\Http\Request;
 use App\Services\SearchService;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\Industry;
 
 class BasicController extends Controller
 {
     public function index()
     {
 
-        $categories = Category::active()->take(6)->get();
+        $industries = Industry::active()->take(6)->get();
         $jobs = Job::active()
             ->when(auth()->check(), function ($query) {
                 $query->withCount(['likes' => function ($query) {
@@ -28,20 +29,27 @@ class BasicController extends Controller
 
         $packages = Package::active()->with(['perks'])->get();
 
-        return view('index', compact('categories', 'jobs', 'packages'));
+        return view('index', compact('industries', 'jobs', 'packages'));
     }
 
 
     public function categories($slug)
     {
-        $category  = Category::where('slug', $slug)->active()->firstOrFail();
+        $industry  = Industry::where('slug', $slug)->active()->firstOrFail();
 
-        $subcategories = SubCategory::where('category_id', $category->id)->active()->get();
+        $categories = Category::where('industry_id', $industry->id)->active()
+            ->with(['sub_categories' => fn ($q) => $q->active()])
+            ->get();
 
 
-        return view('sub-categories', compact('category', 'subcategories'));
+        return view('sub-categories', compact('industry', 'categories'));
     }
 
+
+    public function subcategories($slug)
+    {
+        return 'working on it';
+    }
 
     public function contact()
     {

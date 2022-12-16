@@ -30,10 +30,14 @@ class MenuServiceProvider extends ServiceProvider
         $serviceProviderJson = file_get_contents(base_path('resources/data/service-provider-menu.json'));
         $serviceProviderData = json_decode($serviceProviderJson);
 
-        // Share all menuData to all the views
+
+        $megaMenuJson = file_get_contents(base_path('resources/data/mega-menu.json'));
+        $megaMenuData = json_decode($megaMenuJson);
+
         View::share('menu_provider', [
             'client' => $clientMenuData->menu,
-            'service_provider' => $serviceProviderData->menu
+            'service_provider' => $serviceProviderData->menu,
+            'megaMenu' => $megaMenuData,
         ]);
     }
 }

@@ -1,6 +1,19 @@
 <x-layout>
 
-    <x-slot:title>Category - {{ $category->name }} </x-slot>
+    <x-slot:title>Category - {{ $industry->name }} </x-slot>
+
+
+        <x-slot name="styles">
+            <style>
+                .card__img {
+                    display: block;
+                    width: 100%;
+                    height: 15rem;
+                    object-fit: cover;
+                }
+            </style>
+        </x-slot>
+
 
         <div class="page-content">
             <div class="section-full  p-t50 p-b90 bg-white">
@@ -20,22 +33,28 @@
                         <div class="twm-job-categories-section-2">
 
                             <div class="job-categories-style1 m-b30">
-                                <div class="row">
-                                    @forelse ($subcategories as $sub)
+                                <div class="row match-height">
+                                    @forelse ($categories as $cat)
                                         <div class="col-lg-4 col-md-6">
-                                            <div class="job-categories-block-2 m-b30">
-                                                <div class="twm-media">
-                                                    <div class="flaticon-dashboard">
 
-                                                        <img class="rounded-circle" src="{{ $sub->image }}"
-                                                            height="100px" width="100px" alt="{{ $sub->slug }}">
-                                                    </div>
+
+                                            <div class="category-item-card">
+                                                <div class="img-container">
+                                                    <img src="{{ $cat->image }}" alt="{{ $cat->name }}">
                                                 </div>
-                                                <div class="twm-content">
-                                                    <div class="twm-jobs-available">{{ rand(1111, 9999) }} Jobs</div>
-                                                    <a href="job-detail.html">{{ $sub->name }}</a>
+
+                                                <div class="p-4">
+                                                    <h4 class="mb-5">{{ $cat->name }}</h4>
+                                                    @forelse ($cat->sub_categories as $sub)
+                                                        <a href="{{ route('subcategories', $sub->slug) }}"
+                                                            class="sub-link mb-2">{{ $sub->name }}
+                                                        </a>
+
+                                                    @empty
+                                                    @endforelse
                                                 </div>
                                             </div>
+
                                         </div>
                                     @empty
                                         <div class="job-categories-block-2 no-data">

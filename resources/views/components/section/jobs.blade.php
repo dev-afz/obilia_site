@@ -24,10 +24,17 @@
         <div class="section-content">
             <div class="twm-jobs-grid-wrap">
                 <div class="row match-height">
-                    @forelse ($jobs as $job)
-                        <x-elements.job-card :job="$job" />
-                    @empty
-                    @endforelse
+                    <div class="section-content">
+                        <div class="owl-carousel job-corousel owl-btn-bottom-center ">
+                            @forelse ($jobs as $job)
+                                <div class="item row match-height">
+                                    <x-elements.job-card class="col-12" :job="$job" />
+                                </div>
+                            @empty
+                            @endforelse
+
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -35,3 +42,37 @@
 
     </div>
 </div>
+@pushOnce('component-scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+@endPushOnce
+
+
+@pushOnce('component-styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+@endPushOnce
+
+@push('component-scripts')
+    <script>
+        $('.job-corousel').owlCarousel({
+            loop: true,
+            nav: true,
+            dots: false,
+            margin: 20,
+            autoplay: false,
+            // stagePadding: 40,
+            navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+            responsive: {
+                0: {
+                    items: 1,
+                },
+                480: {
+                    items: 1,
+                },
+                991: {
+                    items: 3,
+                }
+
+            }
+        });
+    </script>
+@endpush

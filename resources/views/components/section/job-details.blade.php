@@ -3,16 +3,13 @@
         <div class="twm-job-self-wrap twm-job-detail-v2">
             <div class="twm-job-self-info">
                 <div class="twm-job-self-top">
-                    <div class="twm-media-bg">
-                        <img height="500px" width="1200px" class="job__banner" src="{{ $job->banner }}" alt="#">
-                        <div class="twm-jobs-category green"><span
-                                class="twm-bg-green">{{ $job->sub_category->name }}</span></div>
+                    {{-- <div class="twm-media-bg">
+
                         <div class="twm-job-self-bottom">
                             @auth()
                                 @if (auth()->user()->role !== 'client')
                                     @if (empty($job->application))
-                                        <a class="site-button" data-bs-toggle="modal" href="#apply_job_popup"
-                                            role="button">
+                                        <a class="site-button" data-bs-toggle="modal" href="#apply_job_popup" role="button">
                                             Apply Now
                                         </a>
                                     @else
@@ -28,7 +25,7 @@
                             @endguest
                         </div>
 
-                    </div>
+                    </div> --}}
 
                     <div class="twm-mid-content">
 
@@ -56,9 +53,12 @@
                     <div class="side-bar mb-4">
                         <div class="twm-s-info2-wrap mb-5">
                             <div class="twm-s-info2">
+                                <div class="text-center mb-4">
+                                    <img height="150px" width="150px" class="job__banner" src="{{ $job->banner }}"
+                                        alt="#">
+                                </div>
                                 <h4 class="section-head-small mb-4">Job Information</h4>
                                 <ul class="twm-job-hilites2">
-
                                     <li>
                                         <div class="twm-s-info-inner">
                                             <i class="fas fa-file-signature"></i>

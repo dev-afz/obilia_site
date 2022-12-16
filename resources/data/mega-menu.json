@@ -1,0 +1,224 @@
+[
+    {
+        "id": 1,
+        "name": "Graphics & design",
+        "slug": "graphics-design",
+        "image": "https:\/\/obilia.fra1.digitaloceanspaces.com\/public\/images\/industries\/industry-9360c3f82ac885fc4d5c535e0b733e75da7e3f01c9e.graphics-design.d32a2f8.svg",
+        "categories": [
+            {
+                "id": 31,
+                "name": "Logo & Brand Identity",
+                "slug": "logo-brand-identity",
+                "industry_id": 1,
+                "sub_categories": [
+                    {
+                        "id": 12,
+                        "name": "Logo Design",
+                        "slug": "logo-design",
+                        "category_id": 31
+                    },
+                    {
+                        "id": 13,
+                        "name": "Brand Style Guides",
+                        "slug": "brand-style-guides",
+                        "category_id": 31
+                    },
+                    {
+                        "id": 14,
+                        "name": "Fonts & Typography",
+                        "slug": "fonts-typography",
+                        "category_id": 31
+                    },
+                    {
+                        "id": 15,
+                        "name": "Business Cards & Stationery",
+                        "slug": "business-cards-stationery",
+                        "category_id": 31
+                    }
+                ]
+            },
+            {
+                "id": 32,
+                "name": "Web & App Design",
+                "slug": "web-app-design",
+                "industry_id": 1,
+                "sub_categories": [
+                    {
+                        "id": 16,
+                        "name": "Website Design",
+                        "slug": "website-design",
+                        "category_id": 32
+                    },
+                    {
+                        "id": 17,
+                        "name": "App Design",
+                        "slug": "app-design",
+                        "category_id": 32
+                    },
+                    {
+                        "id": 18,
+                        "name": "UX Design",
+                        "slug": "ux-design",
+                        "category_id": 32
+                    },
+                    {
+                        "id": 19,
+                        "name": "Landing Page Design",
+                        "slug": "landing-page-design",
+                        "category_id": 32
+                    },
+                    {
+                        "id": 20,
+                        "name": "Icon Design",
+                        "slug": "icon-design",
+                        "category_id": 32
+                    }
+                ]
+            },
+            {
+                "id": 33,
+                "name": "Art & Illustration",
+                "slug": "art-illustration",
+                "industry_id": 1,
+                "sub_categories": [
+                    {
+                        "id": 21,
+                        "name": "Illustration",
+                        "slug": "illustration",
+                        "category_id": 33
+                    },
+                    {
+                        "id": 22,
+                        "name": "NFT Art",
+                        "slug": "nft-art",
+                        "category_id": 33
+                    },
+                    {
+                        "id": 23,
+                        "name": "Pattern Design",
+                        "slug": "pattern-design",
+                        "category_id": 33
+                    },
+                    {
+                        "id": 24,
+                        "name": "Portraits & Caricatures",
+                        "slug": "portraits-caricatures",
+                        "category_id": 33
+                    },
+                    {
+                        "id": 25,
+                        "name": "Cartoons & Comics",
+                        "slug": "cartoons-comics",
+                        "category_id": 33
+                    },
+                    {
+                        "id": 26,
+                        "name": "Tattoo Design",
+                        "slug": "tattoo-design",
+                        "category_id": 33
+                    },
+                    {
+                        "id": 27,
+                        "name": "Storyboards",
+                        "slug": "storyboards",
+                        "category_id": 33
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Digital Marketing",
+        "slug": "digital-marketing",
+        "image": "https:\/\/obilia.fra1.digitaloceanspaces.com\/public\/images\/industries\/industry-9382a8597ac99451e77f0b348b0e9c559f14b4af607.online-marketing.74e221b.svg",
+        "categories": [
+            {
+                "id": 34,
+                "name": "Search",
+                "slug": "search",
+                "industry_id": 2,
+                "sub_categories": [
+                    {
+                        "id": 28,
+                        "name": "Search Engine Optimization (SEO)",
+                        "slug": "search-engine-optimization-seo",
+                        "category_id": 34
+                    },
+                    {
+                        "id": 29,
+                        "name": "Local SEO",
+                        "slug": "local-seo",
+                        "category_id": 34
+                    }
+                ]
+            },
+            {
+                "id": 35,
+                "name": "Social",
+                "slug": "social",
+                "industry_id": 2,
+                "sub_categories": [
+                    {
+                        "id": 30,
+                        "name": "Social Media Marketing",
+                        "slug": "social-media-marketing",
+                        "category_id": 35
+                    },
+                    {
+                        "id": 31,
+                        "name": "Influencer Marketing",
+                        "slug": "influencer-marketing",
+                        "category_id": 35
+                    },
+                    {
+                        "id": 32,
+                        "name": "Community Management",
+                        "slug": "community-management",
+                        "category_id": 35
+                    }
+                ]
+            },
+            {
+                "id": 36,
+                "name": "Advertising",
+                "slug": "advertising",
+                "industry_id": 2,
+                "sub_categories": [
+                    {
+                        "id": 33,
+                        "name": "Social Media Advertising",
+                        "slug": "social-media-advertising",
+                        "category_id": 36
+                    },
+                    {
+                        "id": 34,
+                        "name": "Search Engine Marketing (SEM)",
+                        "slug": "search-engine-marketing-sem",
+                        "category_id": 36
+                    },
+                    {
+                        "id": 35,
+                        "name": "Display Advertising",
+                        "slug": "display-advertising",
+                        "category_id": 36
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Writing & Translation",
+        "slug": "writing-translation",
+        "image": "https:\/\/obilia.fra1.digitaloceanspaces.com\/public\/images\/industries\/industry-962203a79216ebc6c394a0045de6404efec62889dac.writing-translation.32ebe2e.svg",
+        "categories": []
+    },
+    {
+        "id": 4,
+        "name": "Video & Animation",
+        "slug": "video-animation",
+        "image": "https:\/\/obilia.fra1.digitaloceanspaces.com\/public\/images\/industries\/industry-249d5f5468bf446c702a243405ed2753d77417c0da9.video-animation.f0d9d71.svg",
+        "categories": []
+    }
+]

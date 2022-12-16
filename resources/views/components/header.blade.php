@@ -3,7 +3,7 @@
     <div class="sticky-header main-bar-wraper  navbar-expand-lg ">
         <div class="main-bar">
 
-            <div class="container-fluid clearfix">
+            <div class="container-fluid clearfix mw-1400">
 
                 <div class="logo-header">
                     <div class="logo-header-inner logo-header-one">
@@ -36,13 +36,68 @@
                         <li class=""><a href="{{ route('about-us') }}">About Us</a></li>
                     </ul>
 
+                    <ul class="mobile-sub-menu nav navbar-nav flex-row">
+                        <li>
+                            <a href="javascript:void(0)">Browse Categories</a>
+                            <ul class="sub-menu">
+                                @forelse ($menu_provider['megaMenu'] as $m)
+                                    <li>
+                                        <a href="{{ route('categories', $m->slug) }}">{{ $m->name }}</a>
+                                        @if ($m->categories)
+                                            <ul class="sub-menu">
+                                                @forelse ($m->categories as $c)
+                                                    <li>
+                                                        <a href="#">{{ $c->name }}</a>
+
+                                                        @if ($c->sub_categories)
+                                                            <ul class="sub-menu">
+                                                                @forelse ($c->sub_categories as $s)
+                                                                    <li>
+                                                                        <a href="#">{{ $s->name }}</a>
+                                                                    </li>
+                                                                @empty
+                                                                @endforelse
+                                                            </ul>
+                                                        @endif
+
+                                                    </li>
+                                                @empty
+                                                @endforelse
+                                            </ul>
+                                        @endif
+                                    </li>
+
+                                @empty
+                                @endforelse
+                            </ul>
+                        </li>
+                    </ul>
+
                 </div>
 
                 <!-- Header Right Section-->
                 <div class="extra-nav header-2-nav">
                     <div class="extra-cell">
                         <div class="header-search">
-                            <a href="#search" class="header-search-icon "><i class="feather-search"></i></a>
+                            <a href="#search" class="header-search-icon  d-none"><i class="feather-search"></i></a>
+                            <div class="header-search-form">
+                                <form action="{{ route('search') }}" method="GET">
+                                    <div class="search-container">
+                                        <select required name="type" class="wt-search-bar-select selectpicker me-2"
+                                            data-live-search="false" id="work__type">
+                                            <option selected value="talent">Talent</option>
+                                            <option value="work">Work</option>
+                                        </select>
+                                        <div class="search-input-container">
+                                            <input type="text" placeholder="search" name="q" id="q">
+
+                                            <button type="submit" class="search-btn"><i
+                                                    class="feather-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
                         </div>
                     </div>
                     <div class="extra-cell">
@@ -77,9 +132,47 @@
 
 
             </div>
+            <div class="mega__menu__container mx-auto ">
+                <div class="menu-container w-100 mw-1400">
+                    <div class="mz-menu">
+                        <ul>
+                            @forelse ($menu_provider['megaMenu'] as $m)
+                                <li>
+                                    <a href="{{ route('categories', $m->slug) }}">{{ $m->name }}</a>
+                                    @if ($m->categories)
+                                        <ul>
+                                            @forelse ($m->categories as $c)
+                                                <li>
+                                                    <a href="#">{{ $c->name }}</a>
 
+                                                    @if ($c->sub_categories)
+                                                        <ul>
+                                                            @forelse ($c->sub_categories as $s)
+                                                                <li>
+                                                                    <a href="#">{{ $s->name }}</a>
+                                                                </li>
+                                                            @empty
+                                                            @endforelse
+                                                        </ul>
+                                                    @endif
+
+                                                </li>
+                                            @empty
+                                            @endforelse
+                                        </ul>
+                                    @endif
+                                </li>
+
+                            @empty
+                            @endforelse
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
         </div>
+
+
 
     </div>
 

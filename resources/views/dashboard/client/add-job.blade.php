@@ -27,8 +27,8 @@
 
                         <div class="col-md-12 text-center">
                             <label for="banner">Job Banner</label>
-                            <x-utils.image-uploader width="1200px" height="500px" name="banner"
-                                instructions="Banner Should be <span class='text-danger'><strong>1200px</strong> by <strong>500px</strong></span>" />
+                            <x-utils.image-uploader name="banner"
+                                instructions="Banner Should be <span class='text-danger'><strong>150px</strong> by <strong>150px and Less than 100kb</strong></span>" />
                         </div>
 
                         <div class="col-md-6">
@@ -63,7 +63,7 @@
                             <x-utils.input name="skills" />
                         </div>
                         <div class="col-lg-6">
-                            <x-utils.input name="total_hours" type="number" :attrs="['step' => '0.01']" />
+                            <x-utils.input name="total_hours" type="number" :required="false" :attrs="['step' => '0.01']" />
                         </div>
 
                         <div class="col-lg-12">

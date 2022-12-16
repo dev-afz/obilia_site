@@ -84,7 +84,14 @@ function scrollToBottom() {
     }, 100);
   } else {
     console.log("showing button");
-    $("#chat-holder").append("\n        <div class=\"scroll-to-bottom\">\n            <button class=\"btn btn-primary\">\n            <i class=\"fa fa-arrow-down\"></i>\n            </button>\n        </div>\n        ");
+
+    // $("#chat-holder").append(`
+    //     <div class="scroll-to-bottom">
+    //         <button class="btn btn-primary">
+    //         <i class="fa fa-arrow-down"></i>
+    //         </button>
+    //     </div>
+    //     `);
     $(".scroll-to-bottom").click(function () {
       $("#chat-holder").animate({
         scrollTop: $("#chat-holder")[0].scrollHeight

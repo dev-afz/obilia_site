@@ -26,7 +26,6 @@
     "/css/bootstrap-extended.css": "/css/bootstrap-extended.css",
     "/css/chats.css": "/css/chats.css",
     "/css/notiflix.min.css": "/css/notiflix.min.css",
-    "/css/flaticon.css": "/css/flaticon.css",
     "/css/datepicker.css": "/css/datepicker.css",
     "/css/scrollbar.css": "/css/scrollbar.css",
     "/css/dropzone.css": "/css/dropzone.css",
@@ -261,9 +260,11 @@
     "/data/service-provider-menu.json": "/data/service-provider-menu.json",
     "/css/owl.carousel.min.css": "/css/owl.carousel.min.css",
     "/css/lc_lightbox.css": "/css/lc_lightbox.css",
+    "/css/flaticon.css": "/css/flaticon.css",
     "/js/popper.min.js": "/js/popper.min.js",
     "/js/bootstrap.min.js": "/js/bootstrap.min.js",
     "/js/bootstrap-select.min.js": "/js/bootstrap-select.min.js",
     "/js/dataTables.bootstrap5.min.js": "/js/dataTables.bootstrap5.min.js",
-    "/js/notiflix.min.js": "/js/notiflix.min.js"
+    "/js/notiflix.min.js": "/js/notiflix.min.js",
+    "/data/mega-menu.json": "/data/mega-menu.json"
 }

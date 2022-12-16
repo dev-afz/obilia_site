@@ -1,10 +1,10 @@
 @font-face {
     font-family: "flaticon";
-    src: url(/fonts/flaticon.ttf?b036c3b2cb20e9060b7e72f577fd1c5d) format("truetype"),
-         url(/fonts/flaticon.woff?5b6cf1e4d680eaefd59aa6e61948e6e9) format("woff"),
-         url(/fonts/flaticon.woff2?21f313e8579adece1a532d0d41d4c952) format("woff2"),
-         url(/fonts/flaticon.eot?1bb8c68af781dcace992ee46039c67ab#iefix) format("embedded-opentype"),
-         url(/fonts/flaticon.svg?e205807adb4e9db6515190c2c269f9c8#flaticon) format("svg");
+    src: url("../fonts/flaticon.ttf?5d2a6dba0cbf1bfc1f0b287aff4ff510") format("truetype"),
+         url("../fonts/flaticon.woff?5d2a6dba0cbf1bfc1f0b287aff4ff510") format("woff"),
+         url("../fonts/flaticon.woff2?5d2a6dba0cbf1bfc1f0b287aff4ff510") format("woff2"),
+         url("../fonts/flaticon.eot?5d2a6dba0cbf1bfc1f0b287aff4ff510#iefix") format("embedded-opentype"),
+         url("../fonts/flaticon.svg?5d2a6dba0cbf1bfc1f0b287aff4ff510#flaticon") format("svg");
 }
 
 
@@ -230,4 +230,3 @@
 .flaticon-bell-1:before {
     content: "\f146";
 }
-

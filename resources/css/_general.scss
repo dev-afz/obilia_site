@@ -1142,6 +1142,15 @@ ol {
   }
 }
 
+/*---Max Width---*/
+@for $i from 1000 through 2000 {
+  @if $i % 50 == 0 {
+    .mw-#{$i} {
+      max-width: $i + px;
+    }
+  }
+}
+
 /*===Background Effect===*/
 .bg-center {
   background-position: center;
@@ -1693,9 +1702,9 @@ ol {
   font-weight: 600;
   transition: $transition;
 
-  &:hover {
-    color: $clr-black;
-  }
+  //   &:hover {
+  //     color: $clr-black;
+  //   }
   i {
     padding-right: 10px;
   }
@@ -1788,10 +1797,10 @@ ol {
   transition: all 0.3s ease !important;
   text-shadow: 0 0 0 #fff, 400px 0 0 #fff;
 }
-.site-button:hover {
-  text-shadow: -400px 0 0 #fff, 0 0 0 #fff;
-  background-color: $clr-secondry;
-}
+// .site-button:hover {
+//   text-shadow: -400px 0 0 #fff, 0 0 0 #fff;
+//   background-color: $clr-secondry;
+// }
 
 .mfp-video.video-play-btn {
   position: absolute;

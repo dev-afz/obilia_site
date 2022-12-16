@@ -24,10 +24,6 @@ class Job extends Model
     {
         return $this->morphMany(Like::class, 'likeable');
     }
-    public function like()
-    {
-        return $this->morphOne(Like::class, 'likeable');
-    }
 
 
     public function client()
@@ -79,7 +75,6 @@ class Job extends Model
 
 
 
-
     public function invites()
     {
         return $this->hasMany(JobInvitation::class, 'job_id');
@@ -98,25 +93,20 @@ class Job extends Model
     }
 
 
+
+
     /*
     |--------------------------------------------------------------------------
     |scopes
     |--------------------------------------------------------------------------
     */
-    public function scopeActive($q)
+    public function scopeActive()
     {
-        return $q->where('status', 'active');
+        return $this->where('status', 'active')
+            ->whereHas('client', function ($query) {
+                $query->where('status', 'active');
+            });
     }
-
-    public function scopeIsPublic($q)
-    {
-        return $q->where('visibility', 'public');
-    }
-
-
-
-
-
 
 
     public function scopeWithLikedByUser($user_id)
@@ -128,7 +118,10 @@ class Job extends Model
         ]);
     }
 
-
+    public function scopeIsPublic($q)
+    {
+        return $q->where('visibility', 'public');
+    }
 
 
 
@@ -143,11 +136,4 @@ class Job extends Model
     {
         return substr($this->description, 0, 120) . '...';
     }
-
-
-    /*
-    |--------------------------------------------------------------------------
-    |custom methods
-    |--------------------------------------------------------------------------
-    */
 }

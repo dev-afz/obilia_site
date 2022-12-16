@@ -25,7 +25,7 @@ class JobController extends Controller
 
     public function add()
     {
-        // return Storage::disk('do')->url('public/images/jobs/batman.jpg');
+
         $categories = Category::active()->get()->toArray();
         $skills = Skill::active()->get()->toArray();
         $experience_levels = ExperienceLevel::active()->get()->toArray();
@@ -48,8 +48,8 @@ class JobController extends Controller
             'payment_type' => 'required|in:fixed,hourly',
             'budget_from' => 'required|integer',
             'budget_to' => 'required|integer|gte:budget_from',
-            'total_hours' => 'required|integer',
-            'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:200',
+            'total_hours' => 'nullable|integer',
+            'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:100',
             'responsibilities' => 'required|array',
             'responsibilities.*' => 'required|string|max:1000',
 

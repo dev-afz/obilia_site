@@ -30,16 +30,16 @@
                 </div>
                 <div class="twm-bnr-popular-search">
                     <span class="twm-title">Popular Searches:</span>
-                    <a href="job-list.html">Developer</a> ,
-                    <a href="job-list.html">Designer</a> ,
-                    <a href="job-list.html">Architect</a> ,
-                    <a href="job-list.html">Engineer</a> ,
-                    <a href="job-list.html">PHP</a> ,
-                    <a href="job-list.html">Banking</a> ,
-                    <a href="job-list.html">Ios</a> ,
-                    <a href="job-list.html">Freelance</a> ,
-                    <a href="job-list.html">Writing</a> ,
-                    <a href="job-list.html">Accountancy</a>...
+                    <a href="#">Developer</a> ,
+                    <a href="#">Designer</a> ,
+                    <a href="#">Architect</a> ,
+                    <a href="#">Engineer</a> ,
+                    <a href="#">PHP</a> ,
+                    <a href="#">Banking</a> ,
+                    <a href="#">Ios</a> ,
+                    <a href="#">Freelance</a> ,
+                    <a href="#">Writing</a> ,
+                    <a href="#">Accountancy</a>...
                 </div>
             </div>
         </div>

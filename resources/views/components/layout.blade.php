@@ -100,7 +100,6 @@
     @stack('component-scripts')
 
 
-
 </body>
 
 </html>

@@ -1,123 +1,3 @@
-/* Author: thewebmax team
-=========================
-This file contains the styling for the actual template, this
-is the file you need to edit to change the look of the
-template.
-This files [Table of contents] are outlined below
----------------------------------------------------
-** - ========================
-	 GENERAL
-	 ========================
-** - Title separators
-** - Title separators
-** - Center title
-** - Counter
-** - Client carousel 1
-** - Client carousel 2
-** - Footer News Letter
-** - Footer dark version css
-** - Footer Light version css
-** - Footer Newsletter
-** - Recent Post Entry
-** - Widget Services
-** - scroll top btn css
-** - Pricing Table
-** - inner page banner
-** - Breadcrumb
-** - Contact Form
-** - Pagination Style
-** - Blog Side Bar
-** - Side bar tags
-** - Comment list section
-** - comment form
-** - Comment area
-** - Single Blog Post
-** - Single Post Tags
-** - Single Post Tags
-** - Posts Author
-** - Single Post Navigation
-** - Loading
-** - Loading Animation Start
-** - Description list
-** - Description list
-** - Section Overlay
-** - Services
-** - Search
-** - Google map
-** - Gallery
-** - Video
-** - Slide Top Animation
-** - Zoom in Zoom Out Animation
-** - Up Down Animation
-** - Working Process
-** - process steps
-** - how it work
-** - testimonial style 1
-** - testimonial style 1
-** - Blog post 1
-** - Blog post 2
-** - BLog Post List Style
-** - Job post section
-** - Employer List
-** - Employer grid
-** - Explore New Life
-** - Explore New Life
-** - Job categories
-** - Search Bar
-** - Search Bar Section home 2
-** - trusted Logo
-** - tabs
-** - tabs
-** - Side bar Advertisement
-** - Side Bar Elements
-** - Checked Input
-** - Error 404
-** - Candidate List
-** - Candidate grid
-** - Candidates detail
-** - Employer detail
-** - Work Experience
-** - Social Share
-** - Employer detail
-** - Home Page 2 Banner Section Css Start
-** - Home Page 1 Banner Section Css Start
-** - Side Map
-** - Side Map2
-** - Sidebar Info
-** - Sidebar Info
-** - Sidebar  Info 2
-** - Sidebar-contact
-** - Faq
-** - Accordion button
-** - Sign Up popup
-** - Dashboard Header
-** - My Account css
-** - Dashboard message Dropdown
-** - Dashboard Notification Dropdown
-** - Dashboard Message
-** - Dashboard Notification
-** - Admin Nav
-** - Form Elements
-** - Dashboard Card
-** - Upload Video Button
-** - dashboard List
-** - dashboard message
-** - Edit Profile
-** - Dashboard Widget
-** - notification list
-** - Message list
-** - Msg style 2
-** - msg user list side button
-** - Chart
-** - Dashboard candidates style
-** - Data Table Candidets
-** - default table
-** - Data Table Candidets
-** - Data Table
-** - Model Popup
----------------------------------------------------
-*/
-
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "media-queries";
@@ -134,7 +14,7 @@ This files [Table of contents] are outlined below
   .container-md,
   .container-sm,
   .container-xl {
-    max-width: 1170px;
+    max-width: 1400px;
   }
 }
 
@@ -834,8 +714,6 @@ button {
 
 /*Pricing Table*/
 
-
-
 .pricing-table-1 {
   background-color: $card-bg;
   border-radius: 10px;
@@ -865,7 +743,7 @@ button {
   }
   &:hover {
     &:after {
-      transform: scale(3);
+      transform: scale(4);
     }
   }
   &.circle-yellow {
@@ -878,9 +756,6 @@ button {
       background-color: #f3e9f5;
     }
   }
-
-
-
 
   .p-table-title {
     position: relative;
@@ -2271,7 +2146,7 @@ ol.comment-list {
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 500px;
-    width: 100%;
+    width: 95%;
     color: $clr-primary;
     border-radius: 10px;
     font-size: 30px;
@@ -3436,7 +3311,7 @@ ol.comment-list {
   }
   .twm-jobs-category {
     position: absolute;
-    right: 10px;
+    right: 50px;
     top: 10px;
     @include breakpoint-420 {
       position: inherit;
@@ -11886,6 +11761,7 @@ Fixed header glass effect
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: none !important;
   border-radius: 0 0 10px 10px !important;
 }
 
@@ -11951,8 +11827,8 @@ Fixed header glass effect
 }
 .job__banner {
   object-fit: cover;
-  height: 500px !important;
-  width: 1200px !important;
+  height: 150px !important;
+  width: 150px !important;
 }
 .job__section {
   margin-top: 100px !important;
@@ -12074,9 +11950,25 @@ Fixed header glass effect
   }
 }
 
+.like-btn-holder {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.like-btn {
+  border-radius: 50%;
+  color: $gray-400;
+  height: auto;
+  width: auto;
+  padding: 10px;
+  display: flex;
+  border: none;
+  background: white;
+}
+
 [data-liked="true"] {
   color: #850e35 !important;
-  background: #e0eeff !important;
 }
 .search-modal {
   backdrop-filter: blur(16px) saturate(180%) !important;
@@ -12335,4 +12227,111 @@ table.seprated-row {
   100% {
     background-position: 468px 0;
   }
+}
+
+.mobile-pagination {
+  & > .pagination {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .page-link {
+    background-color: $card-bg;
+    color: $clr-primary;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 8px 15px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+  }
+
+  .page-link:hover {
+    background-color: $clr-primary;
+    color: #fff;
+  }
+
+  .page-item.disabled {
+    .page-link {
+      cursor: not-allowed;
+    }
+  }
+}
+.twm-jobs-grid-wrap {
+  .owl-stage-outer {
+    position: absolute;
+  }
+  .owl-nav {
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    margin: 0px;
+    .owl-prev {
+      position: absolute;
+      left: -30px;
+    }
+    .owl-next {
+      position: absolute;
+      right: -30px;
+    }
+  }
+}
+
+.category-item-card{
+
+  .img-container{
+    max-height: 35rem;
+    overflow: hidden;
+  }
+
+  .sub-link{
+    display: block;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    //add arrow icon on the right on hover
+    &:hover{
+      position: relative;
+      background: $card-bg;
+      &::after{
+        content: "\f061";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        position: absolute;
+        right: 0.5rem;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+      }
+    }
+
+
+  }
+
+
+
+  overflow: hidden;
+  box-shadow: $shadow;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  & img{
+    transition: all 0.3s ease-in-out;
+  }
+
+
+    &:hover{
+        box-shadow: $shadow-lg;
+      & img{
+        transform: scale(1.1);
+      }
+
+    }
 }

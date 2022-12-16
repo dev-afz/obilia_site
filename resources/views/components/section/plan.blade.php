@@ -29,9 +29,13 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="Monthly">
                         <div class="pricing-block-outer">
                             <div class="row justify-content-center match-height">
-                                @forelse ($packages as $p)
+                                @forelse ($packages as $key => $p)
                                     <div class="col-lg-4 col-md-6 m-b30 package-container">
-                                        <div class="pricing-table-1">
+                                        <div @class([
+                                            'pricing-table-1',
+                                            'circle-pink' => $key % 2,
+                                            'circle-yellow' => $key % 3,
+                                        ])>
                                             <div class="p-table-title">
                                                 <h4 class="wt-title">
                                                     {{ $p->name }}
@@ -56,7 +60,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div class="p-table-btn">
+                                                <div class="p-table-btn mb-5">
                                                     <a href="about-1.html" class="site-button">Purchase Now</a>
                                                 </div>
                                             </div>

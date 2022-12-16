@@ -5,12 +5,8 @@
         <x-section.hero />
 
         <!-- JOBS CATEGORIES SECTION START -->
-        <x-section.category :categories="$categories" />
+        <x-section.category :categories="$industries" />
         <!-- JOBS CATEGORIES SECTION END -->
-
-        <!-- ABOUT SECTION START -->
-        <x-section.about />
-        <!-- ABOUT SECTION END -->
 
         <!-- How It Work START -->
         <x-section.how-it-works />
