@@ -12289,35 +12289,6 @@ table.seprated-row {
     overflow: hidden;
   }
 
-  .sub-link{
-    display: block;
-    padding: 5px 10px;
-    border-radius: 5px;
-
-    //add arrow icon on the right on hover
-    &:hover{
-      position: relative;
-      background: $card-bg;
-      &::after{
-        content: "\f061";
-        font-family: "Font Awesome 5 Free";
-        font-weight: 900;
-        position: absolute;
-        right: 0.5rem;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        font-size: 0.8rem;
-        display: flex;
-        align-items: center;
-      }
-    }
-
-
-  }
-
-
-
   overflow: hidden;
   box-shadow: $shadow;
   border-radius: 10px;
@@ -12334,4 +12305,31 @@ table.seprated-row {
       }
 
     }
+}
+
+.sub-link{
+  display: block;
+  padding: 5px 10px;
+  border-radius: 5px;
+
+  //add arrow icon on the right on hover
+  &:hover{
+    position: relative;
+    background: $card-bg;
+    &::after{
+      content: "\f061";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 0.5rem;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+
 }

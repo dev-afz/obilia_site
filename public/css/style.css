@@ -3374,7 +3374,7 @@ mega menu STYLE STARTS HERE
 }
 .mz-menu > ul > li > ul > li a {
   color: #3c3c3c;
-  padding: 0.2em 0;
+  padding: 0.3em;
   width: 95%;
   display: block;
   border-bottom: 1px solid #09596f;
@@ -17426,16 +17426,26 @@ table.seprated-row th {
   max-height: 35rem;
   overflow: hidden;
 }
-.category-item-card .sub-link {
+.category-item-card img {
+  transition: all 0.3s ease-in-out;
+}
+.category-item-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.category-item-card:hover img {
+  transform: scale(1.1);
+}
+
+.sub-link {
   display: block;
   padding: 5px 10px;
   border-radius: 5px;
 }
-.category-item-card .sub-link:hover {
+.sub-link:hover {
   position: relative;
   background: #e0eeff;
 }
-.category-item-card .sub-link:hover::after {
+.sub-link:hover::after {
   content: "\f061";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
@@ -17447,13 +17457,4 @@ table.seprated-row th {
   font-size: 0.8rem;
   display: flex;
   align-items: center;
-}
-.category-item-card img {
-  transition: all 0.3s ease-in-out;
-}
-.category-item-card:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-.category-item-card:hover img {
-  transform: scale(1.1);
 }

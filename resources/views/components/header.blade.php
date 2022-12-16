@@ -149,7 +149,8 @@
                                                         <ul>
                                                             @forelse ($c->sub_categories as $s)
                                                                 <li>
-                                                                    <a href="#">{{ $s->name }}</a>
+                                                                    <a class="sub-link"
+                                                                        href="#">{{ $s->name }}</a>
                                                                 </li>
                                                             @empty
                                                             @endforelse

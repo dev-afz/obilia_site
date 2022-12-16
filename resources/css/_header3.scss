@@ -930,21 +930,21 @@ mega menu STYLE STARTS HERE
       padding: 0;
       margin: 0;
 
-      & > a{
+      & > a {
         &::after {
-          content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background: $clr-primary;
-            transition: width 0.3s;
+          content: "";
+          display: block;
+          width: 0;
+          height: 2px;
+          background: $clr-primary;
+          transition: width 0.3s;
         }
 
         &:hover {
           color: $primary-400;
-            &::after {
-                width: 100%;
-            }
+          &::after {
+            width: 100%;
+          }
         }
       }
 
@@ -979,7 +979,6 @@ mega menu STYLE STARTS HERE
           & > a {
             font-size: large;
             font-weight: 600;
-            
           }
           margin: 0;
           padding-bottom: 0;
@@ -989,12 +988,10 @@ mega menu STYLE STARTS HERE
           float: left;
           a {
             color: $common-font-color;
-            padding: 0.2em 0;
+            padding: 0.3em;
             width: 95%;
             display: block;
             border-bottom: 1px solid $primary-500;
-
-            
           }
           > ul {
             display: block;
