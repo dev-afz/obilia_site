@@ -160,7 +160,7 @@
 
             <div class="modal-header">
                 <h2 class="modal-title" id="sign_up_popupLabel2">Login</h2>
-                <p>Login and get access to all the features of Jobzilla</p>
+                <p>Login and get access to all the features of Obilia</p>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
