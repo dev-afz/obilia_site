@@ -130,11 +130,12 @@ class ChatController extends Controller
             ->simplePaginate(20, ['*'], 'page', $request->page)
             ->reverse();
 
+
         $html = view('components.chat.messages', compact('messages'))->render();
 
         return response()->json([
             'status' => 'success',
-            'html' => $html
+            'html' => $html,
         ]);
     }
 }

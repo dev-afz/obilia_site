@@ -73,32 +73,9 @@ function chatMaker(chat) {
   return html;
 }
 function scrollToBottom() {
-  var from_top = $("#chat-holder")[0].scrollTop;
-  var height = $("#chat-holder")[0].scrollHeight;
-
-  //if difference between from_top and height is less than 100, then scroll to bottom
-  if (height - from_top < 100) {
-    console.log("scrolling to bottom");
-    $("#chat-holder").animate({
-      scrollTop: $("#chat-holder")[0].scrollHeight
-    }, 100);
-  } else {
-    console.log("showing button");
-
-    // $("#chat-holder").append(`
-    //     <div class="scroll-to-bottom">
-    //         <button class="btn btn-primary">
-    //         <i class="fa fa-arrow-down"></i>
-    //         </button>
-    //     </div>
-    //     `);
-    $(".scroll-to-bottom").click(function () {
-      $("#chat-holder").animate({
-        scrollTop: $("#chat-holder")[0].scrollHeight
-      }, 100);
-      $(".scroll-to-bottom").remove();
-    });
-  }
+  $("#chat-holder").animate({
+    scrollTop: $("#chat-holder")[0].scrollHeight
+  }, 100);
 }
 $(document).on("click", ".scroll-to-bottom", function (e) {
   e.preventDefault();
@@ -6986,8 +6963,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/dist/esm-browser/v4.js");
 
 
-var page = 1;
-var loading = true;
 $(document).ready(function () {
   $(".chat-list a").click(function (e) {
     e.preventDefault();
@@ -7005,22 +6980,18 @@ $(document).ready(function () {
   });
 });
 function fetchMessages(chat) {
-  var set = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
   window.rebound({
     url: message_url,
     method: "GET",
     processData: true,
     block: false,
+    logging: false,
     data: {
       chat_id: chat
     },
     notification: false,
     successCallback: function successCallback(response) {
-      page++;
-      console.log(response.chat_data);
-      if (set) {
-        setChatData(response);
-      }
+      setChatData(response);
     }
   });
 }
@@ -7044,9 +7015,6 @@ function setChatData(response) {
   $("#message-box [name='to']").val(response.chat_data.user.uuid);
   $("[data-messages]").html(response.html);
   scrollToBottom();
-  setTimeout(function () {
-    loading = false;
-  }, 2000);
 }
 $("#message-box").submit(function (e) {
   e.preventDefault();
@@ -7073,6 +7041,7 @@ $("#message-box").submit(function (e) {
     reset: false,
     notification: false,
     block: false,
+    logging: false,
     appendData: {
       uuid: msg_uuid
     },
@@ -7101,39 +7070,6 @@ function scrollToBottom() {
   $("#chat-holder").animate({
     scrollTop: $("#chat-holder")[0].scrollHeight
   }, 100);
-}
-
-//when data-messages is about to hit the top
-$("#chat-holder").scroll(function () {
-  if ($(this).scrollTop() < 200) {
-    if (loading) {
-      return;
-    }
-    loading = true;
-    var chatId = $(".chat-list a.active").data("chat");
-    loadAndAppendMessages(chatId);
-  }
-});
-function loadAndAppendMessages(chatId) {
-  window.rebound({
-    url: load_url,
-    method: "GET",
-    processData: true,
-    block: false,
-    data: {
-      chat_id: chatId,
-      page: page
-    },
-    notification: false,
-    successCallback: function successCallback(response) {
-      $("[data-messages]").prepend(response.html);
-      if (response.html == "") {
-        return;
-      }
-      page++;
-      loading = false;
-    }
-  });
 }
 })();
 

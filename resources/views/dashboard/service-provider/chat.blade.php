@@ -109,6 +109,11 @@
                                             </div>
 
                                             <div id="chat-holder" class="modal-body">
+                                                <div class="chat-loading-state d-none">
+                                                    <div class="loader-container">
+                                                        <div class="loader"></div>
+                                                    </div>
+                                                </div>
                                                 <div class="msg-body">
                                                     <ul data-messages="">
                                                         <x-chat.message-loader />
@@ -118,8 +123,9 @@
 
                                             <div class="send-box">
                                                 <form id="message-box">
-                                                    <input disabled type="text" name="message" class="form-control"
-                                                        aria-label="message…" placeholder="Write message…">
+                                                    <input disabled type="text" name="message"
+                                                        class="form-control" aria-label="message…"
+                                                        placeholder="Write message…">
                                                     <input type="hidden" required name="id" id="id">
                                                     <input type="hidden" required name="to" id="to">
                                                     <button disabled class="send__btn" type="submit"><i
@@ -148,8 +154,90 @@
                 const message_url = "{{ route('service-provider.chat.messages') }}";
                 const load_url = "{{ route('service-provider.chat.load-messages') }}";
                 const send_url = "{{ route('service-provider.chat.send-messages') }}";
+
+
+
+                let page = 1;
+                let last_page = 1;
+                let last = false;
+
+
+                $('#chat-holder').scroll(function() {
+
+
+
+                    if ((this.scrollTop + 100) <= (this.scrollHeight - this.offsetHeight)) {
+
+                    }
+
+                    if ($('#chat-holder').scrollTop() + $('#chat-holder').height() == $('#chat-holder').height()) {
+                        if (last) {
+                            return;
+                        }
+
+                        $('.chat-loading-state').removeClass('d-none');
+
+                        window.rebound({
+                            url: load_url,
+                            method: "GET",
+                            processData: true,
+                            block: false,
+                            logging: false,
+                            data: {
+                                chat_id: $('.chat__item.active').data('chat'),
+                                page: page++,
+                            },
+                            notification: false,
+                            successCallback: (response) => {
+                                $('.chat-loading-state').addClass('d-none');
+                                if (response.html == "") {
+                                    last = true;
+                                    return;
+                                }
+                                const old_position = $('[data-messages]').height();
+
+                                $(response.html).hide().prependTo("[data-messages]").fadeIn("slow");
+                                console.log($('[data-messages]').height(), old_position);
+                                $('#chat-holder').scrollTop($('[data-messages]').height() - old_position);
+                                page++;
+
+
+                            },
+                        });
+                    }
+                });
             </script>
             <script src="{{ asset(mix('js/chat.js')) }}"></script>
+            <script>
+                window.addEventListener("DOMContentLoaded", () => {
+                    const share = new ShareButton("#share-btn");
+                });
+
+                class ShareButton {
+                    constructor(qs) {
+                        this.button = document.querySelector(qs);
+                        this.openClass = "share__btn--open";
+
+                        this.button?.addEventListener("click", this.toggle.bind(this));
+                        window.addEventListener("keydown", this.close.bind(this));
+                    }
+                    close(e) {
+                        if (e.key === "Escape") {
+                            this.button?.classList.remove(this.openClass);
+                            this.updateTitle();
+                        }
+                    }
+                    toggle() {
+                        this.button?.classList.toggle(this.openClass);
+                        this.updateTitle();
+                    }
+                    updateTitle() {
+                        const open = this.button?.classList.contains(this.openClass);
+
+                        this.button.title = open ? "Close" : "Share";
+                    }
+                }
+            </script>
         </x-slot>
 
 </x-dashboard.layout>

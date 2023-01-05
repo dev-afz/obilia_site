@@ -1,6 +1,6 @@
 @forelse ($messages as $m)
     @if ($m->sender_id == auth()->id())
-        <li class="reply">
+        <li data-aos="zoom-in-left" data-aos-delay={{ $loop->iteration * 10 }} class="reply">
             <div class="chat-content">
                 <p>{{ $m->message }}</p>
                 <div class="time d-flex w-100 justify-content-between">
@@ -15,7 +15,7 @@
             </div>
         </li>
     @else
-        <li class="sender">
+        <li data-aos="zoom-in-right" data-aos-delay={{ $loop->iteration * 10 }} class="sender">
             <div class="chat-content">
                 <p>{{ $m->message }}</p>
                 <div class="time d-flex w-100 justify-content-between">
