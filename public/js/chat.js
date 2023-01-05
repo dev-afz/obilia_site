@@ -6986,6 +6986,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/dist/esm-browser/v4.js");
 
 
+var page = 1;
+var loading = true;
 $(document).ready(function () {
   $(".chat-list a").click(function (e) {
     e.preventDefault();
@@ -7003,6 +7005,7 @@ $(document).ready(function () {
   });
 });
 function fetchMessages(chat) {
+  var set = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
   window.rebound({
     url: message_url,
     method: "GET",
@@ -7013,8 +7016,11 @@ function fetchMessages(chat) {
     },
     notification: false,
     successCallback: function successCallback(response) {
+      page++;
       console.log(response.chat_data);
-      setChatData(response);
+      if (set) {
+        setChatData(response);
+      }
     }
   });
 }
@@ -7038,6 +7044,9 @@ function setChatData(response) {
   $("#message-box [name='to']").val(response.chat_data.user.uuid);
   $("[data-messages]").html(response.html);
   scrollToBottom();
+  setTimeout(function () {
+    loading = false;
+  }, 2000);
 }
 $("#message-box").submit(function (e) {
   e.preventDefault();
@@ -7092,6 +7101,39 @@ function scrollToBottom() {
   $("#chat-holder").animate({
     scrollTop: $("#chat-holder")[0].scrollHeight
   }, 100);
+}
+
+//when data-messages is about to hit the top
+$("#chat-holder").scroll(function () {
+  if ($(this).scrollTop() < 200) {
+    if (loading) {
+      return;
+    }
+    loading = true;
+    var chatId = $(".chat-list a.active").data("chat");
+    loadAndAppendMessages(chatId);
+  }
+});
+function loadAndAppendMessages(chatId) {
+  window.rebound({
+    url: load_url,
+    method: "GET",
+    processData: true,
+    block: false,
+    data: {
+      chat_id: chatId,
+      page: page
+    },
+    notification: false,
+    successCallback: function successCallback(response) {
+      $("[data-messages]").prepend(response.html);
+      if (response.html == "") {
+        return;
+      }
+      page++;
+      loading = false;
+    }
+  });
 }
 })();
 

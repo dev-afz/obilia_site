@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Job;
+use App\Models\User;
 use App\Models\Skill;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -91,8 +92,62 @@ class SearchService
     }
 
 
-    public function searchTalent(string $query)
+    public function searchTalent($request)
     {
-        return 'work in progress';
+        if ($request->ajax()) {
+            return $this->searchTalentAjax($request);
+        }
+
+        $users = User::active()
+            ->isUser()
+            ->when($request->q, function ($query) use ($request) {
+                $query->whereHas('direct_skills', function ($query) use ($request) {
+                    $query->where('skills.name', 'like', '%' . $request->q . '%')
+                        ->orWhere('skills.name', $request->q);
+                });
+            })
+            ->paginate(2);
+
+        $skills = Skill::active()->get(['id', 'name']);
+        $categories  = Category::active()->get(['id', 'name']);
+        $categories->prepend(['id' => 'all', 'name' => 'All']);
+        return view('browse.talents', compact('users', 'skills', 'categories'));
+    }
+
+
+    public function searchTalentAjax($request)
+    {
+        $users = User::active()
+            ->isUser()
+            ->when(!empty($request->q), function ($query) use ($request) {
+                $query->whereHas('direct_skills', function ($query) use ($request) {
+                    $query->where('skills.name', 'like', '%' . $request->q . '%')
+                        ->orWhere('skills.name', $request->q);
+                });
+            })
+            ->when(!empty($request->tags), function ($query) use ($request) {
+                $tags = explode(',', $request->tags);
+
+                $query->whereHas('skills', function ($query) use ($tags) {
+                    $query->whereIn('skill_id', $tags);
+                });
+            })
+            ->paginate($request->show ?? 2, ['*'], 'page', $request->page);
+
+        if ($users->count() <= 0) {
+            return response()->json([
+                'status' => 'error',
+                'html' => '<div class="alert alert-danger">No Provider found</div>',
+                'links' => ''
+            ]);
+        }
+
+
+        $html = '';
+        $showInvite = false;
+        $class = "col-md-6";
+        $html .= view('components.elements.service-provider-card', compact('users', 'class', 'showInvite'))->render();
+        $url_link_html  = view('components.helper.url-links', ['jobs' => $users])->render();
+        return response()->json(['html' => $html, 'links' => $url_link_html]);
     }
 }

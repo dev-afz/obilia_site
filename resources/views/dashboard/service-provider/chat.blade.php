@@ -57,7 +57,7 @@
                                                                             <h3>{{ $chat->participant->user->name }}
                                                                             </h3>
                                                                             <small
-                                                                                class="overflow-dots">{{ $chat->name }}</small>
+                                                                                class="overflow-dots">{{ $chat->job->title }}</small>
                                                                         </div>
                                                                         {{-- <span class="unread-count">4</span> --}}
                                                                     </a>
@@ -145,12 +145,10 @@
         <x-slot name="scripts">
             <script>
                 window.me = "{{ auth()->user()->uuid }}";
-                const message_url = "{{ route('client.chat.messages') }}";
-                const load_url = "{{ route('client.chat.load-messages') }}";
-                const send_url = "{{ route('client.chat.send-messages') }}";
+                const message_url = "{{ route('service-provider.chat.messages') }}";
+                const load_url = "{{ route('service-provider.chat.load-messages') }}";
+                const send_url = "{{ route('service-provider.chat.send-messages') }}";
             </script>
-
-
             <script src="{{ asset(mix('js/chat.js')) }}"></script>
         </x-slot>
 

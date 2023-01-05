@@ -2,16 +2,6 @@
 
     <x-slot:title>Job List </x-slot>
 
-        <x-slot name="styles">
-            <style>
-                .page-link {
-                    display: flex !important;
-                    justify-content: center;
-                    align-items: center;
-                }
-            </style>
-        </x-slot>
-
         <div class="section-full p-t120  p-b90 site-bg-white">
 
 
@@ -115,7 +105,6 @@
         <div hidden class="d-none" data-skeleton-loader>
             <x-misc.job-skeleton-loader :count="2" class="col-md-6" />
         </div>
-
 
         <x-slot name="scripts">
             <script>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\OauthController;
 use App\Http\Controllers\Site\BasicController;
 use App\Http\Controllers\Site\JobController;
+use App\Http\Controllers\Site\TalentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,11 +47,8 @@ Route::controller(BasicController::class)
             ->name('jobs.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
-
                 Route::put('/toggle-like', 'toggleLike')->name('toggle-like')
                     ->middleware('auth');
-
-
                 Route::get('/{job}', 'show')->name('show');
             });
     });

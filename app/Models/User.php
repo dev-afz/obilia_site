@@ -48,7 +48,10 @@ class User extends Authenticatable
 
 
 
-
+    public function chats()
+    {
+        return $this->hasManyThrough(Chat::class, ChatParticipant::class, 'user_id', 'id', 'id', 'chat_id');
+    }
 
 
     public function posted_jobs()
@@ -72,6 +75,17 @@ class User extends Authenticatable
     public function job_invitations()
     {
         return $this->hasMany(JobInvitation::class, 'user_id');
+    }
+
+
+    public function skills()
+    {
+        return $this->hasMany(UserSkill::class, 'user_id');
+    }
+
+    public function direct_skills()
+    {
+        return $this->hasManyThrough(Skill::class, UserSkill::class, 'user_id', 'id', 'id', 'skill_id');
     }
 
 

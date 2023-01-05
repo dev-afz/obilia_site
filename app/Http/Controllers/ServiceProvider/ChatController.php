@@ -1,32 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\ServiceProvider;
 
 use App\Models\Chat;
-use App\Models\User;
 use App\Models\Message;
-use App\Events\TestEvent;
-use Illuminate\Support\Str;
 use App\Events\MessageEvent;
 use Illuminate\Http\Request;
-use App\Events\TestChatEvent;
-use App\Http\Controllers\Controller;
-use App\Managers\FileManager;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 
 class ChatController extends Controller
 {
-    use FileManager;
     public function index()
     {
-
-
         $chats = auth()->user()->chats()->with([
-            'participant' => ['user:id,name,images']
+            'participant' => ['user:id,name,images'],
+            'job:id,title',
         ])->get();
 
 
-        return view('dashboard.client.chat', compact('chats'));
+        return view('dashboard.service-provider.chat', compact('chats'));
     }
 
     public function messages(Request $request)
@@ -42,7 +35,7 @@ class ChatController extends Controller
         $messages = $chats->messages()->with([
             'media'
         ])
-            ->latest()
+            ->orderBy('id', 'desc')
             ->simplePaginate(20)
             ->reverse();
 
@@ -84,7 +77,6 @@ class ChatController extends Controller
         if ($request->hasFile('media')) {
             foreach ($request->file('media') as $file) {
                 $type = $file->getMimeType();
-                Log::info($type);
                 $media[] = [
                     'file' => $this->uploadFileToDO($file, 'chat/media', 'file'),
                     'type' => $type,
@@ -108,6 +100,7 @@ class ChatController extends Controller
             'message' => 'Message sent successfully'
         ]);
     }
+
 
     public function loadMessages(Request $request)
     {

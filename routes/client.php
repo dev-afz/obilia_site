@@ -43,6 +43,7 @@ Route::controller(DashboardController::class)
             ->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::get('messages', 'messages')->name('messages');
+                Route::get('load-message', 'loadMessages')->name('load-messages');
                 Route::post('send-message', 'sendMessages')->name('send-messages');
             });
     });

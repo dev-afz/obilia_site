@@ -1,6 +1,9 @@
 import "./chatting.js";
 import { v4 as uuidv4 } from "uuid";
 
+let page = 1;
+let loading = true;
+
 $(document).ready(function () {
   $(".chat-list a").click(function (e) {
     e.preventDefault();
@@ -19,7 +22,7 @@ $(document).ready(function () {
   });
 });
 
-function fetchMessages(chat) {
+function fetchMessages(chat, set = true) {
   window.rebound({
     url: message_url,
     method: "GET",
@@ -30,8 +33,11 @@ function fetchMessages(chat) {
     },
     notification: false,
     successCallback: (response) => {
+      page++;
       console.log(response.chat_data);
-      setChatData(response);
+      if (set) {
+        setChatData(response);
+      }
     },
   });
 }
@@ -66,6 +72,9 @@ function setChatData(response) {
 
   $("[data-messages]").html(response.html);
   scrollToBottom();
+  setTimeout(() => {
+    loading = false;
+  }, 2000);
 }
 
 $("#message-box").submit(function (e) {
@@ -142,4 +151,38 @@ function scrollToBottom() {
     { scrollTop: $("#chat-holder")[0].scrollHeight },
     100
   );
+}
+
+//when data-messages is about to hit the top
+$("#chat-holder").scroll(function () {
+  if ($(this).scrollTop() < 200) {
+    if (loading) {
+      return;
+    }
+    loading = true;
+    const chatId = $(".chat-list a.active").data("chat");
+    loadAndAppendMessages(chatId);
+  }
+});
+
+function loadAndAppendMessages(chatId) {
+  window.rebound({
+    url: load_url,
+    method: "GET",
+    processData: true,
+    block: false,
+    data: {
+      chat_id: chatId,
+      page: page,
+    },
+    notification: false,
+    successCallback: (response) => {
+      $("[data-messages]").prepend(response.html);
+      if (response.html == "") {
+        return;
+      }
+      page++;
+      loading = false;
+    },
+  });
 }

@@ -13397,6 +13397,12 @@ strong {
   background-color: #09596f;
 }
 
+.pagination .page-link {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
 /*default table*/
 .twm-table {
   position: relative;

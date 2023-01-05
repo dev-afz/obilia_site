@@ -257,6 +257,7 @@
     "/fonts/simple-line-iconsc05f.woff": "/fonts/simple-line-iconsc05f.woff",
     "/files/pdf-sample.pdf": "/files/pdf-sample.pdf",
     "/data/client-menu.json": "/data/client-menu.json",
+    "/data/mega-menu.json": "/data/mega-menu.json",
     "/data/service-provider-menu.json": "/data/service-provider-menu.json",
     "/css/owl.carousel.min.css": "/css/owl.carousel.min.css",
     "/css/lc_lightbox.css": "/css/lc_lightbox.css",
@@ -265,6 +266,5 @@
     "/js/bootstrap.min.js": "/js/bootstrap.min.js",
     "/js/bootstrap-select.min.js": "/js/bootstrap-select.min.js",
     "/js/dataTables.bootstrap5.min.js": "/js/dataTables.bootstrap5.min.js",
-    "/js/notiflix.min.js": "/js/notiflix.min.js",
-    "/data/mega-menu.json": "/data/mega-menu.json"
+    "/js/notiflix.min.js": "/js/notiflix.min.js"
 }
