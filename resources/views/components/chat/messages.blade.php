@@ -1,31 +1,4 @@
 @forelse ($messages as $m)
-    @if ($m->sender_id == auth()->id())
-        <li data-aos="zoom-in-left" data-aos-delay={{ $loop->iteration * 10 }} class="reply">
-            <div class="chat-content">
-                <p>{{ $m->message }}</p>
-                <div class="time d-flex w-100 justify-content-between">
-                    <span class="color-white">
-                        {{ $m->created_at->format('d M y, h:i a') }}
-                    </span>
-                    <span class="ms-2 d-flex align-items-center color-white">
-                        <i class="fas fa-check-double"></i>
-                    </span>
-
-                </div>
-            </div>
-        </li>
-    @else
-        <li data-aos="zoom-in-right" data-aos-delay={{ $loop->iteration * 10 }} class="sender">
-            <div class="chat-content">
-                <p>{{ $m->message }}</p>
-                <div class="time d-flex w-100 justify-content-between">
-                    <span>
-                        {{ $m->created_at->format('d M y, h:i a') }}
-                    </span>
-                </div>
-            </div>
-
-        </li>
-    @endif
+    <x-chat.message :for="$m->sender_id == auth()->id() ? 'reply' : 'sender'" :message="$m" />
 @empty
 @endforelse

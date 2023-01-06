@@ -1,24 +1,24 @@
 <?php
 
-namespace App\View\Components\Chat;
+namespace App\View\Components\chat;
 
 use Illuminate\View\Component;
 
-class Messages extends Component
+class Message extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-
-    public $messages;
-
+    public $message;
+    public $for;
     public function __construct(
-        $messages,
-
+        $message,
+        string $for = 'sender'
     ) {
-        $this->messages = $messages;
+        $this->message = $message;
+        $this->for = $for;
     }
 
     /**
@@ -28,6 +28,6 @@ class Messages extends Component
      */
     public function render()
     {
-        return view('components.chat.messages');
+        return view('components.chat.message');
     }
 }

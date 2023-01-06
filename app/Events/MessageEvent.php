@@ -27,11 +27,11 @@ class MessageEvent implements ShouldBroadcast
     public $chat;
 
     public function __construct(
-        $message = null,
         $time,
-        $media = null,
         $chat,
-        $to
+        $to,
+        $message = null,
+        $media = null,
     ) {
         $this->message = $message;
         $this->time = $time;

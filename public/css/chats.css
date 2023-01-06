@@ -49,6 +49,8 @@
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ccc;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -134,6 +136,39 @@
 }
 .msg-search input {
   height: 45px;
+}
+
+.chat-content {
+  transition: all 0.3s ease-in-out;
+}
+.chat-content .dropdown-toggle {
+  display: none;
+  transform: translateX(5rem);
+  right: 0;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+.chat-content .dropdown-toggle::after {
+  display: none;
+}
+.chat-content .dropdown-toggle:focus {
+  outline: 0;
+  box-shadow: none;
+}
+.chat-content:hover .dropdown-toggle {
+  display: block;
+  transform: translateX(0);
+}
+.chat-content .dropdown-menu {
+  border-radius: 5px;
+}
+.chat-content .dropdown-menu li {
+  margin: 5px 0 !important;
+}
+
+.sender .chat-content .dropdown-toggle {
+  color: #09596f !important;
 }
 
 a.add img {
@@ -257,7 +292,7 @@ a.add img {
   border-style: solid;
   border-width: 0 12px 15px 12px;
   border-color: transparent transparent #e5e7eb transparent;
-  transform: rotate(-37deg);
+  transform: rotate(-17deg);
 }
 .msg-body ul li.sender .chat-content,
 .msg-body ul li.sender .loader {
@@ -267,7 +302,7 @@ a.add img {
   font-size: 14px;
   line-height: 1.5;
   font-weight: 400;
-  padding: 15px;
+  padding: 0.4rem 1rem;
   background: #e5e7eb;
   display: inline-block;
   border-bottom-left-radius: 10px;
@@ -312,7 +347,7 @@ a.add img {
   font-size: 14px;
   line-height: 1.5;
   font-weight: 400;
-  padding: 15px;
+  padding: 0.4rem 1rem;
   background: #09596f;
   display: inline-block;
   border-top-left-radius: 10px;
@@ -399,6 +434,8 @@ li.reply .time {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ccc;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -550,9 +587,6 @@ button:focus {
   }
   .msg-head .flex-shrink-0 img {
     height: 30px;
-  }
-  .send-box button {
-    width: 28%;
   }
   .send-box .form-control {
     width: 70%;

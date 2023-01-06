@@ -16,7 +16,7 @@ __webpack_require__.r(__webpack_exports__);
 
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: "pusher",
-  key: "testKey",
+  key: "myKey",
   wsHost: window.location.hostname,
   wsPort: 6001,
   forceTLS: false,
@@ -42,34 +42,8 @@ function notifyUser(e) {
   $(nf).find(".msg-counter").html(parseInt($(nf).find(".msg-counter").html()) + 1);
 }
 function chatMaker(chat) {
-  var html = "<li class=\"sender\">\n    <div class=\"chat-content\">";
-  if (chat.message) {
-    html += "<p>".concat(chat.message, "</p>");
-  }
-  if (chat.media) {
-    html += "<div class=\"chat-image\">";
-    media.forEach(function (el) {
-      if (el.type == "image") {
-        html += "<img src=\"".concat(el.file, "\" alt=\"\">");
-      } else if (el.type == "video") {
-        html += "<video src=\"".concat(el.file, "\" controls></video>");
-      } else {
-        //download link
-        html += "<a class=\"media-download\" href=\"".concat(el.file, "\" download>download</a>");
-      }
-    });
-    html += "</div>";
-  }
-  // format time in d M y, h:i a format
-  var time = new Date(chat.time).toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true
-  });
-  html += "<div class=\"time d-flex w-100 justify-content-between\">\n        <span>".concat(time, "</span>\n    </div>\n</div>\n</li>");
+  var html = chat.message;
+  console.log(chat);
   return html;
 }
 function scrollToBottom() {
@@ -6961,8 +6935,16 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _chatting_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chatting.js */ "./resources/js/chatting.js");
 /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/dist/esm-browser/v4.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 
+var page = 1;
+var last = false;
 $(document).ready(function () {
   $(".chat-list a").click(function (e) {
     e.preventDefault();
@@ -7051,26 +7033,117 @@ $("#message-box").submit(function (e) {
       scrollToBottom();
     },
     successCallback: function successCallback(response) {
-      //   console.log(response);
-
+      console.log(response);
       $("[data-msg-id=".concat(msg_uuid, "] [data-msg-status]")).html("<i class=\"fa fa-check-double\"></i>");
+      $("[data-msg-id=".concat(msg_uuid, "] .chat-content")).prepend(response.dropdown);
     }
   });
 });
 function appendMessage(message) {
   var uuid = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  //d M y, h:i a formate
   var time = new Date().toLocaleString("en-US", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
     hour: "numeric",
     minute: "numeric",
     hour12: true
   });
-  $("[data-messages]").append("\n    <li data-msg-id=\"".concat(uuid, "\" class=\"reply\">\n    <div class=\"chat-content\">\n        <p>").concat(message, "</p>\n        <div class=\"time d-flex d-flex w-100 justify-content-between\">\n            <span class=\"color-white\">\n                ").concat(time, "\n            </span>\n            <span data-msg-status class=\"ms-2 d-flex align-items-center color-white\">\n                <i class=\"fa fa-clock\"></i>\n            </span>\n        </div>\n    </div>\n</li>\n"));
+  $("[data-messages]").append("\n    <li data-msg-id=\"".concat(uuid, "\" class=\"reply\">\n    <div class=\"chat-content\">\n        <p class=\"mb-0 me-4\">").concat(message, "</p>\n        <div class=\"time d-flex d-flex w-100 justify-content-end\">\n            <span class=\"color-white opacity-05\">\n                ").concat(time, "\n            </span>\n            <span data-msg-status class=\"ms-2 d-flex align-items-center color-white\">\n                <i class=\"fa fa-clock\"></i>\n            </span>\n        </div>\n    </div>\n</li>\n"));
 }
 function scrollToBottom() {
   $("#chat-holder").animate({
     scrollTop: $("#chat-holder")[0].scrollHeight
   }, 100);
 }
+
+/*
+|--------------------------------------------------------------------------
+| Load More Messages
+|--------------------------------------------------------------------------
+|
+| Load more messages when user scroll up
+|
+*/
+
+$("#chat-holder").scroll(function () {
+  if (this.scrollTop + 100 <= this.scrollHeight - this.offsetHeight) {}
+  if ($("#chat-holder").scrollTop() + $("#chat-holder").height() == $("#chat-holder").height()) {
+    if (last) {
+      return;
+    }
+    $(".chat-loading-state").removeClass("d-none");
+    window.rebound({
+      url: load_url,
+      method: "GET",
+      processData: true,
+      block: false,
+      logging: false,
+      data: {
+        chat_id: $(".chat__item.active").data("chat"),
+        page: page++
+      },
+      notification: false,
+      successCallback: function successCallback(response) {
+        $(".chat-loading-state").addClass("d-none");
+        if (response.html == "") {
+          last = true;
+          return;
+        }
+        var old_position = $("[data-messages]").height();
+        $(response.html).hide().prependTo("[data-messages]").fadeIn("slow");
+        console.log($("[data-messages]").height(), old_position);
+        $("#chat-holder").scrollTop($("[data-messages]").height() - old_position);
+        page++;
+      }
+    });
+  }
+});
+
+/*
+|--------------------------------------------------------------------------
+| Share button
+|--------------------------------------------------------------------------
+*/
+window.addEventListener("DOMContentLoaded", function () {
+  var share = new ShareButton("#share-btn");
+});
+var ShareButton = /*#__PURE__*/function () {
+  function ShareButton(qs) {
+    var _this$button;
+    _classCallCheck(this, ShareButton);
+    this.button = document.querySelector(qs);
+    this.openClass = "share__btn--open";
+    (_this$button = this.button) === null || _this$button === void 0 ? void 0 : _this$button.addEventListener("click", this.toggle.bind(this));
+    window.addEventListener("keydown", this.close.bind(this));
+  }
+  _createClass(ShareButton, [{
+    key: "close",
+    value: function close(e) {
+      if (e.key === "Escape") {
+        var _this$button2;
+        (_this$button2 = this.button) === null || _this$button2 === void 0 ? void 0 : _this$button2.classList.remove(this.openClass);
+        this.updateTitle();
+      }
+    }
+  }, {
+    key: "toggle",
+    value: function toggle() {
+      var _this$button3;
+      (_this$button3 = this.button) === null || _this$button3 === void 0 ? void 0 : _this$button3.classList.toggle(this.openClass);
+      this.updateTitle();
+    }
+  }, {
+    key: "updateTitle",
+    value: function updateTitle() {
+      var _this$button4;
+      var open = (_this$button4 = this.button) === null || _this$button4 === void 0 ? void 0 : _this$button4.classList.contains(this.openClass);
+      this.button.title = open ? "Close" : "Share";
+    }
+  }]);
+  return ShareButton;
+}();
 })();
 
 /******/ })()

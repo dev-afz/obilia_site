@@ -33,7 +33,7 @@ class ChatController extends Controller
             ->firstOrFail();
 
         $messages = $chats->messages()->with([
-            'media'
+            'media',
         ])
             ->orderBy('id', 'desc')
             ->simplePaginate(20)
@@ -87,17 +87,20 @@ class ChatController extends Controller
         }
 
 
+        $for = 'sender';
         event(new MessageEvent(
-            $request->message,
-            $message->created_at,
-            $media,
-            $chat->uuid,
-            $chat->participant->user->uuid,
+            message: view('components.chat.message', compact('message', 'for'))->render(),
+            time: $message->created_at,
+            media: $media,
+            chat: $chat->uuid,
+            to: $chat->participant->user->uuid,
         ));
-
+        $canDelete = true;
+        $dropdown = view('components.chat.message-dropdown', compact('message', 'canDelete'))->render();
         return response()->json([
             'status' => 'success',
-            'message' => 'Message sent successfully'
+            'message' => 'Message sent successfully',
+            'dropdown' => $dropdown,
         ]);
     }
 
@@ -109,15 +112,13 @@ class ChatController extends Controller
             'page' => 'required|integer'
         ]);
 
-        Log::info($request->all());
 
 
         $chats = auth()->user()->chats()->where('chats.uuid', $request->chat_id)
-            ->with(['participant' => ['user:id,uuid,name,images']])
             ->firstOrFail();
 
         $messages = $chats->messages()->with([
-            'media'
+            'media', 'sender:id,uuid,name,images'
         ])
             ->orderBy('id', 'desc')
             ->simplePaginate(20, ['*'], 'page', $request->page)

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components\Chat;
+namespace App\View\Components\chat;
 
 use Illuminate\View\Component;
 
-class Messages extends Component
+class MessageDropdown extends Component
 {
     /**
      * Create a new component instance.
@@ -12,13 +12,15 @@ class Messages extends Component
      * @return void
      */
 
-    public $messages;
+    public $message;
+    public $canDelete;
 
     public function __construct(
-        $messages,
-
+        $message,
+        bool $canDelete
     ) {
-        $this->messages = $messages;
+        $this->message = $message;
+        $this->canDelete = $canDelete;
     }
 
     /**
@@ -28,6 +30,6 @@ class Messages extends Component
      */
     public function render()
     {
-        return view('components.chat.messages');
+        return view('components.chat.message-dropdown');
     }
 }
