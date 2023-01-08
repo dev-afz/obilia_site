@@ -1,7 +1,15 @@
 <li class="{{ $for }}">
     <div class="chat-content">
         <x-chat.message-dropdown :message="$message" :canDelete="$for === 'reply'" />
-        <p class="mb-0 me-4">{{ $message->message }}</p>
+        @if ($message->message)
+            <p class="mb-0 me-4 chat-message">{{ $message->message }}</p>
+        @endif
+
+        @forelse ($message->media as $media)
+            <img class="chat-img" src="{{ $media->file }}" alt="image">
+        @empty
+        @endforelse
+
         <div class="time d-flex w-100 justify-content-end">
             <span @class([
                 'color-white' => $for == 'reply',

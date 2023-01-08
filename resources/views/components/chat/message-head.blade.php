@@ -2,7 +2,7 @@
     <div class="col-8">
         <div class="d-flex h-100  align-items-center">
 
-            <div data-user-image style="--circle-size:50px" class="flex-shrink-0">
+            <div data-user-image style="--circle-size:50px" class="">
                 <div class="square circle"></div>
             </div>
             <div data-chat-name class="flex-grow-1 ms-3">

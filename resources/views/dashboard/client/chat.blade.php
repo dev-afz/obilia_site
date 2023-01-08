@@ -3,29 +3,7 @@
     <x-slot name="styles">
         <link rel="stylesheet" href="{{ asset(mix('css/chats.css')) }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.9/simplebar.css">
-        <style>
-            .reply-content {
-                background: #dfdfdf;
-                border-radius: 5px;
-                padding: 0px 5px;
-                overflow-wrap: break-word;
-                border-left: 4px solid #2bb177;
-                padding: 10px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                max-height: 140px;
-                overflow: auto;
-                flex: 1;
-            }
 
-            .reply-data {
-                max-height: 10rem;
-                transition: all 1s ease-in-out;
-                height: 0px;
-                opacity: 0;
-            }
-        </style>
     </x-slot>
     <div id="content">
         <!-- char-area -->
@@ -146,14 +124,19 @@
 
                                         <div class="send-box">
 
-                                            <div class="reply-data ">
+                                            <div class="reply-data reply-data-collapsed ">
                                                 <div style="--bs-gutter-x:0 !important" class="reply-holder row mb-3">
                                                     <div class="reply-content col-11">
-                                                        <p class="mb-0 me-4">dsds</p>
+                                                        <p class="m-0 reply-message">dsds</p>
                                                     </div>
-                                                    <div
+                                                    <div id="close-reply"
                                                         class="cross-btn col-1 d-flex align-items-center justify-content-center">
-                                                        <i style="font-size: 2rem" class=" feather-x"></i>
+
+                                                        <button class="no-style">
+
+                                                            <i style="font-size: 1.5rem"
+                                                                class=" feather-x m-0 all"></i>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -302,6 +285,13 @@
     </div>
 
 
+    <x-elements.modal id="upload-modal" :footer="false">
+        <div id="uploader-body">
+
+        </div>
+    </x-elements.modal>
+
+
 
     <x-slot name="scripts">
         <script>
@@ -310,9 +300,32 @@
             const load_url = "{{ route('client.chat.load-messages') }}";
             const send_url = "{{ route('client.chat.send-messages') }}";
         </script>
-
-
         <script src="{{ asset(mix('js/chat.js')) }}"></script>
+
+        <script>
+            $(document).on('click', '[data-msg-reply]', function(e) {
+                e.preventDefault();
+                const id = $(this).data('msg-reply');
+                const message = $(this).closest('.chat-content').find('.chat-message').text();
+                $('.reply-data .reply-message').text(message);
+                $('.reply-data')
+                    .removeClass('reply-data-collapsed')
+                    .addClass('h-auto');
+                console.log(id, message);
+            });
+
+            $('#close-reply').click(function(e) {
+                e.preventDefault();
+                $('.reply-data')
+                    .addClass('reply-data-collapsed')
+                    .removeClass('h-auto');
+
+                setTimeout(() => {
+                    $('.reply-data .reply-message').text('');
+                }, 1000);
+
+            });
+        </script>
     </x-slot>
 
 </x-dashboard.layout>

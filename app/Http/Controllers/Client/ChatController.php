@@ -69,10 +69,10 @@ class ChatController extends Controller
         $request->validate([
             'id' => 'required|string|max:255',
             'to' => 'required|string|max:255',
-            'message' => 'required_without:media|string|max:2000',
+            'message' => 'required_without:images|max:2000',
             'uuid' => 'required|string|max:255',
-            'media' => 'nullable|array',
-            'media.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'images' => 'nullable|array',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         $chat = auth()->user()->chats()->where('chats.uuid', $request->id)->firstOrFail();
@@ -81,8 +81,8 @@ class ChatController extends Controller
             'sender_id' => auth()->user()->id,
         ]);
         $media = null;
-        if ($request->hasFile('media')) {
-            foreach ($request->file('media') as $file) {
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
                 $type = $file->getMimeType();
                 Log::info($type);
                 $media[] = [
@@ -93,6 +93,8 @@ class ChatController extends Controller
             }
             $message->media()->createMany($media);
         }
+
+        $message->load(['media']);
 
         $for = 'sender';
         event(new MessageEvent(
