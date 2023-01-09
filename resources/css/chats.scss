@@ -159,6 +159,12 @@ $border-color_3: transparent transparent $clr-primary transparent;
     }
   }
 
+  .reply-btn {
+    border-radius: 5px;
+    background: $primary-200;
+    padding: 0 5px;
+  }
+
   .chat-img {
     height: 20rem;
     margin: 5px 0;
@@ -1155,6 +1161,7 @@ video {
 
 .reply-content {
   background: #dfdfdf;
+  color: $common-font-color;
   border-radius: 5px;
   padding: 0px 5px;
   overflow-wrap: break-word;
@@ -1168,10 +1175,45 @@ video {
   flex: 1;
 }
 
+.reply {
+  .chat-content {
+    .reply-btn {
+      color: $clr-primary;
+    }
+  }
+}
+
 .reply-data {
   max-height: 10rem;
   transition: all 1s ease-in-out;
   overflow: hidden;
+
+  img {
+    height: 5rem;
+  }
+}
+
+.reply-content {
+  img {
+    height: 5rem;
+  }
+}
+
+.file-submit-btn {
+  background: $clr-primary;
+  color: $clr-white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.add-new-image-btn {
+  background: $primary-300;
+  color: $common-font-color;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 .reply-data-collapsed {
@@ -1214,5 +1256,12 @@ video {
   img {
     height: 100%;
     object-fit: contain;
+    max-height: 15rem;
+  }
+}
+.cross-btn {
+  cursor: pointer;
+  button {
+    cursor: pointer !important;
   }
 }

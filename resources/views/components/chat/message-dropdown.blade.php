@@ -1,5 +1,5 @@
 <div class="dropdown">
-    <button class="btn btn-sm btn-link dropdown-toggle position-absolute" type="button"
+    <button class="btn btn-sm btn-link dropdown-toggle position-absolute reply-btn" type="button"
         id="d-reply-btn-{{ $message->id }}" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fas fa-ellipsis-h"></i>
     </button>

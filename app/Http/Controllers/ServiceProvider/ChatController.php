@@ -94,6 +94,7 @@ class ChatController extends Controller
         $for = 'sender';
         event(new MessageEvent(
             message: view('components.chat.message', compact('message', 'for'))->render(),
+            from: auth()->user()->only(['uuid', 'name', 'email']),
             time: $message->created_at,
             media: $media,
             chat: $chat->uuid,

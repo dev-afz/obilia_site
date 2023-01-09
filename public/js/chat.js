@@ -8954,11 +8954,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _chatting_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./chatting.js */ "./resources/js/chatting.js");
 /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/dist/esm-browser/v4.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
 
@@ -9036,7 +9039,7 @@ $("#message-box").submit(function (e) {
   }
   if (!message && !images && !videos && !files) {
     console.log(!message && !images && !videos && !files);
-    console.log('No message or files found');
+    console.log("No message or files found");
     return null;
   }
   window.rebound({
@@ -9051,43 +9054,80 @@ $("#message-box").submit(function (e) {
       uuid: msg_uuid
     },
     beforeSendCallback: function beforeSendCallback() {
-      $('#message-box [name="message"]').val("");
       appendMessage(msg_uuid);
+      $("#upload-modal").modal("hide");
+      $("#uploader-body").html("");
       scrollToBottom();
     },
     successCallback: function successCallback(response) {
       console.log(response);
-      $('#images').val("");
+      $.each($('#message-box [name="images[]"]'), function (i, el) {
+        if (i > 0) {
+          el.remove();
+        } else {
+          $(el).val("");
+        }
+      });
       $("[data-msg-id=".concat(msg_uuid, "] [data-msg-status]")).html("<i class=\"fa fa-check-double\"></i>");
       $("[data-msg-id=".concat(msg_uuid, "] .chat-content")).prepend(response.dropdown);
     }
   });
 });
 function appendMessage() {
-  var uuid = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-  //d M y, h:i a formate
-
-  var message = $('#message').val();
-  var images = $('#images')[0].files;
-  var time = new Date().toLocaleString("en-US", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true
-  });
-  var html = "\n<li data-msg-id=\"".concat(uuid, "\" class=\"reply\">\n<div class=\"chat-content\">");
-  if (message) {
-    html += " <p class=\"m-0 chat-message\">".concat(message, "</p>");
-  }
-  if (images.length !== 0) {
-    for (var i = 0; i < images.length; i++) {
-      html += "\n            <img class=\"chat-img\" src=\"".concat(URL.createObjectURL(images[i]), "\" alt=\"image\">\n            ");
-    }
-  }
-  html += "<div class=\"time d-flex d-flex w-100 justify-content-end\">\n        <span class=\"color-white opacity-05\">\n            ".concat(time, "\n        </span>\n        <span data-msg-status class=\"ms-2 d-flex align-items-center color-white\">\n            <i class=\"fa fa-clock\"></i>\n        </span>\n    </div>\n</div>\n</li>\n");
-  $("[data-messages]").append(html);
+  return _appendMessage.apply(this, arguments);
+}
+function _appendMessage() {
+  _appendMessage = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    var uuid,
+      message,
+      replied,
+      time,
+      html,
+      reply_content,
+      _args = arguments;
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            uuid = _args.length > 0 && _args[0] !== undefined ? _args[0] : null;
+            message = $('#message-box [name="message"]').val();
+            $('#message-box [name="message"]').val("");
+            replied = $("#reply_to").val();
+            time = new Date().toLocaleString("en-US", {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+              hour12: true
+            });
+            html = "\n<li data-msg-id=\"".concat(uuid, "\" class=\"reply\">\n<div class=\"chat-content\">");
+            if (replied) {
+              reply_content = $(".reply-data .reply-content").html();
+              console.log(reply_content);
+              html += "<div class=\"reply-content\">".concat(reply_content, "</div>");
+            }
+            if ($('#message-box [name="images[]"]')[0].files[0]) {
+              $.map($('#message-box [name="images[]"]'), function (el, i) {
+                html += "\n        <img class=\"chat-img\" src=\"".concat(URL.createObjectURL(el.files[0]), "\" alt=\"image\">\n        ");
+              });
+            }
+            if (message) {
+              html += " <p class=\"m-0 chat-message\">".concat(message, "</p>");
+            }
+            html += "<div class=\"time d-flex d-flex w-100 justify-content-end\">\n        <span class=\"color-white opacity-05\">\n            ".concat(time, "\n        </span>\n        <span data-msg-status class=\"ms-2 d-flex align-items-center color-white\">\n            <i class=\"fa fa-clock\"></i>\n        </span>\n    </div>\n</div>\n</li>\n");
+            $('#message-box [name="images[]"]').val("");
+            $("[data-messages]").append(html);
+            $("#close-reply").click();
+            scrollToBottom();
+          case 14:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _appendMessage.apply(this, arguments);
 }
 function scrollToBottom() {
   $("#chat-holder").animate({
@@ -9180,34 +9220,89 @@ var ShareButton = /*#__PURE__*/function () {
   }]);
   return ShareButton;
 }();
-var fileInput = document.querySelector('#images');
-var previewer = document.querySelector('#uploader-body');
-$(fileInput).change(function (e) {
+var previewer = document.querySelector("#uploader-body");
+$(document).on("change", '#message-box [name="images[]"]', function (e) {
   e.preventDefault();
-  var files = this.files;
-  console.log(files);
-  $(previewer).html('');
+  var files = document.querySelectorAll('#message-box [name="images[]"]');
+  $(previewer).html("");
   if (files.length === 0) {
-    console.log(files);
+    console.log("No files");
     return;
   }
   window.shareBtn.close();
   var html = "<div class=\"row match-height\">";
-  for (var i = 0; i < files.length; i++) {
-    html += "\n             <div class=\"preview-wrapper col-md-12 mb-2\">\n                <div class=\"image-preview position-relative\">\n                    <img class=\"h-100\" src=\"".concat(URL.createObjectURL(files[i]), "\" alt=\"preview image\" />\n                    <button class=\"remove-preview\">\n                    <i data-rm=\"").concat(i, "\" class=\" feather-x fs-7\"></i>\n                    </button>\n                </div>\n            </div>\n            ");
+  files.forEach(function (element, i) {
+    console.log(element);
+    html += "\n            <div class=\"preview-wrapper col-md-6 mb-2\">\n                    <div class=\"image-preview position-relative\">\n                            <img class=\"h-100\" src=\"".concat(URL.createObjectURL(element.files[0]), "\" alt=\"preview image\" />\n                            <button class=\"remove-preview\">\n                            <i data-rm=\"").concat(i, "\" class=\" feather-x fs-7\"></i>\n                            </button>\n                        </div>\n                    </div>\n                    ");
+  });
+  if (files.length < 4) {
+    html += "<div class=\"col-12\">\n                <button class=\"add-new-image-btn\">\n                        Add\n                        <i class=\"feather-plus\"></i>\n                </button>\n            </div>";
   }
-  html += "</div>";
+  html += "<div class=\"col-12 mt-1\">\n                <button type=\"submit\" form=\"message-box\" class=\"btn file-submit-btn\">\n                        Send\n                        <i class=\"feather-send\"></i>\n                </button>\n            </div>\n        </div>";
   $(previewer).append(html);
-  $('#upload-modal').modal('show');
+  $("#upload-modal").modal("show");
 });
-$(document).on('click', '[data-rm]', function (e) {
+$(document).on("click", "[data-rm]", function (e) {
   e.preventDefault();
-  var itr = $(this).data('rm');
-  $(this).closest('.preview-wrapper').remove();
-  if ($('.preview-wrapper').length === 0) {
-    $('#upload-modal').modal('hide');
+  var itr = $(this).data("rm");
+  $(this).closest(".preview-wrapper").remove();
+  if ($(".preview-wrapper").length === 0) {
+    $("#upload-modal").modal("hide");
   }
-  $(fileInput).val('').trigger('change');
+  if (itr > 0) {
+    $('#message-box [name="images[]"]')[itr].remove();
+  }
+  if (!$("#uploader-body > div").has(".add-new-image-btn").length) {
+    console.log("No");
+    $("#uploader-body > div > div:last-child").before("<div class=\"col-12\">\n                <button class=\"add-new-image\">\n                        Add\n                </button>\n            </div>");
+  }
+});
+$(document).on("click", ".add-new-image-btn", function (e) {
+  var input = document.createElement("input");
+  input.type = "file";
+  input.accept = "image/*";
+  input.name = "images[]";
+  input.hidden = true;
+  document.querySelector("#message-box").appendChild(input);
+  input.click();
+});
+
+/*
+|--------------------------------------------------------------------------
+| Reply
+|--------------------------------------------------------------------------
+*/
+$(document).on("click", "[data-msg-reply]", function (e) {
+  e.preventDefault();
+  var id = $(this).data("msg-reply");
+  $("#reply_to").val(id);
+  var message = $(this).closest(".chat-content").find(".chat-message").text();
+  var chat_images = $(this).closest(".chat-content").find(".chat-img");
+  console.log(chat_images, chat_images.length, message);
+  var message_html = "";
+  $(".reply-data .reply-content").html("");
+  if (message) {
+    message_html = "<p class=\"mb-0\">".concat(message, "</p>");
+  }
+  var image_html = "";
+  if (chat_images.length > 0) {
+    image_html = '<div class="reply-image-holder">';
+    $.map(chat_images.slice(0, 2), function (el, i) {
+      image_html += "<img class=\"ms-1 reply-img\" src=\"".concat(el.src, "\" alt=\"image\" />");
+    });
+    image_html += "</div>";
+  }
+  $(".reply-data .reply-content").append(message_html + image_html);
+  $('#message-box [name="message"]').focus();
+  $(".reply-data").removeClass("reply-data-collapsed").addClass("h-auto");
+});
+$("#close-reply").click(function (e) {
+  e.preventDefault();
+  $("#reply_to").val("");
+  $(".reply-data").addClass("reply-data-collapsed").removeClass("h-auto");
+  setTimeout(function () {
+    $(".reply-data .reply-message").text("");
+  }, 1000);
 });
 })();
 

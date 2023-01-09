@@ -28,4 +28,9 @@ class Message extends Model
     {
         return $this->hasMany(MessageMedia::class);
     }
+
+    public function replied()
+    {
+        return $this->belongsTo(Message::class, 'replied_to', 'id');
+    }
 }

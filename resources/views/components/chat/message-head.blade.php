@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-8">
         <div class="d-flex h-100  align-items-center">
-
+            <span class="chat-icon">
+                <i class="feather-arrow-left"></i>
+            </span>
             <div data-user-image style="--circle-size:50px" class="">
                 <div class="square circle"></div>
             </div>
