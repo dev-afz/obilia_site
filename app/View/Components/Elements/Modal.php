@@ -16,16 +16,19 @@ class Modal extends Component
     public $id;
     public $title;
     public $footer;
+    public $parentClass;
     public function __construct(
         string $id,
         string $class = "",
         string $title = "Modal",
         bool $footer = true,
+        string $parentClass = ""
     ) {
         $this->class = $class;
         $this->id = $id;
         $this->title = $title;
         $this->footer = $footer;
+        $this->parentClass = $parentClass;
     }
 
     /**

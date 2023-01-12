@@ -17,17 +17,25 @@
         <ul class="moreoption">
             <li class="navbar nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+                    aria-expanded="false">
+                    <i class="feather-more-vertical fs-5" aria-hidden="true"></i>
+                </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a>
-                    </li>
-                    <li><a class="dropdown-item" href="#">Another
-                            action</a></li>
                     <li>
-                        <hr class="dropdown-divider">
+                        <a class="dropdown-item" data-create-contract="">
+                            <i class="feather-file-text fs-5 me-1"></i>
+                            Create Contact
+                        </a>
                     </li>
-                    <li><a class="dropdown-item" href="#">Something
-                            else here</a></li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="feather-x-square fs-5 me-1"></i>
+                            Close Chat
+                        </a>
+                    </li>
+                    {{-- <li>
+                        <hr class="dropdown-divider">
+                    </li> --}}
                 </ul>
             </li>
         </ul>

@@ -1,6 +1,6 @@
-<div class="modal fade {{ $class ?? '' }}" id="{{ $id }}" tabindex="-1"
+<div class="modal fade {{ $parentClass ?? '' }}" id="{{ $id }}" tabindex="-1"
     aria-labelledby="{{ $id }}Label" data-bs-backdrop="static" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog {{ $class }}  modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="{{ $id }}Label">{{ $title }}</h5>

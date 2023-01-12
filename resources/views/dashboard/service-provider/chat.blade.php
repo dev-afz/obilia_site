@@ -148,7 +148,8 @@
                                                         placeholder="Write message…">
                                                     <input type="hidden" required name="id" id="id">
                                                     <input type="hidden" required name="to" id="to">
-                                                    <input type="hidden" name="reply_to" id="reply_to">
+                                                    <input type="number" class="d-none" hidden name="reply_to"
+                                                        id="reply_to">
                                                     <button disabled class="send__btn" type="submit"><i
                                                             class="fa fa-paper-plane" aria-hidden="true"></i>
                                                     </button>
@@ -181,30 +182,7 @@
                 const send_url = "{{ route('service-provider.chat.send-messages') }}";
             </script>
             <script src="{{ asset(mix('js/chat.js')) }}"></script>
-            <script>
-                $(document).on('click', '[data-msg-reply]', function(e) {
-                    e.preventDefault();
-                    const id = $(this).data('msg-reply');
-                    const message = $(this).closest('.chat-content').find('.chat-message').text();
-                    $('.reply-data .reply-message').text(message);
-                    $('.reply-data')
-                        .removeClass('reply-data-collapsed')
-                        .addClass('h-auto');
-                    console.log(id, message);
-                });
 
-                $('#close-reply').click(function(e) {
-                    e.preventDefault();
-                    $('.reply-data')
-                        .addClass('reply-data-collapsed')
-                        .removeClass('h-auto');
-
-                    setTimeout(() => {
-                        $('.reply-data .reply-message').text('');
-                    }, 1000);
-
-                });
-            </script>
         </x-slot>
 
 </x-dashboard.layout>

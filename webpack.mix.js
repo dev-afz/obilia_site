@@ -108,6 +108,7 @@ mix
   .copy("resources/js/dataTables.bootstrap5.min.js", "public/js")
   .js("resources/js/anm.js", "public/js")
   .copy("resources/js/notiflix.min.js", "public/js")
+  .copy("resources/js/repeater.js", "public/js")
   .js("resources/js/bootstrap-slider.min.js", "public/js")
   .js("resources/js/chart.js", "public/js")
   .js("resources/js/custom.js", "public/js")

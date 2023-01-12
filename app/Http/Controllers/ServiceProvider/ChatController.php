@@ -35,7 +35,7 @@ class ChatController extends Controller
             ->firstOrFail();
 
         $messages = $chats->messages()->with([
-            'media',
+            'media', 'replied.media'
         ])
             ->orderBy('id', 'desc')
             ->simplePaginate(20)
@@ -67,19 +67,21 @@ class ChatController extends Controller
             'message' => 'required_without:images|max:2000',
             'uuid' => 'required|string|max:255',
             'images' => 'nullable|array',
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'reply_to' => 'nullable|integer|exists:messages,id|numeric'
         ]);
-
         $chat = auth()->user()->chats()->where('chats.uuid', $request->id)->firstOrFail();
         $message = $chat->messages()->create([
             'message' => $request->message,
             'sender_id' => auth()->user()->id,
+            'replied_to' => ($request->reply_to && $request->reply_to !== "") ? $request->reply_to : null,
+
         ]);
         $media = null;
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
                 $type = $file->getMimeType();
-                Log::info($type);
+
                 $media[] = [
                     'file' => $this->uploadFileToDO($file, 'chat/media', 'file'),
                     'type' => $type,
@@ -89,7 +91,13 @@ class ChatController extends Controller
             $message->media()->createMany($media);
         }
 
-        $message->load(['media']);
+        $message->load(['media', 'replied.media']);
+
+
+
+        $for = 'reply';
+
+        $html =  view('components.chat.message', compact('message', 'for'))->render();
 
         $for = 'sender';
         event(new MessageEvent(
@@ -100,12 +108,11 @@ class ChatController extends Controller
             chat: $chat->uuid,
             to: $chat->participant->user->uuid,
         ));
-        $canDelete = true;
-        $dropdown = view('components.chat.message-dropdown', compact('message', 'canDelete'))->render();
+
         return response()->json([
             'status' => 'success',
             'message' => 'Message sent successfully',
-            'dropdown' => $dropdown,
+            'html' => $html,
         ]);
     }
 
@@ -123,7 +130,7 @@ class ChatController extends Controller
             ->firstOrFail();
 
         $messages = $chats->messages()->with([
-            'media', 'sender:id,uuid,name,images'
+            'media', 'replied.media'
         ])
             ->orderBy('id', 'desc')
             ->simplePaginate(20, ['*'], 'page', $request->page)

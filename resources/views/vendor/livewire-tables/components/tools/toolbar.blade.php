@@ -515,7 +515,7 @@
         </div>
     @endif
 @elseif ($theme === 'bootstrap-5')
-    <div class="d-md-flex justify-content-between mb-3">
+    <div class="d-md-flex datatable-toolbar justify-content-between mb-3">
         <div class="d-md-flex">
             @if ($component->hasConfigurableAreaFor('toolbar-left-start'))
                 @include($component->getConfigurableAreaFor('toolbar-left-start'),

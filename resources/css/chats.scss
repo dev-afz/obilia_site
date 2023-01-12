@@ -192,6 +192,9 @@ $border-color_3: transparent transparent $clr-primary transparent;
       color: $clr-primary !important;
     }
   }
+  .reply-content {
+    background: $primary-200;
+  }
 }
 
 a.add {

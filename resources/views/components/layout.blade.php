@@ -95,9 +95,19 @@
     <script src="{{ asset(mix('js/init.js')) }}"></script>
 
 
+    {!! $vendor_scripts ?? '' !!}
+
+
     {!! $scripts ?? '' !!}
 
     @stack('component-scripts')
+
+
+
+    @stack('component-lower-scripts')
+
+
+
 
 
 </body>

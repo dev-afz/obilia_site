@@ -1,4 +1,3 @@
-import { message } from "laravel-mix/src/Log.js";
 import "./chatting.js";
 import { v4 as uuidv4 } from "uuid";
 
@@ -50,6 +49,8 @@ function showChatBox() {
 function setOnlyThisActive(id) {
   $(".chat-list a").removeClass("active");
   $(`a[data-chat=${id}]`).addClass("active").removeClass("unread");
+  $("[data-create-contract]").attr("data-create-contract", id);
+  console.log(id);
 }
 
 function setChatData(response) {
@@ -74,12 +75,20 @@ function setChatData(response) {
 
 $("#message-box").submit(function (e) {
   e.preventDefault();
-  const message = $('#message-box [name="message"]').val();
+  const message = sanitize($('#message-box [name="message"]').val());
   const images = $('#message-box [name="images[]"]').val();
   const videos = $('#message-box [name="videos[]"]').val();
   const files = $('#message-box [name="files[]"]').val();
   const id = $('#message-box [name="id"]').val();
   const to = $('#message-box [name="to"]').val();
+
+  if (isStringDirty(message)) {
+    Notiflix.Notify.failure(
+      "Don't try to be smart!, Your action has been reported."
+    );
+    $("#message-box [name='message']").val("");
+    return;
+  }
 
   const msg_uuid = uuidv4();
   if (!id || id == "" || id == "undefined") {
@@ -124,27 +133,26 @@ $("#message-box").submit(function (e) {
           $(el).val("");
         }
       });
-      $(`[data-msg-id=${msg_uuid}] [data-msg-status]`).html(
-        `<i class="fa fa-check-double"></i>`
-      );
-      $(`[data-msg-id=${msg_uuid}] .chat-content`).prepend(response.dropdown);
+
+      $(`[data-msg-id="${msg_uuid}"]`).replaceWith(response.html);
     },
   });
 });
 
 async function appendMessage(uuid = null) {
-  const message = $('#message-box [name="message"]').val();
+  const message = sanitize($('#message-box [name="message"]').val());
   $('#message-box [name="message"]').val("");
   const replied = $("#reply_to").val();
 
   const time = new Date().toLocaleString("en-US", {
     day: "numeric",
     month: "short",
-    year: "numeric",
+    year: "2-digit",
     hour: "numeric",
     minute: "numeric",
     hour12: true,
   });
+
   let html = `
 <li data-msg-id="${uuid}" class="reply">
 <div class="chat-content">`;
@@ -152,7 +160,7 @@ async function appendMessage(uuid = null) {
   if (replied) {
     const reply_content = $(".reply-data .reply-content").html();
     console.log(reply_content);
-    html += `<div class="reply-content">${reply_content}</div>`;
+    html += `<div class="reply-content mb-1">${reply_content}</div>`;
   }
 
   if ($('#message-box [name="images[]"]')[0].files[0]) {
@@ -166,11 +174,14 @@ async function appendMessage(uuid = null) {
   }
 
   if (message) {
-    html += ` <p class="m-0 chat-message">${message}</p>`;
+    html += ` <p class="m-0 chat-message">${message
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/(<([^>]+)>)/gi, "")}</p>`;
   }
 
   html += `<div class="time d-flex d-flex w-100 justify-content-end">
-        <span class="color-white opacity-05">
+        <span class="color-white opacity-0">
             ${time}
         </span>
         <span data-msg-status class="ms-2 d-flex align-items-center color-white">
@@ -401,3 +412,13 @@ $("#close-reply").click(function (e) {
     $(".reply-data .reply-message").text("");
   }, 1000);
 });
+
+function sanitize(str) {
+  return str
+    .replace(/<script[^>]*?>.*?<\/script>/gi, "")
+    .replace(/<[\/\!]*?[^<>]*?>/gi, "");
+}
+
+function isStringDirty(str) {
+  return /<script[^>]*?>.*?<\/script>/gi.test(str);
+}

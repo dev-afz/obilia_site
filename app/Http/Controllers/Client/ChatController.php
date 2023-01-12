@@ -73,14 +73,13 @@ class ChatController extends Controller
             'uuid' => 'required|string|max:255',
             'images' => 'nullable|array',
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'reply_to' => 'nullable|integer|exists:messages,id'
+            'reply_to' => 'nullable|integer|exists:messages,id|numeric'
         ]);
-
         $chat = auth()->user()->chats()->where('chats.uuid', $request->id)->firstOrFail();
         $message = $chat->messages()->create([
             'message' => $request->message,
             'sender_id' => auth()->user()->id,
-            'replied_to' => $request->reply_to
+            'replied_to' => ($request->reply_to && $request->reply_to !== "") ? $request->reply_to : null,
 
         ]);
         $media = null;
@@ -99,6 +98,10 @@ class ChatController extends Controller
 
         $message->load(['media', 'replied.media']);
 
+        $for = 'reply';
+
+        $html =  view('components.chat.message', compact('message', 'for'))->render();
+
         $for = 'sender';
         event(new MessageEvent(
             message: view('components.chat.message', compact('message', 'for'))->render(),
@@ -109,14 +112,10 @@ class ChatController extends Controller
             to: $chat->participant->user->uuid,
         ));
 
-
-        $canDelete = true;
-        $dropdown = view('components.chat.message-dropdown', compact('message', 'canDelete'))->render();
-
         return response()->json([
             'status' => 'success',
             'message' => 'Message sent successfully',
-            'dropdown' => $dropdown,
+            'html' => $html,
         ]);
     }
 
@@ -150,5 +149,11 @@ class ChatController extends Controller
             'status' => 'success',
             'html' => $html,
         ]);
+    }
+
+
+    public function sendContract(Request $request)
+    {
+        return $request->all();
     }
 }

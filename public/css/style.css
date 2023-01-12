@@ -5238,6 +5238,11 @@ Mobile style's
     max-width: 1400px;
   }
 }
+.datatable-toolbar .dropdown-menu {
+  max-height: 10rem;
+  overflow-y: auto;
+}
+
 /*Title separators*/
 .wt-small-separator {
   font-family: "Rubik", sans-serif;

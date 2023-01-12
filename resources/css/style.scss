@@ -18,6 +18,12 @@
   }
 }
 
+.datatable-toolbar{
+    .dropdown-menu{
+        max-height: 10rem;
+        overflow-y: auto;
+    }
+}
 /*Title separators*/
 
 .wt-small-separator {

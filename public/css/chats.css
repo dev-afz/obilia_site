@@ -180,6 +180,9 @@
 .sender .chat-content .dropdown-toggle {
   color: #09596f !important;
 }
+.sender .reply-content {
+  background: #cce3e7;
+}
 
 a.add img {
   height: 36px;

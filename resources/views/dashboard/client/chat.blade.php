@@ -144,12 +144,16 @@
                                             <form id="message-box">
                                                 <x-chat.share-btn />
                                                 <input disabled type="text" name="message" class="form-control"
-                                                    aria-label="message…" placeholder="Write message…">
+                                                    autocomplete="off" aria-label="message…"
+                                                    placeholder="Write message…">
                                                 <input type="hidden" required name="id" id="id">
                                                 <input type="hidden" required name="to" id="to">
-                                                <input type="hidden" name="reply_to" id="reply_to">
-                                                <button disabled class="send__btn" type="submit"><i
-                                                        class="fa fa-paper-plane" aria-hidden="true"></i>
+                                                <input type="number" class="d-none" hidden name="reply_to"
+                                                    id="reply_to">
+                                                <button disabled
+                                                    class="send__btn d-flex align-items-center justify-content-center"
+                                                    type="submit"><i class="feather-send fs-5 m-0"
+                                                        aria-hidden="true"></i>
                                                 </button>
                                             </form>
                                         </div>
@@ -174,6 +178,47 @@
     </x-elements.modal>
 
 
+    {{-- <x-elements.modal class="modal-xl modal-dialog-scrollable" title="Create Contract" id="contract-modal"
+        :footer="false">
+        <form id="contract-form" action="{{ route('client.chat.send-contract') }}">
+            <div id="contract-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group mb-3">
+                            <label for="project_title">Project Title</label>
+                            <input type="text" class="form-control form-control-sm" name="project_title"
+                                id="project_title" placeholder="Project Title">
+                            <input type="text" required name="chat_id" hidden id="chat_id">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="contract_date">Contract date</label>
+                            <input type="text" class="form-control form-control-sm" name="contract_date"
+                                id="contract_date" placeholder="Contract date">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="final_cost">Contract date</label>
+                            <input type="text" class="form-control form-control-sm" name="final_cost"
+                                id="final_cost" placeholder="Contract date">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group mb-3">
+                            <label for="constract_description">Contract Description</label>
+                            <textarea class="form-control form-control-sm h-100" name="constract_description" id="constract_description"
+                                rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </x-elements.modal> --}}
+
+
 
     <x-slot name="scripts">
         <script>
@@ -183,6 +228,13 @@
             const send_url = "{{ route('client.chat.send-messages') }}";
         </script>
         <script src="{{ asset(mix('js/chat.js')) }}"></script>
+        <script>
+            $(document).on('click', '[data-create-contract]', function(e) {
+                e.preventDefault();
+                const id = $(this).data('create-contract');
+                const win = window.open(`/client/contract/create/${id}`, '_blank');
+            });
+        </script>
     </x-slot>
 
 </x-dashboard.layout>

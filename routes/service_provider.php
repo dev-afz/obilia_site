@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ServiceProvider\ChatController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\SanitizeInputMiddleware;
 use App\Http\Controllers\ServiceProvider\JobController;
+use App\Http\Controllers\ServiceProvider\ChatController;
 use App\Http\Controllers\ServiceProvider\DashboardController;
 
 Route::controller(DashboardController::class)
@@ -27,6 +28,7 @@ Route::controller(DashboardController::class)
                 Route::get('/', 'index')->name('index');
                 Route::get('messages', 'messages')->name('messages');
                 Route::get('load-message', 'loadMessages')->name('load-messages');
-                Route::post('send-message', 'sendMessages')->name('send-messages');
+                Route::post('send-message', 'sendMessages')->name('send-messages')
+                    ->middleware(SanitizeInputMiddleware::class);
             });
     });

@@ -266,5 +266,6 @@
     "/js/bootstrap.min.js": "/js/bootstrap.min.js",
     "/js/bootstrap-select.min.js": "/js/bootstrap-select.min.js",
     "/js/dataTables.bootstrap5.min.js": "/js/dataTables.bootstrap5.min.js",
-    "/js/notiflix.min.js": "/js/notiflix.min.js"
+    "/js/notiflix.min.js": "/js/notiflix.min.js",
+    "/js/repeater.js": "/js/repeater.js"
 }

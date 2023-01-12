@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class ClientMiddleware
+class SanitizeInputMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,13 +16,23 @@ class ClientMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user()->role !== 'client') {
+        //clean $request->message
+        $request->merge([
+            'message' => $this->cleanMessage($request->message)
+        ]);
 
-            if ($request->user()->status !== 'active') {
-                return 'Your account is not active';
-            }
-            return redirect()->route('index');
-        }
         return $next($request);
+    }
+
+
+    private  function cleanMessage($message)
+    {
+
+
+        $message = strip_tags($message);
+        $message = trim($message);
+        $message = stripslashes($message);
+
+        return $message;
     }
 }

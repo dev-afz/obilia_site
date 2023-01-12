@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Client\JobController;
 use App\Http\Controllers\Client\ChatController;
+use App\Http\Middleware\SanitizeInputMiddleware;
+use App\Http\Controllers\Client\ContractController;
 use App\Http\Controllers\Client\DashboardController;
 use App\Http\Controllers\Client\JobApplicationController;
 
@@ -44,6 +46,16 @@ Route::controller(DashboardController::class)
                 Route::get('/', 'index')->name('index');
                 Route::get('messages', 'messages')->name('messages');
                 Route::get('load-message', 'loadMessages')->name('load-messages');
-                Route::post('send-message', 'sendMessages')->name('send-messages');
+                Route::post('send-message', 'sendMessages')->name('send-messages')
+                    ->middleware(SanitizeInputMiddleware::class);
+            });
+
+
+        Route::controller(ContractController::class)
+            ->prefix('contract')
+            ->name('contract.')
+            ->group(function () {
+                Route::get('create/{chat_uid}', 'create')->name('create');
+                Route::post('store', 'store')->name('store');
             });
     });
