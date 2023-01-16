@@ -182,6 +182,11 @@
                 const send_url = "{{ route('service-provider.chat.send-messages') }}";
             </script>
             <script src="{{ asset(mix('js/chat.js')) }}"></script>
+            <script>
+                // $(doument).on(events, function() {
+
+                // });
+            </script>
 
         </x-slot>
 

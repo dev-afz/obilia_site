@@ -10,7 +10,7 @@
             @else
                 {{-- <i class="fa fa-dot-circle-o"></i> --}}
             @endif
-            <p class="admin-nav-text mb-0 ms-3">{{ $m->name }}</p>
+            <p class="admin-nav-text mb-0 ms-3 fs-6">{{ $m->name }}</p>
         </a>
 
         @if (isset($m->submenu))
