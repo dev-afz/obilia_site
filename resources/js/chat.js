@@ -49,7 +49,7 @@ function showChatBox() {
 function setOnlyThisActive(id) {
   $(".chat-list a").removeClass("active");
   $(`a[data-chat=${id}]`).addClass("active").removeClass("unread");
-  $("[data-create-contract]").attr("data-create-contract", id);
+  $("#create-contract-form #chat_id").val(id);
   console.log(id);
 }
 
@@ -64,7 +64,7 @@ function setChatData(response) {
     alt="user img">`);
 
   $("[data-chat-name]").html(` <h3>${response.chat_data.user.name}</h3>
-    <small>${response.chat_data.name}</small>`);
+    <small class="chat-name">${response.chat_data.name}</small>`);
   $(".chatbox input,.chatbox button").attr("disabled", false);
   $("#message-box [name='id']").val(response.chat_data.id);
   $("#message-box [name='to']").val(response.chat_data.user.uuid);
@@ -139,7 +139,7 @@ $("#message-box").submit(function (e) {
   });
 });
 
-async function appendMessage(uuid = null) {
+async function appendMessage(uuid = null, contract = false) {
   const message = sanitize($('#message-box [name="message"]').val());
   $('#message-box [name="message"]').val("");
   const replied = $("#reply_to").val();
@@ -178,6 +178,17 @@ async function appendMessage(uuid = null) {
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/(<([^>]+)>)/gi, "")}</p>`;
+  }
+
+  if (contract) {
+    html += ` <div class="contract-holder p-2">
+        <div class="contract-title">
+            <h4 class="mb-2 text-white text-center">Contract Request</h4>
+            <p>
+                ${contract}
+            </p>
+        </div>
+        </div>`;
   }
 
   html += `<div class="time d-flex d-flex w-100 justify-content-end">
@@ -382,6 +393,10 @@ $(document).on("click", "[data-msg-reply]", function (e) {
   $("#reply_to").val(id);
   const message = $(this).closest(".chat-content").find(".chat-message").text();
   const chat_images = $(this).closest(".chat-content").find(".chat-img");
+  const contract_html = $(this)
+    .closest(".chat-content")
+    .find(".contract-title")
+    .html();
 
   console.log(chat_images, chat_images.length, message);
   let message_html = "";
@@ -398,6 +413,11 @@ $(document).on("click", "[data-msg-reply]", function (e) {
     });
     image_html += "</div>";
   }
+
+  if (contract_html) {
+    message_html = `<div class="contract-title">${contract_html}</div>`;
+  }
+
   $(".reply-data .reply-content").append(message_html + image_html);
   $('#message-box [name="message"]').focus();
   $(".reply-data").removeClass("reply-data-collapsed").addClass("h-auto");
@@ -421,4 +441,34 @@ function sanitize(str) {
 
 function isStringDirty(str) {
   return /<script[^>]*?>.*?<\/script>/gi.test(str);
+}
+
+const bc = new BroadcastChannel("new_contract");
+
+bc.onmessage = function (e) {
+  console.log(e);
+};
+
+/*
+|--------------------------------------------------------------------------
+| Contract
+|--------------------------------------------------------------------------
+*/
+if (contract_url) {
+  $("#create-contract-form").submit(function (e) {
+    e.preventDefault();
+    $("#create-contract").offcanvas("hide");
+    const msg_uuid = uuidv4();
+    appendMessage(msg_uuid, $(this).find("#project_title").val());
+    window.rebound({
+      form: this,
+      url: contract_url,
+      appendData: {
+        chat_id: $(".chat__item.active").data("chat"),
+      },
+      successCallback: function (res) {
+        $(`[data-msg-id="${msg_uuid}"]`).replaceWith(res.html);
+      },
+    });
+  });
 }

@@ -16,7 +16,7 @@
                 {!! $icon !!}
             @endif
         @else
-            <textarea class="form-control "
+            <textarea class="form-control h-auto"
                 @if (!empty($attrs)) @forelse ($attrs as $atr) {{ $atr[0] }}="{{ $atr[1] }}" @empty @endforelse @endif
                 @if ($required) required @endif
                 @if ($multiple) name="{{ $name }}[]"@else name="{{ $name }}" @endif

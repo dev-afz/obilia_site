@@ -454,3 +454,113 @@ button.dt-btn {
   background-color: #d6d8d9;
   color: #1b1e21;
 }
+
+.divider {
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 1rem 0;
+}
+
+.divider .divider-text {
+  position: relative;
+  display: inline-block;
+  font-size: 0.9375rem;
+  padding: 0 1rem;
+}
+
+.divider .divider-text i,
+.divider .divider-text svg {
+  height: 1rem;
+  width: 1rem;
+  font-size: 1rem;
+}
+
+.divider .divider-text:before,
+.divider .divider-text:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 9999px;
+  border-top: 2px solid #09596f;
+}
+
+.divider .divider-text:before {
+  right: 100%;
+}
+
+.divider .divider-text:after {
+  left: 100%;
+}
+
+.divider.divider-start .divider-text {
+  float: left;
+  padding-left: 0;
+}
+
+.divider.divider-start .divider-text:before {
+  display: none;
+}
+
+.divider.divider-start-center .divider-text {
+  left: -25%;
+}
+
+.divider.divider-end .divider-text {
+  float: right;
+  padding-right: 0;
+}
+
+.divider.divider-end .divider-text:after {
+  display: none;
+}
+
+.divider.divider-end-center .divider-text {
+  right: -25%;
+}
+
+.divider.divider-dotted .divider-text:before,
+.divider.divider-dotted .divider-text:after {
+  border-style: dotted;
+  border-width: 1px;
+  border-top-width: 0;
+  border-color: #09596f;
+}
+
+.divider.divider-dashed .divider-text:before,
+.divider.divider-dashed .divider-text:after {
+  border-style: dashed;
+  border-width: 1px;
+  border-top-width: 0;
+  border-color: #09596f;
+}
+
+hr {
+  height: 2px;
+  background-color: #09596f;
+}
+
+.btn-check:active + .btn-primary:focus,
+.btn-check:checked + .btn-primary:focus,
+.btn-primary.active:focus,
+.btn-primary:active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem #4d9fa9 !important;
+}
+
+.offcanvas-bottom.create-contract.offcanvas-bottom {
+  height: 70vh !important;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 991px) {
+  .offcanvas-bottom.create-contract.offcanvas-bottom {
+    height: 90vh !important;
+  }
+}
+.btn-info {
+  border-color: #00cfe8 !important;
+  background-color: #00cfe8 !important;
+  color: #fff !important;
+}

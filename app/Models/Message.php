@@ -29,6 +29,11 @@ class Message extends Model
         return $this->hasMany(MessageMedia::class);
     }
 
+    public function contract()
+    {
+        return $this->hasOne(MessageContract::class);
+    }
+
     public function replied()
     {
         return $this->belongsTo(Message::class, 'replied_to', 'id');

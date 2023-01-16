@@ -2,15 +2,15 @@
     <li @class([
         'active' => Route::currentRouteName() === $m->slug,
     ])>
-        <a href="{{ isset($m->url) ? url($m->url) : 'javascript:void(0)' }}">
+        <a class="d-flex align-items-center" href="{{ isset($m->url) ? url($m->url) : 'javascript:void(0)' }}">
             @if ($m->icon)
-                <span class="svg-holder">
+                <div class="svg-holder d-flex">
                     {!! $m->icon !!}
-                </span>
+                </div>
             @else
                 {{-- <i class="fa fa-dot-circle-o"></i> --}}
             @endif
-            <span class="admin-nav-text">{{ $m->name }}</span>
+            <p class="admin-nav-text mb-0 ms-3">{{ $m->name }}</p>
         </a>
 
         @if (isset($m->submenu))

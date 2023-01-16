@@ -15,16 +15,19 @@ class Repeater extends Component
     public $fields;
     public $maxLimit;
     public $minLimit;
+    public $addButtonLabel;
     public function __construct(
         $name,
         $fields = "",
         $maxLimit = 0,
-        $minLimit = 1
+        $minLimit = 1,
+        $addButtonLabel = null
     ) {
         $this->name = $name;
         $this->fields = $fields;
         $this->maxLimit = $maxLimit;
         $this->minLimit = $minLimit;
+        $this->addButtonLabel = $addButtonLabel;
     }
 
     /**

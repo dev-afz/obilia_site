@@ -82,7 +82,13 @@
 
     {!! $scripts ?? '' !!}
 
+
+    @yield('scripts')
+
+
     @stack('component-scripts')
+    @stack('lower-scripts')
+
 
 
 

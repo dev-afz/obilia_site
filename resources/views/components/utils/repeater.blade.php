@@ -21,7 +21,8 @@
                             <x-utils.input required="{{ $f['required'] ?? 'true' }}" type="{{ $f['type'] ?? 'text' }}"
                                 id="{{ $name }}_{{ $f['name'] }}"
                                 label="{{ ucwords(str_replace('_', ' ', $f['name'])) }}"
-                                placeholder="{{ $f['name'] }}" name="{{ $name }}[][{{ $f['name'] }}]" />
+                                placeholder="{{ ucwords(str_replace('_', ' ', $f['name'])) }}"
+                                name="{{ $name }}[][{{ $f['name'] }}]" />
                         </div>
                     @endif
                     @if ($f['type'] === 'select')
@@ -49,20 +50,28 @@
 
                 </div>
 
-                <hr class="mb-5">
+                <hr class="mb-2">
 
             </div>
         </div>
     </div>
 </div>
 <div class="col-12 text-center mt-2">
-    <button id="add-more-{{ $name }}" type="button" class="btn btn-secondary btn-lg ">
-        <i class="fa fa-plus"></i>
+    <button id="add-more-{{ $name }}" type="button" class="btn text-white  btn-info btn-lg ">
+        @if ($addButtonLabel)
+            {!! $addButtonLabel !!}
+        @else
+            <i class="fa fa-plus"></i>
+        @endif
     </button>
 </div>
 
 @pushonce('component-scripts')
     <script src="{{ asset(mix('js/repeater.js')) }}"></script>
+@endpushonce
+
+
+@push('lower-scripts')
     <script>
         // jQuery cloneData.js
         $('#add-more-{{ $name }}').cloneData({
@@ -89,24 +98,4 @@
             @endfor
         @endif
     </script>
-@endpushonce
-
-@push('component-lower-scripts')
-    < script>
-        // jQuery cloneData.js
-        $('#add-more-{{ $name }}').cloneData({
-        mainContainerId: 'container-{{ $name }}',
-        cloneContainer: 'container-item-{{ $name }}',
-        removeButtonClass: 'remove-item-{{ $name }}',
-        removeConfirm: true,
-        removeConfirmMessage: 'Are you sure want to delete?',
-        append: '',
-        maxLimit: {{ $maxLimit }},
-        minLimit: 1,
-        defaultRender: 1,
-        afterRender: function() {
-
-        },
-        });
-    </>
 @endpush

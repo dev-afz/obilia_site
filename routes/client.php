@@ -7,6 +7,7 @@ use App\Http\Middleware\SanitizeInputMiddleware;
 use App\Http\Controllers\Client\ContractController;
 use App\Http\Controllers\Client\DashboardController;
 use App\Http\Controllers\Client\JobApplicationController;
+use App\Http\Controllers\Client\WorkspacesController;
 
 Route::controller(DashboardController::class)
     ->middleware(['auth', 'client'])
@@ -57,5 +58,12 @@ Route::controller(DashboardController::class)
             ->group(function () {
                 Route::get('create/{chat_uid}', 'create')->name('create');
                 Route::post('store', 'store')->name('store');
+            });
+
+        Route::controller(WorkspacesController::class)
+            ->prefix('workspace')
+            ->name('workspace.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
             });
     });

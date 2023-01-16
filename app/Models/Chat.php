@@ -39,4 +39,14 @@ class Chat extends Model
     {
         return $this->hasMany(Message::class);
     }
+
+
+
+
+
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'active');
+    }
 }

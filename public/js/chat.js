@@ -6989,14 +6989,14 @@ function showChatBox() {
 function setOnlyThisActive(id) {
   $(".chat-list a").removeClass("active");
   $("a[data-chat=".concat(id, "]")).addClass("active").removeClass("unread");
-  $("[data-create-contract]").attr("data-create-contract", id);
+  $("#create-contract-form #chat_id").val(id);
   console.log(id);
 }
 function setChatData(response) {
   var _response$chat_data$u;
   var user_avatar = (_response$chat_data$u = response.chat_data.user.images) !== null && _response$chat_data$u !== void 0 ? _response$chat_data$u : "https://ui-avatars.com/api/?name=" + response.chat_data.user.name;
   $("[data-user-image]").html(" <img class=\"img-fluid rounded-circle\"\n  height=\"50\"\n    width=\"50\"\n    src=\"".concat(user_avatar, "\"\n    alt=\"user img\">"));
-  $("[data-chat-name]").html(" <h3>".concat(response.chat_data.user.name, "</h3>\n    <small>").concat(response.chat_data.name, "</small>"));
+  $("[data-chat-name]").html(" <h3>".concat(response.chat_data.user.name, "</h3>\n    <small class=\"chat-name\">").concat(response.chat_data.name, "</small>"));
   $(".chatbox input,.chatbox button").attr("disabled", false);
   $("#message-box [name='id']").val(response.chat_data.id);
   $("#message-box [name='to']").val(response.chat_data.user.uuid);
@@ -7066,6 +7066,7 @@ function appendMessage() {
 function _appendMessage() {
   _appendMessage = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
     var uuid,
+      contract,
       message,
       replied,
       time,
@@ -7077,6 +7078,7 @@ function _appendMessage() {
         switch (_context.prev = _context.next) {
           case 0:
             uuid = _args.length > 0 && _args[0] !== undefined ? _args[0] : null;
+            contract = _args.length > 1 && _args[1] !== undefined ? _args[1] : false;
             message = sanitize($('#message-box [name="message"]').val());
             $('#message-box [name="message"]').val("");
             replied = $("#reply_to").val();
@@ -7102,12 +7104,15 @@ function _appendMessage() {
             if (message) {
               html += " <p class=\"m-0 chat-message\">".concat(message.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/(<([^>]+)>)/gi, ""), "</p>");
             }
+            if (contract) {
+              html += " <div class=\"contract-holder p-2\">\n        <div class=\"contract-title\">\n            <h4 class=\"mb-2 text-white text-center\">Contract Request</h4>\n            <p>\n                ".concat(contract, "\n            </p>\n        </div>\n        </div>");
+            }
             html += "<div class=\"time d-flex d-flex w-100 justify-content-end\">\n        <span class=\"color-white opacity-0\">\n            ".concat(time, "\n        </span>\n        <span data-msg-status class=\"ms-2 d-flex align-items-center color-white\">\n            <i class=\"fa fa-clock\"></i>\n        </span>\n    </div>\n</div>\n</li>\n");
             $('#message-box [name="images[]"]').val("");
             $("[data-messages]").append(html);
             $("#close-reply").click();
             scrollToBottom();
-          case 14:
+          case 16:
           case "end":
             return _context.stop();
         }
@@ -7265,6 +7270,7 @@ $(document).on("click", "[data-msg-reply]", function (e) {
   $("#reply_to").val(id);
   var message = $(this).closest(".chat-content").find(".chat-message").text();
   var chat_images = $(this).closest(".chat-content").find(".chat-img");
+  var contract_html = $(this).closest(".chat-content").find(".contract-title").html();
   console.log(chat_images, chat_images.length, message);
   var message_html = "";
   $(".reply-data .reply-content").html("");
@@ -7278,6 +7284,9 @@ $(document).on("click", "[data-msg-reply]", function (e) {
       image_html += "<img class=\"ms-1 reply-img\" src=\"".concat(el.src, "\" alt=\"image\" />");
     });
     image_html += "</div>";
+  }
+  if (contract_html) {
+    message_html = "<div class=\"contract-title\">".concat(contract_html, "</div>");
   }
   $(".reply-data .reply-content").append(message_html + image_html);
   $('#message-box [name="message"]').focus();
@@ -7296,6 +7305,34 @@ function sanitize(str) {
 }
 function isStringDirty(str) {
   return /<script[^>]*?>.*?<\/script>/gi.test(str);
+}
+var bc = new BroadcastChannel("new_contract");
+bc.onmessage = function (e) {
+  console.log(e);
+};
+
+/*
+|--------------------------------------------------------------------------
+| Contract
+|--------------------------------------------------------------------------
+*/
+if (contract_url) {
+  $("#create-contract-form").submit(function (e) {
+    e.preventDefault();
+    $("#create-contract").offcanvas("hide");
+    var msg_uuid = (0,uuid__WEBPACK_IMPORTED_MODULE_1__["default"])();
+    appendMessage(msg_uuid, $(this).find("#project_title").val());
+    window.rebound({
+      form: this,
+      url: contract_url,
+      appendData: {
+        chat_id: $(".chat__item.active").data("chat")
+      },
+      successCallback: function successCallback(res) {
+        $("[data-msg-id=\"".concat(msg_uuid, "\"]")).replaceWith(res.html);
+      }
+    });
+  });
 }
 })();
 

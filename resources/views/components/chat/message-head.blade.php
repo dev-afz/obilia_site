@@ -14,19 +14,19 @@
         </div>
     </div>
     <div class="col-4">
+
         <ul class="moreoption">
             <li class="navbar nav-item dropdown">
+                @if (auth()->user()->role == 'client')
+                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#create-contract" aria-controls="create-contract"><i
+                            class="feather-file-plus fs-5 me-1"></i></button>
+                @endif
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <i class="feather-more-vertical fs-5" aria-hidden="true"></i>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>
-                        <a class="dropdown-item" data-create-contract="">
-                            <i class="feather-file-text fs-5 me-1"></i>
-                            Create Contact
-                        </a>
-                    </li>
                     <li>
                         <a class="dropdown-item" href="#">
                             <i class="feather-x-square fs-5 me-1"></i>

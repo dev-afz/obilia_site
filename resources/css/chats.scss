@@ -1268,3 +1268,40 @@ video {
     cursor: pointer !important;
   }
 }
+.chat-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chat-content {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+.contract-btn {
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.btn-reject {
+  background-color: #ea5455;
+}
+
+.btn-accept {
+  background-color: #28c76f;
+}
+
+.btn-view {
+  background-color: #fb923c;
+}
+.reply .contract-title h4 {
+  color: white !important;
+}
+
+.reply .reply-content .contract-title h4 {
+  color: black !important;
+}

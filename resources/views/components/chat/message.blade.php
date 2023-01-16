@@ -1,5 +1,5 @@
 <li class="{{ $for }}">
-    <div class="chat-content">
+    <div @class(['chat-content', 'has-contract' => $message->contract])>
         <x-chat.message-dropdown :message="$message" :canDelete="$for === 'reply'" />
 
 
@@ -10,9 +10,21 @@
                     <p class="mb-0 me-4">{{ $message->replied->message }}</p>
                 @endif
 
+                @if ($message->replied->contract)
+                    <div class="contract-holder p-2">
+                        <div class="contract-title">
+                            <h4 class="mb-2  text-center">Contract Request</h4>
+                            <p>
+                                {{ json_decode($message->replied->contract->contract, true)['project_title'] }}
+                            </p>
+                        </div>
+
+                    </div>
+                @endif
+
                 @if (!empty($message->replied->media) && count($message->replied->media) > 0)
                     <div class="reply-image-holder">
-                        {{-- {{ json_encode($message->replied) }} --}}
+
                         @foreach ($message->replied->media as $img)
                             <img class="ms-1 reply-img" src="{{ $img->file }}" alt="">
                         @endforeach
@@ -32,6 +44,33 @@
 
         @if ($message->message)
             <p class="mb-0 me-4 chat-message">{{ $message->message }}</p>
+        @endif
+
+
+        @if ($message->contract)
+            <div class="contract-holder p-2">
+                <div class="contract-title">
+                    <h4 class="mb-2  text-center">Contract Request</h4>
+                    <p>
+                        {{ json_decode($message->contract->contract, true)['project_title'] }}
+                    </p>
+                </div>
+                <div class="contract-btns d-flex gap-1 justify-content-around">
+                    <button data-contract-view="{{ $message->contract->contract }}" class="contract-btn btn-view">
+                        <i class="feather-eye"></i>
+                    </button>
+                    @if ($for !== 'reply')
+                        @if ($message->contract->status == 'pending')
+                            <button data-contract-accept="{{ $message->contract->id }}" class="contract-btn btn-accept">
+                                <i class="feather-check"></i>
+                            </button>
+                            <button data-contract-reject="{{ $message->contract->id }}" class="contract-btn btn-reject">
+                                <i class="feather-x"></i>
+                            </button>
+                        @endif
+                    @endif
+                </div>
+            </div>
         @endif
 
         <div class="time d-flex w-100 justify-content-end">

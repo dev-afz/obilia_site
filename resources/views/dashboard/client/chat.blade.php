@@ -108,14 +108,14 @@
                                             <x-chat.message-head />
                                         </div>
 
-                                        <div id="chat-holder" class="modal-body">
+                                        <div id="chat-holder" class="modal-body p-0">
                                             <div class="chat-loading-state d-none">
                                                 <div class="loader-container">
                                                     <div class="loader"></div>
                                                 </div>
                                             </div>
                                             <div class="msg-body">
-                                                <ul data-messages="">
+                                                <ul class="px-2" data-messages="">
 
                                                     <x-chat.message-loader />
                                                 </ul>
@@ -178,45 +178,50 @@
     </x-elements.modal>
 
 
-    {{-- <x-elements.modal class="modal-xl modal-dialog-scrollable" title="Create Contract" id="contract-modal"
-        :footer="false">
-        <form id="contract-form" action="{{ route('client.chat.send-contract') }}">
-            <div id="contract-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group mb-3">
-                            <label for="project_title">Project Title</label>
-                            <input type="text" class="form-control form-control-sm" name="project_title"
-                                id="project_title" placeholder="Project Title">
-                            <input type="text" required name="chat_id" hidden id="chat_id">
+    <x-utils.offcanvas id="create-contract" class="create-contract" position="bottom" title="Create Contract">
+        <form id="create-contract-form">
+            <div class="row">
+                <div class="col-md-12">
+                    <x-utils.input name="project_title" />
+                </div>
+                <div class="col-md-6">
+                    <x-utils.input name="contract_date" />
+                </div>
+                <div class="col-md-6">
+                    <x-utils.input name="project_cost" />
+                </div>
+                <div class="col-md-12">
+                    <x-utils.input name="project_description" type="textarea" />
+                </div>
+                <div class="col-12">
+                    <div class="divider">
+                        <div class="divider-text">
+                            <h4>
+                                Milestone
+                            </h4>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            <label for="contract_date">Contract date</label>
-                            <input type="text" class="form-control form-control-sm" name="contract_date"
-                                id="contract_date" placeholder="Contract date">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mb-3">
-                            <label for="final_cost">Contract date</label>
-                            <input type="text" class="form-control form-control-sm" name="final_cost"
-                                id="final_cost" placeholder="Contract date">
-                        </div>
-                    </div>
+                    <x-utils.repeater :minLimit="1" name="milestones"
+                        addButtonLabel="<i class='fa fa-plus'></i> Add Milestone"
+                        :fields="[
+                            ['name' => 'title', 'col' => 8],
+                            ['name' => 'amount', 'type' => 'number', 'col' => 4],
+                            ['name' => 'description', 'type' => 'textarea', 'col' => 11],
+                        ]" />
+                </div>
 
-                    <div class="col-md-12">
-                        <div class="form-group mb-3">
-                            <label for="constract_description">Contract Description</label>
-                            <textarea class="form-control form-control-sm h-100" name="constract_description" id="constract_description"
-                                rows="3"></textarea>
-                        </div>
-                    </div>
+                <div class="col-md-12">
+                    <x-utils.input-file name="contract_file" />
+                </div>
+
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-success btn-lg w-100">
+                        Create Contract
+                    </button>
                 </div>
             </div>
         </form>
-    </x-elements.modal> --}}
+    </x-utils.offcanvas>
 
 
 
@@ -226,15 +231,10 @@
             const message_url = "{{ route('client.chat.messages') }}";
             const load_url = "{{ route('client.chat.load-messages') }}";
             const send_url = "{{ route('client.chat.send-messages') }}";
+            const contract_url = "{{ route('client.contract.store') }}";
         </script>
         <script src="{{ asset(mix('js/chat.js')) }}"></script>
-        <script>
-            $(document).on('click', '[data-create-contract]', function(e) {
-                e.preventDefault();
-                const id = $(this).data('create-contract');
-                const win = window.open(`/client/contract/create/${id}`, '_blank');
-            });
-        </script>
+
     </x-slot>
 
 </x-dashboard.layout>
