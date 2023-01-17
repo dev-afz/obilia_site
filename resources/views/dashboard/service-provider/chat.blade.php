@@ -183,9 +183,26 @@
             </script>
             <script src="{{ asset(mix('js/chat.js')) }}"></script>
             <script>
-                // $(doument).on(events, function() {
+                $(document).on('click', '[data-contract-action]', function(e) {
+                    e.preventDefault();
+                    const action = $(this).data('contract-action-type');
+                    const id = $(this).data('contract-action');
+                    window.rebound({
+                        data: {
+                            action: action,
+                            id: id
+                        },
+                        url: "{{ route('service-provider.contract.action') }}",
+                        notification: false,
+                        processData: true,
+                        successCallback: function(data) {
+                            $("[data-messages]").append(data.html);
+                            var objDiv = document.getElementById("chat-holder");
+                            objDiv.scrollTop = objDiv.scrollHeight;
 
-                // });
+                        }
+                    });
+                });
             </script>
 
         </x-slot>

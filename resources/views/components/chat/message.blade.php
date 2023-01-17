@@ -61,10 +61,12 @@
                     </button>
                     @if ($for !== 'reply')
                         @if ($message->contract->status == 'pending')
-                            <button data-contract-accept="{{ $message->contract->id }}" class="contract-btn btn-accept">
+                            <button data-contract-action="{{ $message->contract->id }}"
+                                data-contract-action-type="accept" class="contract-btn btn-accept">
                                 <i class="feather-check"></i>
                             </button>
-                            <button data-contract-reject="{{ $message->contract->id }}" class="contract-btn btn-reject">
+                            <button data-contract-action="{{ $message->contract->id }}"
+                                data-contract-action-type="reject" class="contract-btn btn-reject">
                                 <i class="feather-x"></i>
                             </button>
                         @endif

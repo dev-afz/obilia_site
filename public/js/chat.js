@@ -7316,7 +7316,8 @@ bc.onmessage = function (e) {
 | Contract
 |--------------------------------------------------------------------------
 */
-if (contract_url) {
+
+if (typeof contract_url !== 'undefined') {
   $("#create-contract-form").submit(function (e) {
     e.preventDefault();
     $("#create-contract").offcanvas("hide");

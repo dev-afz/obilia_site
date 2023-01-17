@@ -70,6 +70,7 @@ class ContractController extends Controller
             'project_description' => $request->project_description,
             'milestones' => $request->milestones,
             'contract_file' => $files,
+            'job_id' => $chat->job_id,
         ];
 
 

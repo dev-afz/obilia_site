@@ -37,6 +37,6 @@ Route::controller(DashboardController::class)
             ->prefix('contract')
             ->name('contract.')
             ->group(function () {
-                Route::get('action/{message_contract_id}', 'action')->name('action');
+                Route::post('action', 'action')->name('action');
             });
     });

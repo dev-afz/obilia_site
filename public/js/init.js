@@ -94,7 +94,9 @@ window.rebound = function (_ref) {
     _ref$processData = _ref.processData,
     processData = _ref$processData === void 0 ? false : _ref$processData,
     _ref$appendData = _ref.appendData,
-    appendData = _ref$appendData === void 0 ? false : _ref$appendData;
+    appendData = _ref$appendData === void 0 ? false : _ref$appendData,
+    _ref$contentType = _ref.contentType,
+    contentType = _ref$contentType === void 0 ? "application/x-www-form-urlencoded" : _ref$contentType;
   if (form === null && data === null) {
     throw new Error("No form or data provided in rebound()");
   }
@@ -121,7 +123,7 @@ window.rebound = function (_ref) {
     method: method,
     data: data !== null && data !== void 0 ? data : form_data,
     processData: processData,
-    contentType: processData ? "application/x-www-form-urlencoded" : false,
+    contentType: processData ? contentType : false,
     beforeSend: function beforeSend() {
       if (block) {
         block !== "empty" ? Notiflix.Block.hourglass(block) : Notiflix.Loading.hourglass();

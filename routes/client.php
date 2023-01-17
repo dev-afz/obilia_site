@@ -65,5 +65,6 @@ Route::controller(DashboardController::class)
             ->name('workspace.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
+                Route::get('show/{slug}', 'show')->name('show');
             });
     });
