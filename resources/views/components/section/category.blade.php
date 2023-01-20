@@ -25,7 +25,7 @@
                 <div class="row match-height">
                     @forelse ($categories as $cat)
                         <!-- COLUMNS 6 -->
-                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-6 mb-30">
+                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-6 m-b30">
                             <a href="{{ route('categories', $cat->slug) }}">
                                 <div class="job-categories-3-wrap">
                                     <div class="job-categories-3">
