@@ -42,7 +42,7 @@ class ChatController extends Controller
             ->firstOrFail();
 
         $messages = $chats->messages()->with([
-            'media', 'replied.media'
+            'media', 'replied' => ['media', 'contract'], 'contract'
         ])
             ->orderBy('id', 'desc')
             ->simplePaginate(20)
@@ -99,7 +99,7 @@ class ChatController extends Controller
             $message->media()->createMany($media);
         }
 
-        $message->load(['media', 'replied.media']);
+        $message->load(['media', 'replied' => ['media', 'contract'], 'contract']);
 
 
 
@@ -138,7 +138,7 @@ class ChatController extends Controller
             ->firstOrFail();
 
         $messages = $chats->messages()->with([
-            'media', 'replied.media'
+            'media', 'replied' => ['media', 'contract'], 'contract'
         ])
             ->orderBy('id', 'desc')
             ->simplePaginate(20, ['*'], 'page', $request->page)

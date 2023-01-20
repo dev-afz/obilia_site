@@ -153,7 +153,7 @@ class ChatController extends Controller
 
         $messages = $chats->messages()->with([
             'media',
-            'replied.media'
+            'replied' => ['media', 'contract'], 'contract'
         ])
             ->orderBy('id', 'desc')
             ->simplePaginate(20, ['*'], 'page', $request->page)
