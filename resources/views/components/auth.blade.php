@@ -7,7 +7,7 @@
 
             <div class="modal-header">
                 <h2 class="modal-title" id="sign_up_popupLabel">Sign Up</h2>
-                <p>Sign Up and get access to all the features of Jobzilla</p>
+                <p>Sign Up and get access to all the features of Obillia</p>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -244,7 +244,7 @@
                 url: "{{ route('auth.login') }}",
                 notification: false,
                 successCallback: function(res) {
-                    location.reload();
+                    location.href = res.redirect;
                 }
 
             });

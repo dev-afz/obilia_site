@@ -73,6 +73,7 @@ mix
   .sass("resources/css/chats.scss", "public/css")
   .sass("resources/css/bootstrap-extended.scss", "public/css")
   .sass("resources/css/override.scss", "public/css")
+  .sass("resources/css/workspace.scss", "public/css")
   .css("resources/css/bootstrap.min.css", "public/css")
   .css("resources/css/font-awesome.min.css", "public/css")
   .css("resources/css/feather.css", "public/css")
@@ -114,4 +115,6 @@ mix
   .js("resources/js/custom.js", "public/js")
   .js("resources/js/app.js", "public/js")
   .js("resources/js/init.js", "public/js")
-  .js("resources/js/chat.js", "public/js");
+  .js("resources/js/chat.js", "public/js")
+  .js("resources/js/workspace/work.js", "public/js/workspace")
+  .js("resources/js/workspace/chat.js", "public/js/workspace");

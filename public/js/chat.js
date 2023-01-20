@@ -7000,6 +7000,14 @@ function setChatData(response) {
   $(".chatbox input,.chatbox button").attr("disabled", false);
   $("#message-box [name='id']").val(response.chat_data.id);
   $("#message-box [name='to']").val(response.chat_data.user.uuid);
+  console.log(response.chat_data);
+  if (response.chat_data.status !== "active") {
+    $(".send-box").addClass("d-none").attr("hidden", true);
+    $(".msg-head .moreoption").addClass("d-none").attr("hidden", true);
+  } else {
+    $(".send-box").removeClass("d-none").attr("hidden", false);
+    $(".msg-head .moreoption").removeClass("d-none").attr("hidden", false);
+  }
   $("[data-messages]").html(response.html);
   scrollToBottom();
 }
@@ -7057,6 +7065,10 @@ $("#message-box").submit(function (e) {
         }
       });
       $("[data-msg-id=\"".concat(msg_uuid, "\"]")).replaceWith(response.html);
+    },
+    errorCallback: function errorCallback(response) {
+      console.log(response);
+      $("[data-msg-id=\"".concat(msg_uuid, "\"]")).remove();
     }
   });
 });
@@ -7317,7 +7329,7 @@ bc.onmessage = function (e) {
 |--------------------------------------------------------------------------
 */
 
-if (typeof contract_url !== 'undefined') {
+if (typeof contract_url !== "undefined") {
   $("#create-contract-form").submit(function (e) {
     e.preventDefault();
     $("#create-contract").offcanvas("hide");

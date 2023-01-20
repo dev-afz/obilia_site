@@ -1,0 +1,834 @@
+// Imports
+// --------------------------------------
+@import "https://fonts.googleapis.com/css?family=Noto+Sans";
+@import "colors";
+// Variables
+// --------------------------------------
+$scrollbar-width: 5px;
+$chat-thread-bgd-color: rgba(25, 147, 147, 0.2);
+$chat-thread-msg-arrow-size: 10px;
+$chat-thread-avatar-size: 25px;
+$chat-thread-offset: #{$chat-thread-avatar-size + 20px};
+$default-shadow-color: rgb(0, 0, 0);
+// Mixins
+// --------------------------------------
+@mixin fancy-background() {
+  background: -moz-linear-gradient(
+    -45deg,
+    #183850 0,
+    #183850 25%,
+    #192c46 50%,
+    #22254c 75%,
+    #22254c 100%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    #183850 0,
+    #183850 25%,
+    #192c46 50%,
+    #22254c 75%,
+    #22254c 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@mixin fancy-scrollbar() {
+  &::-webkit-scrollbar {
+    width: $scrollbar-width;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: $scrollbar-width;
+    background-color: rgba(25, 147, 147, 0.1);
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: $scrollbar-width;
+    background-color: $chat-thread-bgd-color;
+  }
+}
+
+@mixin scrolling-shadows(
+  $background-color: transparent,
+  $shadow-intensity: 0.5,
+  $shadow-color: $default-shadow-color,
+  $cover-size: 40px,
+  $shadow-size: 14px
+) {
+  // Shadow covers
+  background: linear-gradient($background-color 30%, rgba($background-color, 0)),
+    linear-gradient(rgba($background-color, 0), $background-color 70%) 0 100%,
+    radial-gradient(
+      50% 0,
+      farthest-side,
+      rgba($shadow-color, $shadow-intensity),
+      rgba($shadow-color, 0)
+    ),
+    radial-gradient(
+        50% 100%,
+        farthest-side,
+        rgba($shadow-color, $shadow-intensity),
+        rgba($shadow-color, 0)
+      )
+      0 100%;
+  background: linear-gradient($background-color 30%, rgba($background-color, 0)),
+    linear-gradient(rgba($background-color, 0), $background-color 70%) 0 100%,
+    radial-gradient(
+      farthest-side at 50% 0,
+      rgba($shadow-color, $shadow-intensity),
+      rgba($shadow-color, 0)
+    );
+  // also add button shadow:
+  //radial-gradient(farthest-side at 50% 100%, rgba($shadow-color,$shadow-intensity), rgba($shadow-color,0)) 0 100%;
+  background-repeat: no-repeat;
+  background-color: $background-color;
+  background-size: 100% $cover-size, 100% $cover-size, 100% $shadow-size,
+    100% $shadow-size;
+  // Opera doesn't support this in the shorthand
+  background-attachment: local, local, scroll, scroll;
+}
+
+.floating-chat {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: fixed;
+  bottom: 10px;
+  right: 1.5rem;
+  width: 4rem;
+  height: 4rem;
+  //   transform: translateY(70px);
+  transition: all 250ms ease-out;
+  border-radius: 50%;
+  opacity: 0;
+  & > i {
+    font-size: x-large;
+  }
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+  background: $primary-500;
+  &.enter:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    opacity: 1;
+  }
+  &.enter {
+    transform: translateY(0);
+    opacity: 0.6;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.14);
+  }
+  &.expand {
+    width: 40rem;
+    max-height: 80%;
+    max-width: 85%;
+    height: 35rem;
+    border-radius: 5px;
+    cursor: auto;
+    opacity: 1;
+  }
+  :focus {
+    outline: 0;
+    box-shadow: 0 0 3pt 2pt $primary-600;
+  }
+  button {
+    background: transparent;
+    border: 0;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .chat {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    transition: all 250ms ease-out;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    &.enter {
+      opacity: 1;
+      border-radius: 0;
+      margin: 10px;
+      width: auto;
+      height: auto;
+    }
+    .header {
+      flex-shrink: 0;
+      padding-bottom: 10px;
+      display: flex;
+      background: transparent;
+      .title {
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding: 0 5px;
+      }
+      button {
+        flex-shrink: 0;
+      }
+    }
+    .messages {
+      padding: 10px;
+      margin: 0;
+      list-style: none;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      flex-grow: 1;
+      border-radius: 4px;
+      background: transparent;
+      @include fancy-scrollbar;
+      li {
+        position: relative;
+        clear: both;
+        display: inline-block;
+        padding: 14px;
+        margin: 0 0 20px 0;
+        font: 12px/16px "Noto Sans", sans-serif;
+        border-radius: 10px;
+        background-color: $chat-thread-bgd-color;
+        word-wrap: break-word;
+        max-width: 81%;
+
+        &.self {
+          background: $primary-100;
+          &::after {
+            border-top: $chat-thread-msg-arrow-size solid $primary-100;
+          }
+        }
+
+        &:after {
+          position: absolute;
+          top: $chat-thread-msg-arrow-size;
+          content: "";
+          width: 0;
+          height: 0;
+          border-top: $chat-thread-msg-arrow-size solid $chat-thread-bgd-color;
+        }
+      }
+      li.other {
+        animation: show-chat-odd 0.15s 1 ease-in;
+        -moz-animation: show-chat-odd 0.15s 1 ease-in;
+        -webkit-animation: show-chat-odd 0.15s 1 ease-in;
+        float: left;
+        color: $primary-200;
+      }
+      li.other:before {
+        right: -$chat-thread-offset;
+        // Placeholder avatar 1
+        background-image: url(https://github.com/Thatkookooguy.png);
+      }
+      li.self:after {
+        border-right: $chat-thread-msg-arrow-size solid transparent;
+        right: -$chat-thread-msg-arrow-size;
+      }
+      li.self {
+        animation: show-chat-even 0.15s 1 ease-in;
+        -moz-animation: show-chat-even 0.15s 1 ease-in;
+        -webkit-animation: show-chat-even 0.15s 1 ease-in;
+        float: right;
+        color: $primary-800;
+      }
+      li.other:after {
+        border-left: $chat-thread-msg-arrow-size solid transparent;
+        left: -$chat-thread-msg-arrow-size;
+      }
+    }
+    .footer {
+      flex-shrink: 0;
+      display: flex;
+      //flex-direction: row-reverse;
+      padding-top: 10px;
+      max-height: 90px;
+      background: transparent;
+      .text-box {
+        border-radius: 3px;
+        background: $chat-thread-bgd-color;
+        min-height: 100%;
+        width: 100%;
+        margin-right: 5px;
+        color: #0ec879;
+        overflow-y: auto;
+        padding: 2px 5px;
+        @include fancy-scrollbar;
+      }
+    }
+  }
+}
+
+// Animation
+// --------------------------------------
+@keyframes show-chat-even {
+  0% {
+    margin-left: -480px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
+@-moz-keyframes show-chat-even {
+  0% {
+    margin-left: -480px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
+@-webkit-keyframes show-chat-even {
+  0% {
+    margin-left: -480px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
+@keyframes show-chat-odd {
+  0% {
+    margin-right: -480px;
+  }
+  100% {
+    margin-right: 0;
+  }
+}
+
+@-moz-keyframes show-chat-odd {
+  0% {
+    margin-right: -480px;
+  }
+  100% {
+    margin-right: 0;
+  }
+}
+
+@-webkit-keyframes show-chat-odd {
+  0% {
+    margin-right: -480px;
+  }
+  100% {
+    margin-right: 0;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.svg-holder svg {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.ws-break {
+  white-space: break-spaces;
+}
+
+header,
+aside {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  z-index: 10;
+}
+
+aside {
+  max-width: 15rem !important;
+  min-width: 15rem;
+}
+
+.nav-link {
+  color: $primary-500 !important;
+}
+
+@media (max-width: 576px) {
+  aside {
+    max-width: 100% !important;
+    min-width: 0;
+    position: fixed;
+    background: white;
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 2rem;
+  }
+  .floating-chat {
+    bottom: 70px;
+  }
+  .container-fluid > .row {
+    flex-direction: column-reverse !important;
+  }
+
+  .nav-item.active {
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      background: red;
+      opacity: 1;
+      z-index: 1;
+      width: 50% !important;
+      height: 3px !important;
+      transform: translateX(-50%) !important;
+    }
+  }
+}
+
+.timeline {
+  padding: 0;
+  margin-bottom: 0;
+  margin-left: 1rem;
+  list-style: none;
+}
+
+.timeline .timeline-item {
+  position: relative;
+  padding-left: 2.5rem;
+  border-left: 5px solid #e6f1f3;
+}
+
+.timeline .timeline-item:not(:last-child) {
+  padding-bottom: 1.8rem;
+}
+
+.timeline .timeline-item .timeline-point {
+  position: absolute;
+  left: -0.85rem;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.75rem;
+  width: 1.75rem;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #09596f;
+  background-color: #fff;
+}
+
+.timeline .timeline-item .timeline-point.timeline-point-indicator {
+  left: -0.67rem;
+  top: 0.07rem;
+  height: 1rem;
+  width: 1rem;
+  border: 0;
+  background-color: #09596f;
+}
+
+.timeline .timeline-item .timeline-point.timeline-point-indicator.pulse {
+  animation: pulse 2s infinite;
+}
+
+.timeline .timeline-item .timeline-point i,
+.timeline .timeline-item .timeline-point svg {
+  color: #09596f;
+  font-size: 0.85rem;
+  vertical-align: baseline;
+}
+
+.timeline .timeline-item .timeline-event {
+  position: relative;
+  width: 100%;
+  min-height: 4rem;
+}
+
+.timeline .timeline-item .timeline-event .timeline-event-time {
+  font-size: 0.85rem;
+  color: $primary-900;
+}
+
+.timeline .timeline-item:last-of-type {
+  border-left-color: transparent !important;
+}
+
+.timeline .timeline-item:last-of-type:after {
+  content: "";
+  position: absolute;
+  left: -0.3rem;
+  bottom: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(#ebe9f1, transparent);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+
+  background-clip: border-box;
+  border: 0 solid rgba(34, 41, 47, 0.125);
+  border-radius: 0.428rem;
+  margin-bottom: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  transition: all 0.3s ease-in-out, background 0s, color 0s, border-color 0s;
+  &.bg-blue {
+    background-color: $blue-200;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 #09596f9d;
+    box-shadow: 0 0 0 0 #09596f9d;
+  }
+
+  70% {
+    -moz-box-shadow: 0 0 0 10px #09596f00;
+    box-shadow: 0 0 0 10px #09596f00;
+  }
+
+  100% {
+    -moz-box-shadow: 0 0 0 0 #09596f00;
+    box-shadow: 0 0 0 0 #09596f00;
+  }
+}
+:root {
+  --progress: 30%;
+}
+
+.progress-bar {
+  height: 2rem;
+  width: 30rem;
+  background: $primary-400;
+  border-radius: 5px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--progress);
+    background: $primary-800;
+    border-radius: 5px;
+  }
+  p {
+    margin: 0 !important;
+    z-index: 9;
+  }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Apex Charts
+|--------------------------------------------------------------------------
+|
+| This file contains the styles for the Apex Charts
+|
+*/
+.apexcharts-canvas line[stroke="transparent"] {
+  display: none;
+}
+
+.apexcharts-canvas .apexcharts-tooltip {
+  background: #fff;
+  border-color: #ebe9f1;
+}
+
+.apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-title {
+  background: #fff !important;
+  border-color: #ebe9f1 !important;
+  font-weight: 600;
+}
+
+.apexcharts-canvas
+  .apexcharts-tooltip.apexcharts-theme-dark
+  .apexcharts-tooltip-text-label,
+.apexcharts-canvas
+  .apexcharts-tooltip.apexcharts-theme-dark
+  .apexcharts-tooltip-text-value {
+  color: #fff;
+}
+
+.apexcharts-canvas .apexcharts-xaxistooltip,
+.apexcharts-canvas .apexcharts-yaxistooltip {
+  background: #f8f8f8;
+  border-color: #ebe9f1;
+}
+
+.apexcharts-canvas .apexcharts-xaxistooltip-bottom:before {
+  border-bottom-color: #ebe9f1;
+}
+
+.apexcharts-canvas .apexcharts-xaxistooltip-bottom::after {
+  border-bottom-color: #f8f8f8;
+}
+
+.apexcharts-canvas .apexcharts-xaxistooltip-top:before {
+  border-top-color: #ebe9f1;
+}
+
+.apexcharts-canvas .apexcharts-xaxistooltip-top::after {
+  border-top-color: #f8f8f8;
+}
+
+.apexcharts-canvas .apexcharts-yaxistooltip-left:before {
+  border-left-color: #ebe9f1;
+}
+
+.apexcharts-canvas .apexcharts-yaxistooltip-left:after {
+  border-left-color: #f8f8f8;
+}
+
+.apexcharts-canvas .apexcharts-yaxistooltip-right:before {
+  border-right-color: #ebe9f1;
+}
+
+.apexcharts-canvas .apexcharts-yaxistooltip-right:after {
+  border-right-color: #f8f8f8;
+}
+
+.apexcharts-canvas .apexcharts-text,
+.apexcharts-canvas .apexcharts-tooltip-text,
+.apexcharts-canvas .apexcharts-datalabel-label,
+.apexcharts-canvas .apexcharts-datalabel {
+  font-family: var(--bs-font-sans-serif) !important;
+  fill: #6e6b7b;
+  font-weight: 400;
+  filter: none;
+}
+
+.apexcharts-canvas .apexcharts-pie-label {
+  fill: white;
+  filter: none;
+}
+
+.apexcharts-canvas .apexcharts-pie .apexcharts-pie-series .apexcharts-pie-area {
+  stroke-width: 0;
+}
+
+.apexcharts-canvas .apexcharts-pie .apexcharts-datalabel-label,
+.apexcharts-canvas .apexcharts-pie .apexcharts-datalabel-value {
+  font-size: 1.5rem;
+}
+
+.apexcharts-canvas .apexcharts-marker {
+  box-shadow: none;
+}
+
+.apexcharts-canvas .apexcharts-legend-series + .apexcharts-legend-series {
+  margin-top: 0.625rem;
+}
+
+.apexcharts-canvas .apexcharts-legend-series .apexcharts-legend-text {
+  margin-left: 0.5rem;
+  color: #6e6b7b !important;
+  font-size: 1rem !important;
+}
+
+.apexcharts-canvas .apexcharts-xcrosshairs,
+.apexcharts-canvas .apexcharts-ycrosshairs,
+.apexcharts-canvas .apexcharts-gridline {
+  stroke: #ebe9f1;
+}
+
+.apexcharts-legend.position-bottom {
+  bottom: 3rem;
+}
+
+.dark-layout .apexcharts-canvas .apexcharts-xaxis-tick,
+.dark-layout .apexcharts-canvas line {
+  stroke: #3b4253;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Table
+|--------------------------------------------------------------------------
+*/
+
+.table-secondary {
+  --bs-table-bg: #f8f8f9;
+  --bs-table-striped-bg: #f5f4f6;
+  --bs-table-striped-color: #4b465c;
+  --bs-table-active-bg: #eaeaec;
+  --bs-table-active-color: #4b465c;
+  --bs-table-hover-bg: #f1f1f3;
+  --bs-table-hover-color: #4b465c;
+  color: #4b465c;
+  border-color: #d5d4da;
+}
+.table-secondary .btn-icon {
+  color: #4b465c;
+}
+
+.table-success {
+  --bs-table-bg: #eefbf3;
+  --bs-table-striped-bg: #ebf7f0;
+  --bs-table-striped-color: #4b465c;
+  --bs-table-active-bg: #e1ede7;
+  --bs-table-active-color: #4b465c;
+  --bs-table-hover-bg: #e7f4ed;
+  --bs-table-hover-color: #4b465c;
+  color: #4b465c;
+  border-color: #cdd7d5;
+}
+.table-success .btn-icon {
+  color: #4b465c;
+}
+
+.table-info {
+  --bs-table-bg: #ebfbfd;
+  --bs-table-striped-bg: #e8f7fa;
+  --bs-table-striped-color: #4b465c;
+  --bs-table-active-bg: #deedf0;
+  --bs-table-active-color: #4b465c;
+  --bs-table-hover-bg: #e5f4f7;
+  --bs-table-hover-color: #4b465c;
+  color: #4b465c;
+  border-color: #cbd7dd;
+}
+.table-info .btn-icon {
+  color: #4b465c;
+}
+
+.table-warning {
+  --bs-table-bg: #fff7f0;
+  --bs-table-striped-bg: #fbf3ed;
+  --bs-table-striped-color: #4b465c;
+  --bs-table-active-bg: #f1e9e4;
+  --bs-table-active-color: #4b465c;
+  --bs-table-hover-bg: #f8f0ea;
+  --bs-table-hover-color: #4b465c;
+  color: #4b465c;
+  border-color: #dbd4d2;
+}
+.table-warning .btn-icon {
+  color: #4b465c;
+}
+
+.table-danger {
+  --bs-table-bg: #fdf1f1;
+  --bs-table-striped-bg: #f9eeee;
+  --bs-table-striped-color: #4b465c;
+  --bs-table-active-bg: #efe3e5;
+  --bs-table-active-color: #4b465c;
+  --bs-table-hover-bg: #f6eaeb;
+  --bs-table-hover-color: #4b465c;
+  color: #4b465c;
+  border-color: #d9cfd3;
+}
+.table-danger .btn-icon {
+  color: #4b465c;
+}
+
+.table-light {
+  --bs-table-bg: #dfdfe3;
+  --bs-table-striped-bg: #dcdce0;
+  --bs-table-striped-color: #4b465c;
+  --bs-table-active-bg: #d3d3d8;
+  --bs-table-active-color: #4b465c;
+  --bs-table-hover-bg: #d9d9de;
+  --bs-table-hover-color: #4b465c;
+  color: #4b465c;
+  border-color: #c1c0c8;
+}
+.table-light .btn-icon {
+  color: #4b465c;
+}
+
+.table-dark {
+  --bs-table-bg: #4b4b4b;
+  --bs-table-striped-bg: #4f4f4f;
+  --bs-table-striped-color: #fff;
+  --bs-table-active-bg: #595959;
+  --bs-table-active-color: #fff;
+  --bs-table-hover-bg: #525252;
+  --bs-table-hover-color: #fff;
+  color: #fff;
+  border-color: #6f6f6f;
+}
+.table-dark .btn-icon {
+  color: #fff;
+}
+
+.table:not(.table-borderless) {
+  margin-bottom: 0;
+}
+.table > :not(:first-child) {
+  border-top: 0;
+}
+.table .table-light th {
+  border-bottom: 0;
+}
+
+@supports (-moz-appearance: none) {
+  .table .dropdown-menu.show {
+    display: inline-table;
+  }
+}
+.table th {
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  letter-spacing: 1px;
+  padding-top: 0.88rem;
+  padding-bottom: 0.88rem;
+}
+
+.table:not(.table-dark) thead:not(.table-dark) th {
+  color: #5d596c;
+}
+
+.table-border-bottom-0 tr:last-child td,
+.table-border-bottom-0 tr:last-child th {
+  border-bottom-width: 0;
+}
+
+.table.table-dark a i,
+.table.table-dark .btn i {
+  color: #fff;
+}
+
+.table.table-flush-spacing thead tr > td:first-child,
+.table.table-flush-spacing tbody tr > td:first-child {
+  padding-left: 0;
+}
+.table.table-flush-spacing thead tr > td:last-child,
+.table.table-flush-spacing tbody tr > td:last-child {
+  padding-right: 0;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Helper
+|--------------------------------------------------------------------------
+*/
+
+.h-screen {
+  min-height: 100vh;
+}
+.bg-gray {
+  background-color: $gray-200 !important;
+  color: $primary-900 !important;
+}
+.nav-item.active {
+  position: relative;
+  background: $primary-200;
+  color: $primary-900;
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #09596f;
+    opacity: 1;
+    z-index: 1;
+    width: 3px;
+    height: 50%;
+    transform: translatey(50%);
+  }
+}

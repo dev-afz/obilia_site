@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Managers\FileManager;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class ContractController extends Controller
 {
@@ -46,6 +47,13 @@ class ContractController extends Controller
             ->where('chats.uuid', $request->chat_id)
             ->active()
             ->firstOrFail();
+
+        if ($chat->status != 'active') {
+            throw ValidationException::withMessages([
+                'chat_id' => 'Chat is not active',
+            ]);
+        }
+
 
 
 

@@ -13,15 +13,27 @@ class Workspace extends Model
     protected $guarded = [];
 
 
-    public function client()
+    public function owner()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(User::class, 'client_id');
+    }
+
+    public function provider()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+    public function contract()
+    {
+        return $this->belongsTo(Contract::class);
+    }
+
+
 
 
     public function scopeActive($query)

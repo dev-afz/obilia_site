@@ -23,7 +23,7 @@ class OauthService
         $user = User::where('email', $user->email)->first();
         if (!empty($user)) {
             Auth::login($user, true);
-            return  redirect()->route('index');
+            return ($user->role == 'service_provider') ? redirect()->route('service-provider.index') : redirect()->route('client.index');
         }
 
         return redirect()->route('index')->with('error', 'User not found');

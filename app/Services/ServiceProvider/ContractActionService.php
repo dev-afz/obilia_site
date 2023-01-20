@@ -21,6 +21,20 @@ class ContractActionService
     }
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Accept Contract
+    |--------------------------------------------------------------------------
+    |
+    | This method is used to accept contract
+    |
+    */
+
+    /**
+     * @param MessageContract $contract
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
+     */
 
 
     public function acceptContract(MessageContract $contract, User $user)
@@ -34,7 +48,7 @@ class ContractActionService
         $contract->update([
             'status' => 'accepted',
         ]);
-        $html = $this->sendMessage();
+        $html = $this->sendAcceptedMessage();
         DB::commit();
 
         return response()->json([
@@ -42,9 +56,6 @@ class ContractActionService
             'html' => $html,
         ]);
     }
-
-
-
 
     private function createContract(): void
     {
@@ -77,7 +88,7 @@ class ContractActionService
         ]);
     }
 
-    private function sendMessage()
+    private function sendAcceptedMessage()
     {
         $message = $this->contract->message;
 
@@ -113,5 +124,50 @@ class ContractActionService
         ));
 
         return $html;
+    }
+
+
+    /*
+    |------------------------------------------------------------------
+    |   Reject Contract
+    |------------------------------------------------------------------
+    */
+
+
+    public function rejectContract(MessageContract $contract, User $user)
+    {
+        $chat = $contract->message->chat;
+        $receiver = User::find($contract->send_by);
+
+        DB::beginTransaction();
+        $contract->update([
+            'status' => 'rejected',
+        ]);
+        $message =  Message::create([
+            'chat_id' => $chat->id,
+            'sender_id' => $user->id,
+            'message' => 'Contract Rejected',
+            'replied_to' => $contract->message_id,
+        ]);
+        DB::commit();
+        $message->load(['replied']);
+        $for = 'reply';
+        $html =  view('components.chat.message', compact('message', 'for'))->render();
+
+        $for = 'sender';
+        event(new MessageEvent(
+            message: view('components.chat.message', compact('message', 'for'))->render(),
+            from: auth()->user()->only(['uuid', 'name', 'email']),
+            time: $message->created_at,
+            media: [],
+            chat: $chat->uuid,
+            to: $receiver->uuid,
+        ));
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Contract rejected successfully',
+            'html' => $html,
+        ]);
     }
 }

@@ -66,5 +66,7 @@ Route::controller(DashboardController::class)
             ->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::get('show/{slug}', 'show')->name('show');
+                Route::get('project-info/{slug}', 'projectInfo')->name('project-info');
+                Route::get('payment-and-invoices/{slug}', 'paymentAndInvoices')->name('payment-and-invoices');
             });
     });

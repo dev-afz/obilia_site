@@ -24,7 +24,7 @@ class AuthController extends Controller
 
             return response()->json([
                 'message' => 'Successfully logged in',
-                'redirect' => '#',
+                'redirect' => (auth()->user()->role == 'service_provider') ? route('service-provider.index') : route('client.index'),
             ]);
         }
 

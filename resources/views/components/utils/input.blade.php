@@ -26,3 +26,33 @@
 
     </div>
 </div>
+
+
+@if ($type === 'date')
+    @pushonce('component-scripts')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+    @endpushonce
+@endif
+
+@if ($type === 'date')
+    @pushonce('component-styles')
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+        <style>
+
+        </style>
+    @endpushonce
+@endif
+
+
+
+@push('lower-scripts')
+    @if ($type == 'date')
+        <script>
+            $(function() {
+                flatpickr('#{{ $id ?? $name }}', {
+                    dateFormat: 'Y-m-d',
+                });
+            });
+        </script>
+    @endif
+@endpush

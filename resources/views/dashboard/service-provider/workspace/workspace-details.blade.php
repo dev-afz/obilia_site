@@ -16,10 +16,8 @@
                                 <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
                                     <h6>{{ $milestone->title }}</h6>
                                     <span class="timeline-event-time">
-                                        @if ($milestone->due_date)
-                                            <Strong>Date: </Strong> &nbsp;
-                                            {{ \Carbon\Carbon::parse($milestone->due_date)->format('M d, Y') }}
-                                        @endif
+                                        <Strong>Date: </Strong> &nbsp;
+                                        {{ \Carbon\Carbon::parse($milestone->due_date)->format('M d, Y') }}
                                     </span>
                                 </div>
                                 <p>

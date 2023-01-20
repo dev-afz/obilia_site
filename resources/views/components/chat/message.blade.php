@@ -48,7 +48,7 @@
 
 
         @if ($message->contract)
-            <div class="contract-holder p-2">
+            <div data-contract="{{ $message->contract->id }}" class="contract-holder p-2">
                 <div class="contract-title">
                     <h4 class="mb-2  text-center">Contract Request</h4>
                     <p>

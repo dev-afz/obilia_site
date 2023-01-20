@@ -20,8 +20,15 @@ class ChatController extends Controller
             'job:id,title',
         ])->get();
 
+        $active_chats = $chats->filter(function ($chat) {
+            return $chat->status == 'active';
+        });
 
-        return view('dashboard.service-provider.chat', compact('chats'));
+        $closed_chats = $chats->filter(function ($chat) {
+            return $chat->status == 'closed';
+        });
+
+        return view('dashboard.service-provider.chat', compact('active_chats', 'closed_chats'));
     }
 
     public function messages(Request $request)
@@ -45,6 +52,7 @@ class ChatController extends Controller
             'user' => $chats->participant->user->only(['uuid', 'name', 'images']),
             'id' => $chats->uuid,
             'name' => $chats->name,
+            'status' => $chats->status,
         ];
 
 

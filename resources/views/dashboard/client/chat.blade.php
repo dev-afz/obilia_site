@@ -44,7 +44,7 @@
                                                     <div class="tab-pane fade show active" id="Open"
                                                         role="tabpanel" aria-labelledby="Open-tab">
                                                         <div class="chat-list">
-                                                            @forelse ($chats as $chat)
+                                                            @forelse ($active_chats as $chat)
                                                                 <a href="#" data-chat="{{ $chat->uuid }}"
                                                                     class="d-flex align-items-center chat__item">
                                                                     <div class="flex-shrink-0">
@@ -72,9 +72,28 @@
                                                         aria-labelledby="Closed-tab">
 
                                                         <div class="chat-list">
+                                                            @forelse ($closed_chats as $chat)
+                                                                <a href="#" data-chat="{{ $chat->uuid }}"
+                                                                    class="d-flex align-items-center chat__item">
+                                                                    <div class="flex-shrink-0">
+                                                                        <img class="img-fluid rounded-circle chat-avatar"
+                                                                            height="50px" width="50px"
+                                                                            src="{{ $chat->participant->user->images ?? 'https://ui-avatars.com/api/?name=' . $chat->participant->user->name }}"
+                                                                            alt="user img">
+                                                                    </div>
+                                                                    <div class="flex-grow-1 ms-3">
+                                                                        <h3>{{ $chat->participant->user->name }}
+                                                                        </h3>
+                                                                        <small
+                                                                            class="overflow-dots">{{ $chat->name }}</small>
+                                                                    </div>
+                                                                    {{-- <span class="unread-count">4</span> --}}
+                                                                </a>
 
-                                                            <p class="text-danger text-center">for future use</p>
-
+                                                            @empty
+                                                                <p class="text-danger text-center">No Closed chats yet
+                                                                </p>
+                                                            @endforelse
                                                         </div>
                                                     </div>
                                                 </div>
@@ -185,10 +204,10 @@
                     <x-utils.input name="project_title" />
                 </div>
                 <div class="col-md-6">
-                    <x-utils.input name="contract_date" />
+                    <x-utils.input name="contract_date" type="date" />
                 </div>
                 <div class="col-md-6">
-                    <x-utils.input name="project_cost" />
+                    <x-utils.input name="project_cost" type="number" />
                 </div>
                 <div class="col-md-12">
                     <x-utils.input name="project_description" type="textarea" />

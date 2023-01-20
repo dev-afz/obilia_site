@@ -104,12 +104,12 @@
                                     <div class="dropdown-menu" aria-labelledby="ID-ACCOUNT_dropdown">
 
                                         <ul>
-                                            <li><a href="dashboard.html"><i class="fa fa-home"></i>Dashboard</a></li>
-                                            <li><a href="dash-messages.html"><i class="fa fa-envelope"></i>
+                                            <li><a href="#"><i class="fa fa-home"></i>Dashboard</a></li>
+                                            <li><a href="dash-#"><i class="fa fa-envelope"></i>
                                                     Messages</a></li>
-                                            <li><a href="dash-my-profile.html"><i class="fa fa-user"></i> Profile</a>
+                                            <li><a href="dash-my-#"><i class="fa fa-user"></i> Profile</a>
                                             </li>
-                                            <li><a href="index.html"><i class="fa fa-share-square"></i> Logout</a>
+                                            <li><a href="/logout"><i class="fa fa-share-square"></i> Logout</a>
                                             </li>
                                         </ul>
 

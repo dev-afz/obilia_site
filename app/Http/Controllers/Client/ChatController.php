@@ -10,23 +10,32 @@ use Illuminate\Support\Str;
 use App\Events\MessageEvent;
 use Illuminate\Http\Request;
 use App\Events\TestChatEvent;
-use App\Http\Controllers\Controller;
 use App\Managers\FileManager;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 
 class ChatController extends Controller
 {
     use FileManager;
-    public function index()
+    public function index(Request $request)
     {
-
 
         $chats = auth()->user()->chats()->with([
             'participant' => ['user:id,name,images']
         ])->get();
 
 
-        return view('dashboard.client.chat', compact('chats'));
+        $active_chats = $chats->filter(function ($chat) {
+            return $chat->status == 'active';
+        });
+
+        $closed_chats = $chats->filter(function ($chat) {
+            return $chat->status == 'closed';
+        });
+
+
+        return view('dashboard.client.chat', compact('active_chats', 'closed_chats'));
     }
 
     public function messages(Request $request)
@@ -50,6 +59,7 @@ class ChatController extends Controller
             'user' => $chats->participant->user->only(['uuid', 'name', 'images']),
             'id' => $chats->uuid,
             'name' => $chats->name,
+            'status' => $chats->status,
         ];
 
 
@@ -58,7 +68,8 @@ class ChatController extends Controller
         return response()->json([
             'status' => 'success',
             'html' => $html,
-            'chat_data' => $chat_data
+            'chat_data' => $chat_data,
+
         ]);
     }
 
@@ -76,6 +87,14 @@ class ChatController extends Controller
             'reply_to' => 'nullable|integer|exists:messages,id|numeric'
         ]);
         $chat = auth()->user()->chats()->where('chats.uuid', $request->id)->firstOrFail();
+
+        if ($chat->status == 'closed') {
+            throw ValidationException::withMessages([
+                'chat' => 'Chat is closed'
+            ]);
+        }
+
+
         $message = $chat->messages()->create([
             'message' => $request->message,
             'sender_id' => auth()->user()->id,

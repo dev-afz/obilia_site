@@ -6,6 +6,7 @@ use App\Http\Controllers\ServiceProvider\JobController;
 use App\Http\Controllers\ServiceProvider\ChatController;
 use App\Http\Controllers\ServiceProvider\ContractController;
 use App\Http\Controllers\ServiceProvider\DashboardController;
+use App\Http\Controllers\ServiceProvider\WorkspacesController;
 
 Route::controller(DashboardController::class)
     ->middleware(['auth', 'service_provider'])
@@ -38,5 +39,15 @@ Route::controller(DashboardController::class)
             ->name('contract.')
             ->group(function () {
                 Route::post('action', 'action')->name('action');
+            });
+
+        Route::controller(WorkspacesController::class)
+            ->prefix('workspace')
+            ->name('workspace.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('show/{slug}', 'show')->name('show');
+                Route::get('project-info/{slug}', 'projectInfo')->name('project-info');
+                Route::get('payment-and-invoices/{slug}', 'paymentAndInvoices')->name('payment-and-invoices');
             });
     });
