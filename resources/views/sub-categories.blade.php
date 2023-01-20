@@ -35,7 +35,7 @@
                             <div class="job-categories-style1 m-b30">
                                 <div class="row match-height">
                                     @forelse ($categories as $cat)
-                                        <div class="col-lg-4 col-md-6 mt-2">
+                                        <div class="col-lg-4 col-md-6 mt-4">
 
 
                                             <div class="category-item-card">
