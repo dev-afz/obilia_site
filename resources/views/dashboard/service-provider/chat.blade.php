@@ -197,36 +197,62 @@
             </div>
         </x-elements.modal>
 
+
+        <x-utils.offcanvas id="create-contract" class="create-contract" position="bottom" title="Create Contract">
+            <form id="create-contract-form">
+                <div class="row">
+                    <div class="col-md-12">
+                        <x-utils.input name="project_title" />
+                    </div>
+                    <div class="col-md-6">
+                        <x-utils.input name="contract_date" type="date" />
+                    </div>
+                    <div class="col-md-6">
+                        <x-utils.input name="project_cost" type="number" />
+                    </div>
+                    <div class="col-md-12">
+                        <x-utils.input name="project_description" type="textarea" />
+                    </div>
+                    <div class="col-12">
+                        <div class="divider">
+                            <div class="divider-text">
+                                <h4>
+                                    Milestone
+                                </h4>
+                            </div>
+                        </div>
+                        <x-utils.repeater :minLimit="1" name="milestones"
+                            addButtonLabel="<i class='fa fa-plus'></i> Add Milestone"
+                            :fields="[
+                                ['name' => 'title', 'col' => 8],
+                                ['name' => 'amount', 'type' => 'number', 'col' => 4],
+                                ['name' => 'description', 'type' => 'textarea', 'col' => 11],
+                            ]" />
+                    </div>
+
+                    <div class="col-md-12">
+                        <x-utils.input-file name="contract_file" />
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-success btn-lg w-100">
+                            Create Contract
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </x-utils.offcanvas>
+
+
         <x-slot name="scripts">
             <script>
                 window.me = "{{ auth()->user()->uuid }}";
                 const message_url = "{{ route('service-provider.chat.messages') }}";
                 const load_url = "{{ route('service-provider.chat.load-messages') }}";
                 const send_url = "{{ route('service-provider.chat.send-messages') }}";
+                const contract_url = "{{ route('service-provider.contract.store') }}";
             </script>
             <script src="{{ asset(mix('js/chat.js')) }}"></script>
-            <script>
-                $(document).on('click', '[data-contract-action]', function(e) {
-                    e.preventDefault();
-                    const action = $(this).data('contract-action-type');
-                    const id = $(this).data('contract-action');
-                    window.rebound({
-                        data: {
-                            action: action,
-                            id: id
-                        },
-                        url: "{{ route('service-provider.contract.action') }}",
-                        notification: false,
-                        processData: true,
-                        successCallback: function(data) {
-                            $("[data-messages]").append(data.html);
-                            var objDiv = document.getElementById("chat-holder");
-                            objDiv.scrollTop = objDiv.scrollHeight;
-
-                        }
-                    });
-                });
-            </script>
 
         </x-slot>
 

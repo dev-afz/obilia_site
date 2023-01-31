@@ -13,7 +13,7 @@
 
                 .heading__credits {
                     margin: 10px 0px;
-                    color: #888888;
+                    color: #05374d;
                     font-size: 25px;
                     transition: all 0.5s;
                 }
@@ -43,6 +43,9 @@
                     grid-template-rows: 20px 50px 1fr 50px;
                     border-radius: 10px;
                     transition: all 0.2s;
+                    border: none;
+                    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                    outline: #05374d 2px solid;
                 }
 
                 .card:hover {
@@ -55,7 +58,7 @@
                 .card__icon {
                     position: relative;
                     text-decoration: none;
-                    color: rgba(255, 255, 255, 0.9);
+                    color: #05374d;
                 }
 
                 .card__link::after {
@@ -86,7 +89,7 @@
                 .card__title {
                     grid-row: 3/4;
                     font-weight: 400;
-                    color: #ffffff !important;
+                    color: #05374d !important;
                 }
 
                 .card__apply {
@@ -122,9 +125,9 @@
 
                             <div class="cards">
                                 @forelse ($workspaces as $w)
-                                    <div style="background: radial-gradient({{ $w->color1 }}, {{ $w->color2 }})"
-                                        class="card">
-                                        <div class="card__icon"><i class="fas fa-bolt"></i></div>
+                                    <div class="card">
+                                        <div class="card__icon" style="color: {{ $w->color1 }}"><i
+                                                class="fas fa-bolt"></i></div>
                                         <h4 class="card__title">
                                             {{ $w->name }}
                                         </h4>

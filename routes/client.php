@@ -56,8 +56,7 @@ Route::controller(DashboardController::class)
             ->prefix('contract')
             ->name('contract.')
             ->group(function () {
-                Route::get('create/{chat_uid}', 'create')->name('create');
-                Route::post('store', 'store')->name('store');
+                Route::post('action', 'action')->name('action');
             });
 
         Route::controller(WorkspacesController::class)

@@ -54,6 +54,8 @@ function setOnlyThisActive(id) {
 }
 
 function setChatData(response) {
+  $("#reply_to").val("");
+  $(".reply-data").addClass("reply-data-collapsed").removeClass("h-auto");
   const user_avatar =
     response.chat_data.user.images ??
     "https://ui-avatars.com/api/?name=" + response.chat_data.user.name;

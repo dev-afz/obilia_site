@@ -6994,6 +6994,8 @@ function setOnlyThisActive(id) {
 }
 function setChatData(response) {
   var _response$chat_data$u;
+  $("#reply_to").val("");
+  $(".reply-data").addClass("reply-data-collapsed").removeClass("h-auto");
   var user_avatar = (_response$chat_data$u = response.chat_data.user.images) !== null && _response$chat_data$u !== void 0 ? _response$chat_data$u : "https://ui-avatars.com/api/?name=" + response.chat_data.user.name;
   $("[data-user-image]").html(" <img class=\"img-fluid rounded-circle\"\n  height=\"50\"\n    width=\"50\"\n    src=\"".concat(user_avatar, "\"\n    alt=\"user img\">"));
   $("[data-chat-name]").html(" <h3>".concat(response.chat_data.user.name, "</h3>\n    <small class=\"chat-name\">").concat(response.chat_data.name, "</small>"));

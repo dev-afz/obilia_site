@@ -1,5 +1,6 @@
 <x-layout>
 
+    {{-- {{ dd($categories) }} --}}
     <x-slot:title>Job List </x-slot>
 
         <div class="section-full p-t120  p-b90 site-bg-white">
@@ -16,10 +17,10 @@
 
                                 <form data-filter-form="">
 
-                                    <x-utils.select :required="false" name="category" :options="$categories" selected="all"
-                                        labelClass="h5 mb-4 section-head" />
+                                    <x-utils.select valueName="slug" :required="false" name="category" :options="$categories"
+                                        selected="all" labelClass="h5 mb-4 section-head" />
 
-                                    <x-utils.input :required="false" name="q" label="Keyword"
+                                    <x-utils.input :required="false" name="q" label="Keyword" :value="request()->q"
                                         placeholder="Enter Keyword" labelClass="h5 mb-4 section-head" />
                                 </form>
 

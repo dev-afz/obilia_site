@@ -17,7 +17,7 @@
 
         <ul class="moreoption">
             <li class="navbar nav-item dropdown">
-                @if (auth()->user()->role == 'client')
+                @if (auth()->user()->role == 'service_provider')
                     <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#create-contract" aria-controls="create-contract"><i
                             class="feather-file-plus fs-5 me-1"></i></button>

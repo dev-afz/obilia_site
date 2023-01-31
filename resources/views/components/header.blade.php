@@ -53,7 +53,9 @@
                                                             <ul class="sub-menu">
                                                                 @forelse ($c->sub_categories as $s)
                                                                     <li>
-                                                                        <a href="#">{{ $s->name }}</a>
+                                                                        <a
+                                                                            href="{{ route('search') }}?type=work&sub_category={{ $s->slug }}">{{ $s->name }}
+                                                                        </a>
                                                                     </li>
                                                                 @empty
                                                                 @endforelse
@@ -150,7 +152,7 @@
                                                             @forelse ($c->sub_categories as $s)
                                                                 <li>
                                                                     <a class="sub-link"
-                                                                        href="#">{{ $s->name }}</a>
+                                                                        href="{{ route('search') }}?type=work&sub_category={{ $s->slug }}">{{ $s->name }}</a>
                                                                 </li>
                                                             @empty
                                                             @endforelse

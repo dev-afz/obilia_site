@@ -38,7 +38,7 @@ Route::controller(DashboardController::class)
             ->prefix('contract')
             ->name('contract.')
             ->group(function () {
-                Route::post('action', 'action')->name('action');
+                Route::post('store', 'store')->name('store');
             });
 
         Route::controller(WorkspacesController::class)

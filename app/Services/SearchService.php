@@ -31,15 +31,23 @@ class SearchService
             return $this->searchWorkAjax($request);
         }
         $jobs =  Job::active()->isPublic()
+            ->with([
+                'sub_category'
+            ])
+            ->when($request->sub_category, function ($query) use ($request) {
+                $query->whereHas('sub_category', function ($query) use ($request) {
+                    $query->where('sub_categories.slug', $request->sub_category);
+                });
+            })
             ->when($request->q, function ($query) use ($request) {
                 $query->where('metadata', 'like', '%' . $request->q . '%');
             })
             ->paginate(2);
 
-        $skills = Skill::active()->get(['id', 'name']);
-        $categories  = Category::active()->get(['id', 'name']);
+        $skills = Skill::active()->get(['id', 'name', 'slug']);
+        $categories  = Category::active()->get(['id', 'name', 'slug']);
 
-        $categories->prepend(['id' => 'all', 'name' => 'All']);
+        $categories->prepend(['id' => 'all', 'name' => 'All', 'slug' => 'all']);
         return view('browse.jobs', compact('jobs', 'skills', 'categories'));
     }
 
@@ -53,9 +61,16 @@ class SearchService
             })
             ->when($request->has('category') && $request->category !== 'all', function ($query) use ($request) {
                 $query->whereHas('category', function ($query) use ($request) {
-                    $query->where('categories.id', $request->category);
+                    $query->where('categories.slug', $request->category);
                 });
             })
+
+            ->when($request->has('sub_category') &&  $request->sub_category !== 'all', function ($query) use ($request) {
+                $query->whereHas('sub_category', function ($query) use ($request) {
+                    $query->where('sub_categories.slug', $request->sub_category);
+                });
+            })
+
             ->when(!empty($request->tags), function ($query) use ($request) {
                 $tags = explode(',', $request->tags);
 
@@ -98,8 +113,7 @@ class SearchService
             return $this->searchTalentAjax($request);
         }
 
-        $users = User::active()
-            ->isUser()
+        $users = User::active()->isUser()
             ->when($request->q, function ($query) use ($request) {
                 $query->whereHas('direct_skills', function ($query) use ($request) {
                     $query->where('skills.name', 'like', '%' . $request->q . '%')
