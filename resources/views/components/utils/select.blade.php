@@ -12,7 +12,7 @@
             <option disabled selected>Select {{ ucwords(str_replace('_', ' ', $name)) }}</option>
 
             @forelse ($options as $option)
-                <option value="{{ $option[$valueName] ?? $option }}" @if (($option[$valueName] ?? $option) == $selected) selected @endif
+                <option value="{{ $option[$valueName] ?? $option }}"
                     @if ($subtext) data-subtext="{{ $option[$subtext] ?? $subtext }}" @endif>
                     @if ($optionPrepend)
                         {!! $option[$optionPrepend] ?? $optionPrepend !!}
@@ -29,5 +29,19 @@
             {!! $icon !!}
         @endif
     </div>
+    @if ($maxSelect)
+        <small class="text-muted">*You can select maximum {{ $maxSelect }} options</small>
+    @endif
 
 </div>
+
+
+@push('component-scripts')
+    @if ($selected)
+        <script>
+            $(document).ready(function() {
+                $('#{{ $id ?? $name }}').selectpicker('val', @json($selected));
+            });
+        </script>
+    @endif
+@endpush

@@ -51,7 +51,7 @@
                             <x-utils.select name="project_size" :options="['small', 'medium', 'large']" />
                         </div>
                         <div class="col-lg-6">
-                            <x-utils.select name="payment_type" selected="fixed" :options="['fixed']" />
+                            <x-utils.select name="payment_type" :selected="['fixed']" :options="['fixed']" />
                         </div>
                         <div class="col-lg-3">
                             <x-utils.input name="budget_from" type="number" />

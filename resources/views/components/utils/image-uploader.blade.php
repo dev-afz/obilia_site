@@ -1,15 +1,15 @@
 <div class="form-group  {{ $class }} ">
 
-    <div style="--uploader__width: {{ $width }};--uploader_height:{{ $height }}"
+    <div style="--uploader__width: {{ $width }}px;--uploader_height:{{ $height }}px"
         class="dashboard-profile-pic">
         <div class="dashboard-profile-photo">
-            <img src="https://via.placeholder.com/200"
+            <img src="{{ $image ?? 'https://via.placeholder.com/' . $width . 'x' . $height }}"
                 alt="{{ $label ?? 'Upload ' . ucwords(str_replace('_', ' ', $name)) }}">
             <div class="upload-btn-wrapper text-start">
                 <div class="upload__image__wrapper" id="upload-image-grid-{{ $id ?? $name }}"></div>
-                <button
+                <button type="button"
                     class="site-button button-sm">{{ $label ?? 'Upload ' . ucwords(str_replace('_', ' ', $name)) }}</button>
-                <input required="{{ $required }}"
+                <input @if ($required) required @endif
                     @if (!empty($attrs)) @forelse ($attrs as $atr) data-{{ $atr['name'] }}="{{ $atr['value'] }}" @empty @endforelse @endif
                     type="file" name="{{ $name }}" id="{{ $id ?? $name }}" accept="{{ $accept }}">
             </div>

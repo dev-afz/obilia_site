@@ -6,6 +6,7 @@ use App\Http\Controllers\ServiceProvider\JobController;
 use App\Http\Controllers\ServiceProvider\ChatController;
 use App\Http\Controllers\ServiceProvider\ContractController;
 use App\Http\Controllers\ServiceProvider\DashboardController;
+use App\Http\Controllers\ServiceProvider\ServiceController;
 use App\Http\Controllers\ServiceProvider\WorkspacesController;
 
 Route::controller(DashboardController::class)
@@ -14,6 +15,13 @@ Route::controller(DashboardController::class)
     ->name('service-provider.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('profile', 'profile')->name('profile');
+        Route::get('edit-profile', 'editProfile')->name('edit-profile');
+        Route::post('update-profile', 'updateProfile')->name('update-profile');
+        Route::get('add-business', 'addBusiness')->name('add-business');
+        Route::post('store-business', 'storeBusiness')->name('store-business');
+        Route::get('edit-business', 'editBusiness')->name('edit-business');
+        Route::post('update-business', 'updateBusiness')->name('update-business');
 
         Route::controller(JobController::class)
             ->prefix('job')
@@ -49,5 +57,16 @@ Route::controller(DashboardController::class)
                 Route::get('show/{slug}', 'show')->name('show');
                 Route::get('project-info/{slug}', 'projectInfo')->name('project-info');
                 Route::get('payment-and-invoices/{slug}', 'paymentAndInvoices')->name('payment-and-invoices');
+            });
+
+        Route::controller(ServiceController::class)
+            ->prefix('service')
+            ->name('service.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::post('store', 'store')->name('store');
+                Route::get('edit/{slug}', 'edit')->name('edit');
+                Route::post('update/{slug}', 'update')->name('update');
+                Route::get('delete/{slug}', 'delete')->name('delete');
             });
     });

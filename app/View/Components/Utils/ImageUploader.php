@@ -25,6 +25,7 @@ class ImageUploader extends Component
     public $instructions;
     public $width;
     public $height;
+    public $image;
 
 
     public function __construct(
@@ -39,8 +40,9 @@ class ImageUploader extends Component
         $accept = 'image/*',
         $value = null,
         $instructions = null,
-        $width = '150px',
-        $height = '150px'
+        int $width = 150,
+        int $height = 150,
+        string $image = null
     ) {
         $this->id = $id;
         $this->name = $name;
@@ -55,6 +57,7 @@ class ImageUploader extends Component
         $this->instructions = $instructions;
         $this->width = $width;
         $this->height = $height;
+        $this->image = $image;
     }
 
     /**

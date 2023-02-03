@@ -18,7 +18,7 @@
                                 <form data-filter-form="">
 
                                     <x-utils.select valueName="slug" :required="false" name="category" :options="$categories"
-                                        selected="all" labelClass="h5 mb-4 section-head" />
+                                        :selected="['all']" labelClass="h5 mb-4 section-head" />
 
                                     <x-utils.input :required="false" name="q" label="Keyword" :value="request()->q"
                                         placeholder="Enter Keyword" labelClass="h5 mb-4 section-head" />

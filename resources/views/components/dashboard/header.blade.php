@@ -18,7 +18,7 @@
             <div class="header-right">
                 <ul class="header-widget-wrap">
                     <!--Message-->
-                    <li class="header-widget dashboard-message-dropdown">
+                    {{-- <li class="header-widget dashboard-message-dropdown">
 
                         <div class="dropdown">
                             <a href="javascript:;" class="dropdown-toggle jobzilla-admin-messange" id="ID-MSG_dropdown"
@@ -50,10 +50,10 @@
                             </div>
                         </div>
 
-                    </li>
+                    </li> --}}
 
                     <!--Notification-->
-                    <li class="header-widget dashboard-noti-dropdown">
+                    {{-- <li class="header-widget dashboard-noti-dropdown">
 
                         <div class="dropdown">
                             <a href="javascript:;" class="dropdown-toggle jobzilla-admin-notification"
@@ -86,7 +86,7 @@
 
 
 
-                    </li>
+                    </li> --}}
 
                     <!--Account-->
                     <li class="header-widget">
@@ -107,7 +107,9 @@
                                             <li><a href="#"><i class="fa fa-home"></i>Dashboard</a></li>
                                             <li><a href="dash-#"><i class="fa fa-envelope"></i>
                                                     Messages</a></li>
-                                            <li><a href="dash-my-#"><i class="fa fa-user"></i> Profile</a>
+                                            <li><a href="/{{ str_replace('_', '-', auth()->user()->role) }}/profile"><i
+                                                        class="fa fa-user"></i>
+                                                    Profile</a>
                                             </li>
                                             <li><a href="/logout"><i class="fa fa-share-square"></i> Logout</a>
                                             </li>

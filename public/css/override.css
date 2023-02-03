@@ -676,3 +676,7 @@ hr {
 .flatpickr-current-month .numInputWrapper span {
   display: none;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}

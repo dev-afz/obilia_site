@@ -11,7 +11,7 @@
                 @if ($required) required @endif id="{{ $id ?? $name }}"
                 @if ($disabled) disabled @endif
                 @if (!empty($attrs)) @forelse ($attrs as $key=> $atr) {{ $key }}="{{ $atr }}" @empty @endforelse @endif
-                placeholder="{{ $placeholder ?? ucwords(str_replace('_', ' ', $name)) }}" />
+                placeholder="{{ $placeholder ?? ($label ?? ucwords(str_replace('_', ' ', $name))) }}" />
             @if ($icon)
                 {!! $icon !!}
             @endif

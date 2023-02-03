@@ -23,8 +23,13 @@ class User extends Authenticatable
         'password',
         'role',
         'status',
+        'images',
         'image',
         'uuid',
+        'phone',
+        'gender',
+        'state',
+        'city',
     ];
 
     /**
@@ -96,7 +101,22 @@ class User extends Authenticatable
     }
 
 
+    public function services()
+    {
+        return $this->hasMany(UserService::class, 'user_id');
+    }
 
+
+    public function kycs()
+    {
+        return $this->hasMany(UserKyc::class, 'user_id');
+    }
+
+
+    public function business()
+    {
+        return $this->hasOne(UserBusiness::class, 'user_id');
+    }
 
     /*
     |--------------------------------------------------------------------------
