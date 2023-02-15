@@ -4,10 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\SanitizeInputMiddleware;
 use App\Http\Controllers\ServiceProvider\JobController;
 use App\Http\Controllers\ServiceProvider\ChatController;
+use App\Http\Controllers\ServiceProvider\ServiceController;
 use App\Http\Controllers\ServiceProvider\ContractController;
 use App\Http\Controllers\ServiceProvider\DashboardController;
-use App\Http\Controllers\ServiceProvider\ServiceController;
-use App\Http\Controllers\ServiceProvider\WorkspacesController;
+use App\Http\Controllers\ServiceProvider\Workspace\ChatController as WorkspaceChatController;
+use App\Http\Controllers\ServiceProvider\Workspace\WorkspacesController;
 
 Route::controller(DashboardController::class)
     ->middleware(['auth', 'service_provider'])
@@ -22,6 +23,10 @@ Route::controller(DashboardController::class)
         Route::post('store-business', 'storeBusiness')->name('store-business');
         Route::get('edit-business', 'editBusiness')->name('edit-business');
         Route::post('update-business', 'updateBusiness')->name('update-business');
+        Route::get('add-bank', 'addBank')->name('add-bank');
+        Route::post('store-bank', 'storeBank')->name('store-bank');
+        Route::get('edit-bank', 'editBank')->name('edit-bank');
+        Route::post('update-bank', 'updateBank')->name('update-bank');
 
         Route::controller(JobController::class)
             ->prefix('job')
@@ -57,6 +62,16 @@ Route::controller(DashboardController::class)
                 Route::get('show/{slug}', 'show')->name('show');
                 Route::get('project-info/{slug}', 'projectInfo')->name('project-info');
                 Route::get('payment-and-invoices/{slug}', 'paymentAndInvoices')->name('payment-and-invoices');
+
+                Route::controller(WorkspaceChatController::class)
+                    ->prefix('chat')
+                    ->name('chat.')
+                    ->group(function () {
+                        Route::get('messages', 'messages')->name('messages');
+                        Route::get('load-message', 'loadMessages')->name('load-messages');
+                        Route::post('send-message', 'sendMessages')->name('send-messages')
+                            ->middleware(SanitizeInputMiddleware::class);
+                    });
             });
 
         Route::controller(ServiceController::class)
@@ -64,6 +79,7 @@ Route::controller(DashboardController::class)
             ->name('service.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
+                Route::get('show/{slug}', 'show')->name('show');
                 Route::post('store', 'store')->name('store');
                 Route::get('edit/{slug}', 'edit')->name('edit');
                 Route::post('update/{slug}', 'update')->name('update');

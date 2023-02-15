@@ -47,7 +47,21 @@
                                             <ul class="sub-menu">
                                                 @forelse ($m->categories as $c)
                                                     <li>
-                                                        <a href="#">{{ $c->name }}</a>
+
+                                                        @auth
+                                                            @if (auth()->user()->isProvider())
+                                                                <a
+                                                                    href="{{ route('search') }}?type=work&category={{ $c->slug }}">{{ $c->name }}</a>
+                                                            @else
+                                                                <a
+                                                                    href="{{ route('search') }}?type=talent&category={{ $c->slug }}">{{ $c->name }}</a>
+                                                            @endif
+                                                        @endauth
+
+                                                        @guest
+                                                            <a
+                                                                href="{{ route('search') }}?type=work&category={{ $c->slug }}">{{ $c->name }}</a>
+                                                        @endguest
 
                                                         @if ($c->sub_categories)
                                                             <ul class="sub-menu">
@@ -87,8 +101,12 @@
                                     <div class="search-container">
                                         <select required name="type" class="wt-search-bar-select selectpicker me-2"
                                             data-live-search="false" id="work__type">
-                                            <option selected value="talent">Talent</option>
-                                            <option value="work">Work</option>
+                                            <option @auth @if (auth()->user()->isClient()) selected @endif @endauth
+                                                value="talent">
+                                                Talent</option>
+                                            <option @auth @if (auth()->user()->isProvider()) selected @endif @endauth
+                                                @guest selected @endguest value="work">
+                                                Work</option>
                                         </select>
                                         <div class="search-input-container">
                                             <input type="text" placeholder="search" name="q" id="q">
@@ -145,7 +163,20 @@
                                         <ul>
                                             @forelse ($m->categories as $c)
                                                 <li>
-                                                    <a href="#">{{ $c->name }}</a>
+                                                    @auth
+                                                        @if (auth()->user()->isProvider())
+                                                            <a
+                                                                href="{{ route('search') }}?type=work&category={{ $c->slug }}">{{ $c->name }}</a>
+                                                        @else
+                                                            <a
+                                                                href="{{ route('search') }}?type=talent&category={{ $c->slug }}">{{ $c->name }}</a>
+                                                        @endif
+                                                    @endauth
+
+                                                    @guest
+                                                        <a
+                                                            href="{{ route('search') }}?type=work&category={{ $c->slug }}">{{ $c->name }}</a>
+                                                    @endguest
 
                                                     @if ($c->sub_categories)
                                                         <ul>

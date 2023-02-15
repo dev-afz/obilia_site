@@ -16,7 +16,6 @@ class SanitizeInputMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        //clean $request->message
         $request->merge([
             'message' => $this->cleanMessage($request->message)
         ]);
@@ -27,7 +26,7 @@ class SanitizeInputMiddleware
 
     private  function cleanMessage($message)
     {
-
+        if ($message === null) return null;
 
         $message = strip_tags($message);
         $message = trim($message);

@@ -101,6 +101,16 @@ class User extends Authenticatable
     }
 
 
+    public function provider_contracts()
+    {
+        return $this->hasMany(Contract::class, 'user_id');
+    }
+
+    public function client_contracts()
+    {
+        return $this->hasMany(Contract::class, 'client_id');
+    }
+
     public function services()
     {
         return $this->hasMany(UserService::class, 'user_id');
@@ -117,6 +127,24 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserBusiness::class, 'user_id');
     }
+
+
+    public function bank()
+    {
+        return $this->hasOne(UserBank::class, 'user_id');
+    }
+
+
+    public function provider_workspace()
+    {
+        return $this->hasMany(Workspace::class, 'user_id');
+    }
+
+    public function client_workspace()
+    {
+        return $this->hasMany(Workspace::class, 'client_id');
+    }
+
 
     /*
     |--------------------------------------------------------------------------
@@ -173,6 +201,11 @@ class User extends Authenticatable
     }
 
     public function isUser()
+    {
+        return $this->role === 'service_provider';
+    }
+
+    public function isProvider()
     {
         return $this->role === 'service_provider';
     }

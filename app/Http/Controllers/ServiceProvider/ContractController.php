@@ -28,7 +28,7 @@ class ContractController extends Controller
             'milestones.*.title' => 'required|string|max:255',
             'milestones.*.amount' => 'required|numeric|lte:project_cost',
             'milestones.*.description' => 'required|string|max:10000',
-            'contract_file' => 'required|file|mimes:pdf,doc,docx,png,jpg,jpeg|max:2048',
+            'contract_file' => 'nullable|file|mimes:pdf,doc,docx,png,jpg,jpeg|max:2048',
         ]);
 
         $user = auth()->user();
@@ -69,7 +69,6 @@ class ContractController extends Controller
             'project_description' => $request->project_description,
             'milestones' => $request->milestones,
             'contract_file' => $files,
-            'job_id' => $chat->job_id,
         ];
 
 

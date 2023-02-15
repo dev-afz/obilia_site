@@ -10,7 +10,8 @@ Notiflix.Loading.init({
   zindex: 999999
 });
 Notiflix.Block.init({
-  zindex: 9999999
+  zindex: 9999999,
+  className: "custom-notiflix-block"
 });
 Notiflix.Notify.init({
   zindex: 99999999,

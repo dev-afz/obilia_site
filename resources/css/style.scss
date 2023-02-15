@@ -7751,7 +7751,7 @@ strong {
 }
 
 #header-admin.active {
-    overflow: hidden;
+    // overflow: hidden;
 
     .nav-btn-admin {
         transform: rotate(180deg);
@@ -14239,4 +14239,60 @@ table.seprated-row {
 .btn-check:focus+.btn-primary,
 .btn-primary:focus {
     box-shadow: none !important;
+}
+
+.service-container .service-image {
+    height: 15rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.custom-notiflix-block {
+    background-color: rgba($primary-200, 0.8) !important;
+    backdrop-filter: blur(5px);
+}
+
+.placeholder {
+    color: opacify($color: $primary-400, $amount: 0.7);
+}
+
+.icon-shape {
+    display: inline-flex;
+    padding: 0.7rem;
+    text-align: center;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        height: 1rem;
+        width: 1rem;
+    }
+}
+
+.card {
+    overflow: hidden;
+    overflow-wrap: break-word;
+    position: relative;
+    padding: 0;
+    text-decoration: none;
+    transition-duration: .28s;
+    transition-property: box-shadow, opacity;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    z-index: 0;
+    border: 1px solid $primary-200;
+    border-radius: 0.5rem;
+    background-clip: padding-box;
+    box-shadow: 0 0.25rem 1.125rem rgb(75 70 92 / 10%);
 }

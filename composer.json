@@ -16,6 +16,7 @@
         "laravel/socialite": "^5.5",
         "laravel/tinker": "^2.7",
         "league/flysystem-aws-s3-v3": "^3.10",
+        "livewire/livewire": "^2.11",
         "mistic100/randomcolor": "^1.0",
         "pusher/pusher-php-server": "7.0.2",
         "rappasoft/laravel-livewire-tables": "^2.8",

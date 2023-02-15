@@ -462,6 +462,15 @@ button.dt-btn {
   white-space: nowrap;
   margin: 1rem 0;
 }
+.divider h1,
+.divider h2,
+.divider h3,
+.divider h4,
+.divider h5,
+.divider h6,
+.divider p {
+  margin: 0;
+}
 
 .divider .divider-text {
   position: relative;

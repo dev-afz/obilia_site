@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\Client\Workspace;
 
 use Colors\RandomColor;
 use App\Models\Workspace;

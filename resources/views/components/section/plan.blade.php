@@ -61,7 +61,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="p-table-btn mb-5">
-                                                    <a href="about-1.html" class="site-button">Purchase Now</a>
+                                                    <a href="#" class="site-button">Purchase Now</a>
                                                 </div>
                                             </div>
                                         </div>

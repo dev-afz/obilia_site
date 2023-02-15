@@ -56,8 +56,7 @@
                                                                     <div class="flex-grow-1 ms-3">
                                                                         <h3>{{ $chat->participant->user->name }}
                                                                         </h3>
-                                                                        <small
-                                                                            class="overflow-dots">{{ $chat->name }}</small>
+
                                                                     </div>
                                                                     {{-- <span class="unread-count">4</span> --}}
                                                                 </a>
@@ -84,8 +83,7 @@
                                                                     <div class="flex-grow-1 ms-3">
                                                                         <h3>{{ $chat->participant->user->name }}
                                                                         </h3>
-                                                                        <small
-                                                                            class="overflow-dots">{{ $chat->name }}</small>
+
                                                                     </div>
                                                                     {{-- <span class="unread-count">4</span> --}}
                                                                 </a>

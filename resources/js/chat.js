@@ -64,9 +64,12 @@ function setChatData(response) {
     width="50"
     src="${user_avatar}"
     alt="user img">`);
-
   $("[data-chat-name]").html(` <h3>${response.chat_data.user.name}</h3>
-    <small class="chat-name">${response.chat_data.name}</small>`);
+  ${
+    response.chat_data.name !== null && response.chat_data.name !== ""
+      ? `<small class="chat-name">${response.chat_data.name}</small>`
+      : ""
+  }`);
   $(".chatbox input,.chatbox button").attr("disabled", false);
   $("#message-box [name='id']").val(response.chat_data.id);
   $("#message-box [name='to']").val(response.chat_data.user.uuid);

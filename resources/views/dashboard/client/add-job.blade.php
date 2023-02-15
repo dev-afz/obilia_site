@@ -48,11 +48,12 @@
                             <x-utils.select name="project_length" :options="$length" />
                         </div>
                         <div class="col-lg-6">
-                            <x-utils.select name="project_size" :options="['small', 'medium', 'large']" />
+                            <x-utils.select name="project_size" :search="false" :options="['small', 'medium', 'large']" />
                         </div>
                         <div class="col-lg-6">
-                            <x-utils.select name="payment_type" :selected="['fixed']" :options="['fixed']" />
+                            <x-utils.select name="payment_type" :selected="['fixed']" :search="false" :options="['fixed']" />
                         </div>
+
                         <div class="col-lg-3">
                             <x-utils.input name="budget_from" type="number" />
                         </div>
@@ -62,7 +63,10 @@
                         <div class="col-lg-6">
                             <x-utils.input name="skills" />
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
+                            <x-utils.select name="visibility" :selected="['public']" :search="false" :options="['public', 'private']" />
+                        </div>
+                        <div class="col-lg-3">
                             <x-utils.input name="total_hours" type="number" :required="false" :attrs="['step' => '0.01']" />
                         </div>
 

@@ -33,6 +33,11 @@ class Workspace extends Model
         return $this->belongsTo(Contract::class);
     }
 
+    public function chat()
+    {
+        return $this->hasOne(Chat::class, 'workspace_id');
+    }
+
 
 
 

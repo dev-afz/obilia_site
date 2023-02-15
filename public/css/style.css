@@ -12021,9 +12021,6 @@ strong {
   color: #0f1221;
 }
 
-#header-admin.active {
-  overflow: hidden;
-}
 #header-admin.active .nav-btn-admin {
   transform: rotate(180deg);
 }
@@ -17676,4 +17673,61 @@ table.seprated-row th {
 .btn-check:focus + .btn-primary,
 .btn-primary:focus {
   box-shadow: none !important;
+}
+
+.service-container .service-image {
+  height: 15rem;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.custom-notiflix-block {
+  background-color: rgba(204, 227, 231, 0.8) !important;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+
+.placeholder {
+  color: #4d9fa9;
+}
+
+.icon-shape {
+  display: inline-flex;
+  padding: 0.7rem;
+  text-align: center;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+.icon-shape svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+.card {
+  overflow: hidden;
+  overflow-wrap: break-word;
+  position: relative;
+  padding: 0;
+  text-decoration: none;
+  transition-duration: 0.28s;
+  transition-property: box-shadow, opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  border: 1px solid #cce3e7;
+  border-radius: 0.5rem;
+  background-clip: padding-box;
+  box-shadow: 0 0.25rem 1.125rem rgba(75, 70, 92, 0.1);
 }

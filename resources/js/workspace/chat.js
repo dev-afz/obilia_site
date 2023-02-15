@@ -1,97 +1,267 @@
-/*
-|--------------------------------------------------------------------------
-| Chat UI
-|--------------------------------------------------------------------------
-*/
-var element = $(".floating-chat");
-var myStorage = localStorage;
+import Echo from "laravel-echo";
+import Pusher from "pusher-js";
+import { v4 as uuidv4 } from "uuid";
+window.Echo = new Echo({
+  broadcaster: "pusher",
+  key: "myKey",
+  wsHost: window.location.hostname,
+  wsPort: 6001,
+  forceTLS: false,
+  disableStats: true,
+  enabledTransports: ["ws", "wss"],
+});
 
-if (!myStorage.getItem("chatID")) {
-  myStorage.setItem("chatID", createUUID());
-}
+const channel = window.Echo.private("workspace-message." + window.me);
+console.log(channel);
 
-setTimeout(function () {
-  element.addClass("enter");
-}, 1000);
-
-element.click(openElement);
-
-function openElement() {
-  var messages = element.find(".messages");
-  var textInput = element.find(".text-box");
-  element.find(">i").hide();
-  element.addClass("expand");
-  element.find(".chat").addClass("enter");
-  var strLength = textInput.val().length * 2;
-  textInput.keydown(onMetaAndEnter).prop("disabled", false).focus();
-  element.off("click", openElement);
-  element.find(".header button").click(closeElement);
-  element.find("#sendMessage").click(sendNewMessage);
-  messages.scrollTop(messages.prop("scrollHeight"));
-}
-
-function closeElement() {
-  element.find(".chat").removeClass("enter").hide();
-  element.find(">i").show();
-  element.removeClass("expand");
-  element.find(".header button").off("click", closeElement);
-  element.find("#sendMessage").off("click", sendNewMessage);
-  element
-    .find(".text-box")
-    .off("keydown", onMetaAndEnter)
-    .prop("disabled", true)
-    .blur();
-  setTimeout(function () {
-    element.find(".chat").removeClass("enter").show();
-    element.click(openElement);
-  }, 500);
-}
-
-function createUUID() {
-  // http://www.ietf.org/rfc/rfc4122.txt
-  var s = [];
-  var hexDigits = "0123456789abcdef";
-  for (var i = 0; i < 36; i++) {
-    s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+channel.listen(".message", (e) => {
+  console.log(e);
+  if (e.workspace.id == window.workspace) {
+    console.log("This workspace");
+    $("#chat-holder").append(e.message);
+    $("#chat-holder").animate(
+      { scrollTop: $("#chat-holder").prop("scrollHeight") },
+      500
+    );
+  } else {
+    console.log("Not this workspace");
   }
-  s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
-  s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
-  s[8] = s[13] = s[18] = s[23] = "-";
+});
 
-  var uuid = s.join("");
-  return uuid;
-}
+const chatForm = document.getElementById("chat-form");
+let reply_element = null;
 
-function sendNewMessage() {
-  var userInput = $(".text-box");
-  var newMessage = userInput
-    .html()
-    .replace(/\<div\>|\<br.*?\>/gi, "\n")
-    .replace(/\<\/div\>/g, "")
-    .trim()
-    .replace(/\n/g, "<br>");
+$(chatForm).submit(function (e) {
+  e.preventDefault();
+  const message = $("#message").val();
+  const image = $("#image").val();
+  $("#chat-bottom-sheet").removeClass("open");
+  if (isStringDirty(message)) {
+    resetAll();
+    alert("Please don't use script tags");
+    return;
+  }
 
-  if (!newMessage) return;
-
-  var messagesContainer = $(".messages");
-
-  messagesContainer.append(['<li class="self">', newMessage, "</li>"].join(""));
-
-  // clean out old message
-  userInput.html("");
-  // focus on input
-  userInput.focus();
-
-  messagesContainer.finish().animate(
-    {
-      scrollTop: messagesContainer.prop("scrollHeight"),
+  const workspace = window.workspace;
+  const uuid = uuidv4();
+  appendMessage(uuid);
+  console.log({
+    message: sanitize(message),
+    workspace: workspace,
+    image: image,
+    uuid: uuid,
+    formdata: $(this).serializeArray(),
+  });
+  window.rebound({
+    url: send_url,
+    form: $(this),
+    appendData: {
+      workspace: workspace,
     },
-    250
+    notification: false,
+    block: false,
+    successCallback: function (response) {
+      console.log(response);
+      resetAll();
+      $(`[data-msg-id="${uuid}"]`).replaceWith(response.html);
+    },
+    errorCallback: function (response) {
+      console.log(response);
+    },
+  });
+});
+
+function appendMessage(uuid) {
+  const message = sanitize($("#message").val());
+  const image = $("#image")[0];
+
+  if (message == "" && image.files.length == 0) {
+    Notiflix.Notify.failure("Please enter a message or upload an image");
+    return;
+  }
+
+  let html = `<li data-msg-id="${uuid}"  class="sent"><div class="chat-content">`;
+
+  if (reply_element != null) {
+    const reply_text = reply_element.find(".chat-text p").text();
+    const reply_image = reply_element.find(".chat-img").attr("src");
+
+    if (reply_text != "") {
+      html += `<p class="m-0">${reply_text}</p>`;
+    }
+    if (reply_image != "" && reply_image != undefined) {
+      html += `<div class="chat-images">`;
+      html += `<img src="${reply_image}" alt="" class="chat-img">`;
+      html += `</div>`;
+    }
+
+    html += `<div class="message-reply">`;
+  }
+  html += `<div class="chat-text">`;
+  console.log(image.files.length);
+  if (image.files.length > 0) {
+    const image_preview_link = URL.createObjectURL(image.files[0]);
+    html += `<div class="chat-images uploading">
+    <span class="blurred-loading">
+    <i class="fas fa-spinner fa-spin"></i>
+    </span>
+    <img src="${image_preview_link}" alt="" class="chat-img">
+    </div>
+    `;
+  }
+  if (message != "") {
+    html += `<p class="m-0">${message}</p></div>`;
+  }
+
+  html += `</div><small class="chat-time"><i class="fas fa-clock"></i></small></li>`;
+
+  $("#chat-holder").append(html);
+  $("#chat-holder").animate(
+    { scrollTop: $("#chat-holder").prop("scrollHeight") },
+    500
   );
 }
 
-function onMetaAndEnter(event) {
-  if ((event.metaKey || event.ctrlKey) && event.keyCode == 13) {
-    sendNewMessage();
-  }
+function sanitize(str) {
+  return str
+    .replace(/<script[^>]*?>.*?<\/script>/gi, "")
+    .replace(/<[\/\!]*?[^<>]*?>/gi, "");
 }
+
+function isStringDirty(str) {
+  return /<script[^>]*?>.*?<\/script>/gi.test(str);
+}
+
+function resetAll() {
+  $("#message").val("");
+  $("#reply_to").val("");
+  $("#image").val("");
+  $("#chat-bottom-sheet").removeClass("open");
+  reply_element = null;
+}
+
+$(document).ready(function () {
+  window.rebound({
+    data: {
+      workspace: window.workspace,
+    },
+    url: load_url,
+    method: "GET",
+    notification: false,
+    block: "#chat-holder",
+    processData: true,
+    successCallback: function (response) {
+      $("#chat-holder").html(response.html);
+      $("#chat-holder").animate(
+        { scrollTop: $("#chat-holder").prop("scrollHeight") },
+        500
+      );
+    },
+    errorCallback: function (response) {
+      console.log(response);
+    },
+  });
+});
+
+/*
+|--------------------------------------------------------------------------
+| Load Messages
+|--------------------------------------------------------------------------
+|
+| This is the route that will load the messages for the workspace
+|
+*/
+
+let page = 1;
+let lastPage = false;
+let alreadyLoading = false;
+
+$("#chat-holder").scroll(function () {
+  if (
+    $("#chat-holder").scrollTop() + $("#chat-holder").height() ==
+    $("#chat-holder").height()
+  ) {
+    if (!alreadyLoading && !lastPage) {
+      loadMessages();
+    } else {
+      if (lastPage) {
+        console.log("Last Page");
+      }
+      if (alreadyLoading) {
+        console.log("Already Loading");
+      }
+    }
+  }
+});
+
+function loadMessages() {
+  alreadyLoading = true;
+  $("#chat-holder").prepend(
+    `<div class="text-center" id="loading">
+    <i class="fas fa-spinner fa-spin"></i>
+    </div>`
+  );
+  window.rebound({
+    data: {
+      workspace: window.workspace,
+      page: page++,
+    },
+    url: message_url,
+    method: "GET",
+    notification: false,
+    block: false,
+    processData: true,
+    successCallback: function (response) {
+      alreadyLoading = false;
+      if (response.isLast) {
+        lastPage = true;
+        Notiflix.Notify.info("No more messages");
+      }
+
+      var scrollBottom =
+        $("#chat-holder").prop("scrollHeight") -
+        $("#chat-holder").scrollTop() -
+        $("#chat-holder").height();
+      $("#chat-holder #loading").remove();
+      $(response.html).hide().prependTo("#chat-holder").fadeIn(500);
+
+      $("#chat-holder").scrollTop(
+        $("#chat-holder").prop("scrollHeight") - (scrollBottom + 100)
+      );
+    },
+  });
+}
+
+$(document).on("click", "[data-msg-reply]", function (e) {
+  e.preventDefault();
+
+  reply_element = $(this);
+  const id = $(this).data("msg-reply");
+  $("#reply_to").val(id);
+  const message = $(`[data-msg-reply="${id}"]`)
+    .closest(".chat-content")
+    .find(".chat-text p")
+    .text();
+
+  const image = $(`[data-msg-reply="${id}"]`)
+    .closest(".chat-content")
+    .find(".chat-images img")
+    .attr("src");
+  let html = `<div class="reply-sheet-content">`;
+  if (image != undefined && image != "") {
+    html += `<img src="${image}" alt="" class="chat-img">`;
+  }
+  if (message != undefined) {
+    html += `<p>${message}</p></div>`;
+  }
+  $("#chat-bottom-sheet .reply-content").html(html);
+  $("#chat-bottom-sheet").addClass("open");
+  $("#message").focus();
+});
+
+$(document).on("click", "#chat-bottom-sheet [data-sheet-close]", function (e) {
+  e.preventDefault();
+  $("#chat-bottom-sheet").removeClass("open");
+  $("#reply_to").val("");
+  reply_element = null;
+});

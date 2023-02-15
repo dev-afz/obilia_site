@@ -16,9 +16,8 @@
                             <div class="sidebar-elements search-bx">
 
                                 <form data-filter-form="">
-
                                     <x-utils.select valueName="slug" :required="false" name="category" :options="$categories"
-                                        :selected="['all']" labelClass="h5 mb-4 section-head" />
+                                        :selected="[request()->category ?? 'all']" labelClass="h5 mb-4 section-head" />
 
                                     <x-utils.input :required="false" name="q" label="Keyword" :value="request()->q"
                                         placeholder="Enter Keyword" labelClass="h5 mb-4 section-head" />
@@ -161,14 +160,23 @@
                 function getFilterData() {
                     const form = $('[data-filter-form]').closest('form');
                     const data = form.serialize();
+                    //check if category is selected
+                    if (data.indexOf('category') >= 0) {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        urlParams.set('category', form.find('select[name="category"]').val());
+                        urlParams.delete('sub_category');
+                        window.history.replaceState({}, '', decodeURIComponent(`${location.pathname}?${urlParams.toString()}`));
+
+
+                    }
                     return '&' + data;
                 }
 
 
                 function fetchJobs(page = 1) {
-                    // console.log(filters);
+                    ;
                     // return;
-                    const filters = query + getFilterData() + getTags()
+                    const filters = query + getFilterData() + getTags() + getUrlQuery();
                     $('[data-job-cards]').html($('[data-skeleton-loader]').html());
                     $('.result__counter p')
                         .addClass('skeleton')
@@ -193,6 +201,29 @@
                             $('.pagination a').attr('disabled', false);
                         },
                     });
+                }
+
+
+                function getUrlQuery() {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    let query = '';
+                    if (urlParams.has('type')) {
+                        query += '&type=' + urlParams.get('type');
+                    }
+                    if (urlParams.has('location')) {
+                        query += '&location=' + urlParams.get('location');
+                    }
+                    if (urlParams.has('category')) {
+                        query += '&category=' + urlParams.get('category');
+                    }
+                    if (urlParams.has('tags')) {
+                        query += '&tags=' + urlParams.get('tags');
+                    }
+                    if (urlParams.has('sub_category')) {
+                        query += '&sub_category=' + urlParams.get('sub_category');
+                    }
+                    return query;
+
                 }
             </script>
         </x-slot>

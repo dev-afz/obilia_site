@@ -52,6 +52,7 @@ class JobController extends Controller
             'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:100',
             'responsibilities' => 'required|array',
             'responsibilities.*' => 'required|string|max:1000',
+            'visibility' => 'required|in:public,private',
 
         ]);
 

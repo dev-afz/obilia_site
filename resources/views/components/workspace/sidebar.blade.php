@@ -4,7 +4,7 @@
             <li class="nav-item py-2 ps-4 my-3 d-none d-sm-block">
                 <div class="workspace-title">
                     <h4 class="fs-5 text-center">
-                        Dashboard
+                        Workspace
                     </h4>
                 </div>
             </li>
@@ -93,7 +93,10 @@
                 </a>
             </li>
             <li @class(['nav-item py-2'])>
-                <a href="{{ route('client.workspace.index') }}" class="nav-link ps-3 text-truncate gap-3 d-flex">
+                <a href="@if (auth()->user()->isProvider()) {{ route('service-provider.workspace.index') }}
+                @else
+                {{ route('client.workspace.index') }} @endif"
+                    class="nav-link ps-3 text-truncate gap-3 d-flex">
                     <div class="svg-holder">
                         <svg aria-hidden="true" focusable="false" data-prefix="fa-regular"
                             data-icon="arrow-right-from-bracket"

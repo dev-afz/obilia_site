@@ -15,11 +15,17 @@ class UserService extends Component
 
 
     public $service;
+    public $showLikeButton;
+    public $class;
 
     public function __construct(
-        ModelsUserService $service
+        ModelsUserService $service,
+        bool $showLikeButton = true,
+        string $class = 'col-md-6 col-lg-4 mb-3',
     ) {
         $this->service = $service;
+        $this->showLikeButton = $showLikeButton;
+        $this->class = $class;
     }
 
     /**

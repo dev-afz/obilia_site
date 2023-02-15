@@ -46,7 +46,12 @@
                                                 <div class="p-4">
                                                     <h4 class="mb-5">{{ $cat->name }}</h4>
                                                     @forelse ($cat->sub_categories as $sub)
-                                                        <a href="{{ route('subcategories', $sub->slug) }}"
+                                                        <a @auth
+@if (auth()->user()->isProvider())
+                                                        href="{{ route('search') }}?type=work&sub_category={{ $sub->slug }}"
+                                                    @else
+                                                        href="{{ route('search') }}?type=talent&sub_category={{ $sub->slug }}"
+                                                    @endif @endauth
                                                             class="sub-link mb-2">{{ $sub->name }}
                                                         </a>
 

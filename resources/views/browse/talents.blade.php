@@ -5,6 +5,8 @@
     </x-slot>
 
 
+
+
     <div class="section-full p-t120  p-b90 site-bg-white">
 
 
@@ -19,8 +21,8 @@
 
                             <form data-filter-form="">
 
-                                <x-utils.select :required="false" name="category" :options="$categories" selected="all"
-                                    labelClass="h5 mb-4 section-head" />
+                                <x-utils.select :required="false" valueName="slug" name="category" :options="$categories"
+                                    :selected="['all']" labelClass="h5 mb-4 section-head" />
 
                                 <x-utils.input :required="false" name="q" label="Keyword" :value="request()->q"
                                     placeholder="Enter Keyword" labelClass="h5 mb-4 section-head" />
@@ -70,8 +72,7 @@
                             </select>
                             <select id="show-data" class="wt-select-bar-2 selectpicker" data-live-search="false"
                                 data-bv-field="size">
-                                <option value="1">Show 01</option>
-                                <option value="2">Show 02</option>
+                                <option selected value="5">Show 05</option>
                                 <option value="10">Show 10</option>
                                 <option value="20">Show 20</option>
                                 <option value="30">Show 30</option>
@@ -82,12 +83,16 @@
 
                     <div data-talent-cards class="row match-height">
 
-                        <x-elements.service-provider-card :users="$users" />
+                        @forelse ($services as $service)
+                            <x-elements.user-service :service="$service" class="col-md-4 mb-3" />
+                        @empty
+                        @endforelse
+
                     </div>
 
                     <div class="pagination-outer">
                         <div data-talent-links class="pagination-style1">
-                            {!! $users->links() !!}
+                            {!! $services->links() !!}
                         </div>
                     </div>
 
@@ -98,18 +103,31 @@
     </div>
 
     <div hidden class="d-none" data-skeleton-loader>
-        <x-misc.service-provider-skeleton-loader :count="2" class="col-md-6" />
+        <x-misc.service-loader :count="3" class="col-md-4 mb-3" />
     </div>
 
 
 
     <x-slot name="styles">
+        <style>
+            .service-container .service-image {
+                height: 15rem;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .avatar-sm img {
+                width: 3rem;
+                height: 3rem;
+                border-radius: 50%;
+            }
+        </style>
     </x-slot>
     <x-slot name="scripts">
         <script>
             const query = '?type=talent';
             let sortBy = 'featured';
-            let show = 2;
+            let show = 5;
             $(document).on('click', '.pagination a', function(event) {
                 event.preventDefault();
                 const btn = $(this);

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Site;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Log;
 
 class JobController extends Controller
 {
@@ -13,6 +12,7 @@ class JobController extends Controller
     {
 
         $job = Job::where('slug', $slug)
+            ->isPublic()
             ->with([
                 'sub_category', 'experience', 'work_length', 'skills' => ['skill'], 'responsibilities',
                 'application' => fn ($q) => $q->where('user_id', auth()->id())
@@ -25,7 +25,6 @@ class JobController extends Controller
 
     public function toggleLike(Request $request)
     {
-        Log::info($request->all());
         $request->validate([
             'job' => 'required|string',
             'liked' => 'required|in:true,false',

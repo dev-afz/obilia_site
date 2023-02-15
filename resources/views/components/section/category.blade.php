@@ -3,7 +3,7 @@
 
         <div class="wt-separator-two-part">
             <div class="row wt-separator-two-part-row">
-                <div class="col-xl-6 col-lg-6 col-md-12 wt-separator-two-part-left">
+                <div class="col-xl-12 col-lg-12 col-md-12 wt-separator-two-part-left">
                     <!-- TITLE START-->
                     <div class="section-head left wt-small-separator-outer">
                         <div class="wt-small-separator site-text-primary">
@@ -13,9 +13,9 @@
                     </div>
                     <!-- TITLE END-->
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-12 wt-separator-two-part-right text-right">
+                {{-- <div class="col-xl-6 col-lg-6 col-md-12 wt-separator-two-part-right text-right">
                     <a href="job-list.html" class=" site-button">All Categories</a>
-                </div>
+                </div> --}}
             </div>
         </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ServiceProvider;
 
+use App\Models\Workspace;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Managers\FileManager;
@@ -49,11 +50,32 @@ class ServiceController extends Controller
         $user = $request->user();
         $services = $user->services()->with(['images', 'user'])->get();
         $html =  $services->map(function ($service) {
-            return View::make('components.elements.user-service', ['service' => $service])->render();
+            return View::make('components.elements.user-service', [
+                'service' => $service,
+                'showLikeButton' => false,
+                'class' => 'col-md-6 mb-3',
+            ])->render();
         })->implode('');
 
         return response()->json([
             'html' => $html,
         ]);
+    }
+
+    public function show($slug)
+    {
+
+
+        //set session for workspace
+        session(['active_workspace' => $slug]);
+        $workspace = Workspace::where('slug', $slug)
+            ->where('client_id', auth()->id())
+            ->with([
+                'contract.milestones',
+                'provider',
+            ])
+            ->active()
+            ->firstOrFail();
+        return view('dashboard.service-provider.workspace.workspace-details', compact('workspace'));
     }
 }

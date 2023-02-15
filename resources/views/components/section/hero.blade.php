@@ -30,16 +30,117 @@
                 </div>
                 <div class="twm-bnr-popular-search">
                     <span class="twm-title">Popular Searches:</span>
-                    <a href="#">Developer</a> ,
-                    <a href="#">Designer</a> ,
-                    <a href="#">Architect</a> ,
-                    <a href="#">Engineer</a> ,
-                    <a href="#">PHP</a> ,
-                    <a href="#">Banking</a> ,
-                    <a href="#">Ios</a> ,
-                    <a href="#">Freelance</a> ,
-                    <a href="#">Writing</a> ,
-                    <a href="#">Accountancy</a>...
+                    <a @auth
+@if (auth()->user()->isProvider())
+                        href="{{ route('search') }}?type=work&q=Developer"
+
+                        @else
+                        href="{{ route('search') }}?type=talent&q=Developer"
+                        @endif @endauth
+                        @guest()
+                            href="{{ route('search') }}?type=work&q=Developer"
+                        @endguest>Developer</a>
+                    ,
+                    <a @auth
+@if (auth()->user()->isProvider())
+                        href="{{ route('search') }}?type=work&q=Designer"
+
+                        @else
+                        href="{{ route('search') }}?type=talent&q=Designer"
+                        @endif @endauth
+                        @guest()
+                            href="{{ route('search') }}?type=work&q=Designer"
+                        @endguest>Designer</a>
+                    ,
+                    <a @auth
+@if (auth()->user()->isProvider())
+                        href="{{ route('search') }}?type=work&q=Architect"
+
+                        @else
+                        href="{{ route('search') }}?type=talent&q=Architect"
+                        @endif @endauth
+                        @guest()
+                            href="{{ route('search') }}?type=work&q=Architect"
+                        @endguest>Architect</a>
+                    ,
+                    <a @auth
+@if (auth()->user()->isProvider())
+                        href="{{ route('search') }}?type=work&q=Engineer"
+
+                        @else
+                        href="{{ route('search') }}?type=talent&q=Engineer"
+                        @endif @endauth
+                        @guest()
+                            href="{{ route('search') }}?type=work&q=Engineer"
+                        @endguest>Engineer</a>
+                    ,
+                    <a @auth
+@if (auth()->user()->isProvider())
+                        href="{{ route('search') }}?type=work&q=PHP"
+
+                        @else
+                        href="{{ route('search') }}?type=talent&q=PHP"
+                        @endif @endauth
+                        @guest()
+                            href="{{ route('search') }}?type=work&q=PHP"
+                        @endguest>PHP</a>
+                    ,
+                    <a @auth
+@if (auth()->user()->isProvider())
+                        href="{{ route('search') }}?type=work&q=Banking"
+
+                        @else
+                        href="{{ route('search') }}?type=talent&q=Banking"
+                        @endif @endauth
+                        @guest()
+                            href="{{ route('search') }}?type=work&q=Banking"
+                        @endguest>Banking</a>
+                    ,
+                    <a @auth
+@if (auth()->user()->isProvider())
+                        href="{{ route('search') }}?type=work&q=Ios"
+
+                        @else
+                        href="{{ route('search') }}?type=talent&q=Ios"
+                        @endif @endauth
+                        @guest()
+                            href="{{ route('search') }}?type=work&q=Ios"
+                        @endguest>Ios</a>
+                    ,
+                    <a @auth
+@if (auth()->user()->isProvider())
+                        href="{{ route('search') }}?type=work&q=Freelance"
+
+                        @else
+                        href="{{ route('search') }}?type=talent&q=Freelance"
+                        @endif @endauth
+                        @guest()
+                            href="{{ route('search') }}?type=work&q=Freelance"
+                        @endguest>Freelance</a>
+                    ,
+                    <a @auth
+@if (auth()->user()->isProvider())
+                        href="{{ route('search') }}?type=work&q=Writing"
+
+                        @else
+                        href="{{ route('search') }}?type=talent&q=Writing"
+                        @endif @endauth
+                        @guest()
+                            href="{{ route('search') }}?type=work&q=Writing"
+                        @endguest>Writing</a>
+                    ,
+                    <a @auth
+@if (auth()->user()->isProvider())
+                        href="{{ route('search') }}?type=work&q=Accountancy"
+
+                        @else
+                        href="{{ route('search') }}?type=talent&q=Accountancy"
+
+                        @endif @endauth
+                        @guest()
+                        href="{{ route('search') }}?type=work&q=Accountancy"
+                    @endguest>Accountancy
+                    </a>...
                 </div>
             </div>
         </div>

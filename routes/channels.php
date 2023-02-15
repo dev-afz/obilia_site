@@ -25,3 +25,8 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 Broadcast::channel('chat.{id}', function ($user, $id) {
     return true;
 });
+
+
+Broadcast::channel('workspace-message.{id}', function ($user, $id) {
+    return true;
+});

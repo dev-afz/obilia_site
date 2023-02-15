@@ -15,7 +15,31 @@ class DashboardController extends Controller
     use FileManager;
     public function index()
     {
-        return view('dashboard.service-provider.index');
+        $user = auth()->user();
+        $total_services = $user->services()->count();
+        $applied_jobs = $user->job_applications()->count();
+        $total_liked_jobs = $user->liked_jobs()->count();
+        $total_active_contracts =  $user->provider_contracts()->where('status', 'active')->count();
+        $total_completed_contracts =  $user->provider_contracts()->where('status', 'completed')->count();
+        $total_pending_contracts =  $user->provider_contracts()->where('status', 'pending')->count();
+        $total_cancelled_contracts =  $user->provider_contracts()->where('status', 'cancelled')->count();
+        $total_contracts = $total_active_contracts + $total_completed_contracts + $total_pending_contracts + $total_cancelled_contracts;
+        $total_active_chats = $user->chats()->where('status', 'active')->count();
+        $total_closed_chats = $user->chats()->where('status', 'closed')->count();
+        $total_chats = $total_active_chats + $total_closed_chats;
+        return view('dashboard.service-provider.index', compact(
+            'total_services',
+            'applied_jobs',
+            'total_liked_jobs',
+            'total_active_contracts',
+            'total_completed_contracts',
+            'total_pending_contracts',
+            'total_cancelled_contracts',
+            'total_contracts',
+            'total_active_chats',
+            'total_closed_chats',
+            'total_chats'
+        ));
     }
 
     public function profile()
@@ -25,6 +49,7 @@ class DashboardController extends Controller
             'kycs',
             'business',
             'skills.skill',
+            'bank',
         ]);
         return view('dashboard.service-provider.profile', compact('subcategories', 'user'));
     }
@@ -199,6 +224,116 @@ class DashboardController extends Controller
 
         return response()->json([
             'message' => 'Business updated successfully',
+            'redirect' => route('service-provider.profile'),
+        ], 200);
+    }
+
+
+
+
+    public function addBank(Request $request)
+    {
+        $user = $request->user()->load([
+            'bank',
+        ]);
+
+        if ($user->bank) {
+            return redirect()->route('service-provider.edit-bank');
+        }
+
+        return view('dashboard.service-provider.add-bank', compact('user'));
+    }
+
+    public function storeBank(Request $request)
+    {
+        $request->validate([
+            'account_holder_name' => 'required|string|max:255',
+            'account_number' => 'required|string|max:255',
+            'ifsc_code' => 'required|string|max:255',
+            'bank_name' => 'required|string|max:255',
+            'bank_address' => 'required|string|max:3000',
+            'bank_branch' => 'required|string|max:3000',
+            'bank_city' => 'required|string|max:255',
+            'bank_state' => 'required|string|max:255',
+        ]);
+
+        $user = $request->user();
+
+        if ($user->bank) {
+            throw ValidationException::withMessages([
+                'bank' => 'Bank already added',
+            ]);
+        }
+
+        $user->bank()->create([
+            'account_holder_name' => $request->account_holder_name,
+            'account_number' => $request->account_number,
+            'ifsc_code' => $request->ifsc_code,
+            'name' => $request->bank_name,
+            'address' => $request->bank_address,
+            'branch' => $request->bank_branch,
+            'city' => $request->bank_city,
+            'state' => $request->bank_state,
+        ]);
+
+        return response()->json([
+            'message' => 'Bank added successfully',
+            'redirect' => route('service-provider.profile'),
+        ], 200);
+    }
+
+
+    public function editBank(Request $request)
+    {
+        $user = $request->user()->load([
+            'bank',
+        ]);
+
+        if (!$user->bank) {
+            return redirect()->route('service-provider.add-bank');
+        }
+
+        $bank = $user->bank;
+
+        return view('dashboard.service-provider.edit-bank', compact('user', 'bank'));
+    }
+
+    public function updateBank(Request $request)
+    {
+        $request->validate([
+            'account_holder_name' => 'required|string|max:255',
+            'account_number' => 'required|string|max:255',
+            'ifsc_code' => 'required|string|max:255',
+            'bank_name' => 'required|string|max:255',
+            'bank_address' => 'required|string|max:3000',
+            'bank_branch' => 'required|string|max:3000',
+            'bank_city' => 'required|string|max:255',
+            'bank_state' => 'required|string|max:255',
+        ]);
+
+        $user = $request->user();
+
+        $bank = $user->bank;
+
+        if (!$bank) {
+            throw ValidationException::withMessages([
+                'bank' => 'Bank not found',
+            ]);
+        }
+
+        $bank->update([
+            'account_holder_name' => $request->account_holder_name,
+            'account_number' => $request->account_number,
+            'ifsc_code' => $request->ifsc_code,
+            'name' => $request->bank_name,
+            'address' => $request->bank_address,
+            'branch' => $request->bank_branch,
+            'city' => $request->bank_city,
+            'state' => $request->bank_state,
+        ]);
+
+        return response()->json([
+            'message' => 'Bank updated successfully',
             'redirect' => route('service-provider.profile'),
         ], 200);
     }

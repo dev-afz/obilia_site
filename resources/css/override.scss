@@ -478,6 +478,16 @@ button.dt-btn {
     overflow: hidden;
     white-space: nowrap;
     margin: 1rem 0;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        margin: 0;
+    }
 }
 
 .divider .divider-text {

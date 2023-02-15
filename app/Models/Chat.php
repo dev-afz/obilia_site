@@ -34,6 +34,11 @@ class Chat extends Model
         return $this->belongsTo(Job::class);
     }
 
+    public function workspace()
+    {
+        return $this->belongsTo(Workspace::class);
+    }
+
 
     public function messages()
     {
@@ -48,5 +53,21 @@ class Chat extends Model
     public function scopeActive($query)
     {
         return $query->where('status', 'active');
+    }
+
+
+    public function scopeForJob($query)
+    {
+        return $query->where('job_id', '!=', null);
+    }
+
+    public function scopeForWorkspace($query)
+    {
+        return $query->where('workspace_id', '!=', null);
+    }
+
+    public function scopeGlobal($query)
+    {
+        return $query->where('job_id', null)->where('workspace_id', null);
     }
 }

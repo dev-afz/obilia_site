@@ -27,6 +27,10 @@
                 width: 100%;
                 max-width: 40rem;
             }
+
+            .accordion-button {
+                color: #17171d !important;
+            }
         </style>
     </x-slot>
 
@@ -56,7 +60,7 @@
                             <small>3.1 (89 reviews)</small>
                         </div>
                         <hr>
-                        <x-utils.accordion class="w-100 " open="user_details" :items="['user_details', 'kyc_details', 'business_details']">
+                        <x-utils.accordion class="w-100 " :items="['user_details', 'kyc_details', 'business_details', 'bank_details']">
                             <x-slot name="user_details">
                                 <div class="px-2 w-100 position-relative">
                                     <a style="right: 1rem;z-index:10;"
@@ -222,6 +226,99 @@
 
 
 
+                                </div>
+                            </x-slot>
+
+                            <x-slot name="bank_details">
+                                <div class="px-2 w-100 position-relative">
+                                    @if ($user->bank)
+                                        <a style="right: 1rem;z-index:10;"
+                                            class="position-absolute top-0 z-10 btn btn-primary btn-sm"
+                                            href="{{ route('service-provider.edit-bank') }}">Edit</a>
+                                        <ul>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                    <span class="twm-title">Account Holder Name</span>
+                                                    <div class="twm-s-info-discription">
+                                                        {{ $user->bank->account_holder_name }}
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                    <span class="twm-title">Bank Name</span>
+                                                    <div class="twm-s-info-discription">
+                                                        {{ $user->bank->name }}
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                    <span class="twm-title">Account Number</span>
+                                                    <div class="twm-s-info-discription">
+                                                        {{ $user->bank->account_number }}
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                    <span class="twm-title">IFCS Code</span>
+                                                    <div class="twm-s-info-discription">
+                                                        {{ $user->bank->ifsc_code }}
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                    <span class="twm-title">Bank Branch</span>
+                                                    <div class="twm-s-info-discription">
+                                                        {{ $user->bank->branch }}
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                    <span class="twm-title">Bank Address</span>
+                                                    <div class="twm-s-info-discription">
+                                                        {{ $user->bank->address }}
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                    <span class="twm-title">Bank City</span>
+                                                    <div class="twm-s-info-discription">
+                                                        {{ $user->bank->city }}
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="twm-s-info-inner">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                    <span class="twm-title">Bank State</span>
+                                                    <div class="twm-s-info-discription">
+                                                        {{ $user->bank->state }}
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    @else
+                                        <div class="text-center">
+                                            <a href="{{ route('service-provider.add-bank') }}"
+                                                class="btn btn-primary btn-sm">
+                                                Add Bank Details
+                                                <i class="fas fa-plus"></i>
+                                            </a>
+                                        </div>
+                                    @endif
                                 </div>
                             </x-slot>
                         </x-utils.accordion>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ServiceProvider;
+namespace App\Http\Controllers\ServiceProvider\Workspace;
 
 use App\Models\Workspace;
 use Illuminate\Http\Request;
@@ -11,7 +11,6 @@ class WorkspacesController extends Controller
 {
     public function index(ColorManager $colorManager)
     {
-        auth()->user();
         $workspaces = Workspace::where('user_id', auth()->id())
             ->active()
             ->get();
@@ -39,7 +38,7 @@ class WorkspacesController extends Controller
             ->where('user_id', auth()->id())
             ->with([
                 'contract.milestones',
-                'provider',
+                'owner',
             ])
             ->active()
             ->firstOrFail();

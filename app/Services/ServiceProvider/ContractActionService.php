@@ -61,30 +61,47 @@ class ContractActionService
     {
         $contractData = json_decode($this->contract->contract, true);
         $milestones = $contractData['milestones'];
-        $contract = Contract::create([
+        $new_contract = Contract::create([
             'title' => $contractData['project_title'],
             'start_date' => $contractData['contract_date'],
             'cost' => $contractData['project_cost'],
             'description' => $contractData['project_description'],
             'status' => 'pending',
-            'client_id' => $this->contract->send_by,
-            'user_id' => $this->contract->send_to,
-            'job_id' => $contractData['job_id'],
+            'user_id' => $this->contract->send_by,
+            'client_id' => $this->contract->send_to,
+            'job_id' => $contractData['job_id'] ?? null,
         ]);
 
         foreach ($milestones as $key => $m) {
-            $contract->milestones()->create([
+            $new_contract->milestones()->create([
                 'title' => $m['title'],
                 'cost' => $m['amount'],
                 'description' => $m['description'],
             ]);
         }
 
-        $contract->workspaces()->create([
+        $workspace =  $new_contract->workspaces()->create([
             'name' => $contractData['project_title'] . ' workspace',
             'slug' => Str::slug($contractData['project_title'] . ' workspace'),
-            'client_id' => $this->contract->send_by,
-            'user_id' => $this->contract->send_to,
+            'user_id' => $this->contract->send_by,
+            'client_id' => $this->contract->send_to,
+        ]);
+
+        $chat = $workspace->chat()->create([
+            'name' => $contractData['project_title'] . ' chat',
+            'uuid' => Str::uuid(),
+            'status' => 'active',
+        ]);
+
+        $chat->participants()->createMany([
+            [
+                'user_id' => $this->contract->send_by,
+                'role' => 'member',
+            ],
+            [
+                'user_id' => $this->contract->send_to,
+                'role' => 'owner',
+            ],
         ]);
     }
 
@@ -101,10 +118,6 @@ class ContractActionService
         ]);
         $chat = $message->chat;
         $receiver = User::find($this->contract->send_by);
-        $chat->update([
-            'status' => 'closed',
-        ]);
-
 
         $new_message->load(['replied']);
         $for = 'reply';

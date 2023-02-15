@@ -5,18 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Obilia</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.5/css/perfect-scrollbar.css">
     <link rel="stylesheet" href="{{ asset(mix('css/style.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/override.css')) }}" />
+    <link rel="stylesheet" href="{{ asset(mix('css/notiflix.min.css')) }}" />
     <link rel="stylesheet" href="{{ asset(mix('css/workspace.css')) }}" />
 
     <link rel="stylesheet" href="{{ asset(mix('css/font-awesome.min.css')) }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.3/apexcharts.min.css">
 
-    <style>
 
-    </style>
+    {{ $styles ?? '' }}
 
 </head>
 
@@ -41,12 +45,12 @@
                                 {{ $title ?? 'No Title' }}
                             </h4>
                             <div class="flex-shrink-0 dropdown">
-                                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle"
+                                {{-- <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle"
                                     id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="https://via.placeholder.com/28?text=!" alt="user" width="32"
                                         height="32" class="rounded-circle">
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="dropdownUser2"
+                                </a> --}}
+                                {{-- <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="dropdownUser2"
                                     style="">
                                     <li><a class="dropdown-item" href="#">New project...</a></li>
                                     <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -55,7 +59,7 @@
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li><a class="dropdown-item" href="#">Sign out</a></li>
-                                </ul>
+                                </ul> --}}
                             </div>
                         </div>
                     </div>
@@ -70,8 +74,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.5/perfect-scrollbar.min.js"></script>
+    <script src="{{ asset(mix('js/notiflix.min.js')) }}"></script>
+    <script src="{{ asset(mix('js/init.js')) }}"></script>
     <script src="{{ asset(mix('js/workspace/work.js')) }}"></script>
     {{ $scripts ?? '' }}
+
 </body>
 
 </html>

@@ -6,6 +6,7 @@ use App\Models\Job;
 use App\Models\User;
 use App\Models\Skill;
 use App\Models\Category;
+use App\Models\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -39,6 +40,13 @@ class SearchService
                     $query->where('sub_categories.slug', $request->sub_category);
                 });
             })
+
+            ->when($request->category, function ($query) use ($request) {
+                $query->whereHas('category', function ($query) use ($request) {
+                    $query->where('categories.slug', $request->category);
+                });
+            })
+
             ->when($request->q, function ($query) use ($request) {
                 $query->where('metadata', 'like', '%' . $request->q . '%');
             })
@@ -90,7 +98,7 @@ class SearchService
         if ($jobs->count() <= 0) {
             return response()->json([
                 'status' => 'error',
-                'html' => '<div class="alert alert-danger">No jobs found</div>',
+                'html' => '<p class="text-center">No jobs found</p>',
                 'links' => ''
             ]);
         }
@@ -113,42 +121,84 @@ class SearchService
             return $this->searchTalentAjax($request);
         }
 
-        $users = User::active()->isUser()
+        $services = UserService::active()
             ->when($request->q, function ($query) use ($request) {
-                $query->whereHas('direct_skills', function ($query) use ($request) {
-                    $query->where('skills.name', 'like', '%' . $request->q . '%')
-                        ->orWhere('skills.name', $request->q);
+                $query->search($request->q);
+            })
+            ->when($request->has('category') && $request->category !== 'all', function ($query) use ($request) {
+                $query->whereHas('category', function ($query) use ($request) {
+                    $query->where('categories.slug', $request->category);
                 });
             })
-            ->paginate(2);
+
+            ->when($request->has('sub_category') &&  $request->sub_category !== 'all', function ($query) use ($request) {
+                $query->whereHas('sub_category', function ($query) use ($request) {
+                    $query->where('sub_categories.slug', $request->sub_category);
+                });
+            })
+            ->whereHas('user', function ($query) use ($request) {
+                $query->active()->isUser()
+                    ->when($request->tags, function ($query) use ($request) {
+                        $tags = explode(',', $request->tags);
+
+                        $query->whereHas('skills', function ($query) use ($tags) {
+                            $query->whereIn('skill_id', $tags);
+                        });
+                    });
+            })
+            ->with([
+                'user:id,name,email,images',
+                'category:id,name,slug',
+                'sub_category:id,name,slug',
+                'images'
+            ])
+            ->paginate(5);
 
         $skills = Skill::active()->get(['id', 'name']);
-        $categories  = Category::active()->get(['id', 'name']);
-        $categories->prepend(['id' => 'all', 'name' => 'All']);
-        return view('browse.talents', compact('users', 'skills', 'categories'));
+        $categories  = Category::active()->get(['id', 'name', 'slug']);
+        $categories->prepend(['id' => 'all', 'name' => 'All', 'slug' => 'all']);
+        return view('browse.talents', compact('services', 'skills', 'categories'));
     }
 
 
     public function searchTalentAjax($request)
     {
-        $users = User::active()
-            ->isUser()
-            ->when(!empty($request->q), function ($query) use ($request) {
-                $query->whereHas('direct_skills', function ($query) use ($request) {
-                    $query->where('skills.name', 'like', '%' . $request->q . '%')
-                        ->orWhere('skills.name', $request->q);
+        $services = UserService::active()
+            ->when($request->q, function ($query) use ($request) {
+                $query->search($request->q);
+            })
+            ->when($request->has('category') && $request->category !== 'all', function ($query) use ($request) {
+                $query->whereHas('category', function ($query) use ($request) {
+                    $query->where('categories.slug', $request->category);
                 });
             })
-            ->when(!empty($request->tags), function ($query) use ($request) {
-                $tags = explode(',', $request->tags);
 
-                $query->whereHas('skills', function ($query) use ($tags) {
-                    $query->whereIn('skill_id', $tags);
+            ->when($request->has('sub_category') &&  $request->sub_category !== 'all', function ($query) use ($request) {
+                $query->whereHas('sub_category', function ($query) use ($request) {
+                    $query->where('sub_categories.slug', $request->sub_category);
                 });
             })
+
+
+            ->whereHas('user', function ($query) use ($request) {
+                $query->active()->isUser()
+                    ->when($request->tags, function ($query) use ($request) {
+                        $tags = explode(',', $request->tags);
+
+                        $query->whereHas('skills', function ($query) use ($tags) {
+                            $query->whereIn('skill_id', $tags);
+                        });
+                    });
+            })
+            ->with([
+                'user:id,name,email,images',
+                'category:id,name,slug',
+                'sub_category:id,name,slug',
+                'images'
+            ])
             ->paginate($request->show ?? 2, ['*'], 'page', $request->page);
 
-        if ($users->count() <= 0) {
+        if ($services->count() <= 0) {
             return response()->json([
                 'status' => 'error',
                 'html' => '<div class="alert alert-danger">No Provider found</div>',
@@ -158,10 +208,14 @@ class SearchService
 
 
         $html = '';
-        $showInvite = false;
-        $class = "col-md-6";
-        $html .= view('components.elements.service-provider-card', compact('users', 'class', 'showInvite'))->render();
-        $url_link_html  = view('components.helper.url-links', ['jobs' => $users])->render();
+        foreach ($services as $service) {
+            $html .= view('components.elements.user-service', [
+                'service' => $service,
+                'showLikeButton' => true,
+                'class' => "col-md-4  mb-3"
+            ])->render();
+        }
+        $url_link_html  = view('components.helper.url-links', ['jobs' => $services])->render();
         return response()->json(['html' => $html, 'links' => $url_link_html]);
     }
 }

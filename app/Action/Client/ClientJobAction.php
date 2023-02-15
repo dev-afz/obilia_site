@@ -35,6 +35,7 @@ class ClientJobAction
             'work_length_id' => $request->project_length,
             'size' => $request->project_size,
             'user_id' => $user->id,
+            'visibility' => $request->visibility,
             'banner' => ($request->hasFile('banner')) ? $this->uploadFileToDO($request->banner, 'images/jobs', 'banner') : null,
             'status' => 'active',
         ]);

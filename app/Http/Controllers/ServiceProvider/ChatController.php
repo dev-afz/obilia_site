@@ -15,10 +15,11 @@ class ChatController extends Controller
     use FileManager;
     public function index()
     {
-        $chats = auth()->user()->chats()->with([
-            'participant' => ['user:id,name,images'],
-            'job:id,title',
-        ])->get();
+        $chats = auth()->user()->chats()
+            ->global()
+            ->with([
+                'participant' => ['user:id,name,images'],
+            ])->get();
 
         $active_chats = $chats->filter(function ($chat) {
             return $chat->status == 'active';
@@ -37,7 +38,9 @@ class ChatController extends Controller
             'chat_id' => 'required|string|max:255'
         ]);
 
-        $chats = auth()->user()->chats()->where('chats.uuid', $request->chat_id)
+        $chats = auth()->user()->chats()
+            ->global()
+            ->where('chats.uuid', $request->chat_id)
             ->with(['participant' => ['user:id,uuid,name,images']])
             ->firstOrFail();
 
@@ -78,7 +81,9 @@ class ChatController extends Controller
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'reply_to' => 'nullable|integer|exists:messages,id|numeric'
         ]);
-        $chat = auth()->user()->chats()->where('chats.uuid', $request->id)->firstOrFail();
+        $chat = auth()->user()->chats()
+            ->global()
+            ->where('chats.uuid', $request->id)->firstOrFail();
         $message = $chat->messages()->create([
             'message' => $request->message,
             'sender_id' => auth()->user()->id,
@@ -134,7 +139,9 @@ class ChatController extends Controller
 
 
 
-        $chats = auth()->user()->chats()->where('chats.uuid', $request->chat_id)
+        $chats = auth()->user()->chats()
+            ->global()
+            ->where('chats.uuid', $request->chat_id)
             ->firstOrFail();
 
         $messages = $chats->messages()->with([

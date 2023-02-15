@@ -24,7 +24,8 @@
 
     <!-- MOBILE SPECIFIC -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ asset(mix('css/bootstrap.min.css')) }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
+    {{-- <link rel="stylesheet" href="{{ asset(mix('css/bootstrap.min.css')) }}" /> --}}
     <link rel="stylesheet" href="{{ asset(mix('css/font-awesome.min.css')) }}" />
     <link rel="stylesheet" href="{{ asset(mix('css/feather.css')) }}" />
     <link rel="stylesheet" href="{{ asset(mix('css/bootstrap-select.min.css')) }}" />
@@ -85,7 +86,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script src="{{ asset(mix('js/popper.min.js')) }}"></script>
-    <script src="{{ asset(mix('js/bootstrap.min.js')) }}"></script>
+    {{-- <script src="{{ asset(mix('js/bootstrap.min.js')) }}"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
     <script src="{{ asset(mix('js/bootstrap-select.min.js')) }}"></script>
     <script src="{{ asset(mix('js/waypoints.min.js')) }}"></script>
     <script src="{{ asset(mix('js/counterup.min.js')) }}"></script>

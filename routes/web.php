@@ -5,7 +5,6 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\OauthController;
 use App\Http\Controllers\Site\BasicController;
 use App\Http\Controllers\Site\JobController;
-use App\Http\Controllers\Site\TalentController;
 
 /*
 |--------------------------------------------------------------------------

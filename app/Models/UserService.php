@@ -21,7 +21,7 @@ class UserService extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function subCategory()
+    public function sub_category()
     {
         return $this->belongsTo(SubCategory::class);
     }
@@ -35,6 +35,7 @@ class UserService extends Model
     public function scopeSearch($query, $search)
     {
         return $query->where('title', 'like', '%' . $search . '%')
+            ->orWhere('title', $search)
             ->orWhere('description', 'like', '%' . $search . '%');
     }
 
@@ -56,5 +57,10 @@ class UserService extends Model
     public function scopePriceRange($query, $priceRange)
     {
         return $query->whereBetween('price', $priceRange);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'active');
     }
 }
