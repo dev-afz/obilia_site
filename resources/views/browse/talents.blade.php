@@ -35,7 +35,7 @@
 
                             <div class="tagcloud">
                                 @forelse ($skills as $skill)
-                                    <a data-tag="{{ $skill->id }}" data-tag-applied="false"
+                                    <a data-tag="{{ Str::slug($skill->name) }}" data-tag-applied="false"
                                         href="javascript:void(0)">{{ $skill->name }}</a>
                                 @empty
                                     <p>No skills found</p>
@@ -72,7 +72,7 @@
                             </select>
                             <select id="show-data" class="wt-select-bar-2 selectpicker" data-live-search="false"
                                 data-bv-field="size">
-                                <option selected value="5">Show 05</option>
+                                <option selected value="3">Show 03</option>
                                 <option value="10">Show 10</option>
                                 <option value="20">Show 20</option>
                                 <option value="30">Show 30</option>
@@ -111,7 +111,7 @@
     <x-slot name="styles">
         <style>
             .service-container .service-image {
-                height: 15rem;
+                min-height: 15rem;
                 width: 100%;
                 object-fit: cover;
             }
@@ -127,7 +127,7 @@
         <script>
             const query = '?type=talent';
             let sortBy = 'featured';
-            let show = 5;
+            let show = 3;
             $(document).on('click', '.pagination a', function(event) {
                 event.preventDefault();
                 const btn = $(this);

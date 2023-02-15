@@ -166,6 +166,13 @@ class User extends Authenticatable
         return $q->where('role', 'service_provider');
     }
 
+    public function scopeIsProvider($q)
+    {
+        return $q->where('role', 'service_provider');
+    }
+
+
+
     public function scopeActive($q)
     {
         return $q->where('status', 'active');

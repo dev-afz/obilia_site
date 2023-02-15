@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Managers\FileManager;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
+use Str;
 
 class ServiceController extends Controller
 {
@@ -20,17 +21,24 @@ class ServiceController extends Controller
             'price' => 'required|required|numeric|min:1',
             'sub_category' => 'required|numeric',
             'images' => 'array|required|max:5',
+            'tags' => 'required|string',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:1024',
         ]);
 
         $user = $request->user();
         $sub_category = SubCategory::findOrFail($request->sub_category);
+        $tags = json_decode($request->tags, true);
+        $metadata_string = '';
+        foreach ($tags as $tag) {
+            $metadata_string .= Str::slug($tag['value']) . ',' . strtolower($tag['value']) . ',';
+        }
         $service = $user->services()->create([
             'title' => $request->title,
             'description' => $request->description,
             'price' => $request->price,
             'sub_category_id' => $sub_category->id,
             'category_id' => $sub_category->category_id,
+            'metadata' => $metadata_string,
         ]);
 
         foreach ($request->images as $image) {
@@ -38,6 +46,8 @@ class ServiceController extends Controller
                 'image' => $this->uploadFileToDO($image, 'images/services'),
             ]);
         }
+
+
 
         return response()->json([
             'message' => 'Service created successfully',

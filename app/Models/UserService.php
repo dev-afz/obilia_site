@@ -36,7 +36,8 @@ class UserService extends Model
     {
         return $query->where('title', 'like', '%' . $search . '%')
             ->orWhere('title', $search)
-            ->orWhere('description', 'like', '%' . $search . '%');
+            ->orWhere('metadata', 'like', '%' . $search . '%')
+            ->orWhereRaw('FIND_IN_SET(?, metadata)', [$search]);
     }
 
     public function scopeCategory($query, $category)

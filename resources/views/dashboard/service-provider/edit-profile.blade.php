@@ -36,11 +36,6 @@
                         <div class="col-md-6">
                             <x-utils.select name="gender" :search="false" :options="['male', 'female', 'other']" :selected="[$user->gender]" />
                         </div>
-
-                        <div class="col-md-12">
-                            <x-utils.select :multiple="true" name="skills" :options="$skills" :selected="$user_skills"
-                                :maxSelect="5" />
-                        </div>
                         <div class="col-12">
                             <h4>
                                 Kyc Details

@@ -48,10 +48,10 @@ class DashboardController extends Controller
         $user = auth()->user()->load([
             'kycs',
             'business',
-            'skills.skill',
             'bank',
         ]);
-        return view('dashboard.service-provider.profile', compact('subcategories', 'user'));
+        $skills = Skill::active()->get(['id', 'name']);
+        return view('dashboard.service-provider.profile', compact('subcategories', 'user', 'skills'));
     }
 
 
@@ -63,12 +63,10 @@ class DashboardController extends Controller
             'skills',
         ]);
 
-        $skills = Skill::active()->get(['id', 'name']);
-        $user_skills = array_map('strval', $user->skills->pluck('skill_id')->toArray());
         $aadhar_kyc = $user->kycs->where('name', 'aadhar')->first();
         $pan_kyc = $user->kycs->where('name', 'pan')->first();
 
-        return view('dashboard.service-provider.edit-profile', compact('user', 'skills', 'user_skills', 'aadhar_kyc', 'pan_kyc'));
+        return view('dashboard.service-provider.edit-profile', compact('user',  'aadhar_kyc', 'pan_kyc'));
     }
 
 
@@ -77,8 +75,6 @@ class DashboardController extends Controller
         $request->validate([
             'phone' => 'required|numeric|digits:10',
             'gender' => 'nullable|in:male,female,other',
-            'skills' => 'required|array',
-            'skills.*' => 'required|numeric',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:512',
             'aadhar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'pan' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -94,14 +90,6 @@ class DashboardController extends Controller
             'gender' => $request->gender,
             'images' => ($request->hasFile('image')) ? $this->uploadFileToDO($request->image, 'images/user') : $user->images,
         ]);
-
-        foreach ($request->skills as $skill) {
-            $user->skills()->updateOrCreate([
-                'skill_id' => $skill,
-            ], [
-                'skill_id' => $skill,
-            ]);
-        }
 
         if ($request->hasFile('aadhar')) {
             if ($user->kycs->where('name', 'aadhar')->first()) {

@@ -1,7 +1,7 @@
 <div class="{{ $class }}">
-    <div class="card twm-s-info  p-0 service-container justify-content-between">
+    <div class="card twm-s-info  p-0 service-container ">
         <img class="service-image" src="{{ $service->images->first()->image }}" alt="">
-        <div class="d-flex flex-column justify-content-between px-3 ">
+        <div class="d-flex flex-column justify-content-between px-3 h-100 ">
             <div class="service-data">
                 <div class="service mt-2 d-flex align-items-center py-2">
                     <div class="avatar-sm">

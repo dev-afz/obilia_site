@@ -136,15 +136,14 @@ class SearchService
                     $query->where('sub_categories.slug', $request->sub_category);
                 });
             })
+            ->when(($request->tags != "" && !empty($request->tags)), function ($query) use ($request) {
+                $tags = explode(',', $request->tags);
+                foreach ($tags as $item) {
+                    $query->whereRaw("FIND_IN_SET(?, metadata)", [$item]);
+                }
+            })
             ->whereHas('user', function ($query) use ($request) {
-                $query->active()->isUser()
-                    ->when($request->tags, function ($query) use ($request) {
-                        $tags = explode(',', $request->tags);
-
-                        $query->whereHas('skills', function ($query) use ($tags) {
-                            $query->whereIn('skill_id', $tags);
-                        });
-                    });
+                $query->active()->isProvider();
             })
             ->with([
                 'user:id,name,email,images',
@@ -152,7 +151,7 @@ class SearchService
                 'sub_category:id,name,slug',
                 'images'
             ])
-            ->paginate(5);
+            ->paginate(3);
 
         $skills = Skill::active()->get(['id', 'name']);
         $categories  = Category::active()->get(['id', 'name', 'slug']);
@@ -179,16 +178,15 @@ class SearchService
                 });
             })
 
-
+            ->when(($request->tags != "" && !empty($request->tags)), function ($query) use ($request) {
+                // \Log::info($request->tags);
+                $tags = explode(',', $request->tags);
+                foreach ($tags as $item) {
+                    $query->whereRaw("FIND_IN_SET(?, metadata)", [$item]);
+                }
+            })
             ->whereHas('user', function ($query) use ($request) {
-                $query->active()->isUser()
-                    ->when($request->tags, function ($query) use ($request) {
-                        $tags = explode(',', $request->tags);
-
-                        $query->whereHas('skills', function ($query) use ($tags) {
-                            $query->whereIn('skill_id', $tags);
-                        });
-                    });
+                $query->active()->isUser();
             })
             ->with([
                 'user:id,name,email,images',
@@ -196,7 +194,7 @@ class SearchService
                 'sub_category:id,name,slug',
                 'images'
             ])
-            ->paginate($request->show ?? 2, ['*'], 'page', $request->page);
+            ->paginate($request->show ?? 3, ['*'], 'page', $request->page);
 
         if ($services->count() <= 0) {
             return response()->json([

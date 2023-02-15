@@ -1,6 +1,8 @@
 <x-dashboard.layout>
 
     <x-slot name="styles">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.17.4/tagify.css">
+
         <style>
             .avatar img {
                 width: 8rem;
@@ -30,6 +32,10 @@
 
             .accordion-button {
                 color: #17171d !important;
+            }
+
+            .tagify {
+                height: fit-content;
             }
         </style>
     </x-slot>
@@ -111,22 +117,6 @@
                                                 <span class="twm-title">Staus</span>
                                                 <div class="twm-s-info-discription">
                                                     <div class="twm-s-info-discription">{{ ucfirst($user->status) }}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="twm-s-info-inner">
-                                                <i class="fas fa-paper-plane"></i>
-                                                <span class="twm-title">Skills</span>
-                                                <div class="twm-s-info-discription tw-sidebar-tags-wrap">
-                                                    <div class="tagcloud">
-                                                        @forelse ($user->skills as $s)
-                                                            <a href="#">
-                                                                {{ $s->skill->name }}
-                                                            </a>
-                                                        @empty
-                                                        @endforelse
                                                     </div>
                                                 </div>
                                             </div>
@@ -365,12 +355,17 @@
                         'step' => 0.01,
                     ]" />
                 </div>
+
+                <div class="col-lg-12">
+                    <x-utils.input name="tags" label="Tags (max:10)" placeholder="Select Tags" />
+                </div>
                 <div class="col-md-12">
                     <x-utils.input-file name="images" :multiple="true" />
                 </div>
                 <div class="col-md-12">
                     <x-utils.input name="description" type="textarea" />
                 </div>
+
 
                 <div class="col-12 text-center">
                     <button type="submit" class="btn btn-primary">
@@ -384,7 +379,7 @@
 
 
     <x-slot name="scripts">
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.17.4/tagify.min.js"></script>
         <script>
             $(document).ready(function() {
                 $('#sidebarCollapse').click();
@@ -420,6 +415,24 @@
                     }
                 })
             }
+            const skills = @json($skills).map(rec => {
+                return {
+                    'id': rec.id,
+                    'value': rec.name,
+                }
+            });
+            var input = document.querySelector('#tags'),
+                tagify = new Tagify(input, {
+                    whitelist: skills,
+                    addTagOnBlur: true,
+                    maxTags: 10,
+                    dropdown: {
+                        maxItems: 20,
+                        classname: "tags-look",
+                        enabled: 0,
+                        closeOnSelect: false
+                    }
+                })
         </script>
 
     </x-slot>
