@@ -50,9 +50,9 @@ class ChatController extends Controller
     public function sendMessages(Request $request)
     {
         $request->validate([
-            'message' => 'required|string',
+            'message' => 'required_without:image|max:3000|nullable|string',
             'workspace' => 'required|integer',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+            'image' => 'required_without:message|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
         ]);
         $user  = $request->user();
 

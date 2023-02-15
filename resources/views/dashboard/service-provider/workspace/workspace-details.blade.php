@@ -9,27 +9,6 @@
             .chat-section {
                 padding: 0;
             }
-
-            .wb-body::-webkit-scrollbar {
-                width: 12px;
-            }
-
-            .wb-body::-webkit-scrollbar-track {
-                background: transparent;
-            }
-
-            .wb-body::-webkit-scrollbar-thumb {
-                border-radius: 10px;
-                background: #263040;
-            }
-
-            .wb-body::-webkit-scrollbar-thumb:window-inactive {
-                ackground: #181f2a;
-            }
-
-            .wb-body::-webkit-scrollbar-corner {
-                background: transparent;
-            }
         </style>
     </x-slot>
 

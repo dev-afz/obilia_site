@@ -50,7 +50,7 @@ class ChatController extends Controller
 
     public function sendMessages(Request $request)
     {
-        \Log::info($request->all());
+
         $request->validate([
             'message' => 'required_without:image|max:3000|nullable|string',
             'workspace' => 'required|integer',

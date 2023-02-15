@@ -4,33 +4,26 @@
     </x-slot>
 
     <x-slot name="styles">
+        <link rel="stylesheet" href="https://rawcdn.githack.com/nextapps-de/winbox/0.2.6/dist/css/winbox.min.css">
         <style>
-            .chat-attach {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 10px;
-            }
-
-            .chat-attach i {
-                font-size: 1.2rem;
+            .chat-section {
+                padding: 0;
             }
         </style>
     </x-slot>
 
-
     <div class="row ">
         <div class="col-md-6 ">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div class="card py-3">
-                        <h4 class="">Project Status</h4>
-                        <div class=" justify-content-center d-flex">
-                            <div style="--progress:50%" class="progress-bar">
-                                <p class="text-white m-0">50%</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="divider">
+                <div class="divider-text">
+                    <h4>
+                        Project Progress
+                    </h4>
+                </div>
+            </div>
+            <div class="card p-3">
+                <div style="--progress:50%" class="progress-bar">
+                    <p class="text-white m-0">50%</p>
                 </div>
             </div>
             <div class="divider">
@@ -85,20 +78,20 @@
                 </ul>
             </div>
 
+
         </div>
-        <div class="col-md-6">
-            <div class="chat-section">
+        <div hidden class="d-none">
+            <div id="chat-sec"class="chat-section">
                 <div class="chat-container card">
                     <div class="chat-header">
                         <div class="chat-avatar">
-                            <img src="{{ $workspace->provider->images ?? 'https://ui-avatars.com/api/?name=' . $workspace->provider->name }}"
+                            <img src="{{ $workspace->owner->images ?? 'https://ui-avatars.com/api/?name=' . $workspace->owner->name }}"
                                 alt="">
                         </div>
                         <div class="chat-name">
                             <strong class="mb-0 fs-5 d-block">
-                                {{ $workspace->provider->name }}
+                                {{ $workspace->owner->name }}
                             </strong>
-
                         </div>
                     </div>
                     <ul id="chat-holder" class="chat-body">
@@ -126,6 +119,7 @@
                                 <i class="fas fa-paperclip"></i>
                             </label>
                             <input id="message" name="message" type="text" class="chat-input">
+                            <input type="hidden" name="reply_to" id="reply_to">
                             <button type="submit" class="chat-send">
                                 <svg aria-hidden="true" focusable="false" data-prefix="fa-regular"
                                     data-icon="paper-plane" class="svg-inline--fa fa-paper-plane fa-w-16" role="img"
@@ -141,10 +135,8 @@
             </div>
         </div>
     </div>
-
     <x-slot name="scripts">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.3/apexcharts.min.js"></script>
-
         <script>
             window.me = '{{ auth()->user()->id }}';
             window.workspace = '{{ $workspace->id }}';
@@ -153,6 +145,7 @@
             const send_url = "{{ route('client.workspace.chat.send-messages') }}";
         </script>
         <script src="{{ asset(mix('js/workspace/chat.js')) }}"></script>
+        <script src="https://rawcdn.githack.com/nextapps-de/winbox/0.2.6/dist/js/winbox.min.js"></script>
 
         <script>
             const workspace = @json($workspace);
@@ -160,6 +153,18 @@
                 wheelSpeed: 2,
                 wheelPropagation: true,
                 minScrollbarLength: 20
+            });
+            new WinBox("Chat", {
+                mount: document.getElementById("chat-sec"),
+                height: "80%",
+                width: "500px",
+                x: 'right',
+                y: 'bottom',
+                background: '#09596f',
+                onclose: function(force) {
+                    return !force && !confirm("Close window?");
+                }
+
             });
         </script>
     </x-slot>

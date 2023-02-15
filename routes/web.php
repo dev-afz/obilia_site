@@ -49,5 +49,8 @@ Route::controller(BasicController::class)
                 Route::put('/toggle-like', 'toggleLike')->name('toggle-like')
                     ->middleware('auth');
                 Route::get('/{job}', 'show')->name('show');
+
+                Route::post('start-chat', 'startChat')->name('start-chat')
+                    ->middleware(['auth']);
             });
     });

@@ -227,6 +227,13 @@
                     }
                 });
             });
+
+            @if (request()->has('chat'))
+
+                setTimeout(() => {
+                    $('[data-chat="{{ request()->chat }}"]').trigger('click');
+                }, 100);
+            @endif
         </script>
 
     </x-slot>
