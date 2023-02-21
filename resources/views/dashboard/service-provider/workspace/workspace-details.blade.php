@@ -9,6 +9,34 @@
             .chat-section {
                 padding: 0;
             }
+
+            .chat-mobile-btn {
+                display: none;
+                position: fixed;
+                bottom: 5rem;
+                right: 1rem;
+            }
+
+            .chat-mobile-btn>button {
+                height: 3.5rem;
+                width: 3.5rem;
+                border-radius: 50%;
+                background: #05374d;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .chat-mobile-btn>button>i {
+                color: #fff;
+                font-size: 1.5rem;
+            }
+
+            @media (max-width: 578px) {
+                .chat-mobile-btn {
+                    display: block;
+                }
+            }
         </style>
     </x-slot>
 
@@ -135,6 +163,12 @@
             </div>
         </div>
     </div>
+
+    <div class="chat-mobile-btn">
+        <button id="open-chat">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>
     <x-slot name="scripts">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.3/apexcharts.min.js"></script>
         <script>
@@ -153,16 +187,42 @@
                 wheelPropagation: true,
                 minScrollbarLength: 20
             });
-            new WinBox("Chat", {
+
+
+            //if screen size is less than 578px set width to screen width otherwise 500px
+            let width = window.matchMedia("(max-width: 578px)").matches ? '100%' : '500px';
+
+            const wBox = new WinBox("Chat", {
                 mount: document.getElementById("chat-sec"),
                 height: "80%",
-                width: "500px",
+                width: width,
                 x: 'right',
                 y: 'bottom',
+                min: (width == '100%') ? true : false,
                 background: '#09596f',
                 onclose: function(force) {
-                    return !force && !confirm("Close window?");
+                    if (force || confirm("Close window?")) {
+                        $('.chat-mobile-btn').remove();
+                        return false;
+                    }
+                    return true;
+                },
+                onminimize: function() {
+                    //if screen size is less than 578px
+                    if (window.matchMedia("(max-width: 578px)").matches) {
+                        this.addClass('d-none');
+                    }
+                },
+                onmaximize: function() {
+                    this.removeClass('d-none');
                 }
+
+
+            });
+
+            $('#open-chat').click(function(e) {
+                e.preventDefault();
+                wBox.maximize();
 
             });
         </script>

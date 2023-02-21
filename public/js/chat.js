@@ -7002,7 +7002,6 @@ function setChatData(response) {
   $(".chatbox input,.chatbox button").attr("disabled", false);
   $("#message-box [name='id']").val(response.chat_data.id);
   $("#message-box [name='to']").val(response.chat_data.user.uuid);
-  console.log(response.chat_data);
   if (response.chat_data.status !== "active") {
     $(".send-box").addClass("d-none").attr("hidden", true);
     $(".msg-head .moreoption").addClass("d-none").attr("hidden", true);

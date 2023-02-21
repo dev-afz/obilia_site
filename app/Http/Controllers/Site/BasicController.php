@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Site;
 
 use App\Models\Job;
+use App\Models\User;
 use App\Models\Package;
 use App\Models\Category;
+use App\Models\Industry;
 use App\Models\SubCategory;
+use App\Models\UserService;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Services\SearchService;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Models\Industry;
 
 class BasicController extends Controller
 {
@@ -72,5 +75,50 @@ class BasicController extends Controller
         // Log::info($request->all());
 
         return $service->search($request);
+    }
+
+
+    public function provider($uuid)
+    {
+        $user = User::where('uuid', $uuid)
+            ->with(['services' => fn ($q) => $q->active()->with(['sub_category', 'category', 'images', 'user'])])
+            ->firstOrFail();
+
+
+        return view('provider', compact('user'));
+    }
+
+
+    public function serviceDetails($user_uuid, $service_slug)
+    {
+
+        $service = UserService::where('slug', $service_slug)
+            ->whereHas('user', fn ($q) => $q->where('uuid', $user_uuid))
+            ->with(['sub_category', 'category', 'images', 'user'])
+            ->firstOrFail();
+
+        $service_metadata = explode(',', $service->metadata);
+
+
+        $recommended = UserService::where('category_id', $service->category_id)
+            ->where('id', '!=', $service->id)
+            // ->whereHas('user', fn ($q) => $q->where('uuid', '!=', $user_uuid))
+            ->with(['sub_category', 'category', 'images', 'user'])->take(6)->inRandomOrder()->get();
+
+
+
+
+        return view('service-details', compact('service', 'recommended'));
+    }
+
+
+    public function test()
+    {
+        $services = UserService::all();
+
+        foreach ($services as $item) {
+            $item->description = Str::markdown($item->description);
+            $item->save();
+        }
     }
 }

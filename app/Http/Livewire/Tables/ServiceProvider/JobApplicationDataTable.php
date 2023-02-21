@@ -25,11 +25,6 @@ class JobApplicationDataTable extends DataTableComponent
                 ->searchable()
                 ->sortable(),
 
-            Column::make("Banner", "job.banner")
-                ->format(function ($v, $c, $r) {
-                    return '<div data-view-onclick class="dashboard-message-avtar"><img  src="' . (($v) ? asset($v) : 'https://via.placeholder.com/200') . '" alt=""></div>';
-                })
-                ->html(),
             Column::make("Description", "job.description")
 
                 ->format(function ($v, $c, $r) {

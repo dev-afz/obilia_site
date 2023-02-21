@@ -146,7 +146,7 @@ class SearchService
                 $query->active()->isProvider();
             })
             ->with([
-                'user:id,name,email,images',
+                'user:id,name,email,images,uuid',
                 'category:id,name,slug',
                 'sub_category:id,name,slug',
                 'images'
@@ -189,7 +189,7 @@ class SearchService
                 $query->active()->isUser();
             })
             ->with([
-                'user:id,name,email,images',
+                'user:id,name,email,images,uuid',
                 'category:id,name,slug',
                 'sub_category:id,name,slug',
                 'images'

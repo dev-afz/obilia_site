@@ -33,7 +33,7 @@
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="Closed-tab" data-bs-toggle="tab"
                                                         data-bs-target="#Closed" type="button" role="tab"
-                                                        aria-controls="Closed" aria-selected="false">Closed</button>
+                                                        aria-controls="Closed" aria-selected="false">Archived</button>
                                                 </li>
                                             </ul>
                                         </div>

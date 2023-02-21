@@ -10,9 +10,11 @@
             </li>
             <li @class([
                 'nav-item py-2',
-                'active' => Route::currentRouteName() == 'client.workspace.show',
+                'active' =>
+                    Route::currentRouteName() ==
+                    str_replace('_', '-', auth()->user()->role) . '.workspace.show',
             ])>
-                <a href="{{ route('client.workspace.show', session('active_workspace')) }}"
+                <a href="{{ route(str_replace('_', '-', auth()->user()->role) . '.workspace.show', session('active_workspace')) }}"
                     class="nav-link ps-3 text-truncate gap-3 d-flex">
                     <div class="svg-holder">
                         <svg aria-hidden="true" focusable="false" data-prefix="fa-regular" data-icon="border-all"
@@ -28,9 +30,11 @@
             </li>
             <li @class([
                 'nav-item py-2',
-                'active' => Route::currentRouteName() == 'client.workspace.project-info',
+                'active' =>
+                    Route::currentRouteName() ==
+                    str_replace('_', '-', auth()->user()->role) . '.workspace.project-info',
             ])>
-                <a href="{{ route('client.workspace.project-info', session('active_workspace')) }}"
+                <a href="{{ route(str_replace('_', '-', auth()->user()->role) . '.workspace.project-info', session('active_workspace')) }}"
                     class="nav-link ps-3 text-truncate gap-3 d-flex">
                     <div class="svg-holder">
                         <svg aria-hidden="true" focusable="false" data-prefix="fa-regular" data-icon="chart-area"
@@ -47,9 +51,11 @@
             <li @class([
                 'nav-item py-2',
                 'active' =>
-                    Route::currentRouteName() == 'client.workspace.payment-and-invoices',
+                    Route::currentRouteName() ==
+                    str_replace('_', '-', auth()->user()->role) .
+                        '.workspace.payment-and-invoices',
             ])>
-                <a href="{{ route('client.workspace.payment-and-invoices', session('active_workspace')) }}"
+                <a href="{{ route(str_replace('_', '-', auth()->user()->role) . '.workspace.payment-and-invoices', session('active_workspace')) }}"
                     class="nav-link ps-3 text-truncate gap-3 d-flex">
                     <div class="svg-holder">
                         <svg aria-hidden="true" focusable="false" data-prefix="fa-regular" data-icon="wallet"
@@ -95,7 +101,7 @@
             <li @class(['nav-item py-2'])>
                 <a href="@if (auth()->user()->isProvider()) {{ route('service-provider.workspace.index') }}
                 @else
-                {{ route('client.workspace.index') }} @endif"
+                {{ route(str_replace('_', '-', auth()->user()->role) . '.workspace.index') }} @endif"
                     class="nav-link ps-3 text-truncate gap-3 d-flex">
                     <div class="svg-holder">
                         <svg aria-hidden="true" focusable="false" data-prefix="fa-regular"

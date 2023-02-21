@@ -2,7 +2,7 @@
 
     <x-slot name="styles">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.17.4/tagify.css">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css">
         <style>
             .avatar img {
                 width: 8rem;
@@ -322,10 +322,14 @@
                                 {{ explode(' ', $user->name)[0] }}'s Services
                             </h3>
                             <div>
-                                <button class="btn btn-primary" data-bs-toggle="offcanvas"
-                                    data-bs-target="#add-service-offcanvas" aria-controls="add-service-offcanvas">
-                                    Add New Service
-                                </button>
+                                @if ($user->status === 'active')
+                                    <button class="btn btn-primary" data-bs-toggle="offcanvas"
+                                        data-bs-target="#add-service-offcanvas" aria-controls="add-service-offcanvas">
+                                        Add New Service
+                                    </button>
+                                @else
+                                    <span class="btn btn-danger">Your account is not active Yet.</span>
+                                @endif
                             </div>
                         </div>
                         <div class="col-12">
@@ -363,7 +367,7 @@
                     <x-utils.input-file name="images" :multiple="true" />
                 </div>
                 <div class="col-md-12">
-                    <x-utils.input name="description" type="textarea" />
+                    <x-utils.input name="description" type="hidden" :required="false" />
                 </div>
 
 
@@ -380,14 +384,20 @@
 
     <x-slot name="scripts">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.17.4/tagify.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.js"></script>
         <script>
             $(document).ready(function() {
-                $('#sidebarCollapse').click();
                 loadServices();
+
             });
+            var simplemde = new SimpleMDE({
+                element: document.getElementById("description")
+            });
+
 
             $('#add-service-form').submit(function(e) {
                 e.preventDefault();
+                $('#description').val(simplemde.value());
                 window.rebound({
                     form: $(this),
                     url: "{{ route('service-provider.service.store') }}",

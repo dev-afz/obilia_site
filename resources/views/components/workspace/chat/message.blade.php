@@ -38,9 +38,12 @@
                             @endforelse
                         </div>
                     @endif
-                    <p class="mb-0">
-                        {{ $message->replied->message }}
-                    </p>
+                    @if ($message->replied->message)
+                        <p class="mb-0">
+                            {{ $message->replied->message }}
+                        </p>
+                    @endif
+
 
                 </div>
 
@@ -57,11 +60,13 @@
                     @endforelse
                 </div>
             @endif
-            <div class="chat-text">
-                <p class="m-0">
-                    {{ $message->message }}
-                </p>
-            </div>
+            @if ($message->message)
+                <div class="chat-text">
+                    <p class="m-0">
+                        {{ $message->message }}
+                    </p>
+                </div>
+            @endif
 
         </div>
         <small class="chat-time">
@@ -101,9 +106,11 @@
                             @endforelse
                         </div>
                     @endif
-                    <p class="mb-0">
-                        {{ $message->replied->message }}
-                    </p>
+                    @if ($message->replied->message)
+                        <p class="mb-0">
+                            {{ $message->replied->message }}
+                        </p>
+                    @endif
                 </div>
 
             @endif
@@ -115,11 +122,13 @@
                     @endforelse
                 </div>
             @endif
-            <div class="chat-text">
-                <p class="m-0">
-                    {{ $message->message }}
-                </p>
-            </div>
+            @if ($message->message !== null)
+                <div class="chat-text">
+                    <p class="m-0">
+                        {{ $message->message }}
+                    </p>
+                </div>
+            @endif
         </div>
         <small class="chat-time">
             {{ $message->created_at->format('h:i A') }}

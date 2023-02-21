@@ -53,10 +53,6 @@
                     <div class="side-bar mb-4">
                         <div class="twm-s-info2-wrap mb-5">
                             <div class="twm-s-info2">
-                                <div class="text-center mb-4">
-                                    <img height="150px" width="150px" class="job__banner" src="{{ $job->banner }}"
-                                        alt="#">
-                                </div>
                                 <h4 class="section-head-small mb-4">Job Information</h4>
                                 <ul class="twm-job-hilites2">
                                     <li>
@@ -176,10 +172,16 @@
                             @auth()
                                 @if (auth()->user()->role !== 'client')
                                     @if (empty($job->application))
-                                        <a class="site-button" data-bs-toggle="modal" href="#apply_job_popup"
-                                            role="button">
-                                            Apply Now
-                                        </a>
+                                        @if (auth()->user()->status === 'active')
+                                            <a class="site-button" data-bs-toggle="modal" href="#apply_job_popup"
+                                                role="button">
+                                                Apply Now
+                                            </a>
+                                        @else
+                                            <span class="btn btn-danger">
+                                                Your account is not active yet.
+                                            </span>
+                                        @endif
                                     @else
                                         <span class="site-button">Already Applied</span>
                                     @endif

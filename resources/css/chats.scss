@@ -360,7 +360,7 @@ a.add {
                 clear: both;
                 content: "";
                 position: absolute;
-                top: -6px;
+                top: 0px;
                 left: -8px;
                 width: 0;
                 height: 0;
@@ -1384,7 +1384,8 @@ video {
 }
 
 .chat-content {
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    box-shadow: rgb(0 0 0 / 15%) 9px 7px 15px 0px;
+
 }
 
 .contract-btn {

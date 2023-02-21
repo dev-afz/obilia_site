@@ -83,9 +83,16 @@ function appendMessage(uuid) {
   let html = `<li data-msg-id="${uuid}"  class="sent"><div class="chat-content">`;
 
   if (reply_element != null) {
-    const reply_text = reply_element.find(".chat-text p").text();
-    const reply_image = reply_element.find(".chat-img").attr("src");
-
+    const reply_text = reply_element
+      .closest(".chat-content")
+      .find(".chat-text p")
+      .text();
+    console.log(reply_text);
+    const reply_image = reply_element
+      .closest(".chat-content")
+      .find(".chat-img")
+      .attr("src");
+    html += `<div class="message-reply">`;
     if (reply_text != "") {
       html += `<p class="m-0">${reply_text}</p>`;
     }
@@ -94,8 +101,7 @@ function appendMessage(uuid) {
       html += `<img src="${reply_image}" alt="" class="chat-img">`;
       html += `</div>`;
     }
-
-    html += `<div class="message-reply">`;
+    html += `</div>`;
   }
   html += `<div class="chat-text">`;
   console.log(image.files.length);
@@ -236,16 +242,17 @@ $(document).on("click", "[data-msg-reply]", function (e) {
   e.preventDefault();
 
   reply_element = $(this);
+  window.reply_element = reply_element;
   const id = $(this).data("msg-reply");
   $("#reply_to").val(id);
-  const message = $(`[data-msg-reply="${id}"]`)
+  const message = reply_element
     .closest(".chat-content")
     .find(".chat-text p")
     .text();
-
-  const image = $(`[data-msg-reply="${id}"]`)
+  const image = reply_element
     .closest(".chat-content")
     .find(".chat-images img")
+
     .attr("src");
   let html = `<div class="reply-sheet-content">`;
   if (image != undefined && image != "") {

@@ -22,14 +22,13 @@
 
         <div id="content">
             <div class="content-admin-main">
+                <div class="panel panel-default mb-4">
+                    <div class="panel-heading wt-panel-heading p-a20">
+                        <h4 class="panel-tittle m-a0"><i class="fa fa-suitcase"></i> Add Job</h4>
+                    </div>
+                </div>
                 <form novalidate data-add-job>
                     <div class="row">
-
-                        <div class="col-md-12 text-center">
-                            <label for="banner">Job Banner</label>
-                            <x-utils.image-uploader name="banner"
-                                instructions="Banner Should be <span class='text-danger'><strong>150px</strong> by <strong>150px and Less than 100kb</strong></span>" />
-                        </div>
 
                         <div class="col-md-6">
                             <x-utils.input name="title" />
@@ -100,7 +99,7 @@
 
                         </div>
                         <div class="col-12 text-center">
-                            <button type="submit" class="site-button">Save Changes</button>
+                            <button type="submit" class="btn btn-primary d-block w-100">Add Job</button>
                         </div>
                     </div>
                 </form>

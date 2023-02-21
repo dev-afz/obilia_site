@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\ServiceProvider;
 
+use Str;
 use App\Models\Workspace;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Managers\FileManager;
+use Mews\Purifier\Facades\Purifier;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
-use Str;
 
 class ServiceController extends Controller
 {
@@ -17,6 +18,7 @@ class ServiceController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
+
             'description' => 'required|string|max:5000',
             'price' => 'required|required|numeric|min:1',
             'sub_category' => 'required|numeric',
@@ -32,9 +34,14 @@ class ServiceController extends Controller
         foreach ($tags as $tag) {
             $metadata_string .= Str::slug($tag['value']) . ',' . strtolower($tag['value']) . ',';
         }
+        // Str::markdown($request->description)
         $service = $user->services()->create([
             'title' => $request->title,
-            'description' => $request->description,
+            'slug' => Str::slug($request->title) . '-' . uniqid(),
+            'description' => Purifier::clean(
+                Str::markdown($request->description),
+                ['HTML.Allowed' => 'p,br,strong,em,ul,ol,li,a[href|title],img[src|alt|title|width|height|style],h1,h2,h3,h4,h5,h6,blockquote,pre,code,table,tr,td,th,thead,tbody,span,div']
+            ),
             'price' => $request->price,
             'sub_category_id' => $sub_category->id,
             'category_id' => $sub_category->category_id,

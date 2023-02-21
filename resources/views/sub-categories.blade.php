@@ -44,7 +44,10 @@
                                                 </div>
 
                                                 <div class="p-4">
-                                                    <h4 class="mb-5">{{ $cat->name }}</h4>
+                                                    <a
+                                                        href="{{ route('search') }}?type=work&category={{ $cat->slug }}">
+                                                        <h4 class="mb-5">{{ $cat->name }}</h4>
+                                                    </a>
                                                     @forelse ($cat->sub_categories as $sub)
                                                         <a @auth
 @if (auth()->user()->isProvider())

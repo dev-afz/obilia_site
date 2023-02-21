@@ -26,12 +26,6 @@ class LikedJobDataTable extends DataTableComponent
                 ->searchable()
                 ->sortable()
                 ->html(),
-
-            Column::make("Banner", "banner")
-                ->format(function ($v, $c, $r) {
-                    return '<div data-view-onclick class="dashboard-message-avtar"><img  src="' . (($v) ? asset($v) : 'https://via.placeholder.com/200') . '" alt=""></div>';
-                })
-                ->html(),
             Column::make("Description", "description")
 
                 ->format(function ($v, $c, $r) {

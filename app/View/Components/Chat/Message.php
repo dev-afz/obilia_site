@@ -13,12 +13,15 @@ class Message extends Component
      */
     public $message;
     public $for;
+    public $contract_control;
     public function __construct(
         $message,
-        string $for = 'sender'
+        string $for = 'sender',
+        bool $contract_control = true
     ) {
         $this->message = $message;
         $this->for = $for;
+        $this->contract_control = $contract_control;
     }
 
     /**

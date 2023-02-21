@@ -26,17 +26,16 @@
             ]
         },
         {
-            "name": "Chat  Management",
+            "url": "/search?type=talent",
+            "name": "Browse Services",
+            "icon": "<svg aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fa-duotone\" data-icon=\"users\" class=\"svg-inline--fa fa-users fa-w-20\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 512\"><defs><style>.fa-secondary{opacity:.4}</style></defs><g class=\"fa-group\"><path class=\"fa-primary\" d=\"M319.9 320c57.41 0 103.1-46.56 103.1-104c0-57.44-46.54-104-103.1-104c-57.41 0-103.1 46.56-103.1 104C215.9 273.4 262.5 320 319.9 320zM369.9 352H270.1C191.6 352 128 411.7 128 485.3C128 500.1 140.7 512 156.4 512h327.2C499.3 512 512 500.1 512 485.3C512 411.7 448.4 352 369.9 352z\" fill=\"currentColor\"/><path class=\"fa-secondary\" d=\"M128 160c44.18 0 80-35.82 80-80S172.2 0 128 0C83.82 0 48 35.82 48 80S83.82 160 128 160zM512 160c44.18 0 80-35.82 80-80S556.2 0 512 0c-44.18 0-80 35.82-80 80S467.8 160 512 160zM551.9 192h-61.84c-12.8 0-24.88 3.037-35.86 8.24C454.8 205.5 455.8 210.6 455.8 216c0 33.71-12.78 64.21-33.16 88h199.7C632.1 304 640 295.6 640 285.3C640 233.8 600.6 192 551.9 192zM185.5 200.1C174.6 194.1 162.6 192 149.9 192H88.08C39.44 192 0 233.8 0 285.3C0 295.6 7.887 304 17.62 304h199.5c-20.38-23.79-33.16-54.29-33.16-88C183.9 210.6 184.9 205.4 185.5 200.1z\" fill=\"currentColor\"/></g></svg>",
+            "slug": ""
+        },
+        {
+            "url": "client/chat",
+            "name": "Chats",
             "icon": "<svg aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fa-regular\" data-icon=\"messages\" class=\"svg-inline--fa fa-messages fa-w-20\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 512\"><path d=\"M416 256V63.1C416 28.75 387.3 0 352 0H64C28.75 0 0 28.75 0 63.1v192C0 291.3 28.75 320 64 320l32 .0106V372C96 379.1 101.8 384 108 384c2.375 0 4.875-.75 7.125-2.375L224 320l128-.075C387.3 319.9 416 291.3 416 256zM211.4 272L144 310.1V272H64C55.25 272 48 264.8 48 256V64c0-8.75 7.25-16 16-16h288c8.75 0 16 7.25 16 16v192c0 8.75-7.25 16-16 16H211.4zM576 128H448v128c0 52.94-43.06 95.99-96 95.99l-96 .0013v31.98c0 35.25 28.75 63.1 63.1 63.1l125.8-.0073l82.75 62.12C534.9 514.8 544 510.2 544 502.2v-54.24h32c35.25 0 64-28.75 64-63.1V191.1C640 156.7 611.3 128 576 128z\" fill=\"currentColor\"/></svg>",
-            "slug": "",
-            "submenu": [
-                {
-                    "url": "client/chat",
-                    "name": "chats",
-                    "icon": null,
-                    "slug": "client.chat.index"
-                }
-            ]
+            "slug": "client.chat.index"
         },
         {
             "url": "client/workspace",

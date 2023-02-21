@@ -7,9 +7,11 @@
                     <div class="avatar-sm">
                         <img src="{{ asset('images/user-avtar/pic1.jpg') }}" alt="">
                     </div>
-                    <h5 class="mb-0 ms-2">{{ $service->user->name }}</h5>
+                    <a href="{{ route('provider', $service->user->uuid) }}">
+                        <h5 class="mb-0 ms-2">{{ $service->user->name }}</h5>
+                    </a>
                 </div>
-                <a href="#">
+                <a href="{{ route('service-details', [$service->user->uuid, $service->slug]) }}">
                     <strong>
                         {{ $service->title }}
                     </strong>
@@ -64,6 +66,8 @@
                     data: {
                         service: service
                     },
+                    notification: false,
+                    block: '[data-start-chat]',
                     url: "{{ route('jobs.start-chat') }}",
                     processData: true,
                     success: function(response) {

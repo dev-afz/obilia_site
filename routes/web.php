@@ -17,6 +17,7 @@ use App\Http\Controllers\Site\JobController;
 |
 */
 
+
 Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::controller(AuthController::class)
@@ -41,6 +42,8 @@ Route::controller(BasicController::class)
         Route::get('/search', 'search')->name('search');
         Route::get('/contact', 'contact')->name('contact');
         Route::get('/about-us', 'aboutUs')->name('about-us');
+        Route::get('provider/{uuid}', 'provider')->name('provider');
+        Route::get('provider/{user_uuid}/{service_slug}', 'serviceDetails')->name('service-details');
         Route::controller(JobController::class)
             ->prefix('jobs')
             ->name('jobs.')

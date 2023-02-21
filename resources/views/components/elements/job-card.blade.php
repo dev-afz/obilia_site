@@ -13,9 +13,9 @@
                 @endguest
             </div>
         @endif --}}
-        <div class="twm-media">
+        {{-- <div class="twm-media">
             <img height="90px" width="90px" src="{{ $job->banner }}" alt="#">
-        </div>
+        </div> --}}
 
         <div class="twm-jobs-category green">
             <span class="bg-primary small">{{ $job->sub_category->name }}</span>
@@ -35,7 +35,7 @@
             @endguest
         </div>
 
-        <div class="twm-mid-content">
+        <div class="twm-mid-content pt-0">
             <span class="twm-job-post-duration  m-0">{{ $job->created_at->diffForHumans() }}</span>
             <a href="{{ route('jobs.show', $job->slug) }}" class="twm-job-title">
                 <h4 class="">{{ $job->title }}</h4>

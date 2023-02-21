@@ -12,7 +12,8 @@
                     <h4>{{ $user->name }}</h4>
                 </a>
                 <p>Charted Accountant</p>
-                <a href="candidate-detail.html" class="twm-view-prifile site-text-primary">View Profile</a>
+                <a href="{{ route('provider', $user->uuid) }}" class="twm-view-prifile site-text-primary">View
+                    Profile</a>
 
                 <div class="twm-fot-content">
                     <div class="twm-left-info">

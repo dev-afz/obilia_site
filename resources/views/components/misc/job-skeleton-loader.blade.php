@@ -126,14 +126,14 @@
 @for ($i = 0; $i < $count; $i++)
     <div class="{{ $class ?? 'col-lg-4 col-md-6' }}">
         <div class="twm-jobs-grid-style1 d-flex flex-column justify-content-between skeleton  m-b30">
-            <div class="twm-media">
+            {{-- <div class="twm-media">
                 <div class="square"></div>
-            </div>
+            </div> --}}
 
             <div class="twm-jobs-category green">
                 <div class="line w125 h25 w-50"></div>
             </div>
-            <div class="twm-mid-content">
+            <div class="twm-mid-content pt-0">
                 <span class="twm-job-post-duration  m-0">
                     <div class="line w125 w-25 h10"></div>
                 </span>

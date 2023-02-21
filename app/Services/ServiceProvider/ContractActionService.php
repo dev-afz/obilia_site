@@ -125,8 +125,7 @@ class ContractActionService
             'message' => $new_message,
             'for' => $for
         ])->render();
-
-        $for = 'sender';
+        $for = 'reply';
         event(new MessageEvent(
             message: view('components.chat.message', compact('message', 'for'))->render(),
             from: $this->user->only(['uuid', 'name', 'email']),

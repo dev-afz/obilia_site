@@ -26,17 +26,16 @@
             ]
         },
         {
-            "name": "Chat  Management",
-            "icon": "<svg aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fa-duotone\" data-icon=\"messages\" class=\"svg-inline--fa fa-messages fa-w-20\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 512\"><defs><style>.fa-secondary{opacity:.4}</style></defs><g class=\"fa-group\"><path class=\"fa-primary\" d=\"M640 191.1v191.1c0 35.25-28.75 63.1-64 63.1h-32v54.24c0 7.998-9.125 12.62-15.5 7.873l-82.75-62.12L319.1 447.1C284.7 447.1 256 419.2 256 383.1v-31.98l96-.002c52.88 0 96-43.12 96-95.99V128h128C611.3 128 640 156.7 640 191.1z\" fill=\"currentColor\"/><path class=\"fa-secondary\" d=\"M352 0H64C28.75 0 0 28.75 0 63.1V256C0 291.2 28.75 320 64 320l32 .0098v54.25c0 7.998 9.125 12.62 15.5 7.875l82.75-62.12L352 319.9c35.25 .125 64-28.68 64-63.92V63.1C416 28.75 387.3 0 352 0z\" fill=\"currentColor\"/></g></svg>",
-            "slug": "",
-            "submenu": [
-                {
-                    "url": "service-provider/chat",
-                    "name": "chats",
-                    "icon": null,
-                    "slug": "service-provider.chat.index"
-                }
-            ]
+            "url": "service-provider/chat",
+            "name": "Chats",
+            "icon": "<svg aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fa-regular\" data-icon=\"messages\" class=\"svg-inline--fa fa-messages fa-w-20\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 512\"><path d=\"M416 256V63.1C416 28.75 387.3 0 352 0H64C28.75 0 0 28.75 0 63.1v192C0 291.3 28.75 320 64 320l32 .0106V372C96 379.1 101.8 384 108 384c2.375 0 4.875-.75 7.125-2.375L224 320l128-.075C387.3 319.9 416 291.3 416 256zM211.4 272L144 310.1V272H64C55.25 272 48 264.8 48 256V64c0-8.75 7.25-16 16-16h288c8.75 0 16 7.25 16 16v192c0 8.75-7.25 16-16 16H211.4zM576 128H448v128c0 52.94-43.06 95.99-96 95.99l-96 .0013v31.98c0 35.25 28.75 63.1 63.1 63.1l125.8-.0073l82.75 62.12C534.9 514.8 544 510.2 544 502.2v-54.24h32c35.25 0 64-28.75 64-63.1V191.1C640 156.7 611.3 128 576 128z\" fill=\"currentColor\"/></svg>",
+            "slug": "service-provider.chat.index"
+        },
+        {
+            "url": "/search?type=work",
+            "name": "Browse Jobs",
+            "icon": "<svg aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fa-duotone\" data-icon=\"suitcase\" class=\"svg-inline--fa fa-suitcase fa-w-16\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><defs><style>.fa-secondary{opacity:.4}</style></defs><g class=\"fa-group\"><path class=\"fa-primary\" d=\"M0 144v288C0 457.6 22.41 480 48 480H64V96H48C22.41 96 0 118.4 0 144zM464 96H448v384h16c25.59 0 48-22.41 48-48v-288C512 118.4 489.6 96 464 96zM336 0h-160C150.4 0 128 22.41 128 48V480h256V48C384 22.41 361.6 0 336 0zM336 96h-160V48h160V96z\" fill=\"currentColor\"/><path class=\"fa-secondary\" d=\"M64 480h64V96H64V480zM384 96v384h64V96H384z\" fill=\"currentColor\"/></g></svg>",
+            "slug": ""
         },
         {
             "url": "service-provider/workspace",

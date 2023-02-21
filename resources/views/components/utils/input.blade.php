@@ -20,6 +20,7 @@
                 @if (!empty($attrs)) @forelse ($attrs as $atr) {{ $atr[0] }}="{{ $atr[1] }}" @empty @endforelse @endif
                 @if ($required) required @endif
                 @if ($multiple) name="{{ $name }}[]"@else name="{{ $name }}" @endif
+                id="{{ $id ?? $name }}" placeholder="{{ $placeholder ?? ($label ?? ucwords(str_replace('_', ' ', $name))) }}"
                 rows="3">{{ $value }}</textarea>
 
         @endif
