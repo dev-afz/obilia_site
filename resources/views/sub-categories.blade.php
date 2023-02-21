@@ -55,6 +55,8 @@
                                                     @else
                                                         href="{{ route('search') }}?type=talent&sub_category={{ $sub->slug }}"
                                                     @endif @endauth
+                                                            @guest
+href="{{ route('search') }}?type=talent&sub_category={{ $sub->slug }}" @endguest
                                                             class="sub-link mb-2">{{ $sub->name }}
                                                         </a>
 
