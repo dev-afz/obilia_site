@@ -97,7 +97,7 @@ class BasicController extends Controller
             ->with(['sub_category', 'category', 'images', 'user'])
             ->firstOrFail();
 
-        $service_metadata = explode(',', $service->metadata);
+        // $service_metadata = explode(',', $service->metadata);
 
 
         $recommended = UserService::where('category_id', $service->category_id)
@@ -114,11 +114,15 @@ class BasicController extends Controller
 
     public function test()
     {
-        $services = UserService::all();
 
-        foreach ($services as $item) {
-            $item->description = Str::markdown($item->description);
-            $item->save();
-        }
+        //php info
+        phpinfo();
+        die();
+        return $services = UserService::all();
+
+        // foreach ($services as $item) {
+        //     $item->description = Str::markdown($item->description);
+        //     $item->save();
+        // }
     }
 }

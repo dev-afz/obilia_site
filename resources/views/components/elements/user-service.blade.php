@@ -11,11 +11,13 @@
                         <h5 class="mb-0 ms-2">{{ $service->user->name }}</h5>
                     </a>
                 </div>
-                <a href="{{ route('service-details', [$service->user->uuid, $service->slug]) }}">
-                    <strong>
-                        {{ $service->title }}
-                    </strong>
-                </a>
+                <div class=" text-start">
+                    <a href="{{ route('service-details', [$service->user->uuid, $service->slug]) }}">
+                        <strong>
+                            {{ $service->title }}
+                        </strong>
+                    </a>
+                </div>
                 <div class="rating d-flex align-items-center mt-2">
                     <span class="fa fa-star checked"></span>
                     <p class="mb-0 ms-2">
@@ -46,10 +48,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
     </div>
 </div>
 
