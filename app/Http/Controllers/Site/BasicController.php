@@ -115,6 +115,7 @@ class BasicController extends Controller
     public function test()
     {
 
+        return view('temp.home');
         //php info
         phpinfo();
         die();
