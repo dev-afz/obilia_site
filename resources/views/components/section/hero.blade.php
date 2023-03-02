@@ -1,4 +1,7 @@
-<div class="container hero-section  my-5">
+<div class="container hero-section  my-5 position-relative">
+
+    <div class="animated-bg"></div>
+
     <div class="row splide">
         <!--Left Section-->
         <div class="splide__track">

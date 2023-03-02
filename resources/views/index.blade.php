@@ -305,14 +305,15 @@
 
 
 
-            $(window).scroll(function() {
-                // if scroll crossed .hide-nav-on-view class element
-                if ($(this).scrollTop() > $('.hide-nav-on-view').offset().top - 250) {
-                    $('.main-bar').css('top', '-5rem');
-                } else {
-                    $('.main-bar').css('top', '0');
-                }
-            });
+            if ($(window).width() > 768) {
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > $('.hide-nav-on-view').offset().top - 250) {
+                        $('.main-bar').css('top', '-5rem');
+                    } else {
+                        $('.main-bar').css('top', '0');
+                    }
+                });
+            }
         </script>
 
     </x-slot>
