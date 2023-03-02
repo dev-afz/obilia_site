@@ -24,8 +24,13 @@
 
     <!-- MOBILE SPECIFIC -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    </style>
+    <link rel="stylesheet" href="{{ asset(mix('css/bs-override.css')) }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
-    {{-- <link rel="stylesheet" href="{{ asset(mix('css/bootstrap.min.css')) }}" /> --}}
+    {{--
+    <link rel="stylesheet" href="{{ asset(mix('css/bootstrap.min.css')) }}" /> --}}
     <link rel="stylesheet" href="{{ asset(mix('css/font-awesome.min.css')) }}" />
     <link rel="stylesheet" href="{{ asset(mix('css/feather.css')) }}" />
     <link rel="stylesheet" href="{{ asset(mix('css/bootstrap-select.min.css')) }}" />
@@ -52,9 +57,9 @@
 
     <div class="page-wraper">
         @if ($newHeader)
-        <x-new-header />
+            <x-new-header />
         @else
-        <x-header />
+            <x-header />
         @endif
 
         <div class="page-content">
@@ -69,11 +74,13 @@
         <div class="search-modal" id="search">
             <span class="close"></span>
             <form role="search" id="searchform" action="{{ route('search') }}" method="get" class="radius-xl">
-                <select required name="type" class="wt-search-bar-select selectpicker" data-live-search="false" id="work__type">
+                <select required name="type" class="wt-search-bar-select selectpicker" data-live-search="false"
+                    id="work__type">
                     <option selected value="work">Work</option>
                     <option value="talent">Talent</option>
                 </select>
-                <input required class="form-control" value="" name="q" type="search" placeholder="Type to search" />
+                <input required class="form-control" value="" name="q" type="search"
+                    placeholder="Type to search" />
                 <span class="input-group-append">
                     <button type="submit" class="search-btn">
                         <i class="fa fa-search"></i>
@@ -82,7 +89,7 @@
             </form>
         </div>
         @guest
-        <x-auth />
+            <x-auth />
         @endguest
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -109,10 +116,6 @@
 
 
     @stack('component-lower-scripts')
-
-
-
-
 
 </body>
 

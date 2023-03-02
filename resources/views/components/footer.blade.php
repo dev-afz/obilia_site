@@ -1,4 +1,4 @@
-<footer class="footer-light">
+<footer class="footer-dark text-white bg-black">
     <div class="container">
         <div class="">
             <div class="row">
@@ -30,7 +30,7 @@
 
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="widget widget_services ftr-list-center">
-                                <h3 class="widget-title">Links</h3>
+                                <h3 class="widget-title text-white">Links</h3>
                                 <ul>
                                     <li><a href="#">User Dashboard</a></li>
                                     <li><a href="#">Invites</a></li>

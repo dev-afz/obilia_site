@@ -32,8 +32,10 @@
                     </div>
                     <ul class=" nav navbar-nav flex-row">
                         <li class=""><a href="{{ route('index') }}">Home</a></li>
-                        <li class=""><a href="{{ route('contact') }}">Contact Us</a></li>
-                        <li class=""><a href="{{ route('about-us') }}">About Us</a></li>
+                        <li class=""><a href="#">About</a></li>
+                        <li class=""><a href="#">Plan</a></li>
+                        <li class=""><a href="#">How it works</a></li>
+                        <li class=""><a href="#">Contact us</a></li>
                     </ul>
 
                     <ul class="mobile-sub-menu nav navbar-nav flex-row">
@@ -90,42 +92,13 @@
                     </ul>
 
                 </div>
-
-                <!-- Header Right Section-->
                 <div class="extra-nav header-2-nav">
-                    <div class="extra-cell">
-                        <div class="header-search">
-                            <a href="#search" class="header-search-icon  d-none"><i class="feather-search"></i></a>
-                            <div class="header-search-form">
-                                <form action="{{ route('search') }}" method="GET">
-                                    <div class="search-container">
-                                        <select required name="type" class="wt-search-bar-select selectpicker me-2"
-                                            data-live-search="false" id="work__type">
-                                            <option @auth @if (auth()->user()->isClient()) selected @endif @endauth
-                                                value="talent">
-                                                Talent</option>
-                                            <option @auth @if (auth()->user()->isProvider()) selected @endif @endauth
-                                                @guest selected @endguest value="work">
-                                                Work</option>
-                                        </select>
-                                        <div class="search-input-container">
-                                            <input type="text" placeholder="search" name="q" id="q">
-
-                                            <button type="submit" class="search-btn"><i
-                                                    class="feather-search"></i></button>
-                                        </div>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
                     <div class="extra-cell">
                         <div class="header-nav-btn-section">
                             @guest()
                                 <div class="twm-nav-btn-left">
                                     <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#sign_up_popup" role="button">
-                                        <i class="feather-user-plus"></i> Sign Up
+                                        <i class="feather-user-plus"></i> Join us
                                     </a>
                                 </div>
                                 <div class="twm-nav-btn-right">

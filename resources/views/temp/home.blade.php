@@ -4,54 +4,11 @@
     <x-slot name="styles">
         <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-url-hash@0.3.0/dist/js/splide-extension-url-hash.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-url-hash@0.3.0/dist/js/splide-extension-url-hash.min.js">
+        </script>
         <style>
-            .call-to-action-btn {
-                display: inline-block;
-                padding: 0.4rem 0.7rem;
-                border-radius: 2rem;
-                background-color: #09596f;
-                color: #000;
-                font-size: 16px;
-                font-weight: 600;
-                margin-right: 10px;
-                margin-bottom: 10px;
-                text-decoration: none;
-                color: white;
-            }
 
-            .call-to-action-btn:hover {
-                color: white;
-            }
-
-            .call-to-action-btn.outline {
-                background-color: #FFF;
-                outline: 2px solid #09596f;
-                color: #09596f;
-            }
-
-            .twm-bnr-title-large>h2 {
-                font-size: 4rem;
-            }
-
-            .header-style-3 .header-nav .nav>li>a {
-                color: #09596f;
-                font-size: 1rem;
-            }
-
-            .splide__pagination__page.is-active {
-                background-color: #09596f;
-            }
-
-            .splide__pagination__page {
-                height: 1rem;
-                width: 1rem;
-                opacity: 1;
-            }
-
-            .splide__pagination {
-                bottom: -0.5rem;
-            }
 
         </style>
     </x-slot>
@@ -74,7 +31,8 @@
                                     happen
                                 </h2>
                             </div>
-                            <div class="twm-bnr-discription text-danger mb-2">Join the most comprehensive service marketplace.</div>
+                            <div class="twm-bnr-discription mb-2">Join the most comprehensive service
+                                marketplace.</div>
 
                             <h2 class="text-primary">
                                 Join the waitlist today and enjoy benefits

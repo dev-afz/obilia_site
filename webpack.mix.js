@@ -70,6 +70,7 @@ mixAssetsDir("data", (src, dest) => mix.copy(src, dest));
 
 mix
   .sass("resources/css/style.scss", "public/css")
+  .sass("resources/css/bs-override.scss", "public/css")
   .sass("resources/css/chats.scss", "public/css")
   .sass("resources/css/bootstrap-extended.scss", "public/css")
   .sass("resources/css/override.scss", "public/css")

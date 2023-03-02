@@ -1,0 +1,31 @@
+@import "colors";
+
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg:#{$primary-500} !important;
+    --bs-btn-border-color:#{$primary-500} !important;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg:#{$primary-600} !important;
+    --bs-btn-hover-border-color:#{$primary-600} !important;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg:#{$primary-700} !important;
+    --bs-btn-active-border-color:#{$primary-700} !important;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg:#{$primary-500} !important;
+    --bs-btn-disabled-border-color:#{$primary-500} !important;
+}
+
+.text-orange {
+    color: $secondary-orange-color !important;
+}
+
+.bg-black {
+    background-color: $black-900 !important;
+}
+
+.features-section>.row {
+    background: var(--features-bg, #000);
+
+}

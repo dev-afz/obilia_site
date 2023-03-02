@@ -21,6 +21,9 @@ class BasicController extends Controller
     {
 
         $industries = Industry::active()->take(6)->get();
+
+        $categories = Category::active()->take(6)->get();
+
         $jobs = Job::active()
             ->when(auth()->check(), function ($query) {
                 $query->withCount(['likes' => function ($query) {
@@ -32,7 +35,7 @@ class BasicController extends Controller
 
         $packages = Package::active()->with(['perks'])->get();
 
-        return view('index', compact('industries', 'jobs', 'packages'));
+        return view('index', compact('industries', 'jobs', 'packages','categories'));
     }
 
 
