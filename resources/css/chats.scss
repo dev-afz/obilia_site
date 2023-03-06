@@ -167,9 +167,7 @@ $border-color_3: transparent transparent $clr-primary transparent;
     transition: all 0.3s ease-in-out;
 
     .dropdown-toggle {
-        display: none;
-        transform: translateX(5rem);
-        right: 0;
+        transform: translateX(3rem);
         margin: 0;
         padding: 0;
         color: white;
@@ -186,7 +184,7 @@ $border-color_3: transparent transparent $clr-primary transparent;
 
     .reply-btn {
         border-radius: 5px;
-        background: $primary-200;
+        // background: $primary-200;
         padding: 0 5px;
     }
 
@@ -199,7 +197,7 @@ $border-color_3: transparent transparent $clr-primary transparent;
     &:hover {
         .dropdown-toggle {
             display: block;
-            transform: translateX(0);
+            // transform: translateX(0);
         }
     }
 
@@ -212,10 +210,21 @@ $border-color_3: transparent transparent $clr-primary transparent;
     }
 }
 
+.reply {
+    .chat-content {
+        .dropdown-toggle {
+            color: $primary-500 !important;
+            left: 0;
+            transform: translateX(-3rem);
+        }
+    }
+}
+
 .sender {
     .chat-content {
         .dropdown-toggle {
             color: $clr-primary !important;
+            right: 0;
         }
     }
 
@@ -327,11 +336,7 @@ a.add {
         }
     }
 
-    .dropdown-toggle {
-        &::after {
-            display: none;
-        }
-    }
+    .dropdown-toggle {}
 
     .dropdown-menu[data-bs-popper] {
         top: 100%;

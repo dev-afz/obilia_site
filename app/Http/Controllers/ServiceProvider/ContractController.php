@@ -28,6 +28,7 @@ class ContractController extends Controller
             'milestones.*.title' => 'required|string|max:255',
             'milestones.*.amount' => 'required|numeric|lte:project_cost',
             'milestones.*.description' => 'required|string|max:10000',
+            'milestones.*.due_date' => 'required|date|after:contract_date',
             'contract_file' => 'nullable|file|mimes:pdf,doc,docx,png,jpg,jpeg|max:2048',
         ]);
 
@@ -100,6 +101,24 @@ class ContractController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Message sent successfully',
+            'html' => $html,
+        ]);
+    }
+
+
+    public function view(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+        ]);
+        $provider = auth()->user();
+        $contract = $provider->sent_message_contract()
+            ->where('message_contracts.id', $request->id)
+            ->firstOrFail();
+
+        $html  =  view('components.chat.contract', compact('contract'))->render();
+
+        return response()->json([
             'html' => $html,
         ]);
     }

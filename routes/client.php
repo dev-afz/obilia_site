@@ -44,6 +44,7 @@ Route::controller(DashboardController::class)->middleware(['auth', 'client'])->p
 
     Route::controller(ContractController::class)->prefix('contract')->name('contract.')->group(function () {
         Route::post('action', 'action')->name('action');
+        Route::post('view', 'view')->name('view');
     });
 
     Route::controller(WorkspacesController::class)->prefix('workspace')->name('workspace.')->group(function () {

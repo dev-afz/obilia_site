@@ -3697,7 +3697,6 @@ ol.comment-list {
 }
 
 .twm-jobs-grid-style1 {
-    background: $card-bg !important;
     backdrop-filter: blur(10px);
     border: 10px;
     position: relative;
@@ -3706,6 +3705,7 @@ ol.comment-list {
     width: 100%;
     margin-top: 30px;
     transition: all 0.3s ease-in-out;
+    border: 1px solid $primary-400;
 
     &:hover {
         box-shadow: $shadow;

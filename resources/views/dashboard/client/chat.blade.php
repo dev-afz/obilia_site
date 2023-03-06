@@ -195,6 +195,11 @@
     </x-elements.modal>
 
 
+    <x-elements.modal title="Contract Data" class="modal-lg" id="contract-details-modal" :footer="false">
+        <div id="contract-body">
+
+        </div>
+    </x-elements.modal>
 
 
 
@@ -227,6 +232,28 @@
                     }
                 });
             });
+
+
+            $(document).on('click', '[data-contract-view]', function(e) {
+                e.preventDefault();
+                const id = $(this).data('contract-view');
+
+                window.rebound({
+                    data: {
+                        id: id
+                    },
+                    url: "{{ route('client.contract.view') }}",
+                    notification: false,
+                    processData: true,
+                    successCallback: function(data) {
+                        $('#contract-body').html(data.html);
+                        $('#contract-details-modal').modal('show');
+                    }
+                });
+            });
+
+
+
 
             @if (request()->has('chat'))
 

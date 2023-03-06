@@ -77,6 +77,7 @@ class ContractActionService
                 'title' => $m['title'],
                 'cost' => $m['amount'],
                 'description' => $m['description'],
+                'due_date' => $m['due_date'],
             ]);
         }
 

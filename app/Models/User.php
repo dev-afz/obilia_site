@@ -100,6 +100,11 @@ class User extends Authenticatable
         return $this->hasMany(MessageContract::class, 'send_to');
     }
 
+    public function sent_message_contract()
+    {
+        return $this->hasMany(MessageContract::class, 'send_by');
+    }
+
 
     public function provider_contracts()
     {

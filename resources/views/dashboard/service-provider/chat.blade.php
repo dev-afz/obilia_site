@@ -221,8 +221,9 @@
                         <x-utils.repeater :minLimit="1" name="milestones"
                             addButtonLabel="<i class='fa fa-plus'></i> Add Milestone"
                             :fields="[
-                                ['name' => 'title', 'col' => 8],
+                                ['name' => 'title', 'col' => 6],
                                 ['name' => 'amount', 'type' => 'number', 'col' => 4],
+                                ['name' => 'due_date', 'type' => 'date', 'col' => 2],
                                 ['name' => 'description', 'type' => 'textarea', 'col' => 11],
                             ]" />
                     </div>
@@ -239,6 +240,11 @@
                 </div>
             </form>
         </x-utils.offcanvas>
+        <x-elements.modal title="Contract Data" class="modal-lg" id="contract-details-modal" :footer="false">
+            <div id="contract-body">
+
+            </div>
+        </x-elements.modal>
 
 
         <x-slot name="scripts">
@@ -250,7 +256,25 @@
                 const contract_url = "{{ route('service-provider.contract.store') }}";
             </script>
             <script src="{{ asset(mix('js/chat.js')) }}"></script>
+            <script>
+                $(document).on('click', '[data-contract-view]', function(e) {
+                    e.preventDefault();
+                    const id = $(this).data('contract-view');
 
+                    window.rebound({
+                        data: {
+                            id: id
+                        },
+                        url: "{{ route('service-provider.contract.view') }}",
+                        notification: false,
+                        processData: true,
+                        successCallback: function(data) {
+                            $('#contract-body').html(data.html);
+                            $('#contract-details-modal').modal('show');
+                        }
+                    });
+                });
+            </script>
         </x-slot>
 
 </x-dashboard.layout>

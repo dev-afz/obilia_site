@@ -52,6 +52,7 @@ Route::controller(DashboardController::class)
             ->name('contract.')
             ->group(function () {
                 Route::post('store', 'store')->name('store');
+                Route::post('view', 'view')->name('view');
             });
 
         Route::controller(WorkspacesController::class)

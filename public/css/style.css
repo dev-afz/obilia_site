@@ -8441,7 +8441,6 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 }
 
 .twm-jobs-grid-style1 {
-  background: #e0eeff !important;
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   border: 10px;
@@ -8451,6 +8450,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
   width: 100%;
   margin-top: 30px;
   transition: all 0.3s ease-in-out;
+  border: 1px solid #4d9fa9;
 }
 .twm-jobs-grid-style1:hover {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);

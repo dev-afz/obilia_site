@@ -49,28 +49,13 @@
 
         @if ($message->contract)
             <div data-contract="{{ $message->contract->id }}" class="contract-holder p-2">
-                <div class="contract-title">
-                    <h4 class="mb-2  text-center">Contract Request</h4>
-                    <p>
-                        {{ json_decode($message->contract->contract, true)['project_title'] }}
+                <div class="contract-title ">
+                    <p class="text-success">
+                        Contract Request
                     </p>
-                </div>
-                <div class="contract-btns d-flex gap-1 justify-content-around">
-                    <button data-contract-view="{{ $message->contract->contract }}" class="contract-btn btn-view">
+                    <button data-contract-view="{{ $message->contract->id }}" class="contract-btn btn-view">
                         <i class="feather-eye"></i>
                     </button>
-                    @if ($for !== 'reply')
-                        @if ($message->contract->status == 'pending')
-                            <button data-contract-action="{{ $message->contract->id }}"
-                                data-contract-action-type="accept" class="contract-btn btn-accept">
-                                <i class="feather-check"></i>
-                            </button>
-                            <button data-contract-action="{{ $message->contract->id }}"
-                                data-contract-action-type="reject" class="contract-btn btn-reject">
-                                <i class="feather-x"></i>
-                            </button>
-                        @endif
-                    @endif
                 </div>
             </div>
         @endif

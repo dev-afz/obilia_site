@@ -36,4 +36,25 @@ class ContractController extends Controller
 
         return $service->acceptContract($contract, auth()->user());
     }
+
+
+
+    public function view(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+        ]);
+
+        $user = auth()->user();
+
+        $contract = $user->received_message_contract()
+            ->where('message_contracts.id', $request->id)
+            ->firstOrFail();
+
+        $html  =  view('components.chat.contract', compact('contract'))->render();
+
+        return response()->json([
+            'html' => $html,
+        ]);
+    }
 }
