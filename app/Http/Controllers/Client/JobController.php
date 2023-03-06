@@ -49,7 +49,6 @@ class JobController extends Controller
             'budget_from' => 'required|integer',
             'budget_to' => 'required|integer|gte:budget_from',
             'total_hours' => 'nullable|integer',
-            'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:100',
             'responsibilities' => 'required|array',
             'responsibilities.*' => 'required|string|max:1000',
             'visibility' => 'required|in:public,private',
