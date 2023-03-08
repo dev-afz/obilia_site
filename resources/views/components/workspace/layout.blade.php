@@ -8,6 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Obilia</title>
 
+    <link rel="stylesheet" href="{{ asset(mix('css/bs-override.css')) }}" />
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.5/css/perfect-scrollbar.css">

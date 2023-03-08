@@ -30,6 +30,7 @@ class User extends Authenticatable
         'gender',
         'state',
         'city',
+        'rp_contact',
     ];
 
     /**
@@ -150,6 +151,17 @@ class User extends Authenticatable
         return $this->hasMany(Workspace::class, 'client_id');
     }
 
+
+    public function client_milestones()
+    {
+        return $this->hasManyThrough(ContractMilestone::class, Contract::class, 'client_id', 'contract_id', 'id', 'id');
+    }
+
+
+    public function razorpay_orders()
+    {
+        return $this->hasMany(RazorpayOrder::class, 'user_id');
+    }
 
     /*
     |--------------------------------------------------------------------------

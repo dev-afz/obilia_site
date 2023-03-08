@@ -8,6 +8,7 @@ use App\Http\Controllers\Client\ContractController;
 use App\Http\Controllers\Client\DashboardController;
 use App\Http\Controllers\Client\JobApplicationController;
 use App\Http\Controllers\Client\Workspace\ChatController as WorkspaceChatController;
+use App\Http\Controllers\Client\Workspace\PaymentController;
 use App\Http\Controllers\Client\Workspace\WorkspacesController;
 
 Route::controller(DashboardController::class)->middleware(['auth', 'client'])->prefix('client')->name('client.')->group(function () {
@@ -53,11 +54,20 @@ Route::controller(DashboardController::class)->middleware(['auth', 'client'])->p
         Route::get('project-info/{slug}', 'projectInfo')->name('project-info');
         Route::get('payment-and-invoices/{slug}', 'paymentAndInvoices')->name('payment-and-invoices');
 
+
+
+
+
         Route::controller(WorkspaceChatController::class)->prefix('chat')->name('chat.')->group(function () {
             Route::get('messages', 'messages')->name('messages');
             Route::get('load-message', 'loadMessages')->name('load-messages');
             Route::post('send-message', 'sendMessages')->name('send-messages')
                 ->middleware(SanitizeInputMiddleware::class);
+        });
+
+        Route::controller(PaymentController::class)->prefix('payment')->name('payment.')->group(function () {
+            Route::post('create-order', 'createOrder')->name('create-order');
+            Route::post('fetch', 'fetch')->name('fetch');
         });
     });
 });

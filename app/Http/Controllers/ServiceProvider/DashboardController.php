@@ -9,6 +9,8 @@ use App\Managers\FileManager;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
+use App\Services\RazorpayX\CheckFundAccountService;
+use App\Services\RazorpayX\CreateFundAccountService;
 
 class DashboardController extends Controller
 {
@@ -252,8 +254,11 @@ class DashboardController extends Controller
                 'bank' => 'Bank already added',
             ]);
         }
+        $createService  = new CreateFundAccountService();
 
-        $user->bank()->create([
+        DB::beginTransaction();
+
+        $bank =   $user->bank()->create([
             'account_holder_name' => $request->account_holder_name,
             'account_number' => $request->account_number,
             'ifsc_code' => $request->ifsc_code,
@@ -263,6 +268,9 @@ class DashboardController extends Controller
             'city' => $request->bank_city,
             'state' => $request->bank_state,
         ]);
+
+        $createService->createFundAccount($bank);
+        DB::commit();
 
         return response()->json([
             'message' => 'Bank added successfully',
@@ -303,12 +311,15 @@ class DashboardController extends Controller
 
         $bank = $user->bank;
 
+        $old_bank = $bank;
+
         if (!$bank) {
             throw ValidationException::withMessages([
                 'bank' => 'Bank not found',
             ]);
         }
 
+        DB::beginTransaction();
         $bank->update([
             'account_holder_name' => $request->account_holder_name,
             'account_number' => $request->account_number,
@@ -319,6 +330,15 @@ class DashboardController extends Controller
             'city' => $request->bank_city,
             'state' => $request->bank_state,
         ]);
+
+        if ($old_bank->account_number != $bank->account_number) {
+            $createService  = new CreateFundAccountService();
+            $createService->createFundAccount($bank);
+        }
+
+        DB::commit();
+
+
 
         return response()->json([
             'message' => 'Bank updated successfully',

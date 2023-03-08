@@ -3,11 +3,12 @@
 namespace App\Services;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
+use App\Services\RazorpayX\CreateContactService;
 
 class UserService
 {
@@ -25,7 +26,12 @@ class UserService
             'status' => 'active',
         ]);
 
+
+        $service = new CreateContactService();
+
         Auth::login($user);
+
+        $service->createRazorpayContact($user);
 
 
         switch ($request->role) {

@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use App\Services\SearchService;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Services\RazorpayX\CreateContactService;
 
 class BasicController extends Controller
 {
@@ -35,7 +36,7 @@ class BasicController extends Controller
 
         $packages = Package::active()->with(['perks'])->get();
 
-        return view('index', compact('industries', 'jobs', 'packages','categories'));
+        return view('index', compact('industries', 'jobs', 'packages', 'categories'));
     }
 
 
@@ -117,6 +118,20 @@ class BasicController extends Controller
 
     public function test()
     {
+
+
+        $users = User::all();
+
+        $cc = new  CreateContactService();
+
+        foreach ($users as $user) {
+            $res[] =  $cc->createRazorpayContact($user);
+        }
+
+        dd($res);
+
+
+
 
         return view('temp.home');
         //php info

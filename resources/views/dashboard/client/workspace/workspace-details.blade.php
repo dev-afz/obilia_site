@@ -35,16 +35,30 @@
             </div>
             <div class="card p-5 bg-blue ">
 
+                @php
+                    $latestMilestone = '';
+                @endphp
                 <ul class="timeline">
                     @forelse ($workspace->contract->milestones as $milestone)
-                        <li @class(['timeline-item', 'timeline-done' => $loop->first])>
+                        @php
+                            
+                            if ($latestMilestone == '' && $milestone->status != 'completed') {
+                                $latestMilestone = $milestone->id;
+                            }
+                            
+                        @endphp
+
+                        <li @class([
+                            'timeline-item',
+                            'timeline-done' => $milestone->status == 'completed',
+                        ])>
                             <span @class([
                                 'timeline-point timeline-point-indicator',
-                                'pulse' => $loop->first,
+                                'pulse' => $milestone->id == $latestMilestone,
                             ])></span>
                             <div class="timeline-event">
-                                <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-                                    <h6>{{ $milestone->title }}</h6>
+                                <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 ">
+                                    <h4>{{ $milestone->title }}</h4>
                                     <span class="timeline-event-time">
                                         @if ($milestone->due_date)
                                             <Strong>Date: </Strong> &nbsp;
@@ -52,24 +66,36 @@
                                         @endif
                                     </span>
                                 </div>
-                                <p>
+                                {{-- <p>
                                     {{ $milestone->description }}
-                                </p>
-                                <div class="d-flex flex-row align-items-center justify-content-start">
-                                    @if ($milestone->status == 'pending')
-                                        <button @class([
-                                            'btn btn-sm btn-primary me-4',
-                                            'disabled btn-secondary ' => !$loop->first,
-                                        ]) class="btn btn-sm btn-primary me-4">Add
-                                            Fund In
-                                            Escrow</button>
-                                        <button @class([
-                                            'btn btn-sm btn-outline-primary btn-outline',
-                                            'disabled btn-outline-secondary ' => !$loop->first,
-                                            'disabled btn-outline-secondary' => !$milestone->escrow_fund_added_time,
-                                        ])>
-                                            Check & Release Payment</button>
+                                </p> --}}
+                                <div class="d-flex flex-row align-items-center justify-content-around mt-2">
+                                    @if ($milestone->escrow_fund_added_time)
+                                        <small class="text-success me-1">Fund Added :
+                                            {{ \Carbon\Carbon::parse($milestone->escrow_fund_added_time)->diffForHumans() }}</small>
+                                    @else
+                                        <button
+                                            @if ($milestone->id !== $latestMilestone) disabled
+                                            @else
+                                                data-add-fund="{{ $milestone->id }}" @endif
+                                            @class(['btn btn-sm btn-primary me-4'])>
+                                            Add Fund
+                                        </button>
                                     @endif
+
+                                    @if ($milestone->escrow_fund_released_time)
+                                        <span class="badge bg-success me-1">Fund Released</span>
+                                    @else
+                                        <button
+                                            @if ($milestone->id !== $latestMilestone || $milestone->escrow_fund_added_time === null) disabled
+                                            @else
+                                                data-release-fund="{{ $milestone->id }}" @endif
+                                            @class(['btn btn-sm btn-secondary me-4'])>
+                                            Check & Release Fund
+                                        </button>
+                                    @endif
+
+
                                 </div>
                             </div>
                         </li>
@@ -146,7 +172,7 @@
         </script>
         <script src="{{ asset(mix('js/workspace/chat.js')) }}"></script>
         <script src="https://rawcdn.githack.com/nextapps-de/winbox/0.2.6/dist/js/winbox.min.js"></script>
-
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script>
             const workspace = @json($workspace);
             new PerfectScrollbar('#chat-holder', {
@@ -166,6 +192,58 @@
                 }
 
             });
+
+
+            $('[data-add-fund]').click(function(e) {
+                e.preventDefault();
+                const user = @json(auth()->user()->only('id', 'name', 'email'));
+                const milestone_id = $(this).data('add-fund');
+
+                window.rebound({
+                    url: "{{ route('client.workspace.payment.create-order') }}",
+                    data: {
+                        milestone_id: milestone_id
+                    },
+                    processData: true,
+                    notification: false,
+                    successCallback: function(response) {
+                        payOrder(user, response.order);
+                    }
+                })
+
+            });
+
+
+
+
+            function payOrder(user, order) {
+                const options = {
+                    "key": "{{ env('RAZORPAY_KEY') }}",
+                    "name": "Obillia",
+                    "description": "Test Transaction",
+                    "image": "https://obilia.fra1.digitaloceanspaces.com/public/images/user/kyc/img-319ab28e832a5e19c3d14a606d90b95820c032a67cc.550460.png",
+                    "order_id": order.order_id,
+                    "callback_url": "{{ route('client.workspace.payment.fetch') }}",
+                    "prefill": {
+                        "name": user.name,
+                        "email": user.email,
+                        "contact": 9137231270
+                    },
+                    "notes": {
+                        "test": "test"
+                    },
+                    "theme": {
+                        "color": "#3399cc"
+                    }
+                };
+                const rzp = new Razorpay(options);
+                rzp.open();
+            }
+
+
+            @if (session()->has('success'))
+                Notiflix.Report.success('Success', "{{ session('success') }}", 'Ok');
+            @endif
         </script>
     </x-slot>
 </x-workspace.layout>
