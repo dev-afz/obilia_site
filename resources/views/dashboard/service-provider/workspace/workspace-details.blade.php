@@ -63,16 +63,30 @@
             </div>
             <div class="card p-5 bg-blue ">
 
+                @php
+                    $latestMilestone = '';
+                @endphp
                 <ul class="timeline">
                     @forelse ($workspace->contract->milestones as $milestone)
-                        <li @class(['timeline-item', 'timeline-done' => $loop->first])>
+                        @php
+                            
+                            if ($latestMilestone == '' && $milestone->status != 'completed') {
+                                $latestMilestone = $milestone->id;
+                            }
+                            
+                        @endphp
+
+                        <li @class([
+                            'timeline-item',
+                            'timeline-done' => $milestone->status == 'completed',
+                        ])>
                             <span @class([
                                 'timeline-point timeline-point-indicator',
-                                'pulse' => $loop->first,
+                                'pulse' => $milestone->id == $latestMilestone,
                             ])></span>
                             <div class="timeline-event">
-                                <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-                                    <h6>{{ $milestone->title }}</h6>
+                                <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 ">
+                                    <h4>{{ $milestone->title }}</h4>
                                     <span class="timeline-event-time">
                                         @if ($milestone->due_date)
                                             <Strong>Date: </Strong> &nbsp;
@@ -80,24 +94,34 @@
                                         @endif
                                     </span>
                                 </div>
-                                <p>
+                                {{-- <p>
                                     {{ $milestone->description }}
-                                </p>
-                                <div class="d-flex flex-row align-items-center justify-content-start">
-                                    @if ($milestone->status == 'pending')
-                                        <button @class([
-                                            'btn btn-sm btn-primary me-4',
-                                            'disabled btn-secondary ' => !$loop->first,
-                                        ]) class="btn btn-sm btn-primary me-4">Add
-                                            Fund In
-                                            Escrow</button>
-                                        <button @class([
-                                            'btn btn-sm btn-outline-primary btn-outline',
-                                            'disabled btn-outline-secondary ' => !$loop->first,
-                                            'disabled btn-outline-secondary' => !$milestone->escrow_fund_added_time,
-                                        ])>
-                                            Check & Release Payment</button>
+                            </p> --}}
+                                <div class="d-flex flex-row align-items-center justify-content-around mt-2">
+                                    @if ($milestone->escrow_fund_added_time)
+                                        <small class="text-success me-1">Fund Added :
+                                            {{ \Carbon\Carbon::parse($milestone->escrow_fund_added_time)->diffForHumans() }}
+                                        </small>
+                                        <button data-add-work="{{ $milestone->id }}" class="btn btn-sm btn-primary">
+                                            @if ($milestone->works->count() > 0)
+                                                Update Work
+                                            @else
+                                                Add Work
+                                            @endif
+                                        </button>
+                                    @else
+                                        <span class="badge bg-danger me-1">Fund Not Added</span>
                                     @endif
+
+                                    @if ($milestone->escrow_fund_released_time)
+                                        <span class="badge bg-success me-1">
+                                            Fund Released :
+                                            {{ \Carbon\Carbon::parse($milestone->escrow_fund_released_time)->diffForHumans() }}
+                                        </span>
+                                    @else
+                                    @endif
+
+
                                 </div>
                             </div>
                         </li>
@@ -109,7 +133,7 @@
 
         </div>
         <div hidden class="d-none">
-            <div id="chat-sec"class="chat-section">
+            <div id="chat-sec" class="chat-section">
                 <div class="chat-container card">
                     <div class="chat-header">
                         <div class="chat-avatar">
@@ -164,11 +188,55 @@
         </div>
     </div>
 
+
+
     <div class="chat-mobile-btn">
         <button id="open-chat">
             <i class="fas fa-comment-dots"></i>
         </button>
     </div>
+
+
+
+    <x-elements.modal id="work-modal" class="modal-lg" :footer="false" title="Add Work">
+        <form id="add-work">
+            <div class="divider">
+                <div class="divider-text">
+                    <h4>
+                        Previous Work
+                    </h4>
+                </div>
+            </div>
+            <div id="work-body">
+
+            </div>
+            <div class="divider">
+                <div class="divider-text">
+                    <h4>
+                        Add/Update Work
+                    </h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <x-utils.input type="file" :required="false" name="file" id="file" />
+                    <input type="hidden" name="milestone_id" id="milestone_id">
+                </div>
+
+                <div class="col-12">
+                    <x-utils.input type="text" :required="false" name="remark" id="remark" />
+                </div>
+
+                <div class="col-12 mt-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+        </form>
+    </x-elements.modal>
+
+
+
     <x-slot name="scripts">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.3/apexcharts.min.js"></script>
         <script>
@@ -223,6 +291,42 @@
             $('#open-chat').click(function(e) {
                 e.preventDefault();
                 wBox.maximize();
+
+            });
+        </script>
+
+        <script>
+            $('[data-add-work]').click(function(e) {
+                e.preventDefault();
+                const milestone_id = $(this).data('add-work');
+                window.rebound({
+                    url: "{{ route('service-provider.workspace.get-works') }}",
+                    data: {
+                        milestone_id: milestone_id
+                    },
+                    processData: true,
+                    method: 'get',
+                    successCallback: function(data) {
+                        console.log(data);
+                        $('#work-body').html(data.html);
+                        $('#milestone_id').val(milestone_id);
+                        $('#work-modal').modal('show');
+                    }
+                });
+
+            });
+
+            $('#add-work').submit(function(e) {
+                e.preventDefault();
+                window.rebound({
+                    url: "{{ route('service-provider.workspace.add-work') }}",
+                    form: this,
+                    successCallback: function(data) {
+                        console.log(data);
+                        $('#work-modal').modal('hide');
+                        location.reload();
+                    }
+                })
 
             });
         </script>

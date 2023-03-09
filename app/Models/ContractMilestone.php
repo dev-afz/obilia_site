@@ -15,4 +15,9 @@ class ContractMilestone extends Model
     {
         return $this->belongsTo(Contract::class);
     }
+
+    public function works()
+    {
+        return $this->hasMany(MilestoneWork::class, 'milestone_id', 'id');
+    }
 }

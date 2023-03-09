@@ -4,11 +4,14 @@ namespace App\Http\Controllers\ServiceProvider\Workspace;
 
 use App\Models\Workspace;
 use Illuminate\Http\Request;
+use App\Managers\FileManager;
+use App\Models\MilestoneWork;
 use App\Managers\ColorManager;
 use App\Http\Controllers\Controller;
 
 class WorkspacesController extends Controller
 {
+    use FileManager;
     public function index(ColorManager $colorManager)
     {
         $workspaces = Workspace::where('user_id', auth()->id())
@@ -37,7 +40,7 @@ class WorkspacesController extends Controller
         $workspace = Workspace::where('slug', $slug)
             ->where('user_id', auth()->id())
             ->with([
-                'contract.milestones',
+                'contract' => ['milestones.works'],
                 'owner',
             ])
             ->active()
@@ -65,5 +68,56 @@ class WorkspacesController extends Controller
             ->active()
             ->firstOrFail();
         return view('dashboard.service-provider.workspace.project-info', compact('workspace'));
+    }
+
+
+
+    public function getWorks(Request $request)
+    {
+        $request->validate([
+            'milestone_id' => 'required|integer',
+        ]);
+
+        $provider = auth()->user();
+
+        $milestone = $provider->provider_milestones()
+            ->where('contract_milestones.id', $request->milestone_id)
+            ->firstOrFail();
+
+        $works = $milestone->works;
+
+        $html = view('components.helper.works', compact('works'))->render();
+
+        return response()->json([
+            'works' => $works,
+            'html' => $html,
+        ]);
+    }
+
+
+    public function addWork(Request $request)
+    {
+        $request->validate([
+            'milestone_id' => 'required|integer',
+            'file' => 'required_without:remarks|file|mimes:zip,rar,7z,doc,docx,pdf,txt,xls,xlsx,ppt,pptx,mp4,mp3,jpg,jpeg,png,gif|max:102400',
+            'remarks' => 'required_without:file|string|max:5000',
+        ]);
+
+        $provider = auth()->user();
+
+        $milestone = $provider->provider_milestones()
+            ->where('contract_milestones.id', $request->milestone_id)
+            ->firstOrFail();
+
+
+
+        $milestone->works()->create([
+            'file' => ($request->file) ? $this->uploadFileToDO($request->file, 'milestones/works') : null,
+            'remark' => $request->remarks,
+        ]);
+
+        return response()->json([
+            'message' => 'Work added successfully',
+        ]);
     }
 }

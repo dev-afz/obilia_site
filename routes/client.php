@@ -8,6 +8,7 @@ use App\Http\Controllers\Client\ContractController;
 use App\Http\Controllers\Client\DashboardController;
 use App\Http\Controllers\Client\JobApplicationController;
 use App\Http\Controllers\Client\Workspace\ChatController as WorkspaceChatController;
+use App\Http\Controllers\Client\Workspace\MilestoneController;
 use App\Http\Controllers\Client\Workspace\PaymentController;
 use App\Http\Controllers\Client\Workspace\WorkspacesController;
 
@@ -54,6 +55,12 @@ Route::controller(DashboardController::class)->middleware(['auth', 'client'])->p
         Route::get('project-info/{slug}', 'projectInfo')->name('project-info');
         Route::get('payment-and-invoices/{slug}', 'paymentAndInvoices')->name('payment-and-invoices');
 
+
+
+        Route::controller(MilestoneController::class)->prefix('milestone')->name('milestone.')->group(function () {
+            Route::post('work-action', 'workAction')->name('work-action');
+            Route::post('view-work', 'viewWork')->name('view-work');
+        });
 
 
 

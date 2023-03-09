@@ -68,7 +68,7 @@
                                 </div>
                                 {{-- <p>
                                     {{ $milestone->description }}
-                                </p> --}}
+                            </p> --}}
                                 <div class="d-flex flex-row align-items-center justify-content-around mt-2">
                                     @if ($milestone->escrow_fund_added_time)
                                         <small class="text-success me-1">Fund Added :
@@ -76,8 +76,8 @@
                                     @else
                                         <button
                                             @if ($milestone->id !== $latestMilestone) disabled
-                                            @else
-                                                data-add-fund="{{ $milestone->id }}" @endif
+                                    @else
+                                    data-add-fund="{{ $milestone->id }}" @endif
                                             @class(['btn btn-sm btn-primary me-4'])>
                                             Add Fund
                                         </button>
@@ -86,13 +86,21 @@
                                     @if ($milestone->escrow_fund_released_time)
                                         <span class="badge bg-success me-1">Fund Released</span>
                                     @else
-                                        <button
-                                            @if ($milestone->id !== $latestMilestone || $milestone->escrow_fund_added_time === null) disabled
-                                            @else
-                                                data-release-fund="{{ $milestone->id }}" @endif
-                                            @class(['btn btn-sm btn-secondary me-4'])>
-                                            Check & Release Fund
-                                        </button>
+                                        @if ($milestone->works->count() > 0)
+                                            <button
+                                                @if ($milestone->id !== $latestMilestone || $milestone->escrow_fund_added_time === null) disabled
+                                    @else
+                                    data-check-work="{{ $milestone->id }}" @endif
+                                                @class(['btn btn-sm btn-secondary me-4'])>
+                                                Check & Release Fund
+                                            </button>
+                                        @else
+                                            @if ($milestone->id === $latestMilestone)
+                                                <span class="badge bg-danger me-1">
+                                                    No Work Done yet
+                                                </span>
+                                            @endif
+                                        @endif
                                     @endif
 
 
@@ -107,7 +115,7 @@
 
         </div>
         <div hidden class="d-none">
-            <div id="chat-sec"class="chat-section">
+            <div id="chat-sec" class="chat-section">
                 <div class="chat-container card">
                     <div class="chat-header">
                         <div class="chat-avatar">
@@ -160,6 +168,16 @@
                 </div>
             </div>
         </div>
+
+        <x-elements.modal title="work" :footer="false" class="modal-lg" id="work-modal">
+
+            <div id="work-body">
+
+            </div>
+
+
+        </x-elements.modal>
+
     </div>
     <x-slot name="scripts">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.3/apexcharts.min.js"></script>
@@ -196,7 +214,7 @@
 
             $('[data-add-fund]').click(function(e) {
                 e.preventDefault();
-                const user = @json(auth()->user()->only('id', 'name', 'email'));
+                const user = @json(auth()->user());
                 const milestone_id = $(this).data('add-fund');
 
                 window.rebound({
@@ -240,10 +258,52 @@
                 rzp.open();
             }
 
+            $('[data-check-work]').click(function(e) {
+                e.preventDefault();
+                const milestone_id = $(this).data('check-work');
+                window.rebound({
+                    url: "{{ route('client.workspace.milestone.view-work') }}",
+                    data: {
+                        milestone_id: milestone_id
+                    },
+                    processData: true,
+                    notification: false,
+                    successCallback: function(response) {
+                        $('#work-body').html(response.html);
+                        $('#work-modal').modal('show');
+                    }
+                })
 
-            @if (session()->has('success'))
-                Notiflix.Report.success('Success', "{{ session('success') }}", 'Ok');
-            @endif
+
+            });
+
+
+            $(document).on('click', '[data-work-action]', function(e) {
+                e.preventDefault();
+                const action = $(this).data('work-action');
+                const work = $(this).data('work');
+
+                window.rebound({
+                    url: "{{ route('client.workspace.milestone.work-action') }}",
+                    data: {
+                        work: work,
+                        action: action
+                    },
+                    processData: true,
+                    notification: false,
+                    successCallback: function(response) {
+                        $('#work-body').html('');
+                        $('#work-modal').modal('hide');
+                    }
+                })
+
+            });
         </script>
+
+        @if (session()->has('success'))
+            <script>
+                Notiflix.Report.success('Success', "{{ session('success') }}", 'Ok');
+            </script>
+        @endif
     </x-slot>
 </x-workspace.layout>

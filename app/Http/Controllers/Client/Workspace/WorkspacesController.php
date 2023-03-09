@@ -39,7 +39,7 @@ class WorkspacesController extends Controller
         $workspace = Workspace::where('slug', $slug)
             ->where('client_id', auth()->id())
             ->with([
-                'contract.milestones',
+                'contract' => ['milestones.works'],
                 'provider',
             ])
             ->active()

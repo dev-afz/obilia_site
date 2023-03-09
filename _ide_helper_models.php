@@ -84,6 +84,7 @@ namespace App\Models{
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int|null $workspace_id
  * @property-read \App\Models\Job|null $job
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Message[] $messages
  * @property-read int|null $messages_count
@@ -91,7 +92,11 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ChatParticipant[] $participants
  * @property-read int|null $participants_count
  * @property-read \App\Models\User|null $user
+ * @property-read \App\Models\Workspace|null $workspace
  * @method static \Illuminate\Database\Eloquent\Builder|Chat active()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat forJob()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat forWorkspace()
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat global()
  * @method static \Illuminate\Database\Eloquent\Builder|Chat newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Chat newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Chat query()
@@ -103,6 +108,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Chat whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Chat whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Chat whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Chat whereWorkspaceId($value)
  */
 	class Chat extends \Eloquent {}
 }
@@ -144,7 +150,7 @@ namespace App\Models{
  * @property string $status
  * @property int $client_id
  * @property int $user_id
- * @property int $job_id
+ * @property int|null $job_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ContractMilestone[] $milestones
@@ -199,18 +205,30 @@ namespace App\Models{
  * @property float $cost
  * @property string $description
  * @property string $status
+ * @property string|null $escrow_fund_added_time
+ * @property int|null $razorpay_order_id
+ * @property string|null $escrow_fund_released_time
+ * @property string|null $due_date
+ * @property string|null $completed_at
  * @property int $contract_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Contract $contract
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MilestoneWork[] $works
+ * @property-read int|null $works_count
  * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone whereCompletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone whereContractId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone whereCost($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone whereDueDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone whereEscrowFundAddedTime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone whereEscrowFundReleasedTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone whereRazorpayOrderId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone whereUpdatedAt($value)
@@ -562,6 +580,32 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\MilestoneWork
+ *
+ * @property int $id
+ * @property string|null $file
+ * @property string|null $remark
+ * @property int $milestone_id
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\ContractMilestone $milestone
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneWork newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneWork newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneWork query()
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneWork whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneWork whereFile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneWork whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneWork whereMilestoneId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneWork whereRemark($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneWork whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneWork whereUpdatedAt($value)
+ */
+	class MilestoneWork extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Package
  *
  * @property int $id
@@ -626,6 +670,53 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\RazorpayOrder
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $order_id
+ * @property float $amount
+ * @property int|null $discount
+ * @property string $currency
+ * @property string $status
+ * @property string $for milestone, project, subscription, etc
+ * @property mixed|null $for_data
+ * @property string|null $transaction_id
+ * @property int $attempts
+ * @property string|null $resolved_by
+ * @property string|null $resolved_at
+ * @property string $payment_mode
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder failed()
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder paid()
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder pending()
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder query()
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereAttempts($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereCurrency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereDiscount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereFor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereForData($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder wherePaymentMode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereResolvedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereResolvedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereTransactionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RazorpayOrder whereUserId($value)
+ */
+	class RazorpayOrder extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Skill
  *
  * @property int $id
@@ -686,6 +777,7 @@ namespace App\Models{
  * @property string $name
  * @property string $email
  * @property string|null $images
+ * @property string|null $rp_contact
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token
@@ -693,22 +785,48 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string $status
+ * @property string|null $phone
+ * @property string|null $gender
+ * @property string|null $state
+ * @property string|null $city
+ * @property-read \App\Models\UserBank|null $bank
+ * @property-read \App\Models\UserBusiness|null $business
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Chat[] $chats
  * @property-read int|null $chats_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Contract[] $client_contracts
+ * @property-read int|null $client_contracts_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ContractMilestone[] $client_milestones
+ * @property-read int|null $client_milestones_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Workspace[] $client_workspace
+ * @property-read int|null $client_workspace_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Skill[] $direct_skills
  * @property-read int|null $direct_skills_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\JobApplication[] $job_applications
  * @property-read int|null $job_applications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\JobInvitation[] $job_invitations
  * @property-read int|null $job_invitations_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserKyc[] $kycs
+ * @property-read int|null $kycs_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Like[] $liked_jobs
  * @property-read int|null $liked_jobs_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Job[] $posted_jobs
  * @property-read int|null $posted_jobs_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Contract[] $provider_contracts
+ * @property-read int|null $provider_contracts_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ContractMilestone[] $provider_milestones
+ * @property-read int|null $provider_milestones_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Workspace[] $provider_workspace
+ * @property-read int|null $provider_workspace_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\RazorpayOrder[] $razorpay_orders
+ * @property-read int|null $razorpay_orders_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MessageContract[] $received_message_contract
  * @property-read int|null $received_message_contract_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MessageContract[] $sent_message_contract
+ * @property-read int|null $sent_message_contract_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserService[] $services
+ * @property-read int|null $services_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserSkill[] $skills
  * @property-read int|null $skills_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
@@ -716,24 +834,190 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User active()
  * @method static \Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User hasLikedJob()
+ * @method static \Illuminate\Database\Eloquent\Builder|User isProvider()
  * @method static \Illuminate\Database\Eloquent\Builder|User isUser()
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereGender($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereImages($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRole($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRpContact($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUuid($value)
  */
 	class User extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\UserBank
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $account_holder_name
+ * @property string $account_number
+ * @property string|null $rp_account_number
+ * @property string $ifsc_code
+ * @property string $branch
+ * @property string $address
+ * @property string $city
+ * @property string $state
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank whereAccountHolderName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank whereAccountNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank whereBranch($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank whereIfscCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank whereRpAccountNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBank whereUserId($value)
+ */
+	class UserBank extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\UserBusiness
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $cin
+ * @property string $address
+ * @property string|null $gstin
+ * @property string $incorporation_certificate
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBusiness newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBusiness newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBusiness query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBusiness whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBusiness whereCin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBusiness whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBusiness whereGstin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBusiness whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBusiness whereIncorporationCertificate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBusiness whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBusiness whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBusiness whereUserId($value)
+ */
+	class UserBusiness extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\UserKyc
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $file
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|UserKyc newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserKyc newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserKyc query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserKyc whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserKyc whereFile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserKyc whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserKyc whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserKyc whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserKyc whereUserId($value)
+ */
+	class UserKyc extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\UserService
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $slug
+ * @property string $description
+ * @property float $price
+ * @property int $user_id
+ * @property int $category_id
+ * @property int $sub_category_id
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $metadata
+ * @property-read \App\Models\Category $category
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserServiceImage[] $images
+ * @property-read int|null $images_count
+ * @property-read \App\Models\SubCategory $sub_category
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService active()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService category($category)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService price($price)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService priceRange($priceRange)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService search($search)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService subCategory($subCategory)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereMetadata($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereSubCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserService whereUserId($value)
+ */
+	class UserService extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\UserServiceImage
+ *
+ * @property int $id
+ * @property int $user_service_id
+ * @property string $image
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\UserService $service
+ * @method static \Illuminate\Database\Eloquent\Builder|UserServiceImage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserServiceImage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserServiceImage query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserServiceImage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserServiceImage whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserServiceImage whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserServiceImage whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserServiceImage whereUserServiceId($value)
+ */
+	class UserServiceImage extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -796,6 +1080,10 @@ namespace App\Models{
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Chat|null $chat
+ * @property-read \App\Models\Contract $contract
+ * @property-read \App\Models\User $owner
+ * @property-read \App\Models\User $provider
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace active()
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace newModelQuery()

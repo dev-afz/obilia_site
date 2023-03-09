@@ -64,6 +64,9 @@ Route::controller(DashboardController::class)
                 Route::get('project-info/{slug}', 'projectInfo')->name('project-info');
                 Route::get('payment-and-invoices/{slug}', 'paymentAndInvoices')->name('payment-and-invoices');
 
+                Route::get('get-works', 'getWorks')->name('get-works');
+                Route::post('add-work', 'addWork')->name('add-work');
+
                 Route::controller(WorkspaceChatController::class)
                     ->prefix('chat')
                     ->name('chat.')

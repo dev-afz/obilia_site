@@ -158,6 +158,12 @@ class User extends Authenticatable
     }
 
 
+    public function provider_milestones()
+    {
+        return $this->hasManyThrough(ContractMilestone::class, Contract::class, 'user_id', 'contract_id', 'id', 'id');
+    }
+
+
     public function razorpay_orders()
     {
         return $this->hasMany(RazorpayOrder::class, 'user_id');
