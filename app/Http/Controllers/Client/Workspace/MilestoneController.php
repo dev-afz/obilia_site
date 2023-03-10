@@ -47,6 +47,12 @@ class MilestoneController extends Controller
             })
             ->firstOrFail();
 
+        if ($request->action == 'approved') {
+            $work->milestone->update([
+                'escrow_fund_released_time' => now(),
+            ]);
+        }
+
         $work->status = $request->action;
         $work->save();
 

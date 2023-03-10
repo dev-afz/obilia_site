@@ -65,13 +65,15 @@
 
                 @php
                     $latestMilestone = '';
+                    $found = true;
                 @endphp
                 <ul class="timeline">
                     @forelse ($workspace->contract->milestones as $milestone)
                         @php
                             
-                            if ($latestMilestone == '' && $milestone->status != 'completed') {
+                            if ($latestMilestone !== $milestone->id && $milestone->escrow_fund_released_time === null && $found) {
                                 $latestMilestone = $milestone->id;
+                                $found = false;
                             }
                             
                         @endphp
@@ -102,13 +104,16 @@
                                         <small class="text-success me-1">Fund Added :
                                             {{ \Carbon\Carbon::parse($milestone->escrow_fund_added_time)->diffForHumans() }}
                                         </small>
-                                        <button data-add-work="{{ $milestone->id }}" class="btn btn-sm btn-primary">
-                                            @if ($milestone->works->count() > 0)
-                                                Update Work
-                                            @else
-                                                Add Work
-                                            @endif
-                                        </button>
+
+                                        @if (!$milestone->escrow_fund_released_time)
+                                            <button data-add-work="{{ $milestone->id }}" class="btn btn-sm btn-primary">
+                                                @if ($milestone->works->count() > 0)
+                                                    Update Work
+                                                @else
+                                                    Add Work
+                                                @endif
+                                            </button>
+                                        @endif
                                     @else
                                         <span class="badge bg-danger me-1">Fund Not Added</span>
                                     @endif

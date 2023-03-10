@@ -37,13 +37,15 @@
 
                 @php
                     $latestMilestone = '';
+                    $found = true;
                 @endphp
                 <ul class="timeline">
                     @forelse ($workspace->contract->milestones as $milestone)
                         @php
                             
-                            if ($latestMilestone == '' && $milestone->status != 'completed') {
+                            if ($latestMilestone !== $milestone->id && $milestone->escrow_fund_released_time === null && $found) {
                                 $latestMilestone = $milestone->id;
+                                $found = false;
                             }
                             
                         @endphp
@@ -75,8 +77,7 @@
                                             {{ \Carbon\Carbon::parse($milestone->escrow_fund_added_time)->diffForHumans() }}</small>
                                     @else
                                         <button
-                                            @if ($milestone->id !== $latestMilestone) disabled
-                                    @else
+                                            @if ($milestone->id !== $latestMilestone) disabled @else
                                     data-add-fund="{{ $milestone->id }}" @endif
                                             @class(['btn btn-sm btn-primary me-4'])>
                                             Add Fund
@@ -294,6 +295,7 @@
                     successCallback: function(response) {
                         $('#work-body').html('');
                         $('#work-modal').modal('hide');
+                        location.reload();
                     }
                 })
 
