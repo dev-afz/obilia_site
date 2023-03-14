@@ -85,7 +85,10 @@
             minLimit: {{ $minLimit }},
             defaultRender: 1,
             afterRender: function() {
-
+                // call $name."RendereCallback" if exits
+                if (typeof window["{{ $name }}RendereCallback"] === "function") {
+                    window["{{ $name }}RendereCallback"]();
+                }
             },
         });
 

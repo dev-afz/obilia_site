@@ -232,10 +232,10 @@
                         <x-utils.repeater :minLimit="1" name="milestones"
                             addButtonLabel="<i class='fa fa-plus'></i> Add Milestone"
                             :fields="[
-                                ['name' => 'title', 'col' => 6],
-                                ['name' => 'amount', 'type' => 'number', 'col' => 4],
-                                ['name' => 'due_date', 'type' => 'date', 'col' => 2],
-                                ['name' => 'description', 'type' => 'textarea', 'col' => 11],
+                                ['name' => 'title', 'col' => 12],
+                                ['name' => 'amount', 'type' => 'number', 'col' => 6],
+                                ['name' => 'due_date', 'type' => 'date', 'col' => 6],
+                                ['name' => 'description', 'type' => 'textarea', 'col' => 12],
                             ]" />
                     </div>
 
@@ -305,6 +305,10 @@
                         }
                     });
                 });
+
+                function milestonesRendereCallback() {
+                    $('[type="date"]').flatpickr();
+                }
             </script>
         </x-slot>
 
