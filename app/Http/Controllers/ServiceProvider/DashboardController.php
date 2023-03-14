@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ServiceProvider;
 
 use App\Models\Skill;
+use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Managers\FileManager;
@@ -344,5 +345,36 @@ class DashboardController extends Controller
             'message' => 'Bank updated successfully',
             'redirect' => route('service-provider.profile'),
         ], 200);
+    }
+
+
+    public function category(Request $request)
+    {
+        if (!$request->ajax()) {
+            abort(404);
+        }
+        $request->validate([
+            'industry_id' => 'required|exists:industries,id'
+        ]);
+
+        $categories = Category::where('industry_id', $request->industry_id)->get(['id', 'name']);
+
+        return response()->json($categories);
+    }
+
+
+    public function subcategories(Request $request)
+    {
+        if (!$request->ajax()) {
+            abort(404);
+        }
+
+        $request->validate([
+            'category' => 'required|exists:categories,id'
+        ]);
+
+        $subcategories = SubCategory::where('category_id', $request->category)->get(['id', 'name']);
+
+        return response()->json($subcategories);
     }
 }

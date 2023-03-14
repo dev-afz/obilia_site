@@ -13192,9 +13192,7 @@ Fixed header glass effect
     width: 150px !important;
 }
 
-.job__section {
-    margin-top: 100px !important;
-}
+
 
 .job-categories-block-2.no-data:hover h2 {
     color: #fff !important;
@@ -13844,6 +13842,7 @@ input[type=number] {
         height: 3rem;
         border-radius: 0;
         border: 2px solid $primary-500;
+        border-left: none;
 
         &:focus {
             border-color: $primary-700;
@@ -13853,6 +13852,16 @@ input[type=number] {
         &:focus+button {
             background-color: $primary-700;
         }
+    }
+
+    select {
+        outline: none !important;
+        border: 2px solid #09596f;
+        border-right: none;
+        height: 3rem;
+        border-radius: 0;
+        background-color: #f0f6fe;
+        padding: 0 0.5rem;
     }
 
     button {

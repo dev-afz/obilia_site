@@ -21,13 +21,17 @@
                         <div class="text-orange mb-2 fs-5">Join the most comprehensive
                             service marketplace.</div>
                         <div class="search-bar my-4">
-                            <form action="{{ route('search') }}">
+                            <form action="{{ route('search') }}" method="GET">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group mb-0 d-flex">
-                                            <input type="text" class="form-control"
+                                            <select class="" name="type">
+                                                <option value="work">Work</option>
+                                                <option value="talent">Talent</option>
+                                            </select>
+                                            <input type="text" class="form-control" name="q"
                                                 placeholder="Search for services">
-                                            <button type="button" class="btn btn-primary">Find Job</button>
+                                            <button type="submit" class="btn btn-primary">Search</button>
                                         </div>
                                         <div class="popular-searches">
                                             <span class="text-primary">

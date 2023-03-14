@@ -8,6 +8,7 @@ use App\Events\MessageEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\MessageContract;
 use Illuminate\Validation\ValidationException;
 use App\Services\ServiceProvider\ContractActionService;
 
@@ -112,14 +113,42 @@ class ContractController extends Controller
             'id' => 'required',
         ]);
         $provider = auth()->user();
-        $contract = $provider->sent_message_contract()
-            ->where('message_contracts.id', $request->id)
-            ->firstOrFail();
+        $contract = MessageContract::where('id', $request->id)
+            ->orWhere(function ($query) use ($request, $provider) {
+                $query->where('send_by', $provider->id)
+                    ->where('send_to', $request->id);
+            })->firstOrFail();
 
         $html  =  view('components.chat.contract', compact('contract'))->render();
 
         return response()->json([
             'html' => $html,
         ]);
+    }
+
+
+    public function action(Request $request, ContractActionService $service)
+    {
+        $request->validate([
+            'action' => 'required|string|in:accept,reject',
+            'id' => 'required|exists:message_contracts,id',
+        ]);
+        $user = auth()->user();
+
+        $contract = $user->received_message_contract()
+            ->where('message_contracts.id', $request->id)
+            ->firstOrFail();
+
+        if ($contract->status !== 'pending') {
+            throw ValidationException::withMessages([
+                'status' => 'Contract already ' . $contract->status,
+            ]);
+        }
+
+        if ($request->action === 'reject') {
+            return $service->rejectContract($contract, auth()->user());
+        }
+
+        return $service->acceptContract($contract, auth()->user());
     }
 }

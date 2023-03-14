@@ -199,7 +199,7 @@ class SearchService
         if ($services->count() <= 0) {
             return response()->json([
                 'status' => 'error',
-                'html' => '<div class="alert alert-danger">No Provider found</div>',
+                'html' => '<p class="text-center">No service found</p>',
                 'links' => ''
             ]);
         }

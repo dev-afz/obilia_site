@@ -125,7 +125,7 @@
                     window.rebound({
                         form: $(this),
                         reset: false,
-                        url: "{{ route('client.job.store') }}",
+                        url: "{{ route('service-provider.job.store') }}",
                         successCallback: function(response) {
                             console.log(response);
                         }
@@ -140,7 +140,7 @@
                         return;
                     }
                     $.ajax({
-                        url: '{{ route('client.category') }}',
+                        url: '{{ route('service-provider.category') }}',
                         data: {
                             industry_id: id
                         },
@@ -168,7 +168,7 @@
                         return;
                     }
                     $.ajax({
-                        url: '{{ route('client.subcategories') }}',
+                        url: '{{ route('service-provider.subcategories') }}',
                         data: {
                             category: id
                         },

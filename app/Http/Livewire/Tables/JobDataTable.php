@@ -23,7 +23,14 @@ class JobDataTable extends DataTableComponent
                 ->sortable(),
             Column::make("Title")
                 ->format(function ($job, $c) {
-                    return '<a target="_blank" href="' . route('client.job.show', $c->slug) . '">' . $c->title . '</a>';
+                    $link = '#';
+                    if (auth()->user()->isProvider()) {
+                        $link = '<a target="_blank" href="' . route('service-provider.job.show', $c->slug) . '">' . $c->title . '</a>';
+                    } elseif (auth()->user()->isClient()) {
+                        $link = '<a target="_blank" href="' . route('client.job.show', $c->slug) . '">' . $c->title . '</a>';
+                    }
+
+                    return $link;
                 })
                 ->searchable()
 
@@ -32,7 +39,7 @@ class JobDataTable extends DataTableComponent
                 ->html(),
             Column::make("Banner")
                 ->format(function ($v, $c, $r) {
-                    return '<div data-view-onclick class="dashboard-message-avtar"><img src="' . (($v) ? asset($v) : 'https://via.placeholder.com/200') . '" alt=""></div>';
+                    return '<div data-view-onclick class="dashboard-message-avatar"><img src="' . (($v) ? asset($v) : 'https://via.placeholder.com/200') . '" alt=""></div>';
                 })
                 ->html(),
             Column::make("Description")

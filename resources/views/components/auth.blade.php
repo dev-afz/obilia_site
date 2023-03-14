@@ -92,7 +92,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group mb-3">
                                             <input name="name" type="text" required="" class="form-control"
-                                                placeholder="Usearname*">
+                                                placeholder="Username*">
                                             <input type="hidden" name="role" value="client">
                                         </div>
                                     </div>
@@ -170,7 +170,7 @@
                         <div class="col-lg-12">
                             <div class="form-group mb-3">
                                 <input name="email" type="text" required="" class="form-control"
-                                    placeholder="Usearname*">
+                                    placeholder="Username*">
                             </div>
                         </div>
 

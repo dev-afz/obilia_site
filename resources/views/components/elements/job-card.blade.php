@@ -1,39 +1,25 @@
 <div class="{{ $class ?? 'col-lg-4 col-md-6' }}">
     <div class="twm-jobs-grid-style1 d-flex flex-column justify-content-between   m-b30">
-        {{-- @if ($showBtn)
-            <div class="multi-button">
+        <div @if (!$showBtn) style="right: 10px;" @endif class="twm-jobs-category green">
+            <span class="bg-primary small">{{ $job->sub_category->name }}</span>
+        </div>
+        @if ($showBtn)
+            <div class="like-btn-holder">
                 @auth()
-                    <button data-liked-job="{{ $job->slug }}"
-                        @if ($job->likes_count) data-liked="true" @else data-liked="false" @endif
-                        class="fas fa-heart"></button>
+                    <button class="like-btn" data-liked-job="{{ $job->slug }}"
+                        @if ($job->likes_count) data-liked="true" @else data-liked="false" @endif>
+                        <i class="fas fa-heart"></i>
+                    </button>
                 @endauth
 
                 @guest()
-                    <button href="#login_popup" data-bs-toggle="modal" class="fas fa-heart"></button>
+                    <button class="like-btn" href="#login_popup" data-bs-toggle="modal">
+                        <i class="fas fa-heart"></i>
+                    </button>
                 @endguest
+
             </div>
-        @endif --}}
-        {{-- <div class="twm-media">
-            <img height="90px" width="90px" src="{{ $job->banner }}" alt="#">
-        </div> --}}
-
-        <div class="twm-jobs-category green">
-            <span class="bg-primary small">{{ $job->sub_category->name }}</span>
-        </div>
-        <div class="like-btn-holder">
-            @auth()
-                <button class="like-btn" data-liked-job="{{ $job->slug }}"
-                    @if ($job->likes_count) data-liked="true" @else data-liked="false" @endif>
-                    <i class="fas fa-heart"></i>
-                </button>
-            @endauth
-
-            @guest()
-                <button class="like-btn" href="#login_popup" data-bs-toggle="modal">
-                    <i class="fas fa-heart"></i>
-                </button>
-            @endguest
-        </div>
+        @endif
 
         <div class="twm-mid-content pt-0">
             <span class="twm-job-post-duration  m-0">{{ $job->created_at->diffForHumans() }}</span>
@@ -54,6 +40,7 @@
             <a href="{{ route('jobs.show', $job->slug) }}" class="twm-jobs-browse  ">View
                 Details</a>
         </div>
+        {{ $slot ?? '' }}
     </div>
 </div>
 

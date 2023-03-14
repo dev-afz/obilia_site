@@ -18,6 +18,11 @@ class Contract extends Model
         return $this->hasMany(ContractMilestone::class);
     }
 
+    public function milestone_requests()
+    {
+        return $this->hasMany(NewMilestoneRequest::class);
+    }
+
 
     public function workspaces()
     {

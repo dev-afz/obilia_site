@@ -24,14 +24,13 @@ class ClientJobAction
             'title' => $request->title,
             'slug' => Str::slug($request->title),
             'description' => $request->description,
-            'payment_type' => $request->payment_type,
-            'work_hours' => $request->total_hours,
+            'payment_type' => 'fixed',
             'size' => $request->project_size,
             'country' => 'india',
             'rate_from' => $request->budget_from,
             'rate_to' => $request->budget_to,
             'experience_level_id' => $request->experience,
-            'sub_category_id' => $request->category,
+            'sub_category_id' => $request->tag,
             'work_length_id' => $request->project_length,
             'size' => $request->project_size,
             'user_id' => $user->id,
@@ -52,7 +51,13 @@ class ClientJobAction
                 'created_at' => now(),
             ];
         }
+
         foreach ($request->responsibilities as $key => $res) {
+            if (
+                is_null($res) || empty($res)
+            ) {
+                continue;
+            }
             $responsibilities[] = [
                 'job_id' => $job->id,
                 'responsibility' => $res,
@@ -60,7 +65,9 @@ class ClientJobAction
             ];
         }
         JobResponsibility::insert($responsibilities);
+
         JobSkill::insert($data);
+        $this->makeMetadata($job);
         DB::commit();
     }
 

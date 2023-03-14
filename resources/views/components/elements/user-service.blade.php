@@ -59,17 +59,24 @@
             $(document).on('click', '[data-start-chat]', function(e) {
                 e.preventDefault();
                 var service = $(this).data('start-chat');
+                $(this).attr('disabled', true);
+
 
                 window.rebound({
                     data: {
                         service: service
                     },
                     notification: false,
-                    block: '[data-start-chat]',
+                    block: false,
                     url: "{{ route('jobs.start-chat') }}",
                     processData: true,
-                    success: function(response) {
+                    successCallback: function(response) {
                         console.log(response);
+                        $(this).attr('disabled', false);
+                    },
+                    errorCallback: function(response) {
+                        console.log(response);
+                        $(this).attr('disabled', false);
                     }
                 });
 

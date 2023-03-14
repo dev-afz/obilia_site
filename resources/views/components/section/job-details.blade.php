@@ -57,9 +57,18 @@
                                 <ul class="twm-job-hilites2">
                                     <li>
                                         <div class="twm-s-info-inner">
+                                            <i class="fas fa-user"></i>
+                                            <span class="twm-title">Posted By</span>
+                                            <div class="twm-s-info-discription">
+                                                {{ $job->client->name }}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="twm-s-info-inner">
                                             <i class="fas fa-file-signature"></i>
-                                            <span class="twm-title">No of Bids</span>
-                                            <div class="twm-s-info-discription">{{ $job->applications_count }}
+                                            <span class="twm-title">Avrage Bid Value</span>
+                                            <div class="twm-s-info-discription">{{ $job->applications_avg_bid_price }}
                                             </div>
                                         </div>
                                     </li>
@@ -72,13 +81,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="twm-s-info-inner">
-                                            <i class="fas fa-eye"></i>
-                                            <span class="twm-title">Job Views</span>
-                                            <div class="twm-s-info-discription">8160 Views</div>
-                                        </div>
-                                    </li>
+
                                     <li>
                                         <div class="twm-s-info-inner">
                                             <i class="fas fa-map-marker-alt"></i>
@@ -170,7 +173,7 @@
                         </div>
                         <div class="twm-job-self-bottom text-center mt-5">
                             @auth()
-                                @if (auth()->user()->role !== 'client')
+                                @if (auth()->user()->role !== 'client' && $job->user_id !== auth()->user()->id)
                                     @if (empty($job->application))
                                         @if (auth()->user()->status === 'active')
                                             <a class="site-button" data-bs-toggle="modal" href="#apply_job_popup"

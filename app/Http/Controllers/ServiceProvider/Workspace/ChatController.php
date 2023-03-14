@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\Events\Workspace\MessageEvent;
 use App\Managers\FileManager;
+use App\Models\Workspace;
 
 class ChatController extends Controller
 {
@@ -22,7 +23,11 @@ class ChatController extends Controller
 
         $user  = $request->user();
 
-        $workspace = $user->provider_workspace()->where('id', $request->workspace)
+        $workspace = Workspace::where('id', $request->workspace)
+            ->where(function ($q) {
+                $q->where('user_id', auth()->user()->id)
+                    ->orWhere('client_id', auth()->user()->id);
+            })
             ->with(['chat'])
             ->firstOrFail();
 
@@ -59,7 +64,11 @@ class ChatController extends Controller
 
         $user  = $request->user();
 
-        $workspace = $user->provider_workspace()->where('id', $request->workspace)
+        $workspace = Workspace::where('id', $request->workspace)
+            ->where(function ($q) {
+                $q->where('user_id', auth()->user()->id)
+                    ->orWhere('client_id', auth()->user()->id);
+            })->where('id', $request->workspace)
             ->with(['chat'])
             ->firstOrFail();
 
@@ -102,7 +111,7 @@ class ChatController extends Controller
         broadcast(new MessageEvent(
             message: $message_html,
             chat: $workspace->chat->uuid,
-            to: $workspace->client_id,
+            to: ($user->id === $workspace->user_id) ? $workspace->client_id : $workspace->user_id,
             from: [
                 'id' => $user->id,
                 'name' => $user->name,
@@ -129,7 +138,11 @@ class ChatController extends Controller
 
         $user  = $request->user();
 
-        $workspace = $user->provider_workspace()->where('id', $request->workspace)
+        $workspace =  Workspace::where('id', $request->workspace)
+            ->where(function ($q) {
+                $q->where('user_id', auth()->user()->id)
+                    ->orWhere('client_id', auth()->user()->id);
+            })
             ->with(['chat'])
             ->firstOrFail();
 

@@ -107,6 +107,7 @@ class User extends Authenticatable
     }
 
 
+
     public function provider_contracts()
     {
         return $this->hasMany(Contract::class, 'user_id');

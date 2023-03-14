@@ -15,13 +15,21 @@ class JobController extends Controller
     public function show($slug)
     {
 
+
         $job = Job::where('slug', $slug)
             ->isPublic()
+            ->orWhereHas('invites', function ($q) {
+                $q->where('user_id', auth()->id());
+            })
             ->with([
-                'sub_category', 'experience', 'work_length', 'skills' => ['skill'], 'responsibilities',
-                'application' => fn ($q) => $q->where('user_id', auth()->id())
+                'sub_category',
+                'experience',
+                'work_length',
+                'skills' => ['skill'], 'responsibilities',
+                'application' => fn ($q) => $q->where('user_id', auth()->id()),
+                'client'
             ])
-            ->withCount(['applications'])
+            ->withAvg('applications', 'bid_price')
             ->firstOrFail();
 
         return view('job-details', compact('job'));

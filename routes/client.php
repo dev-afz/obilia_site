@@ -14,6 +14,7 @@ use App\Http\Controllers\Client\Workspace\WorkspacesController;
 
 Route::controller(DashboardController::class)->middleware(['auth', 'client'])->prefix('client')->name('client.')->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('category', 'category')->name('category');
     Route::get('subcategories', 'subcategories')->name('subcategories');
 
 
@@ -60,6 +61,8 @@ Route::controller(DashboardController::class)->middleware(['auth', 'client'])->p
         Route::controller(MilestoneController::class)->prefix('milestone')->name('milestone.')->group(function () {
             Route::post('work-action', 'workAction')->name('work-action');
             Route::post('view-work', 'viewWork')->name('view-work');
+            Route::post('request-milestone', 'requestMilestone')->name('request-milestone');
+            Route::post('action-request', 'actionRequest')->name('action-request');
         });
 
 

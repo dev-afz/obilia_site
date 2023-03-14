@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Client\Workspace;
 
 
-use App\Http\Controllers\Controller;
-use App\Models\MilestoneWork;
 use Illuminate\Http\Request;
+use App\Models\MilestoneWork;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class MilestoneController extends Controller
 {
@@ -59,6 +60,84 @@ class MilestoneController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Action performed successfully',
+        ]);
+    }
+
+
+    public function requestMilestone(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'amount' => 'required|numeric|min:1',
+            'due_date' => 'required|date|after:today',
+            'contract_id' => 'required|integer',
+        ]);
+
+        $client = auth()->user();
+
+        $contract = $client->client_contracts()->where('id', $request->contract_id)->firstOrFail();
+
+        $contract->milestone_requests()->create([
+            'contract_id' => $contract->id,
+            'milestone' => json_encode($request->only(['title', 'description', 'amount', 'due_date']), true),
+            'requested_by' => $client->id,
+            'status' => 'pending',
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Milestone request sent successfully',
+        ]);
+    }
+
+    public function actionRequest(Request $request)
+    {
+        $request->validate([
+            'request_id' => 'required|integer',
+            'action' => 'required|string|in:approved,rejected',
+        ]);
+
+        $client = auth()->user();
+
+        $contract = $client->client_contracts()->whereHas('milestone_requests', function ($query) use ($request, $client) {
+            $query->where('id', $request->request_id)
+                ->where('requested_by', '!=', $client->id);
+        })->firstOrFail();
+
+        $ml_request = $contract->milestone_requests()->where('id', $request->request_id)->firstOrFail();
+
+        if ($ml_request->status !== 'pending') {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Request already ' . $ml_request->status,
+            ]);
+        }
+        DB::beginTransaction();
+
+        if ($request->action === 'approved') {
+            $ml_request->update([
+                'status' => 'approved',
+            ]);
+
+            $contract->milestones()->create([
+                'title' => json_decode($ml_request->milestone, true)['title'],
+                'description' => json_decode($ml_request->milestone, true)['description'],
+                'cost' => json_decode($ml_request->milestone, true)['amount'],
+                'due_date' => json_decode($ml_request->milestone, true)['due_date'],
+                'status' => 'pending',
+            ]);
+        } else {
+            $ml_request->update([
+                'status' => 'rejected',
+            ]);
+        }
+
+        DB::commit();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Request ' . $request->action . 'ed successfully',
         ]);
     }
 }

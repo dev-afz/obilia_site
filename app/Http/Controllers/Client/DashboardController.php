@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,6 +24,25 @@ class DashboardController extends Controller
 
         return view('dashboard.client.index', compact('total_jobs', 'total_active_jobs', 'total_pending_jobs', 'total_completed_jobs', 'total_cancelled_jobs'));
     }
+
+
+
+
+
+    public function category(Request $request)
+    {
+        if (!$request->ajax()) {
+            abort(404);
+        }
+        $request->validate([
+            'industry_id' => 'required|exists:industries,id'
+        ]);
+
+        $categories = Category::where('industry_id', $request->industry_id)->get(['id', 'name']);
+
+        return response()->json($categories);
+    }
+
 
     public function subcategories(Request $request)
     {

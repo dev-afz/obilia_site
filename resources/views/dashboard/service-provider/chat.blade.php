@@ -3,6 +3,17 @@
         <x-slot name="styles">
             <link rel="stylesheet" href="{{ asset(mix('css/chats.css')) }}">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.9/simplebar.css">
+            <style>
+                .offcanvas-end {
+                    width: 50%;
+                }
+
+                @media (max-width: 768px) {
+                    .offcanvas-end {
+                        width: 100%;
+                    }
+                }
+            </style>
         </x-slot>
         <div id="content">
             <!-- char-area -->
@@ -195,7 +206,7 @@
         </x-elements.modal>
 
 
-        <x-utils.offcanvas id="create-contract" class="create-contract" position="bottom" title="Create Contract">
+        <x-utils.offcanvas id="create-contract" class="create-contract" position="end" title="Create Contract">
             <form id="create-contract-form">
                 <div class="row">
                     <div class="col-md-12">
@@ -271,6 +282,26 @@
                         successCallback: function(data) {
                             $('#contract-body').html(data.html);
                             $('#contract-details-modal').modal('show');
+                        }
+                    });
+                });
+                $(document).on('click', '[data-contract-action]', function(e) {
+                    e.preventDefault();
+                    const action = $(this).data('contract-action-type');
+                    const id = $(this).data('contract-action');
+                    window.rebound({
+                        data: {
+                            action: action,
+                            id: id
+                        },
+                        url: "{{ route('service-provider.contract.action') }}",
+                        notification: false,
+                        processData: true,
+                        successCallback: function(data) {
+                            $("[data-messages]").append(data.html);
+                            var objDiv = document.getElementById("chat-holder");
+                            objDiv.scrollTop = objDiv.scrollHeight;
+
                         }
                     });
                 });
