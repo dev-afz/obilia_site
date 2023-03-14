@@ -79,7 +79,19 @@
             </div>
         @endif
     @else
-        {{ $contract->status == 'accepted' ? '<span class="badge bg-success">Accepted</span>' : '<span class="badge bg-danger">Rejected</span>' }}
+        @if ($contract->status == 'accepted')
+            <div class="col-12 text-center mt-4">
+                <span class="text-success">
+                    Contract Accepted
+                </span>
+            </div>
+        @else
+            <div class="col-12 text-center mt-4">
+                <span class="text-danger">
+                    Contract Rejected
+                </span>
+            </div>
+        @endif
     @endif
 
 

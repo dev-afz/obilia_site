@@ -13719,12 +13719,11 @@ strong {
 
 .main-bar {
   width: 100%;
-  transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s;
+  position: fixed !important;
 }
 
 .color-fill .main-bar {
   position: fixed;
-  animation: 0.95s ease 0s normal forwards 1 running mainBar_on_scrollAnimatio;
 }
 
 @keyframes mainBar_on_scrollAnimatio {
