@@ -37,7 +37,7 @@
             <div class="twm-jobs-amount ">
                 ₹{{ $job->rate_from }} -₹{{ $job->rate_to }}
             </div>
-            <a href="{{ route('jobs.show', $job->slug) }}" class="twm-jobs-browse  ">View
+            <a {{-- href="{{ route('jobs.show', $job->slug) }}" --}} href="#" class="twm-jobs-browse  ">View
                 Details</a>
         </div>
         {{ $slot ?? '' }}

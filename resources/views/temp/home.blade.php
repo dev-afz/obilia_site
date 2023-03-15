@@ -302,7 +302,7 @@
         <div class="row">
             <div class="col-md-12 position-relative mb-5 pe-5">
                 <h1 class="text-primary">
-                    Discover catogeries
+                    Discover work
                 </h1>
                 <a href="#" class="btn btn-primary position-absolute end-0 bottom-0">View all</a>
             </div>
