@@ -36,7 +36,7 @@ class BasicController extends Controller
 
         $packages = Package::active()->with(['perks'])->get();
 
-        return view('index', compact('industries', 'jobs', 'packages', 'categories'));
+        return view('temp.home', compact('industries', 'jobs', 'packages', 'categories'));
     }
 
 
@@ -119,29 +119,21 @@ class BasicController extends Controller
     public function test()
     {
 
+        $industries = Industry::active()->take(6)->get();
 
-        $users = User::all();
+        $categories = Category::active()->take(6)->get();
 
-        $cc = new  CreateContactService();
+        $jobs = Job::active()
+            ->when(auth()->check(), function ($query) {
+                $query->withCount(['likes' => function ($query) {
+                    $query->where('user_id', auth()->id());
+                }]);
+            })
+            ->with(['sub_category'])
+            ->take(6)->get();
 
-        foreach ($users as $user) {
-            $res[] =  $cc->createRazorpayContact($user);
-        }
+        $packages = Package::active()->with(['perks'])->get();
 
-        dd($res);
-
-
-
-
-        return view('temp.home');
-        //php info
-        phpinfo();
-        die();
-        return $services = UserService::all();
-
-        // foreach ($services as $item) {
-        //     $item->description = Str::markdown($item->description);
-        //     $item->save();
-        // }
+        return view('temp.home', compact('industries', 'jobs', 'packages', 'categories'));
     }
 }

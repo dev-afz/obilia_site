@@ -43,7 +43,7 @@
                     e.preventDefault();
                     window.rebound({
                         form: $(this),
-                        url: "{{ route('service-provider.update-business') }}",
+                        url: "{{ route('client.update-business') }}",
                         reset: false,
                         success: function(response) {
                             console.log(response);

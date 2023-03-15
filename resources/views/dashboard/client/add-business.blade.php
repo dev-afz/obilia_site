@@ -1,5 +1,5 @@
 <x-dashboard.layout>
-    <x-slot:title> Update Business - {{ $business->name }} </x-slot>
+    <x-slot:title> Add Business </x-slot>
         <x-slot name="styles">
 
         </x-slot>
@@ -7,28 +7,31 @@
         <div id="content">
 
             <div class="content-admin-main">
-                <form id="update-user-business">
+                <form id="add-user-business">
                     <div class="row">
                         <div class="col-12">
                             <h4>
-                                Update Business
+                                Add Business
                             </h4>
                             <hr>
                         </div>
                         <div class="col-md-6">
-                            <x-utils.input name="name" label="Company Name" :value="$business->name" />
+                            <x-utils.input name="name" label="Company Name" />
                         </div>
                         <div class="col-md-6">
-                            <x-utils.input name="cin" label="Company CIN No." :value="$business->cin" />
+                            <x-utils.input name="cin" label="Company CIN No." />
                         </div>
                         <div class="col-md-12">
-                            <x-utils.input name="address" label="Company Address" type="textarea" :value="$business->address" />
+                            <x-utils.input name="address" label="Company Address" type="textarea" />
                         </div>
                         <div class="col-md-6">
-                            <x-utils.input name="gst_no" label="GST No" :required="false" :value="$business->gstin" />
+                            <x-utils.input-file name="incorporation_certificate" />
+                        </div>
+                        <div class="col-md-6">
+                            <x-utils.input name="gst_no" label="GST No" :required="false" />
                         </div>
                         <div class="col-12 text-center mt-2">
-                            <button class="btn btn-primary w-100 btn-lg">Update Business</button>
+                            <button class="btn btn-primary w-100 btn-lg">Add Business</button>
                         </div>
 
                     </div>
@@ -39,11 +42,11 @@
 
         <x-slot name="scripts">
             <script>
-                $('#update-user-business').submit(function(e) {
+                $('#add-user-business').submit(function(e) {
                     e.preventDefault();
                     window.rebound({
                         form: $(this),
-                        url: "{{ route('service-provider.update-business') }}",
+                        url: "{{ route('client.store-business') }}",
                         reset: false,
                         success: function(response) {
                             console.log(response);

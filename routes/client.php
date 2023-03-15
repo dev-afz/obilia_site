@@ -16,6 +16,17 @@ Route::controller(DashboardController::class)->middleware(['auth', 'client'])->p
     Route::get('/', 'index')->name('index');
     Route::get('category', 'category')->name('category');
     Route::get('subcategories', 'subcategories')->name('subcategories');
+    Route::get('profile', 'profile')->name('profile');
+    Route::get('edit-profile', 'editProfile')->name('edit-profile');
+    Route::post('update-profile', 'updateProfile')->name('update-profile');
+    Route::get('add-business', 'addBusiness')->name('add-business');
+    Route::post('store-business', 'storeBusiness')->name('store-business');
+    Route::get('edit-business', 'editBusiness')->name('edit-business');
+    Route::post('update-business', 'updateBusiness')->name('update-business');
+    Route::get('add-bank', 'addBank')->name('add-bank');
+    Route::post('store-bank', 'storeBank')->name('store-bank');
+    Route::get('edit-bank', 'editBank')->name('edit-bank');
+    Route::post('update-bank', 'updateBank')->name('update-bank');
 
 
     Route::controller(JobController::class)->prefix('job')->name('job.')->group(function () {
