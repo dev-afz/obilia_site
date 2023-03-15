@@ -312,7 +312,7 @@
                     <div class="owl-carousel job-corousel owl-btn-bottom-center ">
                         @forelse ($jobs as $job)
                             <div class="item row match-height">
-                                <x-elements.job-card class="col-12" :job="$job" />
+                                <x-elements.job-card class="col-12" :job="$job" :showBtn="false" />
                             </div>
                         @empty
                         @endforelse
