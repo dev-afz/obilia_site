@@ -36,6 +36,8 @@
                 display: flex;
                 align-items: center;
                 gap: 1rem;
+                border: 2px solid #e2e8f02e;
+                border-radius: 28px;
 
             }
 
