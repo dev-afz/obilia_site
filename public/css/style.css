@@ -5928,12 +5928,13 @@ button.scroltop span {
 
 /*Pricing Table*/
 .pricing-table-1 {
-  background-color: #e0eeff;
+  background-color: #fff;
   border-radius: 10px;
-  padding: 50px;
+  padding: 2rem;
   position: relative;
   overflow: hidden;
   z-index: 1;
+  border: 2px solid #09596f;
 }
 @media (max-width: 575px) {
   .pricing-table-1 {
@@ -8450,7 +8451,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
   width: 100%;
   margin-top: 30px;
   transition: all 0.3s ease-in-out;
-  border: 1px solid #4d9fa9;
+  border: 2px solid #09596f;
 }
 .twm-jobs-grid-style1:hover {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -17311,10 +17312,28 @@ input[type=number] {
   transition: all 0.3s ease-in-out;
   color: var(--features-color, #FFF);
 }
+.features-section .switch-container .h1,
+.features-section .switch-container h2,
+.features-section .switch-container h3,
+.features-section .switch-container h4,
+.features-section .switch-container h5,
+.features-section .switch-container h6,
+.features-section .switch-container p {
+  color: var(--features-color, #FFF) !important;
+}
 .features-section > .row {
   box-shadow: 0 0 0 100vmax var(--features-bg, #000);
   -webkit-clip-path: inset(0 -100vmax);
           clip-path: inset(0 -100vmax);
+}
+.features-section #for-sellers .h1,
+.features-section #for-sellers h2,
+.features-section #for-sellers h3,
+.features-section #for-sellers h4,
+.features-section #for-sellers h5,
+.features-section #for-sellers h6,
+.features-section #for-sellers p {
+  color: #FFF !important;
 }
 .features-section .h1,
 .features-section h2,
@@ -17323,7 +17342,7 @@ input[type=number] {
 .features-section h5,
 .features-section h6,
 .features-section p {
-  color: var(--features-color, #FFF) !important;
+  color: var(--bs-gray-900, #FFF);
 }
 
 .feature-switch input[type=checkbox] {

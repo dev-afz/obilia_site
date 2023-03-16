@@ -15,12 +15,15 @@ class JobDetails extends Component
 
     public $job;
     public $showAd;
+    public $applyBtn;
     public function __construct(
         array|Job  $job,
-        bool $showAd = true
+        bool $showAd = true,
+        bool $applyBtn = true
     ) {
         $this->job = $job;
         $this->showAd = $showAd;
+        $this->applyBtn = $applyBtn;
     }
 
     /**

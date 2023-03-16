@@ -172,30 +172,33 @@
 
                         </div>
                         <div class="twm-job-self-bottom text-center mt-5">
-                            @auth()
-                                @if (auth()->user()->role !== 'client' && $job->user_id !== auth()->user()->id)
-                                    @if (empty($job->application))
-                                        @if (auth()->user()->status === 'active')
-                                            <a class="site-button" data-bs-toggle="modal" href="#apply_job_popup"
-                                                role="button">
-                                                Apply Now
-                                            </a>
+                            @if ($applyBtn)
+                                @auth()
+                                    @if (auth()->user()->role !== 'client' && $job->user_id !== auth()->user()->id)
+                                        @if (empty($job->application))
+                                            @if (auth()->user()->status === 'active')
+                                                <a class="site-button" data-bs-toggle="modal" href="#apply_job_popup"
+                                                    role="button">
+                                                    Apply Now
+                                                </a>
+                                            @else
+                                                <span class="btn btn-danger">
+                                                    Your account is not active yet.
+                                                </span>
+                                            @endif
                                         @else
-                                            <span class="btn btn-danger">
-                                                Your account is not active yet.
-                                            </span>
+                                            <span class="site-button">Already Applied</span>
                                         @endif
-                                    @else
-                                        <span class="site-button">Already Applied</span>
                                     @endif
-                                @endif
-                            @endauth
+                                @endauth
 
-                            @guest()
-                                <a href="#login_popup" data-bs-toggle="modal" class="twm-nav-post-a-job site-button"> Login
-                                    To apply
-                                </a>
-                            @endguest
+                                @guest()
+                                    <a href="#login_popup" data-bs-toggle="modal" class="twm-nav-post-a-job site-button">
+                                        Login
+                                        To apply
+                                    </a>
+                                @endguest
+                            @endif
                         </div>
                         <div>
                             <h4 class="twm-s-title">Share Profile</h4>
