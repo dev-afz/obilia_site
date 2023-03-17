@@ -6,6 +6,7 @@ use Razorpay\Api\Api;
 use App\Models\RazorpayOrder;
 use App\Models\ContractMilestone;
 use Illuminate\Support\Facades\DB;
+use App\Jobs\Inspector\PaymentInspector;
 
 
 class FetchOrderService
@@ -36,6 +37,9 @@ class FetchOrderService
         $this->user = $order->user;
         $this->mode = strtoupper($order->payment_mode);
 
+
+
+
         $key = env('RAZORPAY_' . $this->mode . '_KEY');
         $secret = env('RAZORPAY_' . $this->mode . '_SECRET');
         $this->rzPay = new Api($key, $secret);
@@ -43,25 +47,44 @@ class FetchOrderService
 
     public function fetch()
     {
-        $rzOrder = $this->rzPay->order->fetch($this->order->order_id)->toArray();
+        $rzOrder = $this->rzPay->order->fetch($this->order->order_id)->payments()->toArray();
+        \Log::info($rzOrder);
+        if ($this->order->status !== 'pending') {
+            \Log::info('Order already processed');
+            return 'already processed';
+        }
 
 
         DB::beginTransaction();
 
-
-        if ($rzOrder['status'] == 'paid') {
-            $this->order->status = 'paid';
-            $this->order->save();
-            $this->processOrder($this->order);
-        } else if ($rzOrder['status'] == 'failed') {
-            $this->order->status = 'failed';
-            $this->order->save();
+        $all_status = [];
+        $is_failed = true;
+        foreach ($rzOrder['items'] as $item) {
+            $all_status[] = $item['status'];
+            if ($item['status'] == 'captured') {
+                $this->order->status = 'paid';
+                $this->order->transaction_id = $item['id'];
+                $this->order->save();
+                $this->processOrder($this->order);
+                $is_failed = false;
+            }
         }
 
 
+        if (empty($rzOrder['items'])) {
+            if ($this->order->created_at->diffInMinutes(now()) < 60) {
+                dispatch(new PaymentInspector($this->order))->delay(now()->addMinutes(60));
+                $is_failed = false;
+            }
+        }
 
+
+        if ($is_failed) {
+            $this->order->status = 'failed';
+            $this->order->save();
+        }
         DB::commit();
-        return $rzOrder;
+        return $this->order->status;
     }
 
 
@@ -73,6 +96,10 @@ class FetchOrderService
             case 'milestone':
                 $milestone = ContractMilestone::find(json_decode($order->for_data, true)['id']);
                 $this->addFund($milestone, $order);
+                break;
+
+            case 'subscription':
+                $this->addSubscription($order);
                 break;
 
             default:
@@ -112,5 +139,22 @@ class FetchOrderService
         $milestone->save();
 
         return $milestone;
+    }
+
+    private function addSubscription(RazorpayOrder $order)
+    {
+        $package = json_decode($order->for_data, true);
+        $subscription =  $this->user->subscriptions()->create([
+            'razorpay_order_id' => $order->id,
+            'package_id' => $package['id'],
+            'package_details' => $order->for_data,
+            'start_date' => now(),
+            'end_date' => now()->addDays($package['duration']),
+            'status' => 'running',
+        ]);
+        $this->user->subscription_status = 'subscribed';
+        $this->user->save();
+
+        return $subscription;
     }
 }

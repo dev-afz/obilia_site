@@ -23,6 +23,7 @@
         "pusher/pusher-php-server": "7.0.2",
         "rappasoft/laravel-livewire-tables": "^2.8",
         "razorpay/razorpay": "^2.8",
+        "spatie/laravel-activitylog": "^4.7",
         "staudenmeir/belongs-to-through": "^2.5"
     },
     "require-dev": {

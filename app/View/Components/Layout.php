@@ -13,7 +13,7 @@ class Layout extends Component
      */
     public $newHeader;
     public function __construct(
-        $newHeader = true
+        $newHeader = false
     ) {
         $this->newHeader = $newHeader;
     }

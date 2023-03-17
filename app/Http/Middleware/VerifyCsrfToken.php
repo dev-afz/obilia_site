@@ -13,5 +13,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'client/workspace/payment/fetch',
+        'payment/fetch-order'
     ];
 }

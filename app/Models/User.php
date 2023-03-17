@@ -170,6 +170,15 @@ class User extends Authenticatable
         return $this->hasMany(RazorpayOrder::class, 'user_id');
     }
 
+
+
+
+    public function subscriptions()
+    {
+        return $this->hasMany(UserSubscription::class, 'user_id');
+    }
+
+
     /*
     |--------------------------------------------------------------------------
     |scopes
@@ -203,6 +212,12 @@ class User extends Authenticatable
     }
 
 
+    public function scopeIsSubscribed($q)
+    {
+        return $q->whereHas('subscriptions', function ($q) {
+            $q->whereDate('end_date', '>=', now());
+        });
+    }
 
 
 

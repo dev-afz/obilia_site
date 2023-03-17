@@ -1,42 +1,41 @@
 <?php
 
-namespace App\Http\Controllers\Client\Workspace;
+namespace App\Http\Controllers\Site;
 
-use App\Http\Controllers\Controller;
-use App\Services\Razorpay\CreateOrderService;
-use App\Services\Razorpay\FetchOrderService;
+use App\Models\Package;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\Razorpay\FetchOrderService;
+use App\Services\Razorpay\CreateOrderService;
 
 class PaymentController extends Controller
 {
-
-
     public function createOrder(Request $request, CreateOrderService $service)
     {
         $request->validate([
-            'milestone_id' => 'required|integer',
+            'plan' => 'required|integer',
         ]);
 
         $user = auth()->user();
 
-        $milestone = $user->client_milestones()->findOrFail($request->milestone_id);
+        $package = Package::active()->findOrFail($request->plan);
+
 
         $order = $service->createOrder(
-            for: 'milestone',
-            data: $milestone->toArray(),
-            amount: $milestone->cost,
+            for: 'subscription',
+            data: $package->toArray(),
+            amount: $package->price,
             user: $user,
         );
 
         return response()->json([
             'order' => $order,
+            'user' => $user->only(['id', 'name', 'email']),
         ]);
     }
 
-
-    public function fetch(Request $request)
+    public function fetchOrder(Request $request)
     {
-
 
         $user = auth()->user();
 
@@ -47,8 +46,8 @@ class PaymentController extends Controller
 
         $service = new FetchOrderService($order);
 
-        $rzOrder = $service->fetch($order);
+        $rzOrder = $service->fetch();
 
-        return redirect()->back()->with('success', 'Subscription payment has been successfully completed.');
+        return redirect()->back()->with('success', 'Milestone payment has been successfully completed.');
     }
 }

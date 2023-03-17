@@ -741,7 +741,11 @@
         </div>
     </div>
 
-    <x-section.plan :packages="$packages" />
+
+    @if (auth()->user()->subscription_status === 'free')
+        <x-section.plan :packages="$packages" />
+    @endif
+
 
     <x-slot name="scripts">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
@@ -824,6 +828,10 @@
                 });
             }
         </script>
-
+        @if (session()->has('success'))
+            <script>
+                Notiflix.Report.success('Success', "{{ session('success') }}", 'Ok');
+            </script>
+        @endif
     </x-slot>
 </x-layout>

@@ -29,3 +29,9 @@
     background: var(--features-bg, #000);
 
 }
+
+:root {
+    --bs-primary-rgb :#{$primary-500} !important;
+    --bs-blue :#{$primary-500} !important;
+    --bs-primary :#{$primary-500} !important;
+}

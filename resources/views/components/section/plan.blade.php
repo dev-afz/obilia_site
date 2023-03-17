@@ -48,7 +48,8 @@
                                                 </div>
                                                 @auth
                                                     <div class="p-table-btn mb-3">
-                                                        <a href="#" class="site-button">Purchase Now</a>
+                                                        <button data-buy-plan="{{ $p->id }}" type="button"
+                                                            class="site-button">Purchase Now</button>
                                                     </div>
                                                 @endauth
 
@@ -81,3 +82,54 @@
 
     </div>
 </div>
+
+
+@pushonce('component-scripts')
+    @auth
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+        <script>
+            $('[data-buy-plan]').click(function(e) {
+                e.preventDefault();
+                const plan = $(this).data('buy-plan');
+
+                window.rebound({
+                    url: "{{ route('payment.create-order') }}",
+                    data: {
+                        plan: plan
+                    },
+                    processData: true,
+                    notification: false,
+                    successCallback: function(response) {
+                        payOrder(response.user, response.order);
+                    }
+                })
+
+            });
+
+            function payOrder(user, order) {
+                const options = {
+                    "key": "{{ env('RAZORPAY_KEY') }}",
+                    "name": "Obillia",
+                    "description": "Test Transaction",
+                    "image": "https://obilia.fra1.digitaloceanspaces.com/public/images/user/kyc/img-319ab28e832a5e19c3d14a606d90b95820c032a67cc.550460.png",
+                    "order_id": order.order_id,
+                    "callback_url": "{{ route('payment.fetch-order') }}",
+                    "prefill": {
+                        "name": user.name,
+                        "email": user.email,
+                        "contact": user.phone ?? '9137231270'
+                    },
+                    "notes": {
+                        "test": "test"
+                    },
+                    "theme": {
+                        "color": "#3399cc"
+                    }
+                };
+                const rzp = new Razorpay(options);
+                rzp.open();
+            }
+        </script>
+    @endauth
+@endpushonce

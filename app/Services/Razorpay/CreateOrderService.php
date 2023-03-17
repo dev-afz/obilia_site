@@ -2,6 +2,7 @@
 
 namespace App\Services\Razorpay;
 
+use App\Jobs\Inspector\PaymentInspector;
 use App\Models\RazorpayOrder;
 use App\Models\User;
 use Razorpay\Api\Api;
@@ -44,7 +45,7 @@ class CreateOrderService
 
         $order = RazorpayOrder::create([
             'order_id' => $rzOrder['id'],
-            'amount' => $rzOrder['amount'],
+            'amount' => $rzOrder['amount'] / 100,
             'currency' => $rzOrder['currency'],
             'for' => $for,
             'for_data' => json_encode($data),
@@ -52,6 +53,7 @@ class CreateOrderService
             'user_id' => $user->id,
         ]);
 
+        dispatch(new PaymentInspector($order))->delay(now()->addMinutes(1));
 
         return $order;
     }

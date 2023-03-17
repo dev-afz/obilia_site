@@ -134,6 +134,6 @@ class BasicController extends Controller
 
         $packages = Package::active()->with(['perks'])->get();
 
-        return view('temp.home', compact('industries', 'jobs', 'packages', 'categories'));
+        return view('index', compact('industries', 'jobs', 'packages', 'categories'));
     }
 }
