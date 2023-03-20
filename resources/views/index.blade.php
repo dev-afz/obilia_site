@@ -742,7 +742,7 @@
     </div>
 
 
-    @if (auth()->user()->subscription_status === 'free')
+    @if (auth()->user()?->subscription_status === 'free')
         <x-section.plan :packages="$packages" />
     @endif
 

@@ -8,6 +8,8 @@ use App\Http\Controllers\ServiceProvider\ServiceController;
 use App\Http\Controllers\ServiceProvider\ContractController;
 use App\Http\Controllers\ServiceProvider\DashboardController;
 use App\Http\Controllers\ServiceProvider\JobApplicationController;
+use App\Http\Controllers\ServiceProvider\Workspace\PaymentController;
+use App\Http\Controllers\ServiceProvider\Workspace\MilestoneController;
 use App\Http\Controllers\ServiceProvider\Workspace\WorkspacesController;
 use App\Http\Controllers\ServiceProvider\Workspace\ChatController as WorkspaceChatController;
 
@@ -86,16 +88,26 @@ Route::controller(DashboardController::class)
             Route::get('get-works', 'getWorks')->name('get-works');
             Route::post('add-work', 'addWork')->name('add-work');
 
-            Route::post('request-milestone', 'requestMilestone')->name('request-milestone');
             Route::post('action-request', 'actionRequest')->name('action-request');
-
-
 
             Route::controller(WorkspaceChatController::class)->prefix('chat')->name('chat.')->group(function () {
                 Route::get('messages', 'messages')->name('messages');
                 Route::get('load-message', 'loadMessages')->name('load-messages');
                 Route::post('send-message', 'sendMessages')->name('send-messages')
                     ->middleware(SanitizeInputMiddleware::class);
+            });
+
+
+            Route::controller(MilestoneController::class)->prefix('milestone')->name('milestone.')->group(function () {
+                Route::post('work-action', 'workAction')->name('work-action');
+                Route::post('view-work', 'viewWork')->name('view-work');
+                Route::post('request-milestone', 'requestMilestone')->name('request-milestone');
+                Route::post('action-request', 'actionRequest')->name('action-request');
+            });
+
+            Route::controller(PaymentController::class)->prefix('payment')->name('payment.')->group(function () {
+                Route::post('create-order', 'createOrder')->name('create-order');
+                Route::post('fetch', 'fetch')->name('fetch');
             });
         });
 

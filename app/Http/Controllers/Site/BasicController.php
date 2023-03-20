@@ -14,7 +14,9 @@ use Illuminate\Http\Request;
 use App\Services\SearchService;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\Wishlist;
 use App\Services\RazorpayX\CreateContactService;
+use Illuminate\Validation\ValidationException;
 
 class BasicController extends Controller
 {
@@ -39,6 +41,36 @@ class BasicController extends Controller
         return view('temp.home', compact('industries', 'jobs', 'packages', 'categories'));
     }
 
+
+    public function wishlist(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:1000',
+            'phone' => 'nullable|numeric|digits:10',
+        ]);
+
+
+        $alreadyExists = Wishlist::where('email', $request->email)->first();
+
+        if ($alreadyExists) {
+            throw ValidationException::withMessages([
+                'email' => 'You have already added your email to our wishlist.',
+            ]);
+        }
+
+
+        Wishlist::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+        ]);
+
+        return response()->json([
+            'message' => 'Thank you for your interest. We will get back to you soon.',
+            'status' => 'success'
+        ], 200);
+    }
 
     public function categories($slug)
     {

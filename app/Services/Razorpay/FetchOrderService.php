@@ -48,9 +48,7 @@ class FetchOrderService
     public function fetch()
     {
         $rzOrder = $this->rzPay->order->fetch($this->order->order_id)->payments()->toArray();
-        \Log::info($rzOrder);
         if ($this->order->status !== 'pending') {
-            \Log::info('Order already processed');
             return 'already processed';
         }
 

@@ -210,8 +210,10 @@
 
                             </p>
                             <div class="btn-container mt-4">
-                                <a href="#01" class="call-to-action-btn ">Wishlist for sellers</a>
-                                <a href="#02" class="call-to-action-btn outline">Wishlist for clients</a>
+                                <button data-bs-toggle="modal" data-bs-target="#wishlist"
+                                    class="call-to-action-btn ">Wishlist for sellers</button>
+                                <button data-bs-toggle="modal" data-bs-target="#wishlist"
+                                    class="call-to-action-btn outline">Wishlist for clients</button>
                             </div>
                         </div>
                     </div>
@@ -238,8 +240,10 @@
 
                             </p>
                             <div class="btn-container mt-4">
-                                <a href="#01" class="call-to-action-btn outline">Wishlist for sellers</a>
-                                <a href="#02" class="call-to-action-btn ">Wishlist for clients</a>
+                                <button data-bs-toggle="modal" data-bs-target="#wishlist"
+                                    class="call-to-action-btn outline">Wishlist for sellers</button>
+                                <button data-bs-toggle="modal" data-bs-target="#wishlist"
+                                    class="call-to-action-btn ">Wishlist for clients</button>
                             </div>
                         </div>
                     </div>
@@ -827,6 +831,36 @@
         </div>
     </div>
 
+
+    <x-elements.modal id="wishlist" class="twm-sign-up" :footer="false" title="Wishlist Form">
+
+        <form id="add-wishlist">
+            <div class="row">
+                <div class="col-md-12">
+                    <x-utils.input name="name" />
+                </div>
+                <div class="col-md-12">
+                    <x-utils.input name="email" type="email" />
+                </div>
+                <div class="col-md-12">
+                    <x-utils.input name="phone" :required="false" :attrs="[
+                        //10 digit pattern
+                        'pattern' => '^\d{10}$',
+                    ]" />
+                </div>
+
+                <div class="col-12 mt-4">
+                    <button type="submit" class="btn btn-primary btn-block w-100 btn-lg">Submit</button>
+                </div>
+
+            </div>
+        </form>
+
+
+    </x-elements.modal>
+
+
+
     <x-slot name="scripts">
         <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
@@ -901,6 +935,16 @@
                 }
             });
 
+            $('#add-wishlist').submit(function(e) {
+                e.preventDefault();
+                window.rebound({
+                    form: $(this),
+                    url: "{{ route('wishlist') }}",
+                    successCallback: function(data) {
+                        $('#wishlist').modal('hide');
+                    }
+                })
+            });
 
 
             if ($(window).width() > 768) {

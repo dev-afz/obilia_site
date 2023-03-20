@@ -40,8 +40,10 @@ class WorkspacesController extends Controller
         //set session for workspace
         session(['active_workspace' => $slug]);
         $workspace = Workspace::where('slug', $slug)
-            ->where('user_id', auth()->id())
-            ->orWhere('client_id', auth()->id())
+            ->where(function ($query) {
+                return  $query->where('user_id', auth()->id())
+                    ->orWhere('client_id', auth()->id());
+            })
             ->with([
                 'contract' => ['milestones.works', 'milestone_requests' => function ($query) {
                     $query->where('status', '!=', 'approved');
@@ -57,7 +59,10 @@ class WorkspacesController extends Controller
     public function paymentAndInvoices($slug)
     {
         $workspace = Workspace::where('slug', $slug)
-            ->where('user_id', auth()->id())
+            ->where(function ($query) {
+                return  $query->where('user_id', auth()->id())
+                    ->orWhere('client_id', auth()->id());
+            })
             ->active()
             ->firstOrFail();
         return view('dashboard.service-provider.workspace.payment-and-invoices', compact('workspace'));
@@ -67,7 +72,10 @@ class WorkspacesController extends Controller
     public function projectInfo($slug)
     {
         $workspace = Workspace::where('slug', $slug)
-            ->where('user_id', auth()->id())
+            ->where(function ($query) {
+                return  $query->where('user_id', auth()->id())
+                    ->orWhere('client_id', auth()->id());
+            })
             ->with([
                 'contract.milestones',
             ])

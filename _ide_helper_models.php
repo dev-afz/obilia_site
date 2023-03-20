@@ -22,9 +22,9 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
  * @method static \Illuminate\Database\Eloquent\Builder|Admin newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Admin newQuery()
@@ -54,7 +54,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $industry_id
  * @property-read \App\Models\Industry $industry
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\SubCategory[] $sub_categories
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\SubCategory> $sub_categories
  * @property-read int|null $sub_categories_count
  * @method static \Illuminate\Database\Eloquent\Builder|Category active()
  * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
@@ -86,10 +86,10 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int|null $workspace_id
  * @property-read \App\Models\Job|null $job
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Message[] $messages
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Message> $messages
  * @property-read int|null $messages_count
  * @property-read \App\Models\ChatParticipant|null $participant
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ChatParticipant[] $participants
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ChatParticipant> $participants
  * @property-read int|null $participants_count
  * @property-read \App\Models\User|null $user
  * @property-read \App\Models\Workspace|null $workspace
@@ -153,9 +153,11 @@ namespace App\Models{
  * @property int|null $job_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ContractMilestone[] $milestones
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\NewMilestoneRequest> $milestone_requests
+ * @property-read int|null $milestone_requests_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ContractMilestone> $milestones
  * @property-read int|null $milestones_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Workspace[] $workspaces
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Workspace> $workspaces
  * @property-read int|null $workspaces_count
  * @method static \Illuminate\Database\Eloquent\Builder|Contract newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Contract newQuery()
@@ -214,7 +216,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Contract $contract
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MilestoneWork[] $works
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\MilestoneWork> $works
  * @property-read int|null $works_count
  * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ContractMilestone newQuery()
@@ -271,7 +273,7 @@ namespace App\Models{
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $categories
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
  * @property-read int|null $categories_count
  * @method static \Illuminate\Database\Eloquent\Builder|Industry active()
  * @method static \Illuminate\Database\Eloquent\Builder|Industry newModelQuery()
@@ -313,22 +315,22 @@ namespace App\Models{
  * @property int $user_id
  * @property string $status
  * @property-read \App\Models\JobApplication|null $application
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\JobApplication[] $applications
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\JobApplication> $applications
  * @property-read int|null $applications_count
  * @property-read \App\Models\User $client
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Skill[] $direct_skill
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Skill> $direct_skill
  * @property-read int|null $direct_skill_count
  * @property-read \App\Models\ExperienceLevel|null $experience
  * @property-read mixed $short_desc
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\JobApplication[] $hired_candidates
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\JobApplication> $hired_candidates
  * @property-read int|null $hired_candidates_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\JobInvitation[] $invites
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\JobInvitation> $invites
  * @property-read int|null $invites_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Like[] $likes
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Like> $likes
  * @property-read int|null $likes_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\JobResponsibility[] $responsibilities
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\JobResponsibility> $responsibilities
  * @property-read int|null $responsibilities_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\JobSkill[] $skills
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\JobSkill> $skills
  * @property-read int|null $skills_count
  * @property-read \App\Models\SubCategory|null $sub_category
  * @property-read \App\Models\WorkLength $work_length
@@ -502,7 +504,7 @@ namespace App\Models{
  * @property int|null $replied_to
  * @property-read \App\Models\Chat $chat
  * @property-read \App\Models\MessageContract|null $contract
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MessageMedia[] $media
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\MessageMedia> $media
  * @property-read int|null $media_count
  * @property-read Message|null $replied
  * @property-read \App\Models\User|null $sender
@@ -606,6 +608,31 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\NewMilestoneRequest
+ *
+ * @property int $id
+ * @property int $contract_id
+ * @property mixed $milestone
+ * @property int $requested_by
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|NewMilestoneRequest newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|NewMilestoneRequest newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|NewMilestoneRequest query()
+ * @method static \Illuminate\Database\Eloquent\Builder|NewMilestoneRequest whereContractId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NewMilestoneRequest whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NewMilestoneRequest whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NewMilestoneRequest whereMilestone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NewMilestoneRequest whereRequestedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NewMilestoneRequest whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NewMilestoneRequest whereUpdatedAt($value)
+ */
+	class NewMilestoneRequest extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Package
  *
  * @property int $id
@@ -621,7 +648,7 @@ namespace App\Models{
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PackagePerk[] $perks
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PackagePerk> $perks
  * @property-read int|null $perks_count
  * @method static \Illuminate\Database\Eloquent\Builder|Package active()
  * @method static \Illuminate\Database\Eloquent\Builder|Package newModelQuery()
@@ -782,6 +809,7 @@ namespace App\Models{
  * @property string $password
  * @property string|null $remember_token
  * @property string $role
+ * @property string $subscription_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string $status
@@ -791,50 +819,53 @@ namespace App\Models{
  * @property string|null $city
  * @property-read \App\Models\UserBank|null $bank
  * @property-read \App\Models\UserBusiness|null $business
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Chat[] $chats
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Chat> $chats
  * @property-read int|null $chats_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Contract[] $client_contracts
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Contract> $client_contracts
  * @property-read int|null $client_contracts_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ContractMilestone[] $client_milestones
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ContractMilestone> $client_milestones
  * @property-read int|null $client_milestones_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Workspace[] $client_workspace
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Workspace> $client_workspace
  * @property-read int|null $client_workspace_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Skill[] $direct_skills
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Skill> $direct_skills
  * @property-read int|null $direct_skills_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\JobApplication[] $job_applications
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\JobApplication> $job_applications
  * @property-read int|null $job_applications_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\JobInvitation[] $job_invitations
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\JobInvitation> $job_invitations
  * @property-read int|null $job_invitations_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserKyc[] $kycs
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserKyc> $kycs
  * @property-read int|null $kycs_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Like[] $liked_jobs
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Like> $liked_jobs
  * @property-read int|null $liked_jobs_count
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Job[] $posted_jobs
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $posted_jobs
  * @property-read int|null $posted_jobs_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Contract[] $provider_contracts
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Contract> $provider_contracts
  * @property-read int|null $provider_contracts_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ContractMilestone[] $provider_milestones
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ContractMilestone> $provider_milestones
  * @property-read int|null $provider_milestones_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Workspace[] $provider_workspace
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Workspace> $provider_workspace
  * @property-read int|null $provider_workspace_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\RazorpayOrder[] $razorpay_orders
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\RazorpayOrder> $razorpay_orders
  * @property-read int|null $razorpay_orders_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MessageContract[] $received_message_contract
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\MessageContract> $received_message_contract
  * @property-read int|null $received_message_contract_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MessageContract[] $sent_message_contract
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\MessageContract> $sent_message_contract
  * @property-read int|null $sent_message_contract_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserService[] $services
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserService> $services
  * @property-read int|null $services_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserSkill[] $skills
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserSkill> $skills
  * @property-read int|null $skills_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserSubscription> $subscriptions
+ * @property-read int|null $subscriptions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
  * @method static \Illuminate\Database\Eloquent\Builder|User active()
- * @method static \Database\Factories\UserFactory factory(...$parameters)
+ * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|User hasLikedJob()
  * @method static \Illuminate\Database\Eloquent\Builder|User isProvider()
+ * @method static \Illuminate\Database\Eloquent\Builder|User isSubscribed()
  * @method static \Illuminate\Database\Eloquent\Builder|User isUser()
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
@@ -854,6 +885,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRpContact($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereState($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSubscriptionStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUuid($value)
  */
@@ -969,7 +1001,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $metadata
  * @property-read \App\Models\Category $category
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserServiceImage[] $images
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserServiceImage> $images
  * @property-read int|null $images_count
  * @property-read \App\Models\SubCategory $sub_category
  * @property-read \App\Models\User $user
@@ -1041,6 +1073,63 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|UserSkill whereUserId($value)
  */
 	class UserSkill extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\UserSubscription
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int|null $package_id
+ * @property int $razorpay_order_id
+ * @property mixed $package_details
+ * @property string $start_date
+ * @property string $end_date
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\RazorpayOrder $order
+ * @property-read \App\Models\Package|null $package
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|UserSubscription newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserSubscription newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserSubscription query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserSubscription whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserSubscription whereEndDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserSubscription whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserSubscription wherePackageDetails($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserSubscription wherePackageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserSubscription whereRazorpayOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserSubscription whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserSubscription whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserSubscription whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserSubscription whereUserId($value)
+ */
+	class UserSubscription extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Wishlist
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string|null $phone
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereUpdatedAt($value)
+ */
+	class Wishlist extends \Eloquent {}
 }
 
 namespace App\Models{

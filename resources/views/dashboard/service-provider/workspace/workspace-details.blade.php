@@ -441,6 +441,8 @@
             </script>
             <script src="{{ asset(mix('js/workspace/chat.js')) }}"></script>
             <script src="https://rawcdn.githack.com/nextapps-de/winbox/0.2.6/dist/js/winbox.min.js"></script>
+            <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
             <script>
                 const workspace = @json($workspace);
                 new PerfectScrollbar('#chat-holder', {
@@ -489,6 +491,98 @@
             </script>
 
             <script>
+                $('[data-add-fund]').click(function(e) {
+                    e.preventDefault();
+                    const user = @json(auth()->user());
+                    const milestone_id = $(this).data('add-fund');
+
+                    window.rebound({
+                        url: "{{ route('service-provider.workspace.payment.create-order') }}",
+                        data: {
+                            milestone_id: milestone_id
+                        },
+                        processData: true,
+                        notification: false,
+                        successCallback: function(response) {
+                            payOrder(user, response.order);
+                        }
+                    })
+
+                });
+
+
+                $('[data-check-work]').click(function(e) {
+                    e.preventDefault();
+                    const milestone_id = $(this).data('check-work');
+                    window.rebound({
+                        url: "{{ route('service-provider.workspace.milestone.view-work') }}",
+                        data: {
+                            milestone_id: milestone_id
+                        },
+                        processData: true,
+                        notification: false,
+                        successCallback: function(response) {
+                            $('#work-body').html(response.html);
+                            $('#work-modal').modal('show');
+                        }
+                    })
+
+
+                });
+
+                $(document).on('click', '[data-work-action]', function(e) {
+                    e.preventDefault();
+                    const action = $(this).data('work-action');
+                    const work = $(this).data('work');
+
+                    window.rebound({
+                        url: "{{ route('service-provider.workspace.milestone.work-action') }}",
+                        data: {
+                            work: work,
+                            action: action
+                        },
+                        processData: true,
+                        notification: false,
+                        successCallback: function(response) {
+                            $('#work-body').html('');
+                            $('#work-modal').modal('hide');
+                            location.reload();
+                        }
+                    })
+
+                });
+
+
+
+
+                function payOrder(user, order) {
+                    const options = {
+                        "key": "{{ env('RAZORPAY_KEY') }}",
+                        "name": "Obillia",
+                        "description": "Test Transaction",
+                        "image": "https://obilia.fra1.digitaloceanspaces.com/public/images/user/kyc/img-319ab28e832a5e19c3d14a606d90b95820c032a67cc.550460.png",
+                        "order_id": order.order_id,
+                        "callback_url": "{{ route('service-provider.workspace.payment.fetch') }}",
+                        "prefill": {
+                            "name": user.name,
+                            "email": user.email,
+                            "contact": user.phone ?? 9137231270
+                        },
+                        "notes": {
+                            "test": "test"
+                        },
+                        "theme": {
+                            "color": "#3399cc"
+                        }
+                    };
+                    const rzp = new Razorpay(options);
+                    rzp.open();
+                }
+
+
+
+
+
                 $('[data-add-work]').click(function(e) {
                     e.preventDefault();
                     const milestone_id = $(this).data('add-work');
@@ -527,7 +621,7 @@
                 $('#request-milestone-form').submit(function(e) {
                     e.preventDefault();
                     window.rebound({
-                        url: "{{ route('service-provider.workspace.request-milestone') }}",
+                        url: "{{ route('service-provider.workspace.milestone.request-milestone') }}",
                         form: this,
                         appendData: {
                             contract_id: "{{ $workspace->contract->id }}"
