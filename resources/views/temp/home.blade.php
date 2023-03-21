@@ -210,9 +210,9 @@
 
                             </p>
                             <div class="btn-container mt-4">
-                                <button data-bs-toggle="modal" data-bs-target="#wishlist"
+                                <button data-bs-toggle="modal" data-wish-for="seller" data-bs-target="#wishlist"
                                     class="call-to-action-btn ">Wishlist for sellers</button>
-                                <button data-bs-toggle="modal" data-bs-target="#wishlist"
+                                <button data-bs-toggle="modal" data-wish-for="client" data-bs-target="#wishlist"
                                     class="call-to-action-btn outline">Wishlist for clients</button>
                             </div>
                         </div>
@@ -253,18 +253,18 @@
         </div>
 
     </div>
-    <div class="container my-5 hide-nav-on-view">
+    <div id="about" class="container my-5 hide-nav-on-view">
         <div class="row">
             <div class="col-md-6">
                 <h2 class="text-orange">
-                    Find talented partners
-                    for your projects
+                    Hiring on-demand talent made easy.
                 </h2>
                 <p class="text-primary fs-5">
-                    We are redefining how projects are executed with our talent marketplace and specialised
-                    services. We cross-connect businesses, agencies and artists with skilled freelancers and service
-                    providers who aspire to work on what they love. Obillia is secure, flexible and convenient for
-                    everyone.
+                    Obillia is redefining the way freelance outsourcing is executed in India. With the rise of
+                    freelancers and the gig economy in India, hiring freelancers for contract work is smooth with our
+                    easy-to-use talent marketplace. Find your best online services partner from a pan India talent pool,
+                    be it web development services, graphic design services in India or photographers for your special
+                    occasion, we have it covered.
                 </p>
             </div>
             <div class="col-md-6 col-sm-none">
@@ -274,7 +274,7 @@
             </div>
         </div>
     </div>
-    <div class="container my-5 ">
+    <div id="categories" class="container my-5 ">
         <div class="row">
             <div class="col-md-12 position-relative mb-5 pe-5">
                 <h1 class="text-primary">
@@ -309,7 +309,7 @@
             </div>
         </div>
     </div>
-    <div class="container my-5  features-section">
+    <div id="how-it-works" class="container my-5  features-section">
         <div class="row py-4">
             <div class="col-12 my-3">
                 <div class="switch-container">
@@ -334,9 +334,9 @@
                                 <div class="ob-feature-item_bg"></div>
                                 <div class="icon-holder">
                                     <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="icon icon-tabler icon-tabler-shield-check" width="24" height="24"
-                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                        stroke-linecap="round" stroke-linejoin="round">
+                                        class="icon icon-tabler icon-tabler-shield-check" width="24"
+                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path
                                             d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06">
@@ -831,6 +831,8 @@
         </div>
     </div>
 
+    <x-section.plan :packages="$packages" />
+
 
     <x-elements.modal id="wishlist" class="twm-sign-up" :footer="false" title="Wishlist Form">
 
@@ -838,6 +840,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <x-utils.input name="name" />
+                    <input type="hidden" name="for" id="wish-for">
                 </div>
                 <div class="col-md-12">
                     <x-utils.input name="email" type="email" />
@@ -945,7 +948,13 @@
                     }
                 })
             });
+            $('[data-wish-for]').click(function(e) {
+                e.preventDefault();
+                const wishFor = $(this).data('wish-for');
+                $('#wish-for').val(
+                    wishFor);
 
+            });
 
             if ($(window).width() > 768) {
                 $(window).scroll(function() {

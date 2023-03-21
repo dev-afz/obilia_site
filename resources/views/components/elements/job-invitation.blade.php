@@ -34,7 +34,7 @@
                             <strong>Invitation Date :</strong>
                         </p>
                         <p class="text-success">
-                            {{ $inv->created_at->format('d M, Y') }}
+                            {{ $inv->created_at->format('d M, Y H:i a') }}
                         </p>
                     </div>
 

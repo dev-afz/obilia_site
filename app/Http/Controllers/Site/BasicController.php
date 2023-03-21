@@ -46,12 +46,15 @@ class BasicController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'for' => 'required|string|in:seller,client',
             'email' => 'required|string|email|max:1000',
             'phone' => 'nullable|numeric|digits:10',
         ]);
 
 
-        $alreadyExists = Wishlist::where('email', $request->email)->first();
+        $alreadyExists = Wishlist::where('email', $request->email)
+            ->where('from', $request->for)
+            ->first();
 
         if ($alreadyExists) {
             throw ValidationException::withMessages([
@@ -64,6 +67,7 @@ class BasicController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'from' => $request->for,
         ]);
 
         return response()->json([

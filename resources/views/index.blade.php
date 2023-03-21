@@ -167,14 +167,14 @@
         <div class="row">
             <div class="col-md-6">
                 <h2 class="text-orange">
-                    Find talented partners
-                    for your projects
+                    Hiring on-demand talent made easy.
                 </h2>
                 <p class="text-primary fs-5">
-                    We are redefining how projects are executed with our talent marketplace and specialised
-                    services. We cross-connect businesses, agencies and artists with skilled freelancers and service
-                    providers who aspire to work on what they love. Obillia is secure, flexible and convenient for
-                    everyone.
+                    Obillia is redefining the way freelance outsourcing is executed in India. With the rise of
+                    freelancers and the gig economy in India, hiring freelancers for contract work is smooth with our
+                    easy-to-use talent marketplace. Find your best online services partner from a pan India talent pool,
+                    be it web development services, graphic design services in India or photographers for your special
+                    occasion, we have it covered.
                 </p>
             </div>
             <div class="col-md-6 col-sm-none">

@@ -24,14 +24,49 @@ class JobApplicationController extends Controller
                 'message' => 'Invalid request'
             ], 400);
         }
+
+
+
         $user = auth()->user();
-        $already_applied = $user->posted_jobs()->where('id', $request->job_id)->firstOrFail()
-            ->applications->pluck('user_id')->toArray();
-        $already_invited = $user->posted_jobs()->where('id', $request->job_id)->firstOrFail()
-            ->invites->pluck('user_id')->toArray();
+
+
+        $job = $user->posted_jobs()->where('id', $request->job_id)->firstOrFail()
+            ->load(['skills', 'applications', 'invites']);
+
+        $already_applied = $job->applications->pluck('user_id')->toArray();
+        $already_invited = $job->invites->pluck('user_id')->toArray();
+
+        $skill_ids = $job->skills->pluck('id')->toArray();
+
+
+
+
         $suggestedCandidates = User::whereNotIn('id', $already_applied)
             ->whereNotIn('id', $already_invited)
             ->where('id', '!=', $user->id)
+            ->where(function ($q) use ($skill_ids, $job) {
+                $q->whereHas('skills', function ($query) use ($skill_ids, $job) {
+                    $query->whereIn('skill_id', $skill_ids);
+                })->orWhereHas('services', function ($query) use ($skill_ids, $job) {
+                    $query->where('sub_category_id', $job->sub_category_id)
+                        ->when($job->metadata, function ($query) use ($job) {
+                            $meta = explode(',', $job->metadata);
+                            foreach ($meta as $m) {
+                                $query->orWhere('metadata', 'like', '%' . $m . '%');
+                            }
+                        });
+                });
+            })
+            ->with(['services' => function ($query) use ($job) {
+                $query->where('sub_category_id', $job->sub_category_id)
+                    ->when($job->metadata, function ($query) use ($job) {
+                        $meta = explode(',', $job->metadata);
+                        foreach ($meta as $m) {
+                            $query->orWhere('metadata', 'like', '%' . $m . '%');
+                        }
+                    })
+                    ->latest()->limit(1);
+            }])
             ->isUser()->active()->get();
         $html = view('components.elements.service-provider-card', [
             'users' => $suggestedCandidates,

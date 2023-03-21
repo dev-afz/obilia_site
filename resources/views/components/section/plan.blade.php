@@ -1,4 +1,4 @@
-<div class="section-full  p-b90 site-bg-white tw-pricing-area">
+<div id="choose-your-plan" class="section-full  p-b90 site-bg-white tw-pricing-area">
 
     <div class="container">
 
@@ -6,7 +6,7 @@
             <div class="wt-small-separator site-text-primary">
                 <div>Choose Your Plan</div>
             </div>
-            {{-- <h2 class="wt-title">Save up to 10%</h2> --}}
+            <h2 class="wt-title">Save up to 10%</h2>
         </div>
         <div class="section-content">
 

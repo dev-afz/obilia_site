@@ -1126,9 +1126,10 @@ button {
 
         .contact-info {
             border-radius: 10px 10px 10px 0px;
-            box-shadow: 0px 0px 25px rgba(56, 152, 226, 0.3);
+            // box-shadow: 0px 0px 25px rgba(56, 152, 226, 0.3);
             padding: 40px;
             background-color: $clr-white;
+            border: 2px solid $primary-500;
 
             @include breakpoint-991 {
                 border-radius: 10px;
@@ -1149,7 +1150,7 @@ button {
             height: 0;
             border-left: 57px solid transparent;
             border-right: 0px solid transparent;
-            border-top: 57px solid #d8d8d8;
+            border-top: 57px solid $primary-500;
 
             @include breakpoint_991 {
                 display: none;

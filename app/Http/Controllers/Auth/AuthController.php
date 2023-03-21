@@ -19,7 +19,7 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if (auth()->attempt($credentials, $request->remember_me === 'on')) {
+        if (auth()->attempt($credentials, $request->remember_me)) {
             $request->session()->regenerate();
 
             return response()->json([

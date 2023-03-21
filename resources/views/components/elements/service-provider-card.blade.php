@@ -23,7 +23,10 @@
                                     class="btn btn-primary btn-sm bg-primary">Invite</button>
                             </p>
                         @endif
-                        <div class="twm-jobs-vacancies">$20<span>/ Day</span></div>
+                        <div class="twm-jobs-vacancies">
+                            Starting Price: <span class="site-text-primary">Rs.
+                                {{ $user->services->first()->price }}</span>
+                        </div>
                     </div>
 
                 </div>

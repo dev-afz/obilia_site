@@ -6194,9 +6194,9 @@ button.scroltop span {
 }
 .twm-contact-one .contact-info-wrap .contact-info {
   border-radius: 10px 10px 10px 0px;
-  box-shadow: 0px 0px 25px rgba(56, 152, 226, 0.3);
   padding: 40px;
   background-color: #fff;
+  border: 2px solid #09596f;
 }
 @media (max-width: 991px) {
   .twm-contact-one .contact-info-wrap .contact-info {
@@ -6218,7 +6218,7 @@ button.scroltop span {
   height: 0;
   border-left: 57px solid transparent;
   border-right: 0px solid transparent;
-  border-top: 57px solid #d8d8d8;
+  border-top: 57px solid #09596f;
 }
 @media (max-width: 991px) {
   .twm-contact-one .contact-info-wrap:before {

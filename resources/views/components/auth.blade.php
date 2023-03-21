@@ -50,13 +50,13 @@
 
                                     <div class="col-lg-12">
                                         <div class="form-group mb-3">
-                                            <input name="password" type="text" class="form-control" required=""
+                                            <input name="password" type="password" class="form-control" required=""
                                                 placeholder="Password*">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group mb-3">
-                                            <input name="password_confirmation" type="text" class="form-control"
+                                            <input name="password_confirmation" type="password" class="form-control"
                                                 required="" placeholder="Confirm Password*">
                                         </div>
                                     </div>
@@ -176,7 +176,7 @@
 
                         <div class="col-lg-12">
                             <div class="form-group mb-3">
-                                <input name="password" type="text" class="form-control" required=""
+                                <input name="password" type="password" class="form-control" required=""
                                     placeholder="Password*">
                             </div>
                         </div>

@@ -39,7 +39,7 @@
                         </div>
                         <button class="like-btn bg-primary text-white"
                             @auth()
-                                data-start-chat="{{ $user->services->first()->id }}"
+                                data-start-chat="{{ $user->services->first()?->id }}"
                            @disabled(auth()->user()->id == $user->id)
                            @endauth
                             @guest data-bs-target="#login_popup"

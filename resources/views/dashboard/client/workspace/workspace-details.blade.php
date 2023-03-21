@@ -23,8 +23,11 @@
                 </div>
             </div>
             <div class="card p-3">
-                <div style="--progress:50%" class="progress-bar">
-                    <p class="text-white m-0">50%</p>
+                <div style="--progress:{{ number_format(($workspace->contract->milestones->whereNotNull('escrow_fund_released_time')->count() / $workspace->contract->milestones->count()) * 100, 2) }}%"
+                    class="progress-bar">
+                    <p class="text-white m-0">
+                        {{ number_format(($workspace->contract->milestones->whereNotNull('escrow_fund_released_time')->count() / $workspace->contract->milestones->count()) * 100, 2) }}%
+                    </p>
                 </div>
             </div>
             <div class="divider">

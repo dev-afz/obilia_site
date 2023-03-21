@@ -52,8 +52,11 @@
                 </div>
             </div>
             <div class="card p-3">
-                <div style="--progress:50%" class="progress-bar">
-                    <p class="text-white m-0">50%</p>
+                <div style="--progress:{{ number_format(($workspace->contract->milestones->whereNotNull('escrow_fund_released_time')->count() / $workspace->contract->milestones->count()) * 100, 0) }}%"
+                    class="progress-bar">
+                    <p class="text-white m-0">
+                        {{ number_format(($workspace->contract->milestones->whereNotNull('escrow_fund_released_time')->count() / $workspace->contract->milestones->count()) * 100, 0) }}%
+                    </p>
                 </div>
             </div>
             <div class="divider">
@@ -74,20 +77,21 @@
                     @if ($workspace->client_id === auth()->id())
                         @forelse ($workspace->contract->milestones as $milestone)
                             @php
-                                
+
                                 if ($latestMilestone !== $milestone->id && $milestone->escrow_fund_released_time === null && $found) {
                                     $latestMilestone = $milestone->id;
                                     $found = false;
                                 }
-                                
+
                             @endphp
 
                             <li @class([
-                                'timeline-item',
-                                'timeline-done' => $milestone->status == 'completed',
+                                'timeline-item ' . $milestone->id,
+                                'timeline-done' => $milestone->escrow_fund_released_time !== null,
                             ])>
                                 <span @class([
                                     'timeline-point timeline-point-indicator',
+                                    'bg-success' => $milestone->escrow_fund_released_time !== null,
                                     'pulse' => $milestone->id == $latestMilestone,
                                 ])></span>
                                 <div class="timeline-event">
@@ -145,12 +149,12 @@
                     @else
                         @forelse ($workspace->contract->milestones as $milestone)
                             @php
-                                
+
                                 if ($latestMilestone !== $milestone->id && $milestone->escrow_fund_released_time === null && $found) {
                                     $latestMilestone = $milestone->id;
                                     $found = false;
                                 }
-                                
+
                             @endphp
 
                             <li @class([

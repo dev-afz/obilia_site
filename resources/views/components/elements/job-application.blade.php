@@ -41,15 +41,17 @@
                 </p>
 
                 <div class="twm-fot-content">
-                    <div class="twm-left-info">
-                        @if ($apl->status === 'pending' || $apl->status === 'rejected')
+                    <div @class([
+                        'twm-left-info',
+                        'justify-content-end' => $apl->status == 'accepted',
+                    ])>
+                        @if ($apl->status === 'pending')
                             <div class="_frs_rate_ptop">
                                 <button data-application-action="accepted" data-application-id="{{ $apl->id }}"
                                     data-toggle="tooltip" data-placement="top" title="Accept"
                                     class="check__accept border-0"><i class="feather-check fs-5 fw-bold"></i></button>
                             </div>
-                        @endif
-                        @if ($apl->status === 'pending' || $apl->status === 'accepted')
+
                             <div class="_dash_remove_wrap">
                                 <button data-application-action="rejected" data-application-id="{{ $apl->id }}"
                                     data-toggle="tooltip" data-placement="top" title="Reject"
@@ -58,7 +60,7 @@
                         @endif
 
                         @if ($apl->status == 'accepted')
-                            <div class="d-flex align-items-center text-success">
+                            <div class="d-flex align-items-center text-success text-end">
                                 <strong>Accepted Date : </strong>
                                 {{ $apl->updated_at->format('d M, y') }}
                             </div>
