@@ -211,9 +211,9 @@
                             </p>
                             <div class="btn-container mt-4">
                                 <button data-bs-toggle="modal" data-wish-for="seller" data-bs-target="#waitlist"
-                                    class="call-to-action-btn ">waitlist for sellers</button>
+                                    class="call-to-action-btn ">Waitlist for sellers</button>
                                 <button data-bs-toggle="modal" data-wish-for="client" data-bs-target="#waitlist"
-                                    class="call-to-action-btn outline">waitlist for clients</button>
+                                    class="call-to-action-btn outline">Waitlist for clients</button>
                             </div>
                         </div>
                     </div>
@@ -241,9 +241,9 @@
                             </p>
                             <div class="btn-container mt-4">
                                 <button data-bs-toggle="modal" data-bs-target="#waitlist"
-                                    class="call-to-action-btn outline">waitlist for sellers</button>
+                                    class="call-to-action-btn outline">Waitlist for sellers</button>
                                 <button data-bs-toggle="modal" data-bs-target="#waitlist"
-                                    class="call-to-action-btn ">waitlist for clients</button>
+                                    class="call-to-action-btn ">Waitlist for clients</button>
                             </div>
                         </div>
                     </div>
