@@ -210,10 +210,10 @@
 
                             </p>
                             <div class="btn-container mt-4">
-                                <button data-bs-toggle="modal" data-wish-for="seller" data-bs-target="#wishlist"
-                                    class="call-to-action-btn ">Wishlist for sellers</button>
-                                <button data-bs-toggle="modal" data-wish-for="client" data-bs-target="#wishlist"
-                                    class="call-to-action-btn outline">Wishlist for clients</button>
+                                <button data-bs-toggle="modal" data-wish-for="seller" data-bs-target="#waitlist"
+                                    class="call-to-action-btn ">waitlist for sellers</button>
+                                <button data-bs-toggle="modal" data-wish-for="client" data-bs-target="#waitlist"
+                                    class="call-to-action-btn outline">waitlist for clients</button>
                             </div>
                         </div>
                     </div>
@@ -240,10 +240,10 @@
 
                             </p>
                             <div class="btn-container mt-4">
-                                <button data-bs-toggle="modal" data-bs-target="#wishlist"
-                                    class="call-to-action-btn outline">Wishlist for sellers</button>
-                                <button data-bs-toggle="modal" data-bs-target="#wishlist"
-                                    class="call-to-action-btn ">Wishlist for clients</button>
+                                <button data-bs-toggle="modal" data-bs-target="#waitlist"
+                                    class="call-to-action-btn outline">waitlist for sellers</button>
+                                <button data-bs-toggle="modal" data-bs-target="#waitlist"
+                                    class="call-to-action-btn ">waitlist for clients</button>
                             </div>
                         </div>
                     </div>
@@ -865,9 +865,9 @@
     <x-section.plan :packages="$packages" />
 
 
-    <x-elements.modal id="wishlist" class="twm-sign-up" :footer="false" title="Wishlist Form">
+    <x-elements.modal id="waitlist" class="twm-sign-up" :footer="false" title="Waitlist request for seller">
 
-        <form id="add-wishlist">
+        <form id="add-waitlist">
             <div class="row">
                 <div class="col-md-12">
                     <x-utils.input name="name" />
@@ -969,13 +969,13 @@
                 }
             });
 
-            $('#add-wishlist').submit(function(e) {
+            $('#add-waitlist').submit(function(e) {
                 e.preventDefault();
                 window.rebound({
                     form: $(this),
                     url: "{{ route('wishlist') }}",
                     successCallback: function(data) {
-                        $('#wishlist').modal('hide');
+                        $('#waitlist').modal('hide');
                     }
                 })
             });
@@ -984,6 +984,8 @@
                 const wishFor = $(this).data('wish-for');
                 $('#wish-for').val(
                     wishFor);
+
+                $('#waitlist').find('.modal-title').text(`Waitlist request for ${wishFor}`);
 
             });
 
