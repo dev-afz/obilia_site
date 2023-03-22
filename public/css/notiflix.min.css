@@ -63,7 +63,6 @@
   [id^="NotiflixNotifyWrap"] > div {
     pointer-events: all;
     -webkit-user-select: none;
-    -moz-user-select: none;
     user-select: none;
     font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     width: 100%;
@@ -555,7 +554,6 @@
   
   [id^="NotiflixReportWrap"] > div[class*="-content"] > div[class$="-icon"] {
     -webkit-user-select: none;
-    -moz-user-select: none;
     user-select: none;
     width: 110px;
     height: 110px;
@@ -601,7 +599,6 @@
     word-break: break-all;
     word-break: break-word;
     -webkit-user-select: none;
-    -moz-user-select: none;
     user-select: none;
     font-family: inherit !important;
     transition: all 0.25s ease-in-out;
@@ -975,7 +972,6 @@
   
   [id^="NotiflixConfirmWrap"] > div[class*="-content"] > div[class*="-buttons"] {
     -webkit-user-select: none;
-    -moz-user-select: none;
     user-select: none;
     border-radius: inherit;
     float: left;
@@ -1118,7 +1114,6 @@
   /* Notiflix: Loading wrap: begin */
   [id^="NotiflixLoadingWrap"] {
     -webkit-user-select: none;
-    -moz-user-select: none;
     user-select: none;
     position: fixed;
     z-index: 4000;
@@ -1245,7 +1240,6 @@
   /* Notiflix: Block wrap: begin */
   [id^="NotiflixBlockWrap"] {
     -webkit-user-select: none;
-    -moz-user-select: none;
     user-select: none;
     box-sizing: border-box;
     position: absolute;

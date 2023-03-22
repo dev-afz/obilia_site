@@ -53,9 +53,9 @@
 
 
             .ob-feature-item_link:hover .ob-feature-item_bg {
-                -webkit-transform: scale(20);
-                -ms-transform: scale(20);
-                transform: scale(20);
+                -webkit-transform: scale(25);
+                -ms-transform: scale(25);
+                transform: scale(25);
             }
 
             .ob-feature_item .inner-text {
@@ -346,13 +346,16 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Secure and timely payouts
+                                        Create your profile.
                                     </h4>
                                     <p>
-                                        Clients pay upfront, so you can be sure of payments against deliverables. We
-                                        ensure your
-                                        payouts are on time through our automated systems that run on the best payment
-                                        software
+                                        Build your profile with an engaging bio and portfolio with images and videos
+                                        that help clients
+                                        make easier decisions. Don't forget to add your skills, work history, education
+                                        and most
+                                        importantly your photo to your profile. Each service you list can act as an
+                                        independent
+                                        profile, so make sure all of them stand out.
                                     </p>
                                 </div>
 
@@ -378,12 +381,16 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Send custom quotes everytime
+                                        Find ways to earn.
                                     </h4>
                                     <p class="">
-                                        Each client and project is different, so why should prices be fixed? Send custom
-                                        contracts
-                                        with milestones for unique projects & clients.
+                                        In Obillia you can work in different ways, apply to jobs, get invited to job
+                                        posts by clients, or
+                                        be contacted by a client via chat. Once you are selected, send them a contract
+                                        through chat
+                                        and your project workspace opens. No fixed prices for projects, and no fixed
+                                        hourly rates. You
+                                        decide what you bill.
                                     </p>
                                 </div>
                             </div>
@@ -407,12 +414,16 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        All in one workspace
+                                        Bring your own client.
                                     </h4>
                                     <p class="">
-                                        Keep in touch with your client always through project-based workspaces with
-                                        milestone
-                                        tracking, chat, file sharing and many more.
+                                        Do you work with clients externally? Bring them to Obillia at no platform fee
+                                        for a limited
+                                        number of monthly credits. Just fill in the basic details of your client and
+                                        send an application
+                                        via your dashboard. Once they accept, you can have them directly in your chat,
+                                        send them a
+                                        contract and commence your project.
                                     </p>
                                 </div>
                             </div>
@@ -440,13 +451,12 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Automated Invoicing
+                                        Using the workspace.
                                     </h4>
                                     <p class="">
-                                        We want our partners to do what they love the most, forget the rest, we fulfil
-                                        everything
-                                        else. Get copies of your invoices for Tax Purposes automatically from your
-                                        dashboard.
+                                        Obillia automatically creates workspaces for each contract accepted. Engage,
+                                        share, track,
+                                        deliver and monitor your projects. Share files up to 20GB*.
                                     </p>
                                 </div>
                             </div>
@@ -472,15 +482,16 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Collaborate with other sellers
+                                        Working with other sellers.
                                     </h4>
                                     <p class="">
-                                        Want to create projects with other sellers, feel free to connect and get the
-                                        same features
-                                        as collaborating with clients.
-                                        Please note, currently Obillia only supports one-one collabs, group collabs will
-                                        be coming
-                                        soon.
+                                        As a seller, you might seek services from fellow sellers in the platform, at
+                                        Obillia you as a
+                                        seller can post jobs, message other sellers and receive contracts. Working with
+                                        other sellers
+                                        helps you to add value to your offerings by outsourcing your requirements or
+                                        creating
+                                        collaborated projects.
                                     </p>
                                 </div>
                             </div>
@@ -510,20 +521,21 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Bring your own client
+                                        Invoicing.
+
                                     </h4>
                                     <p class="">
-                                        Working with clients externally? Bring them to obillia at zero cost or flat
-                                        rates based on
-                                        your plan. We send them GST-compliant invoices, you can track all your projects
-                                        in one
-                                        place. Easy for you, easy for your client.
+                                        All invoices to clients in Obillia are automated and GST-compliant. We
+                                        understand the
+                                        struggle of freelancers in India in terms of invoicing. You only have to do what
+                                        you love in
+                                        Obillia.
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-6 my-3">
+                    <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12 my-3">
                         <div class="ob-feature_item">
                             <div class="ob-feature-item_link">
                                 <div class="ob-feature-item_bg"></div>
@@ -541,14 +553,15 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Do more, earn more with our curated plans
-                                    </h4>
+                                        Get paid securely. </h4>
                                     <p class="">
-                                        It's always free* to join obillia as a freelancer. we deduct a platform fee for
-                                        using our
-                                        resources on the free or extra plan, however, with Obillia Plus you can do more
-                                        and cancel
-                                        the platform fees from each project. Read more about our plans here .
+                                        Get paid to your Indian Bank account directly. Our payment protection releases
+                                        client
+                                        payments at project milestones approvals. No hourly projects. Our platform fees
+                                        are
+                                        applicable and so are any taxes and applicable government deductions. Spend less
+                                        time
+                                        chasing what you are owed, and focus on what you love.
                                     </p>
 
                                 </div>
@@ -589,12 +602,13 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Services for your budget.
+                                        Post a Job and hire a service provider.
                                     </h4>
                                     <p class="">
-                                        A startup or a large media house? Doesn't matter, find quality service
-                                        providers for your
-                                        budget.
+                                        Once you sign in, you can post a job and accept applications or invite suggested
+                                        candidates
+                                        to apply. You can chat with the sellers who have applied and request a contract
+                                        proposal.
                                     </p>
 
                                 </div>
@@ -620,12 +634,14 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Verified sellers
+                                        Browse through freelancer profiles.
                                     </h4>
                                     <p class="">
-                                        We ensure that all sellers are verified for the safety and security of our
-                                        clients.
-                                        Non-background verified profiles and services are never live on Obillia.
+                                        If you want to find the best-suited talent for your project, you can browse
+                                        through services
+                                        based on category, find the best partner, open a chat, and discuss with them
+                                        your scope,
+                                        timeline and budget. Request for a contract proposal and get working.
                                     </p>
 
                                 </div>
@@ -649,12 +665,14 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Protected payments
+                                        All-in-one workspace.
                                     </h4>
                                     <p class="">
-                                        Remember you pay upfront for projects/milestones, but payments aren't
-                                        released until you
-                                        approve the deliveried work.
+                                        Gone are the days you needed to engage with your freelancer via email, messaging
+                                        apps,
+                                        storage solutions etc. With the workspace in Obillia built for efficiency, you
+                                        will be able to stay
+                                        in touch with your freelancer and be updated in real-time.
                                     </p>
 
                                 </div>
@@ -680,54 +698,19 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        All in one workspace
+                                        Get GST invoices always.
                                     </h4>
                                     <p class="">
-                                        Keep in touch with your freelancer always through project-based workspaces
-                                        with milestone
-                                        tracking, chat, file sharing and many more.
+                                        Are you finding it difficult to receive GST invoices while working with
+                                        freelancers, with Obillia,
+                                        you are always sure to get invoices that are GST-compliant.
                                     </p>
 
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-6 my-3">
-                        <div class="ob-feature_item">
-                            <div class="ob-feature-item_link">
-                                <div class="ob-feature-item_bg"></div>
-                                <div class="icon-holder">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="icon icon-tabler icon-tabler-file-invoice" width="24"
-                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                                        <path
-                                            d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z">
-                                        </path>
-                                        <path d="M9 7l1 0"></path>
-                                        <path d="M9 13l6 0"></path>
-                                        <path d="M13 17l2 0"></path>
-                                    </svg>
-                                </div>
-                                <div class="inner-text">
-                                    <h4 class="">
-                                        GST compliant invoices
-                                    </h4>
-                                    <p class="">
-                                        Are you a business owner finding it challenging to get Freelance services
-                                        with GST invoices?
-                                        Worry no more, all invoices to clients in Obillia are GST compliant, fill up
-                                        your GSTIN and
-                                        you are good to go. You don't have to worry if your freelancer is registered
-                                        or not.
-                                    </p>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" data-aos-delay="200"
                         class="col-md-6 my-3">
                         <div class="ob-feature_item">
@@ -747,12 +730,14 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Post a job or hire directly.
+                                        Safe payments.
                                     </h4>
                                     <p class="">
-                                        Experience multiple approaches to hiring your project partner in Obillia
-                                        either via posting
-                                        a job or reaching out to a freelance service provider directly.
+                                        When you fund a milestone/project to activate the order, Obillia does not
+                                        release the
+                                        payment to the seller until you approve the delivered milestone/project. In
+                                        milestone
+                                        contracts, you only pay for the milestone coming up.
                                     </p>
 
                                 </div>
@@ -792,6 +777,52 @@
                             </div>
                         </div>
                     </div>
+                    <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12 my-3">
+                        <div class="ob-feature_item">
+                            <div class="ob-feature-item_link">
+                                <div class="ob-feature-item_bg"></div>
+                                <div class="icon-holder">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-file-invoice" width="24"
+                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                        <path
+                                            d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z">
+                                        </path>
+                                        <path d="M9 7l1 0"></path>
+                                        <path d="M9 13l6 0"></path>
+                                        <path d="M13 17l2 0"></path>
+                                    </svg>
+                                </div>
+                                <div class="inner-text">
+                                    <h4 class="">
+                                        Partner or Bundled services.
+                                    </h4>
+                                    <p class="">
+                                        Obillia works with certain exclusive partner agencies or individuals in certain
+                                        categories,
+                                        these partners are vetted thoroughly, have a great track record and usually have
+                                        a team of
+                                        their own. Obillia will get in touch with your request and set up a meeting with
+                                        the partners
+                                        for you to discuss your scope.
+                                        For services that require the service of multiple freelancers from multiple
+                                        categories, please
+                                        get in touch by clicking the "Need Bundled Services" tab and filling out the
+                                        form, our team
+                                        will get in touch with you, understand your scope and pick the best sellers for
+                                        your
+                                        requirements. Once you approved, the project commences with all the freelancers
+                                        in one
+                                        place.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-12 text-end">
                         <small>
                             To know more about how Obillia works for clients please <a class="text-danger"
@@ -806,7 +837,7 @@
     </div>
     </div>
     </div>
-    <div class="container my-5  ">
+    {{-- <div class="container my-5  ">
         <div class="row">
             <div class="col-md-12 position-relative mb-5 pe-5">
                 <h1 class="text-primary">
@@ -829,7 +860,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <x-section.plan :packages="$packages" />
 

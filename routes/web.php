@@ -42,6 +42,7 @@ Route::controller(BasicController::class)->group(function () {
     Route::get('/about', 'about');
     Route::get('/search', 'search')->name('search');
     Route::get('/contact', 'contact')->name('contact');
+    Route::post('/contact', 'storeContact');
     Route::get('/about-us', 'aboutUs')->name('about-us');
     Route::get('provider/{uuid}', 'provider')->name('provider');
     Route::get('provider/{user_uuid}/{service_slug}', 'serviceDetails')->name('service-details');

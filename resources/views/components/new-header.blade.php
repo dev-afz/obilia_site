@@ -32,9 +32,9 @@
                     </div>
                     <ul class=" nav navbar-nav flex-row">
                         <li class=""><a href="{{ route('index') }}">Home</a></li>
-                        <li class=""><a href="#about">About</a></li>
-                        <li class=""><a href="#choose-your-plan">Plan</a></li>
-                        <li class=""><a href="#how-it-works">How it works</a></li>
+                        <li class=""><a href="/#about">About</a></li>
+                        <li class=""><a href="/#choose-your-plan">Plan</a></li>
+                        <li class=""><a href="/#how-it-works">How it works</a></li>
                         <li class=""><a href="{{ route('contact') }}">Contact us</a></li>
                     </ul>
 

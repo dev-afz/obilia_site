@@ -20,12 +20,12 @@
                                     </div>
                                     <!-- TITLE END-->
 
-                                    <form class="cons-contact-form" method="post" action="form-handler2.php">
+                                    <form class="cons-contact-form" id="contact-form">
                                         <div class="row">
 
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <input name="username" type="text" required class="form-control"
+                                                    <input name="name" type="text" required class="form-control"
                                                         placeholder="Name">
                                                 </div>
                                             </div>
@@ -118,5 +118,23 @@
             </div>
         </div>
 
+
+
+        <x-slot name="scripts">
+            <script>
+                $('#contact-form').submit(function(e) {
+                    e.preventDefault();
+                    window.rebound({
+                        form: $(this),
+                        url: "{{ route('contact') }}",
+                        successCallback: function(response) {
+                            console.log(response);
+                            $('#contact-form').trigger("reset");
+                        },
+                    })
+
+                });
+            </script>
+        </x-slot>
 
 </x-layout>

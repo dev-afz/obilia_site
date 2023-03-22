@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use App\Services\SearchService;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\ContactData;
 use App\Models\Wishlist;
 use App\Services\RazorpayX\CreateContactService;
 use Illuminate\Validation\ValidationException;
@@ -171,5 +172,31 @@ class BasicController extends Controller
         $packages = Package::active()->with(['perks'])->get();
 
         return view('index', compact('industries', 'jobs', 'packages', 'categories'));
+    }
+
+
+
+    public function storeContact(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:1000',
+            'phone' => 'nullable|numeric|digits:10',
+            'subject' => 'required|string|max:3000',
+            'message' => 'required|string|max:5000',
+        ]);
+
+        ContactData::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ]);
+
+        return response()->json([
+            'message' => 'Thank you for your interest. We will get back to you soon.',
+            'status' => 'success'
+        ], 200);
     }
 }

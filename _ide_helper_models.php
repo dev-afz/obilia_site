@@ -140,6 +140,33 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\ContactData
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string|null $phone
+ * @property string $subject
+ * @property string $message
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactData newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactData newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactData query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactData whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactData whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactData whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactData whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactData whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactData wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactData whereSubject($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactData whereUpdatedAt($value)
+ */
+	class ContactData extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Contract
  *
  * @property int $id
@@ -578,6 +605,31 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|MessageMedia whereUpdatedAt($value)
  */
 	class MessageMedia extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\MilestoneRequest
+ *
+ * @property int $id
+ * @property int $contract_id
+ * @property mixed $milestone
+ * @property string $status
+ * @property int|null $added_by
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneRequest newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneRequest newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneRequest query()
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneRequest whereAddedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneRequest whereContractId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneRequest whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneRequest whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneRequest whereMilestone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneRequest whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MilestoneRequest whereUpdatedAt($value)
+ */
+	class MilestoneRequest extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -1117,6 +1169,7 @@ namespace App\Models{
  * @property string $name
  * @property string $email
  * @property string|null $phone
+ * @property string|null $from
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist newModelQuery()
@@ -1124,6 +1177,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist query()
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereFrom($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist wherePhone($value)
