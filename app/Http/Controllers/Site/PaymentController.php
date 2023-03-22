@@ -48,6 +48,6 @@ class PaymentController extends Controller
 
         $rzOrder = $service->fetch();
 
-        return redirect()->back()->with('success', 'Milestone payment has been successfully completed.');
+        return redirect()->back()->with('success', 'Your package has been activated');
     }
 }

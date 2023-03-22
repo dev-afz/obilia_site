@@ -112,7 +112,7 @@
                     "key": "{{ env('RAZORPAY_KEY') }}",
                     "name": "Obillia",
                     "description": "Test Transaction",
-                    "image": "https://obilia.fra1.digitaloceanspaces.com/public/images/user/kyc/img-319ab28e832a5e19c3d14a606d90b95820c032a67cc.550460.png",
+                    "image": "{{ asset('images/logo/logo.png') }}",
                     "order_id": order.order_id,
                     "callback_url": "{{ route('payment.fetch-order') }}",
                     "prefill": {
