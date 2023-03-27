@@ -4,12 +4,13 @@ namespace App\Http\Controllers\ServiceProvider;
 
 use App\Models\Chat;
 use App\Models\User;
+use Illuminate\Support\Str;
+use App\Events\MessageEvent;
 use Illuminate\Http\Request;
 use App\Models\JobApplication;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Str;
 
 class JobApplicationController extends Controller
 {
@@ -100,6 +101,11 @@ class JobApplicationController extends Controller
             ->where('status', '!=', 'accepted')
             ->with(['user:id,name,email,images'])->get();
 
+
+
+
+
+
         $html = view('components.elements.job-application', [
             'applications' => $applications,
             'class' => 'col-md-4 mt-5'
@@ -128,7 +134,7 @@ class JobApplicationController extends Controller
         $user = auth()->user();
 
         $application = JobApplication::where('id', $request->id)
-            ->with(['job:id,user_id,title'])
+            ->with(['job:id,user_id,title', 'user:id,name,email,uuid'])
             ->firstOrFail();
 
         if ($application->job->user_id != $user->id) {
@@ -142,22 +148,39 @@ class JobApplicationController extends Controller
             'status' => $request->status
         ]);
 
-        $chat =   Chat::create([
-            'job_id' => $application->job_id,
-            'name' => $application->job->title . ' - ' . $application->user->name,
-            'uuid' => Str::uuid(),
-        ]);
 
-        $chat->participants()->createMany([
-            [
-                'user_id' => $application->user_id,
-                'role' => 'member',
-            ],
-            [
-                'user_id' => $user->id,
-                'role' => 'owner',
-            ]
+        $chat = $user->chats()
+            ->whereHas('participants', fn ($q) => $q->where('user_id', $application->user_id))
+            ->first();
+
+
+        if (empty($chat)) {
+            $chat =  Chat::create([
+                'name' => $user->name . ' & ' . $application->user->name,
+                'uuid' => Str::uuid(),
+                'status' => 'active',
+            ]);
+
+
+            $chat->participants()->createMany([
+                ['user_id' => $user->id, 'role' => 'owner'],
+                ['user_id' => $application->user_id, 'role' => 'member'],
+            ]);
+        }
+
+        $message = $chat->messages()->create([
+            'sender_id' => $user->id,
+            'message' => 'Your application for ' . $application->job->title . ' has been ' . $request->status,
         ]);
+        $for = 'sender';
+        event(new MessageEvent(
+            message: view('components.chat.message', compact('message', 'for'))->render(),
+            from: auth()->user()->only(['uuid', 'name', 'email']),
+            time: $message->created_at,
+            media: [],
+            chat: $chat->uuid,
+            to: $application->user->uuid,
+        ));
 
         DB::commit();
 
@@ -226,7 +249,7 @@ class JobApplicationController extends Controller
         ]);
     }
 
-    public function hiredCandidates(Request $request)
+    public function shortlistedCandidates(Request $request)
     {
         $request->validate([
             'job_id' => 'required|exists:jobs,id',

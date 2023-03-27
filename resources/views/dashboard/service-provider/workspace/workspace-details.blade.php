@@ -77,12 +77,12 @@
                     @if ($workspace->client_id === auth()->id())
                         @forelse ($workspace->contract->milestones as $milestone)
                             @php
-
+                                
                                 if ($latestMilestone !== $milestone->id && $milestone->escrow_fund_released_time === null && $found) {
                                     $latestMilestone = $milestone->id;
                                     $found = false;
                                 }
-
+                                
                             @endphp
 
                             <li @class([
@@ -149,12 +149,12 @@
                     @else
                         @forelse ($workspace->contract->milestones as $milestone)
                             @php
-
+                                
                                 if ($latestMilestone !== $milestone->id && $milestone->escrow_fund_released_time === null && $found) {
                                     $latestMilestone = $milestone->id;
                                     $found = false;
                                 }
-
+                                
                             @endphp
 
                             <li @class([
@@ -646,7 +646,7 @@
                     const action = $(this).data('action-request');
                     const request_id = $(this).data('request-id');
                     window.rebound({
-                        url: "{{ route('service-provider.workspace.action-request') }}",
+                        url: "{{ route('service-provider.workspace.milestone.action-request') }}",
                         data: {
                             action: action,
                             request_id: request_id

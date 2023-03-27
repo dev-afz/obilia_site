@@ -703,6 +703,7 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PackagePerk> $perks
  * @property-read int|null $perks_count
  * @method static \Illuminate\Database\Eloquent\Builder|Package active()
+ * @method static \Illuminate\Database\Eloquent\Builder|Package monthly()
  * @method static \Illuminate\Database\Eloquent\Builder|Package newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Package newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Package query()
@@ -719,6 +720,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Package whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Package whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Package whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Package yearly()
  */
 	class Package extends \Eloquent {}
 }

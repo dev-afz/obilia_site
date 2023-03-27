@@ -34,9 +34,10 @@
                                                     aria-selected="false">Invites</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" id="hired-tab-fill" data-bs-toggle="tab"
-                                                    href="#hired-fill" role="tab" aria-controls="hired-fill"
-                                                    aria-selected="false">Hired</a>
+                                                <a class="nav-link" id="shortlisted-tab-fill" data-bs-toggle="tab"
+                                                    href="#shortlisted-fill" role="tab"
+                                                    aria-controls="shortlisted-fill"
+                                                    aria-selected="false">shortlisted</a>
                                             </li>
                                         </ul>
 
@@ -65,9 +66,9 @@
                                                         :count="6" />
                                                 </div>
                                             </div>
-                                            <div class="tab-pane" id="hired-fill" role="tabpanel"
-                                                aria-labelledby="hired-tab-fill">
-                                                <div data-hired-candidates class="row">
+                                            <div class="tab-pane" id="shortlisted-fill" role="tabpanel"
+                                                aria-labelledby="shortlisted-tab-fill">
+                                                <div data-shortlisted-candidates class="row">
                                                     <x-misc.service-provider-skeleton-loader class="col-md-4 mt-5"
                                                         :count="6" />
                                                 </div>
@@ -116,11 +117,11 @@
                             fetchInvitedCandidates();
                         }
                     });
-                    $('#hired-tab-fill').click(function(e) {
+                    $('#shortlisted-tab-fill').click(function(e) {
                         e.preventDefault();
-                        if (shown !== 'hired') {
-                            shown = 'hired';
-                            fetchHiredCandidates();
+                        if (shown !== 'shortlisted') {
+                            shown = 'shortlisted';
+                            fetchShortlistedCandidates();
                         }
                     });
 
@@ -145,7 +146,7 @@
                                 `<div class="text-center px-1"><a href="${data.document}"  target="_blank">View Document</a></div>`;
                         }
 
-                        Notiflix.Report.info('Bid Data', message, 'Close');
+                        Notiflix.Report.info('Propasal Data', message, 'Close');
 
                     });
 
@@ -272,8 +273,8 @@
                     });
                 }
 
-                function fetchHiredCandidates() {
-                    $('[data-hired-candidates]').html($('[data-loader-html]').html());
+                function fetchShortlistedCandidates() {
+                    $('[data-shortlisted-candidates]').html($('[data-loader-html]').html());
                     rebound({
                         data: {
                             job_id: {{ $job->id }},
@@ -281,11 +282,11 @@
                         method: 'get',
                         block: false,
                         notification: false,
-                        url: "{{ route('service-provider.job.hired-candidates') }}",
+                        url: "{{ route('service-provider.job.shortlisted-candidates') }}",
                         processData: true,
                         successCallback: function(res) {
                             if (res.status === 'success') {
-                                $('[data-hired-candidates]').html(res.html);
+                                $('[data-shortlisted-candidates]').html(res.html);
                             }
                         }
                     });

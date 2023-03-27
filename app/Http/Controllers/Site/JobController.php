@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Site;
 
+use Str;
 use App\Models\Job;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Chat;
 use App\Models\UserService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
-use Str;
 
 class JobController extends Controller
 {
@@ -75,7 +76,7 @@ class JobController extends Controller
             ->firstOrFail();
 
         $anotherUser = $service->user;
-
+        DB::beginTransaction();
         $chat = $user->chats()
             ->whereHas('participants', fn ($q) => $q->where('user_id', $anotherUser->id))
             ->first();
@@ -106,6 +107,7 @@ class JobController extends Controller
             ['user_id' => $anotherUser->id, 'role' => 'member'],
         ]);
 
+        DB::commit();
         return response()->json([
             'status' => 'success',
             'message' => 'Chat created',

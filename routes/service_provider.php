@@ -53,7 +53,7 @@ Route::controller(DashboardController::class)
                 Route::post('/application-action', 'applicationAction')->name('application-action');
                 Route::post('/invite-candidate', 'inviteCandidate')->name('invite-candidate');
                 Route::get('/invited-candidates', 'invitedCandidates')->name('invited-candidates');
-                Route::get('/hired-candidates', 'hiredCandidates')->name('hired-candidates');
+                Route::get('/shortlisted-candidates', 'shortlistedCandidates')->name('shortlisted-candidates');
                 Route::get('/suggested-candidates', 'suggestedCandidates')->name('suggested-candidates');
             });
         });
@@ -88,7 +88,6 @@ Route::controller(DashboardController::class)
             Route::get('get-works', 'getWorks')->name('get-works');
             Route::post('add-work', 'addWork')->name('add-work');
 
-            Route::post('action-request', 'actionRequest')->name('action-request');
 
             Route::controller(WorkspaceChatController::class)->prefix('chat')->name('chat.')->group(function () {
                 Route::get('messages', 'messages')->name('messages');

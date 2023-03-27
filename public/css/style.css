@@ -132,6 +132,11 @@ ul {
   padding: 0px;
 }
 
+::-moz-selection {
+  background: #484848;
+  color: #fff;
+}
+
 ::selection {
   background: #484848;
   color: #fff;
@@ -4851,7 +4856,8 @@ Mobile style's
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   text-align: center;
   border-radius: 50%;
   color: #fff;
@@ -7387,6 +7393,9 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 #search input[type=search]:focus {
   box-shadow: none;
 }
+#search input[type=search]::-moz-placeholder {
+  color: #17171d;
+}
 #search input[type=search]::placeholder {
   color: #17171d;
 }
@@ -8361,7 +8370,8 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 }
 .twm-jobs-list-style1 .twm-media img {
   display: inline-block;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .twm-jobs-list-style1 p {
   font-size: 14px;
@@ -8476,7 +8486,8 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 }
 .twm-jobs-grid-style1 .twm-media img {
   display: block;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .twm-jobs-grid-style1 .twm-mid-content {
   padding-top: 60px;
@@ -10490,7 +10501,8 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 @media (max-width: 420px) {
   .twm-job-self-wrap.twm-job-detail-v2 .twm-job-self-info .twm-job-self-top .twm-media-bg img {
     height: 200px;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
 }
 .twm-job-self-wrap.twm-job-detail-v2 .twm-job-self-info .twm-job-self-top .twm-media-bg .twm-job-self-bottom {
@@ -12699,7 +12711,8 @@ strong {
 .dashboard-message-avtar img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .dashboard-message-area {
@@ -12788,8 +12801,10 @@ strong {
   display: block;
   width: var(--uploader__width, 150px);
   height: var(--uploader_height, 150px);
-  object-fit: cover;
-  object-position: top;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
 }
 .dashboard-profile-photo .upload-btn-wrapper {
   position: absolute;
@@ -12804,8 +12819,10 @@ strong {
   transform: translate(-50%, 0px);
 }
 .dashboard-profile-photo .upload-btn-wrapper #upload-image-grid img {
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
   width: 128px;
   height: 128px;
   padding: 0px;
@@ -13876,7 +13893,8 @@ strong {
   margin-bottom: 30px;
 }
 .twm-featured-city.twm-large-block img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   min-height: 520px;
 }
 @media (max-width: 1199px) {
@@ -14153,14 +14171,13 @@ strong {
 
 .job-categories-3 {
   padding: 20px;
-  background-color: #e0eeff;
-  border: 1px solid #ddd;
+  border: 2px solid #09596f;
   border-radius: 10px;
   position: relative;
   text-align: center;
   height: 100%;
   top: 40px;
-  transition: 0.5s all ease;
+  transition: 0.3s background-color ease-in-out;
 }
 .job-categories-3 .twm-media {
   width: 100px;
@@ -14850,8 +14867,10 @@ strong {
   max-width: 100%;
 }
 .upload__image__wrapper img {
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
   width: var(--uploader__width, 150px);
   height: var(--uploader_height, 150px);
   padding: 0px;
@@ -16664,7 +16683,8 @@ Fixed header glass effect
 }
 
 .job__banner {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   height: 150px !important;
   width: 150px !important;
 }
@@ -17142,7 +17162,8 @@ table.seprated-row th {
 .service-container .service-image {
   height: 15rem;
   width: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 input::-webkit-outer-spin-button,
@@ -17303,7 +17324,8 @@ input[type=number] {
 }
 .features-section > .row {
   box-shadow: 0 0 0 100vmax var(--features-bg, #000);
-  clip-path: inset(0 -100vmax);
+  -webkit-clip-path: inset(0 -100vmax);
+          clip-path: inset(0 -100vmax);
 }
 .features-section #for-sellers .h1,
 .features-section #for-sellers h2,

@@ -49,6 +49,8 @@
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ccc;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -445,6 +447,8 @@ li.reply .time {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ccc;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -1197,7 +1201,8 @@ video {
 }
 .image-preview img {
   height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   max-height: 15rem;
 }
 

@@ -198,9 +198,9 @@
                             <div class="twm-bnr-discription mb-2">Join the most comprehensive service
                                 marketplace.</div>
 
-                            <h2 class="text-primary">
+                            <h4 class="text-primary fs-4">
                                 Join the waitlist today and enjoy benefits
-                            </h2>
+                            </h4>
                             <p class="mb-1">
                                 No service charge for client for first 5 projects
                             </p>
@@ -226,11 +226,11 @@
                                     best
                                 </h2>
                             </div>
-                            <div class="twm-bnr-discription text-danger mb-2">It's easy, safe, and flexible.</div>
+                            <div class="twm-bnr-discription  mb-2">It's easy, safe, and flexible.</div>
 
-                            <h2 class="text-primary">
+                            <h4 class="text-primary fs-4">
                                 Join the waitlist today and enjoy benefits
-                            </h2>
+                            </h4>
                             <p class="mb-1">
                                 No service charge for client for first 5 projects
                             </p>
@@ -241,9 +241,9 @@
                             </p>
                             <div class="btn-container mt-4">
                                 <button data-bs-toggle="modal" data-bs-target="#waitlist"
-                                    class="call-to-action-btn outline">Waitlist for sellers</button>
+                                    class="call-to-action-btn ">Waitlist for sellers</button>
                                 <button data-bs-toggle="modal" data-bs-target="#waitlist"
-                                    class="call-to-action-btn ">Waitlist for clients</button>
+                                    class="call-to-action-btn outline">Waitlist for clients</button>
                             </div>
                         </div>
                     </div>
@@ -274,41 +274,7 @@
             </div>
         </div>
     </div>
-    <div id="categories" class="container my-5 ">
-        <div class="row">
-            <div class="col-md-12 position-relative mb-5 pe-5">
-                <h1 class="text-primary">
-                    Discover catogeries
-                </h1>
-                <a href="#" class="btn btn-primary position-absolute end-0 bottom-0">View all</a>
-            </div>
-
-            <div class="col-12">
-                <div class="section-content">
-                    <div class="owl-carousel category-corousel owl-btn-bottom-center ">
-                        @forelse ($categories as $cat)
-                            <div>
-                                <div class="category-item-card">
-                                    <div class="img-container">
-                                        <img src="{{ asset($cat->image) }}" alt="{{ $cat->name }}">
-                                    </div>
-                                </div>
-                                <div class="text-center text-primary mt-4">
-                                    <a href="#">
-                                        <h4 class="text-primary"> {{ $cat->name }}</h4>
-                                    </a>
-                                </div>
-                            </div>
-                        @empty
-                            <h4>
-                                No categories found
-                            </h4>
-                        @endforelse
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <x-section.category :categories="$industries" />
     <div id="how-it-works" class="container my-5  features-section">
         <div class="row py-4">
             <div class="col-12 my-3">
@@ -334,9 +300,9 @@
                                 <div class="ob-feature-item_bg"></div>
                                 <div class="icon-holder">
                                     <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="icon icon-tabler icon-tabler-shield-check" width="24"
-                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        class="icon icon-tabler icon-tabler-shield-check" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path
                                             d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06">
@@ -346,16 +312,13 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Create your profile.
+                                        Secure and timely payouts
                                     </h4>
                                     <p>
-                                        Build your profile with an engaging bio and portfolio with images and videos
-                                        that help clients
-                                        make easier decisions. Don't forget to add your skills, work history, education
-                                        and most
-                                        importantly your photo to your profile. Each service you list can act as an
-                                        independent
-                                        profile, so make sure all of them stand out.
+                                        Clients pay upfront, so you can be sure of payments against deliverables. We
+                                        ensure your
+                                        payouts are on time through our automated systems that run on the best payment
+                                        software
                                     </p>
                                 </div>
 
@@ -381,16 +344,12 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Find ways to earn.
+                                        Send custom quotes everytime
                                     </h4>
                                     <p class="">
-                                        In Obillia you can work in different ways, apply to jobs, get invited to job
-                                        posts by clients, or
-                                        be contacted by a client via chat. Once you are selected, send them a contract
-                                        through chat
-                                        and your project workspace opens. No fixed prices for projects, and no fixed
-                                        hourly rates. You
-                                        decide what you bill.
+                                        Each client and project is different, so why should prices be fixed? Send custom
+                                        contracts
+                                        with milestones for unique projects & clients.
                                     </p>
                                 </div>
                             </div>
@@ -414,16 +373,12 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Bring your own client.
+                                        All in one workspace
                                     </h4>
                                     <p class="">
-                                        Do you work with clients externally? Bring them to Obillia at no platform fee
-                                        for a limited
-                                        number of monthly credits. Just fill in the basic details of your client and
-                                        send an application
-                                        via your dashboard. Once they accept, you can have them directly in your chat,
-                                        send them a
-                                        contract and commence your project.
+                                        Keep in touch with your client always through project-based workspaces with
+                                        milestone
+                                        tracking, chat, file sharing and many more.
                                     </p>
                                 </div>
                             </div>
@@ -451,12 +406,13 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Using the workspace.
+                                        Automated Invoicing
                                     </h4>
                                     <p class="">
-                                        Obillia automatically creates workspaces for each contract accepted. Engage,
-                                        share, track,
-                                        deliver and monitor your projects. Share files up to 20GB*.
+                                        We want our partners to do what they love the most, forget the rest, we fulfil
+                                        everything
+                                        else. Get copies of your invoices for Tax Purposes automatically from your
+                                        dashboard.
                                     </p>
                                 </div>
                             </div>
@@ -482,16 +438,15 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Working with other sellers.
+                                        Collaborate with other sellers
                                     </h4>
                                     <p class="">
-                                        As a seller, you might seek services from fellow sellers in the platform, at
-                                        Obillia you as a
-                                        seller can post jobs, message other sellers and receive contracts. Working with
-                                        other sellers
-                                        helps you to add value to your offerings by outsourcing your requirements or
-                                        creating
-                                        collaborated projects.
+                                        Want to create projects with other sellers, feel free to connect and get the
+                                        same features
+                                        as collaborating with clients.
+                                        Please note, currently Obillia only supports one-one collabs, group collabs will
+                                        be coming
+                                        soon.
                                     </p>
                                 </div>
                             </div>
@@ -521,49 +476,54 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Invoicing.
-
+                                        Bring your own client
                                     </h4>
                                     <p class="">
-                                        All invoices to clients in Obillia are automated and GST-compliant. We
-                                        understand the
-                                        struggle of freelancers in India in terms of invoicing. You only have to do what
-                                        you love in
-                                        Obillia.
+                                        Working with clients externally? Bring them to obillia at zero cost or flat
+                                        rates based on
+                                        your plan. We send them GST-compliant invoices, you can track all your projects
+                                        in one
+                                        place. Easy for you, easy for your client.
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12 my-3">
-                        <div class="ob-feature_item">
-                            <div class="ob-feature-item_link">
-                                <div class="ob-feature-item_bg"></div>
-                                <div class="icon-holder">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="icon icon-tabler icon-tabler-zoom-money" width="24" height="24"
-                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
-                                        <path d="M21 21l-6 -6"></path>
-                                        <path d="M12 7h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5"></path>
-                                        <path d="M10 13v1m0 -8v1"></path>
-                                    </svg>
-                                </div>
-                                <div class="inner-text">
-                                    <h4 class="">
-                                        Get paid securely. </h4>
-                                    <p class="">
-                                        Get paid to your Indian Bank account directly. Our payment protection releases
-                                        client
-                                        payments at project milestones approvals. No hourly projects. Our platform fees
-                                        are
-                                        applicable and so are any taxes and applicable government deductions. Spend less
-                                        time
-                                        chasing what you are owed, and focus on what you love.
-                                    </p>
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="ob-feature_item">
+                                    <div class="ob-feature-item_link">
+                                        <div class="ob-feature-item_bg"></div>
+                                        <div class="icon-holder">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-zoom-money" width="24"
+                                                height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                stroke="currentColor" fill="none" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                                                <path d="M21 21l-6 -6"></path>
+                                                <path d="M12 7h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5"></path>
+                                                <path d="M10 13v1m0 -8v1"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="inner-text">
+                                            <h4 class="">
+                                                Do more, earn more with our curated plans
+                                            </h4>
+                                            <p class="">
+                                                It's always free* to join obillia as a freelancer. we deduct a platform
+                                                fee for
+                                                using our
+                                                resources on the free or extra plan, however, with Obillia Plus you can
+                                                do more
+                                                and cancel
+                                                the platform fees from each project. Read more about our plans here .
+                                            </p>
 
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -602,13 +562,12 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Post a Job and hire a service provider.
+                                        Services for your budget.
                                     </h4>
                                     <p class="">
-                                        Once you sign in, you can post a job and accept applications or invite suggested
-                                        candidates
-                                        to apply. You can chat with the sellers who have applied and request a contract
-                                        proposal.
+                                        A startup or a large media house? Doesn't matter, find quality service
+                                        providers for your
+                                        budget.
                                     </p>
 
                                 </div>
@@ -634,14 +593,12 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Browse through freelancer profiles.
+                                        Verified sellers
                                     </h4>
                                     <p class="">
-                                        If you want to find the best-suited talent for your project, you can browse
-                                        through services
-                                        based on category, find the best partner, open a chat, and discuss with them
-                                        your scope,
-                                        timeline and budget. Request for a contract proposal and get working.
+                                        We ensure that all sellers are verified for the safety and security of our
+                                        clients.
+                                        Non-background verified profiles and services are never live on Obillia.
                                     </p>
 
                                 </div>
@@ -665,14 +622,12 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        All-in-one workspace.
+                                        Protected payments
                                     </h4>
                                     <p class="">
-                                        Gone are the days you needed to engage with your freelancer via email, messaging
-                                        apps,
-                                        storage solutions etc. With the workspace in Obillia built for efficiency, you
-                                        will be able to stay
-                                        in touch with your freelancer and be updated in real-time.
+                                        Remember you pay upfront for projects/milestones, but payments aren't
+                                        released until you
+                                        approve the deliveried work.
                                     </p>
 
                                 </div>
@@ -698,46 +653,12 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Get GST invoices always.
+                                        All in one workspace
                                     </h4>
                                     <p class="">
-                                        Are you finding it difficult to receive GST invoices while working with
-                                        freelancers, with Obillia,
-                                        you are always sure to get invoices that are GST-compliant.
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" data-aos-delay="200"
-                        class="col-md-6 my-3">
-                        <div class="ob-feature_item">
-                            <div class="ob-feature-item_link">
-                                <div class="ob-feature-item_bg"></div>
-                                <div class="icon-holder">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="icon icon-tabler icon-tabler-user-search" width="24"
-                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
-                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h1.5"></path>
-                                        <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-                                        <path d="M20.2 20.2l1.8 1.8"></path>
-                                    </svg>
-                                </div>
-                                <div class="inner-text">
-                                    <h4 class="">
-                                        Safe payments.
-                                    </h4>
-                                    <p class="">
-                                        When you fund a milestone/project to activate the order, Obillia does not
-                                        release the
-                                        payment to the seller until you approve the delivered milestone/project. In
-                                        milestone
-                                        contracts, you only pay for the milestone coming up.
+                                        Keep in touch with your freelancer always through project-based workspaces
+                                        with milestone
+                                        tracking, chat, file sharing and many more.
                                     </p>
 
                                 </div>
@@ -745,39 +666,6 @@
                         </div>
                     </div>
                     <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-6 my-3">
-                        <div class="ob-feature_item">
-                            <div class="ob-feature-item_link">
-                                <div class="ob-feature-item_bg"></div>
-                                <div class="icon-holder">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="icon icon-tabler icon-tabler-user-pin" width="24" height="24"
-                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
-                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h2.5"></path>
-                                        <path
-                                            d="M21.121 20.121a3 3 0 1 0 -4.242 0c.418 .419 1.125 1.045 2.121 1.879c1.051 -.89 1.759 -1.516 2.121 -1.879z">
-                                        </path>
-                                        <path d="M19 18v.01"></path>
-                                    </svg>
-                                </div>
-                                <div class="inner-text">
-                                    <h4 class="">
-                                        Get matched suggestions.
-                                    </h4>
-                                    <p class="">
-                                        Get service providers that match your requirements under your job posting.
-                                        Invite them to
-                                        apply or message them directly, as a client you always have full access to
-                                        every service
-                                        provider here.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12 my-3">
                         <div class="ob-feature_item">
                             <div class="ob-feature-item_link">
                                 <div class="ob-feature-item_bg"></div>
@@ -798,27 +686,88 @@
                                 </div>
                                 <div class="inner-text">
                                     <h4 class="">
-                                        Partner or Bundled services.
+                                        GST compliant invoices
                                     </h4>
                                     <p class="">
-                                        Obillia works with certain exclusive partner agencies or individuals in certain
-                                        categories,
-                                        these partners are vetted thoroughly, have a great track record and usually have
-                                        a team of
-                                        their own. Obillia will get in touch with your request and set up a meeting with
-                                        the partners
-                                        for you to discuss your scope.
-                                        For services that require the service of multiple freelancers from multiple
-                                        categories, please
-                                        get in touch by clicking the "Need Bundled Services" tab and filling out the
-                                        form, our team
-                                        will get in touch with you, understand your scope and pick the best sellers for
-                                        your
-                                        requirements. Once you approved, the project commences with all the freelancers
-                                        in one
-                                        place.
+                                        Are you a business owner finding it challenging to get Freelance services
+                                        with GST invoices?
+                                        Worry no more, all invoices to clients in Obillia are GST compliant, fill up
+                                        your GSTIN and
+                                        you are good to go. You don't have to worry if your freelancer is registered
+                                        or not.
                                     </p>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" data-aos-delay="200"
+                        class="col-md-6 my-3">
+                        <div class="ob-feature_item">
+                            <div class="ob-feature-item_link">
+                                <div class="ob-feature-item_bg"></div>
+                                <div class="icon-holder">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-user-search" width="24"
+                                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h1.5"></path>
+                                        <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                        <path d="M20.2 20.2l1.8 1.8"></path>
+                                    </svg>
+                                </div>
+                                <div class="inner-text">
+                                    <h4 class="">
+                                        Post a job or hire directly.
+                                    </h4>
+                                    <p class="">
+                                        Experience multiple approaches to hiring your project partner in Obillia
+                                        either via posting
+                                        a job or reaching out to a freelance service provider directly.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12 my-3">
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <div class="ob-feature_item">
+                                    <div class="ob-feature-item_link">
+                                        <div class="ob-feature-item_bg"></div>
+                                        <div class="icon-holder">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-user-pin" width="24"
+                                                height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                stroke="currentColor" fill="none" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+                                                <path d="M6 21v-2a4 4 0 0 1 4 -4h2.5"></path>
+                                                <path
+                                                    d="M21.121 20.121a3 3 0 1 0 -4.242 0c.418 .419 1.125 1.045 2.121 1.879c1.051 -.89 1.759 -1.516 2.121 -1.879z">
+                                                </path>
+                                                <path d="M19 18v.01"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="inner-text">
+                                            <h4 class="">
+                                                Get matched suggestions.
+                                            </h4>
+                                            <p class="">
+                                                Get service providers that match your requirements under your job
+                                                posting.
+                                                Invite them to
+                                                apply or message them directly, as a client you always have full access
+                                                to
+                                                every service
+                                                provider here.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -878,11 +827,22 @@
                 </div>
                 <div class="col-md-12">
                     <x-utils.input name="phone" :required="false" :attrs="[
-                        //10 digit pattern
-                        'pattern' => '^\d{10}$',
+                        'pattern' => '[0-9]{10}',
                     ]" />
                 </div>
 
+                <div class="col-md-12">
+                    <x-utils.select name="expertise" :options="[
+                        'Design',
+                        'Writing',
+                        'Music',
+                        'Audio',
+                        'Video',
+                        'Photography',
+                        'Web & App Development',
+                        'Marketing',
+                    ]" />
+                </div>
                 <div class="col-12 mt-4">
                     <button type="submit" class="btn btn-primary btn-block w-100 btn-lg">Submit</button>
                 </div>

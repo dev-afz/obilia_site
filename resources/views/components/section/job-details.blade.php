@@ -67,7 +67,7 @@
                                     <li>
                                         <div class="twm-s-info-inner">
                                             <i class="fas fa-file-signature"></i>
-                                            <span class="twm-title">Avrage Bid Value</span>
+                                            <span class="twm-title">Avrage Praposal Value</span>
                                             <div class="twm-s-info-discription">{{ $job->applications_avg_bid_price }}
                                             </div>
                                         </div>

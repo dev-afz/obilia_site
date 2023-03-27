@@ -37,9 +37,26 @@ class BasicController extends Controller
             ->with(['sub_category'])
             ->take(6)->get();
 
-        $packages = Package::active()->with(['perks'])->get();
+        $monthly_packages = Package::active()
+            ->monthly()
+            ->with(['perks'])->get();
 
-        return view('temp.home', compact('industries', 'jobs', 'packages', 'categories'));
+        $yearly_packages = Package::active()
+            ->yearly()
+            ->with(['perks'])->get();
+
+        $packages = [
+            'monthly' => $monthly_packages,
+            'yearly' => $yearly_packages,
+        ];
+
+        return view('temp.home', compact(
+            'industries',
+            'jobs',
+            'categories',
+            'packages'
+
+        ));
     }
 
 
@@ -50,6 +67,7 @@ class BasicController extends Controller
             'for' => 'required|string|in:seller,client',
             'email' => 'required|string|email|max:1000',
             'phone' => 'nullable|numeric|digits:10',
+            'expertise' => 'required|string|max:255',
         ]);
 
 
@@ -69,6 +87,7 @@ class BasicController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'from' => $request->for,
+            'expertise' => $request->expertise,
         ]);
 
         return response()->json([
@@ -79,9 +98,22 @@ class BasicController extends Controller
 
     public function categories($slug)
     {
-        $industry  = Industry::where('slug', $slug)->active()->firstOrFail();
 
-        $categories = Category::where('industry_id', $industry->id)->active()
+
+        if ($slug !== 'all') {
+            $industry  = Industry::where('slug', $slug)->active()->firstOrFail();
+        } else {
+            //make custom industry for all
+            $industry = new Industry();
+            $industry->name = 'All';
+            $industry->slug = 'all';
+        }
+
+
+        $categories = Category::when($slug != 'all', function ($query) use ($industry) {
+            $query->where('industry_id', $industry->id);
+        })
+            ->active()
             ->with(['sub_categories' => fn ($q) => $q->active()])
             ->get();
 

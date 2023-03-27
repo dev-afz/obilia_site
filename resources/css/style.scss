@@ -10311,14 +10311,13 @@ h3.twm-title {
 
 .job-categories-3 {
     padding: 20px;
-    background-color: $card-bg;
-    border: 1px solid #ddd;
+    border: 2px solid $primary-500;
     border-radius: 10px;
     position: relative;
     text-align: center;
     height: 100%;
     top: 40px;
-    transition: $transition;
+    transition: 0.3s background-color ease-in-out;
 
     .twm-media {
         width: 100px;

@@ -21,7 +21,7 @@
                 <a href="candidate-detail.html" class="twm-job-title">
                     <h4>{{ $apl->user->name }}</h4>
                 </a>
-                <strong>Bid Amount :</strong>
+                <strong>Propsal Amount :</strong>
                 <span>{{ $apl->bid_price }}</span>
                 <p> <strong>Status :</strong> @switch($apl->status)
                         @case('pending')

@@ -32,4 +32,14 @@ class Package extends Model
     {
         return $query->where('status', 'active');
     }
+
+    public function scopeMonthly($query)
+    {
+        return $query->where('duration', 28);
+    }
+
+    public function scopeYearly($query)
+    {
+        return $query->where('duration', 365);
+    }
 }

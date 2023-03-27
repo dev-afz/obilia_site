@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\MilestoneWork;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Contract;
 
 class MilestoneController extends Controller
 {
@@ -75,7 +76,13 @@ class MilestoneController extends Controller
 
         $client = auth()->user();
 
-        $contract = $client->client_contracts()->where('id', $request->contract_id)->firstOrFail();
+
+        $contract = Contract::where('id', $request->contract_id)
+            ->where(function ($query) {
+                return  $query->where('user_id', auth()->id())
+                    ->orWhere('client_id', auth()->id());
+            })
+            ->firstOrFail();
 
         $contract->milestone_requests()->create([
             'contract_id' => $contract->id,
@@ -97,14 +104,18 @@ class MilestoneController extends Controller
             'action' => 'required|string|in:approved,rejected',
         ]);
 
-        $client = auth()->user();
+        $provider = auth()->user();
 
-        $contract = $client->client_contracts()->whereHas('milestone_requests', function ($query) use ($request, $client) {
+        $contract = Contract::whereHas('milestone_requests', function ($query) use ($request, $provider) {
             $query->where('id', $request->request_id)
-                ->where('requested_by', '!=', $client->id);
+                ->where('requested_by', '!=', $provider->id);
+        })->where(function ($query) {
+            return  $query->where('user_id', auth()->id())
+                ->orWhere('client_id', auth()->id());
         })->firstOrFail();
 
-        $ml_request = $contract->milestone_requests()->where('id', $request->request_id)->firstOrFail();
+        $ml_request = $contract->milestone_requests()->where('id', $request->request_id)
+            ->firstOrFail();
 
         if ($ml_request->status !== 'pending') {
             return response()->json([

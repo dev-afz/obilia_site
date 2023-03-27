@@ -3,19 +3,12 @@
 
         <div class="wt-separator-two-part">
             <div class="row wt-separator-two-part-row">
-                <div class="col-xl-12 col-lg-12 col-md-12 wt-separator-two-part-left">
-                    <!-- TITLE START-->
-                    <div class="section-head left wt-small-separator-outer">
-                        <div class="wt-small-separator site-text-primary">
-                            <div>Jobs by Categories</div>
-                        </div>
-                        <h2 class="wt-title">Choose Your Desire Industry</h2>
-                    </div>
-                    <!-- TITLE END-->
+                <div class="col-md-12 position-relative mb-5 pe-5">
+                    <h1 class="text-primary">
+                        Discover catogeries
+                    </h1>
+                    <a href="#" class="btn btn-primary position-absolute end-0 bottom-0">View all</a>
                 </div>
-                {{-- <div class="col-xl-6 col-lg-6 col-md-12 wt-separator-two-part-right text-right">
-                    <a href="job-list.html" class=" site-button">All Categories</a>
-                </div> --}}
             </div>
         </div>
 

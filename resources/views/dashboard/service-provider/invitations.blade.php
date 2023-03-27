@@ -50,8 +50,8 @@
                     let bidAmount = 0;
                     //ask for bid amount using notiflix
                     Notiflix.Confirm.prompt(
-                        'Bid Amount',
-                        'Enter your bid amount',
+                        'Propasal Amount',
+                        'Enter your propasal amount',
                         '0',
                         'Send',
                         'Cancel',
