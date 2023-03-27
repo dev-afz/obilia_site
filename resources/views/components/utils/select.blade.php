@@ -9,7 +9,8 @@
             @if ($maxSelect) data-max-options="{{ $maxSelect }}" @endif
             @if (!empty($attrs)) @forelse ($attrs as $atr) {{ $atr[0] }}="{{ $atr[1] }}" @empty @endforelse @endif
             data-bv-field="size">
-            <option disabled selected>Select {{ ucwords(str_replace('_', ' ', $name)) }}</option>
+            <option disabled @if (!$multiple) selected @endif>Select
+                {{ ucwords(str_replace('_', ' ', $name)) }}</option>
 
             @forelse ($options as $option)
                 <option value="{{ $option[$valueName] ?? $option }}"

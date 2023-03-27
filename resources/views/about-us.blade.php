@@ -4,113 +4,74 @@
 
         <x-section.about />
 
-        <div class="section-full p-t120 p-b90 site-bg-white twm-how-it-work-area2">
+
+        <section>
 
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-12">
-                        <!-- TITLE START-->
-                        <div class="section-head left wt-small-separator-outer">
-                            <div class="wt-small-separator site-text-primary">
-                                <div>How It Works </div>
+                <div class="twm-about-1-section-wrap">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="twm-about-1-section">
+                                <div class="twm-media border-5">
+                                    <img style="border-radius:10px;" src="https://picsum.photos/seed/picsum/600/400"
+                                        alt="">
+                                </div>
                             </div>
-                            <h2 class="wt-title">Follow our steps we will help you.</h2>
-
                         </div>
-                        <ul class="description-list">
-                            <li>
-                                <i class="feather-check"></i>
-                                Trusted & Quality Job
-                            </li>
-                            <li>
-                                <i class="feather-check"></i>
-                                International Job
-                            </li>
-                            <li>
-                                <i class="feather-check"></i>
-                                No Extra Charge
-                            </li>
-                            <li>
-                                <i class="feather-check"></i>
-                                Top Companies
-                            </li>
-                        </ul>
-                        <!-- TITLE END-->
-                    </div>
-                    <div class="col-lg-8 col-md-12">
-                        <div class="twm-w-process-steps-2-wrap">
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="twm-w-process-steps-2">
-                                        <div class="twm-w-pro-top bg-clr-sky-light bg-sky-light-shadow">
-                                            <span class="twm-large-number text-clr-sky">01</span>
-                                            <div class="twm-media">
-                                                <span><img src="images/work-process/icon1.png" alt="icon1"></span>
-                                            </div>
-                                            <h4 class="twm-title">Register<br>Your Account</h4>
-                                            <p>You need to create an account to find the best and preferred job.</p>
-                                        </div>
+                        <div class="col-md-8">
+                            <h2 class="wt-title">
+                                Why Obillia?
+                            </h2>
+                            <p>
+                                We strive to simplify the virtual services industry in India by giving clients instant
+                                access
+                                to a pan-India talent pool and freelancers the opportunity to work with a wide network
+                                of
+                                clients. With easy to use to workspaces, invoicing, protected payments and many more
+                                features, Obillia comes packed with solutions to make freelancers' and clients’ jobs
+                                easier.
+                                Whether you are looking to outsource for project-based work or remote contract jobs or
+                                need a freelancer to support your in-house team, we make hiring freelancers easy.
+                            </p>
+                        </div>
 
-                                    </div>
+                        <div class="col-12 mt-5 mb-5"></div>
+
+                        <div class="col-md-8">
+                            <h2 class="wt-title">
+                                Our Priority - User Satisfaction
+                            </h2>
+                            <p>
+                                Obillia values feedback from all the users and is committed to continuously
+                                improving to create a better experience for everyone
+                            </p>
+                            <p>
+                                As self-employed creative individuals, freelancers and/or agencies in India,
+                                challenges are plenty, Obillia is committed to converting these challenges into
+                                opportunities for users to grow and stand out, whether it's through adding new
+                                features, improving existing ones, or addressing any issues that may arise.
+
+                            </p>
+                            <p>
+                                One of the key focus at Obillia is our commitment to social responsibility. We
+                                believe in creating opportunities for people from all backgrounds and
+                                socioeconomic levels. Obillia is a level playing field for
+                                freelancers/sellers to showcase their skills, regardless of their education or work
+                                experience.
+
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="twm-about-1-section">
+                                <div class="twm-media border-5">
+                                    <img style="border-radius:10px;" src="https://picsum.photos/seed/priority/600/400"
+                                        alt="">
                                 </div>
-
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="twm-w-process-steps-2">
-                                        <div class="twm-w-pro-top bg-clr-yellow-light bg-yellow-light-shadow">
-                                            <span class="twm-large-number text-clr-yellow">02</span>
-                                            <div class="twm-media">
-                                                <span><img src="images/work-process/icon4.png" alt="icon1"></span>
-                                            </div>
-                                            <h4 class="twm-title">Search <br>
-                                                Your Job</h4>
-                                            <p>You need to create an account to find the best and preferred job.</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="twm-w-process-steps-2">
-                                        <div class="twm-w-pro-top bg-clr-pink-light bg-pink-light-shadow">
-                                            <span class="twm-large-number text-clr-pink">03</span>
-                                            <div class="twm-media">
-                                                <span><img src="images/work-process/icon3.png" alt="icon1"></span>
-                                            </div>
-                                            <h4 class="twm-title">Apply <br>For Dream Job</h4>
-                                            <p>You need to create an account to find the best and preferred job.</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="twm-w-process-steps-2">
-                                        <div class="twm-w-pro-top bg-clr-green-light bg-clr-light-shadow">
-                                            <span class="twm-large-number text-clr-green">04</span>
-                                            <div class="twm-media">
-                                                <span><img src="images/work-process/icon3.png" alt="icon1"></span>
-                                            </div>
-                                            <h4 class="twm-title">Upload <br>Your Resume</h4>
-                                            <p>You need to create an account to find the best and preferred job.</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
 
+        </section>
 
-
-                <div class="twm-how-it-work-section">
-
-                </div>
-            </div>
-
-        </div>
-        <!-- JOBS CATEGORIES SECTION START -->
-        <x-section.category :categories="$categories" />
-        <!-- JOBS CATEGORIES SECTION END -->
 </x-layout>

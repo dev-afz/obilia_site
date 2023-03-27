@@ -1,4 +1,4 @@
-<div class="section-full p-t120 p-b90 site-bg-gray twm-about-1-area">
+<div class="section-full p-b90 site-bg-gray twm-about-1-area">
 
     <div class="container">
         <div class="twm-about-1-section-wrap">
@@ -17,29 +17,40 @@
                         <!-- TITLE START-->
                         <div class="section-head left wt-small-separator-outer">
                             <div class="wt-small-separator site-text-primary">
-                                <div>About </div>
+                                {{-- <div>About </div> --}}
                             </div>
-                            <h2 class="wt-title">Millions of jobs. Find the
-                                one that’s right for you.</h2>
+                            <h2 class="wt-title">
+                                Hundreds of providers and thousands of services. Find the right one for you.
+                            </h2>
+                            <p>
+                                Obillia is the one-stop platform for the present and future of remote, contract and
+                                freelance work in India for digital and on-site on-demand professional services.
+                                Our mission is to build a comprehensive freelance marketplace in India by
+                                providing a solid, trustworthy, and secure platform for clients and sellers
+                            </p>
+                            <p>
+                                Whether you're a freelancer or an agency, Obillia is the perfect platform to
+                                monetise your skills, find new clients, and grow your career
+                            </p>
 
                         </div>
                         <!-- TITLE END-->
                         <ul class="description-list">
                             <li>
                                 <i class="feather-check"></i>
-                                Full lifetime access
+                                15GB+ of storage
                             </li>
                             <li>
                                 <i class="feather-check"></i>
-                                20+ downloadable resources
+                                Pesonalized workspace
                             </li>
                             <li>
                                 <i class="feather-check"></i>
-                                Certificate of completion
+                                Complete invoicing solution
                             </li>
                             <li>
                                 <i class="feather-check"></i>
-                                Free Trial 7 Days
+                                Secure payments
                             </li>
                         </ul>
 
@@ -48,7 +59,7 @@
 
             </div>
         </div>
-        <div class="twm-about-1-bottom-wrap">
+        {{-- <div class="twm-about-1-bottom-wrap">
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <!--icon-block-1-->
@@ -104,7 +115,7 @@
 
 
             </div>
-        </div>
+        </div> --}}
     </div>
 
 </div>

@@ -34,16 +34,18 @@ Route::controller(AuthController::class)
     });
 
 Route::controller(BasicController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
     Route::get('test', 'test')->name('test');
     Route::post('wishlist', 'wishlist')->name('wishlist');
-    Route::get('/', 'index')->name('index');
+    Route::get('plans', 'plans')->name('plans');
+    Route::get('how-it-works', 'howItWorks')->name('how-it-works');
     Route::get('/category/{slug}', 'categories')->name('categories');
     Route::get('/subcategories/{slug}', 'subcategories')->name('subcategories');
     Route::get('/about', 'about');
     Route::get('/search', 'search')->name('search');
     Route::get('/contact', 'contact')->name('contact');
     Route::post('/contact', 'storeContact');
-    Route::get('/about-us', 'aboutUs')->name('about-us');
+    Route::get('/about', 'aboutUs')->name('about');
     Route::get('provider/{uuid}', 'provider')->name('provider');
     Route::get('provider/{user_uuid}/{service_slug}', 'serviceDetails')->name('service-details');
     Route::controller(JobController::class)

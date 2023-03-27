@@ -28,33 +28,12 @@ class BasicController extends Controller
 
         $categories = Category::active()->take(6)->get();
 
-        $jobs = Job::active()
-            ->when(auth()->check(), function ($query) {
-                $query->withCount(['likes' => function ($query) {
-                    $query->where('user_id', auth()->id());
-                }]);
-            })
-            ->with(['sub_category'])
-            ->take(6)->get();
 
-        $monthly_packages = Package::active()
-            ->monthly()
-            ->with(['perks'])->get();
 
-        $yearly_packages = Package::active()
-            ->yearly()
-            ->with(['perks'])->get();
-
-        $packages = [
-            'monthly' => $monthly_packages,
-            'yearly' => $yearly_packages,
-        ];
 
         return view('temp.home', compact(
             'industries',
-            'jobs',
             'categories',
-            'packages'
 
         ));
     }
@@ -67,7 +46,8 @@ class BasicController extends Controller
             'for' => 'required|string|in:seller,client',
             'email' => 'required|string|email|max:1000',
             'phone' => 'nullable|numeric|digits:10',
-            'expertise' => 'required|string|max:255',
+            'expertise' => 'nullable|array',
+            'expertise.*' => 'required|string|max:255',
         ]);
 
 
@@ -81,13 +61,14 @@ class BasicController extends Controller
             ]);
         }
 
+        $expertise = $request->expertise ? implode(',', $request->expertise) : null;
 
         Wishlist::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
             'from' => $request->for,
-            'expertise' => $request->expertise,
+            'expertise' => $expertise,
         ]);
 
         return response()->json([
@@ -121,6 +102,25 @@ class BasicController extends Controller
         return view('sub-categories', compact('industry', 'categories'));
     }
 
+
+    public function plans()
+    {
+        $monthly_packages = Package::active()
+            ->monthly()
+            ->with(['perks'])->get();
+
+        $yearly_packages = Package::active()
+            ->yearly()
+            ->with(['perks'])->get();
+
+        $packages = [
+            'monthly' => $monthly_packages,
+            'yearly' => $yearly_packages,
+        ];
+
+
+        return view('plans', compact('packages'));
+    }
 
     public function subcategories($slug)
     {
@@ -230,5 +230,16 @@ class BasicController extends Controller
             'message' => 'Thank you for your interest. We will get back to you soon.',
             'status' => 'success'
         ], 200);
+    }
+
+
+    public function howItWorks()
+    {
+        return view('how-it-works');
+    }
+
+    public function about()
+    {
+        return view('about-us');
     }
 }
