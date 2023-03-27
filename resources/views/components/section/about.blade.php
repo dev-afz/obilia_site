@@ -20,7 +20,7 @@
                                 {{-- <div>About </div> --}}
                             </div>
                             <h2 class="wt-title">
-                                Hundreds of providers and thousands of services. Find the right one for you.
+                                About Obillia
                             </h2>
                             <p>
                                 Obillia is the one-stop platform for the present and future of remote, contract and
