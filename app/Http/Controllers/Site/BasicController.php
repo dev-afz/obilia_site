@@ -237,7 +237,7 @@ class BasicController extends Controller
     {
         if ($for == 'client') {
             return view('how-it-works-client');
-        } else if ($for == 'provider') {
+        } else if ($for == 'seller') {
             return view('how-it-works-provider');
         }
         abort(404);

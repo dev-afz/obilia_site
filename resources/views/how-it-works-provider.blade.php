@@ -6,43 +6,21 @@
 
         <div class="container">
             <div class="row align-items-baseline">
-                <div class="col-lg-4 col-md-12">
-                    <!-- TITLE START-->
+                <div class="col-lg-12 col-md-12 mb-5">
                     <div class="section-head left wt-small-separator-outer">
                         <div class="wt-small-separator site-text-primary">
                             <div>How It Works </div>
                         </div>
-                        <h2 class="wt-title">Follow our steps we will help you.</h2>
+                        <h2 class="wt-title"> How does obillia work for sellers?</h2>
 
                     </div>
-                    <ul class="description-list">
-                        <li>
-                            <i class="feather-check"></i>
-                            15GB+ of storage
-                        </li>
-                        <li>
-                            <i class="feather-check"></i>
-                            Pesonalized workspace
-                        </li>
-                        <li>
-                            <i class="feather-check"></i>
-                            Complete invoicing solution
-                        </li>
-                        <li>
-                            <i class="feather-check"></i>
-                            Secure payments
-                        </li>
-                    </ul>
-                    <!-- TITLE END-->
                 </div>
-                <div class="col-lg-8 col-md-12">
+                <div class="col-lg-12 col-md-12">
                     <div class="twm-w-process-steps-2-wrap">
                         <div class="row">
-                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500"
-                                class="col-xl-6 col-lg-6 col-md-6">
+                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12">
                                 <div class="twm-w-process-steps-2">
                                     <div class="twm-w-pro-top  bg-sky-light-shadow">
-                                        <span class="twm-large-number text-clr-sky">01</span>
                                         <div class="twm-media">
                                             <span class="text-clr-sky">
 
@@ -72,11 +50,9 @@
 
                                 </div>
                             </div>
-                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500"
-                                class="col-xl-6 col-lg-6 col-md-6">
+                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12">
                                 <div class="twm-w-process-steps-2">
                                     <div class="twm-w-pro-top bg-pink-light-shadow">
-                                        <span class="twm-large-number text-clr-pink">02</span>
                                         <div class="twm-media">
                                             <span class="text-clr-pink"> <svg aria-hidden="true" focusable="false"
                                                     data-prefix="fa-regular" data-icon="users-medical"
@@ -102,11 +78,9 @@
 
                                 </div>
                             </div>
-                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500"
-                                class="col-xl-6 col-lg-6 col-md-6">
+                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12">
                                 <div class="twm-w-process-steps-2">
                                     <div class="twm-w-pro-top -yellow-light-shadow">
-                                        <span class="twm-large-number text-clr-yellow">03</span>
                                         <div class="twm-media">
                                             <span class="text-clr-yellow"> <svg xmlns="http://www.w3.org/2000/svg"
                                                     class="icon icon-tabler icon-tabler-zoom-money" viewBox="0 0 24 24"
@@ -137,11 +111,9 @@
 
 
 
-                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500"
-                                class="col-xl-6 col-lg-6 col-md-6">
+                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12">
                                 <div class="twm-w-process-steps-2">
                                     <div class="twm-w-pro-top  bg-clr-light-shadow">
-                                        <span class="twm-large-number text-clr-pink-2">04</span>
                                         <div class="twm-media">
                                             <span class="text-clr-pink-2"> <svg aria-hidden="true" focusable="false"
                                                     data-prefix="fa-regular" data-icon="screen-users"
@@ -165,11 +137,9 @@
 
                                 </div>
                             </div>
-                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500"
-                                class="col-xl-6 col-lg-6 col-md-6">
+                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12">
                                 <div class="twm-w-process-steps-2">
                                     <div class="twm-w-pro-top  bg-clr-light-shadow">
-                                        <span class="twm-large-number text-clr-green">05</span>
                                         <div class="twm-media">
                                             <span class="text-clr-green"> <svg aria-hidden="true" focusable="false"
                                                     data-prefix="fa-regular" data-icon="database"
@@ -192,11 +162,9 @@
 
                                 </div>
                             </div>
-                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500"
-                                class="col-xl-6 col-lg-6 col-md-6">
+                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12">
                                 <div class="twm-w-process-steps-2">
                                     <div class="twm-w-pro-top  bg-clr-light-shadow">
-                                        <span class="twm-large-number text-clr-gray">06</span>
                                         <div class="twm-media">
                                             <span class="text-clr-gray"> <svg aria-hidden="true" focusable="false"
                                                     data-prefix="fa-regular" data-icon="file-invoice-dollar"
@@ -219,11 +187,9 @@
 
                                 </div>
                             </div>
-                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500"
-                                class="col-xl-6 col-lg-6 col-md-6">
+                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12">
                                 <div class="twm-w-process-steps-2">
                                     <div class="twm-w-pro-top  bg-clr-light-shadow">
-                                        <span class="twm-large-number text-clr-sky-blue">07</span>
                                         <div class="twm-media">
                                             <span class="text-clr-sky-blue"> <svg aria-hidden="true"
                                                     focusable="false" data-prefix="fa-regular"

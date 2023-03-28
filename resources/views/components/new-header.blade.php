@@ -39,7 +39,7 @@
                                     <a href="{{ route('how-it-works', 'client') }}">For Client</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('how-it-works', 'provider') }}"> For Provider</a>
+                                    <a href="{{ route('how-it-works', 'seller') }}"> For seller</a>
                                 </li>
                             </ul>
 
