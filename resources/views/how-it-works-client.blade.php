@@ -85,7 +85,7 @@
                                                 </svg></span>
                                         </div>
                                         <h4 class="twm-title"> Browse through freelancer profiles.</h4>
-                                        <p>Y If you want to find the best-suited talent for your project, you can browse
+                                        <p>If you want to find the best-suited talent for your project, you can browse
                                             through services
                                             based on category, find the best partner, open a chat, and discuss with them
                                             your scope,
