@@ -41,7 +41,7 @@
                             <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500"
                                 class="col-xl-6 col-lg-6 col-md-6">
                                 <div class="twm-w-process-steps-2">
-                                    <div class="twm-w-pro-top bg-clr-sky-light bg-sky-light-shadow">
+                                    <div class="twm-w-pro-top  bg-sky-light-shadow">
                                         <span class="twm-large-number text-clr-sky">01</span>
                                         <div class="twm-media">
                                             <span class="text-clr-sky">
@@ -72,7 +72,7 @@
                             <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500"
                                 class="col-xl-6 col-lg-6 col-md-6">
                                 <div class="twm-w-process-steps-2">
-                                    <div class="twm-w-pro-top bg-clr-yellow-light bg-yellow-light-shadow">
+                                    <div class="twm-w-pro-top -yellow-light-shadow">
                                         <span class="twm-large-number text-clr-yellow">02</span>
                                         <div class="twm-media">
                                             <span class="text-clr-yellow"> <svg aria-hidden="true" focusable="false"
@@ -98,7 +98,7 @@
                             <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500"
                                 class="col-xl-6 col-lg-6 col-md-6">
                                 <div class="twm-w-process-steps-2">
-                                    <div class="twm-w-pro-top bg-clr-pink-light bg-pink-light-shadow">
+                                    <div class="twm-w-pro-top bg-pink-light-shadow">
                                         <span class="twm-large-number text-clr-pink">03</span>
                                         <div class="twm-media">
                                             <span class="text-clr-pink"> <svg aria-hidden="true" focusable="false"
@@ -124,7 +124,7 @@
                             <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500"
                                 class="col-xl-6 col-lg-6 col-md-6">
                                 <div class="twm-w-process-steps-2">
-                                    <div class="twm-w-pro-top bg-clr-green-light bg-clr-light-shadow">
+                                    <div class="twm-w-pro-top  bg-clr-light-shadow">
                                         <span class="twm-large-number text-clr-green">04</span>
                                         <div class="twm-media">
                                             <span class="text-clr-green"> <svg aria-hidden="true" focusable="false"
@@ -147,7 +147,7 @@
                             <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500"
                                 class="col-xl-6 col-lg-6 col-md-6">
                                 <div class="twm-w-process-steps-2">
-                                    <div class="twm-w-pro-top bg-clr-pink-2-light bg-clr-light-shadow">
+                                    <div class="twm-w-pro-top  bg-clr-light-shadow">
                                         <span class="twm-large-number text-clr-pink-2">05</span>
                                         <div class="twm-media">
                                             <span class="text-clr-pink-2"><svg xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +177,7 @@
                             <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500"
                                 class="col-xl-6 col-lg-6 col-md-6">
                                 <div class="twm-w-process-steps-2">
-                                    <div class="twm-w-pro-top bg-clr-gray-light bg-clr-light-shadow">
+                                    <div class="twm-w-pro-top  bg-clr-light-shadow">
                                         <span class="twm-large-number text-clr-gray">06</span>
                                         <div class="twm-media">
                                             <span class="text-clr-gray"> <svg aria-hidden="true" focusable="false"
@@ -204,7 +204,7 @@
                             <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500"
                                 class="col-xl-6 col-lg-6 col-md-6">
                                 <div class="twm-w-process-steps-2">
-                                    <div class="twm-w-pro-top bg-clr-sky-blue-light bg-clr-light-shadow">
+                                    <div class="twm-w-pro-top  bg-clr-light-shadow">
                                         <span class="twm-large-number text-clr-sky-blue">07</span>
                                         <div class="twm-media">
                                             <span class="text-clr-sky-blue"> <svg aria-hidden="true"

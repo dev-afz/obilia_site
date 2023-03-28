@@ -3102,6 +3102,7 @@ ol.comment-list {
         border-radius: 10px;
         position: relative;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+        border: 2px solid $primary-500;
 
 
         .twm-media {
@@ -3116,6 +3117,7 @@ ol.comment-list {
             justify-content: center;
             border-radius: 10px;
             box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+            border: 2px solid $primary-500;
 
         }
 
