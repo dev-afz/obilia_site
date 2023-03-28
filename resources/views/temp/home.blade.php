@@ -51,7 +51,7 @@
                                 No service charge for client for first 5 projects
                             </p>
                             <p class="mb-2">
-                                Get Obillia Extra free of cost for service providers for 3 months
+                                Get Obillia Extra free of cost for service sellers for 3 months
 
 
                             </p>
@@ -81,7 +81,7 @@
                                 No service charge for client for first 5 projects
                             </p>
                             <p class="mb-2">
-                                Get Obillia Extra free of cost for service providers for 3 months
+                                Get Obillia Extra free of cost for service sellers for 3 months
 
 
                             </p>
