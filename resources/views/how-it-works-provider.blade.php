@@ -47,10 +47,9 @@
                                             <span class="text-clr-sky">
 
                                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                                    class="icon icon-tabler icon-tabler-user-plus" width="24"
-                                                    height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                    stroke="currentColor" fill="none" stroke-linecap="round"
-                                                    stroke-linejoin="round">
+                                                    class="icon icon-tabler icon-tabler-user-plus" viewBox="0 0 24 24"
+                                                    stroke-width="2" stroke="currentColor" fill="none"
+                                                    stroke-linecap="round" stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                     <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
                                                     <path d="M16 19h6"></path>
@@ -110,10 +109,9 @@
                                         <span class="twm-large-number text-clr-yellow">03</span>
                                         <div class="twm-media">
                                             <span class="text-clr-yellow"> <svg xmlns="http://www.w3.org/2000/svg"
-                                                    class="icon icon-tabler icon-tabler-zoom-money" width="24"
-                                                    height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                    stroke="currentColor" fill="none" stroke-linecap="round"
-                                                    stroke-linejoin="round">
+                                                    class="icon icon-tabler icon-tabler-zoom-money" viewBox="0 0 24 24"
+                                                    stroke-width="2" stroke="currentColor" fill="none"
+                                                    stroke-linecap="round" stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                     <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
                                                     <path d="M21 21l-6 -6"></path>
