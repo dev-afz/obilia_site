@@ -33,7 +33,17 @@
                     <ul class=" nav navbar-nav flex-row">
                         <li class=""><a href="{{ route('index') }}">Home</a></li>
                         <li class=""><a href="{{ route('about') }}">About</a></li>
-                        <li class=""><a href="{{ route('how-it-works') }}">How it works</a></li>
+                        <li class=""><a href="#">How it works</a>
+                            <ul class="main sub-menu">
+                                <li>
+                                    <a href="{{ route('how-it-works', 'client') }}">For Client</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('how-it-works', 'provider') }}"> For Provider</a>
+                                </li>
+                            </ul>
+
+                        </li>
                         <li class=""><a href="{{ route('contact') }}">Contact us</a></li>
                     </ul>
 

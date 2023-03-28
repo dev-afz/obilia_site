@@ -38,7 +38,7 @@ Route::controller(BasicController::class)->group(function () {
     Route::get('test', 'test')->name('test');
     Route::post('wishlist', 'wishlist')->name('wishlist');
     Route::get('plans', 'plans')->name('plans');
-    Route::get('how-it-works', 'howItWorks')->name('how-it-works');
+    Route::get('how-it-works/{for}', 'howItWorks')->name('how-it-works');
     Route::get('/category/{slug}', 'categories')->name('categories');
     Route::get('/subcategories/{slug}', 'subcategories')->name('subcategories');
     Route::get('/about', 'about');

@@ -233,9 +233,14 @@ class BasicController extends Controller
     }
 
 
-    public function howItWorks()
+    public function howItWorks($for)
     {
-        return view('how-it-works');
+        if ($for == 'client') {
+            return view('how-it-works-client');
+        } else if ($for == 'provider') {
+            return view('how-it-works-provider');
+        }
+        abort(404);
     }
 
     public function about()
