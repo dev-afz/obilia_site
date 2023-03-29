@@ -28,17 +28,19 @@
                 <div class="col-lg-9 col-md-12">
                     <div class="row">
 
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="widget widget_services ftr-list-center">
-                                <h3 class="widget-title text-white">Links</h3>
-                                <ul>
-                                    <li><a href="#">User Dashboard</a></li>
-                                    <li><a href="#">Invites</a></li>
-                                    <li><a href="#">Jobs</a></li>
-                                    <li><a href="#">Chat</a></li>
-                                </ul>
+                        @auth
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="widget widget_services ftr-list-center">
+                                    <h3 class="widget-title text-white">Links</h3>
+                                    <ul>
+                                        <li><a href="#">User Dashboard</a></li>
+                                        <li><a href="#">Invites</a></li>
+                                        <li><a href="#">Jobs</a></li>
+                                        <li><a href="#">Chat</a></li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                        @endauth
 
 
 
@@ -49,7 +51,7 @@
                                     <li><a href="#">FAQs</a></li>
                                     <li><a href="#">Privacy Policy</a></li>
                                     <li><a href="#">T&C</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="{{ route('contact') }}">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -58,10 +60,10 @@
                             <div class="widget widget_services ftr-list-center">
                                 <h3 class="widget-title">Quick Links</h3>
                                 <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Pricing</a></li>
+                                    <li><a href="{{ route('index') }}">Home</a></li>
+                                    <li><a href="{{ route('about') }}">About us</a></li>
+                                    <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                                    <li><a href="{{ route('plans') }}">Plans</a></li>
                                 </ul>
                             </div>
                         </div>
