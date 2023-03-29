@@ -68,7 +68,7 @@ class BasicController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'from' => $request->for,
-            'expertise' => $expertise,
+            'expertise' => $expertise ?? "NA",
         ]);
 
         return response()->json([

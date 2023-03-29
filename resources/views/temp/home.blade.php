@@ -19,12 +19,140 @@
                 width: 1rem;
                 height: 1rem;
             }
+
+
+            @-webkit-keyframes ani-mouse {
+                0% {
+                    opacity: 1;
+                    top: 29%;
+                }
+
+                15% {
+                    opacity: 1;
+                    top: 50%;
+                }
+
+                50% {
+                    opacity: 0;
+                    top: 50%;
+                }
+
+                100% {
+                    opacity: 0;
+                    top: 29%;
+                }
+            }
+
+            @-moz-keyframes ani-mouse {
+                0% {
+                    opacity: 1;
+                    top: 29%;
+                }
+
+                15% {
+                    opacity: 1;
+                    top: 50%;
+                }
+
+                50% {
+                    opacity: 0;
+                    top: 50%;
+                }
+
+                100% {
+                    opacity: 0;
+                    top: 29%;
+                }
+            }
+
+            @keyframes ani-mouse {
+                0% {
+                    opacity: 1;
+                    top: 29%;
+                }
+
+                15% {
+                    opacity: 1;
+                    top: 50%;
+                }
+
+                50% {
+                    opacity: 0;
+                    top: 50%;
+                }
+
+                100% {
+                    opacity: 0;
+                    top: 29%;
+                }
+            }
+
+            .scroll-btn {
+                display: grid;
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -10rem;
+                text-align: center;
+            }
+
+            .scroll-btn>* {
+                display: inline-block;
+                line-height: 18px;
+                font-size: 13px;
+                font-weight: normal;
+                color: #09596f;
+                font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                letter-spacing: 2px;
+            }
+
+            .scroll-btn>*:hover,
+            .scroll-btn>*:focus,
+            .scroll-btn>*.active {
+                color: #09596f;
+            }
+
+            .scroll-btn>*:hover,
+            .scroll-btn>*:focus,
+            .scroll-btn>*:active,
+            .scroll-btn>*.active {
+                opacity: 0.8;
+                filter: alpha(opacity=80);
+            }
+
+            .scroll-btn .mouse {
+                position: relative;
+                display: block;
+                width: 35px;
+                height: 55px;
+                margin: 0 auto 20px;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                border: 3px solid #09596f;
+                border-radius: 23px;
+            }
+
+            .scroll-btn .mouse>* {
+                position: absolute;
+                display: block;
+                top: 29%;
+                left: 50%;
+                width: 8px;
+                height: 8px;
+                margin: -4px 0 0 -4px;
+                background: #09596f;
+                border-radius: 50%;
+                -webkit-animation: ani-mouse 2.5s linear infinite;
+                -moz-animation: ani-mouse 2.5s linear infinite;
+                animation: ani-mouse 2.5s linear infinite;
+            }
         </style>
 
     </x-slot>
 
 
-    <div style="min-height:100vh;" class="twm-home4-banner-section ">
+    <div style="min-height:100vh;" class="twm-home4-banner-section position-relative ">
         <div class="row splide">
             <!--Left Section-->
             <div class="splide__track">
@@ -51,7 +179,7 @@
                                 No service charge for client for first 5 projects
                             </p>
                             <p class="mb-2">
-                                Get Obillia Extra free of cost for service sellers for 3 months
+                                Get Obillia Extra free of cost for sellers for 3 months
 
 
                             </p>
@@ -59,11 +187,11 @@
                                 <button data-bs-toggle="modal" data-wish-for="seller" data-bs-target="#waitlist"
                                     class="call-to-action-btn ">Waitlist for sellers</button>
                                 <button data-bs-toggle="modal" data-wish-for="client" data-bs-target="#waitlist"
-                                    class="call-to-action-btn outline">Waitlist for clients</button>
+                                    class="call-to-action-btn">Waitlist for clients</button>
                             </div>
                         </div>
                     </div>
-                    <div data-splide-hash="02" class="col-xl-12 col-lg-12  splide__slide col-md-12">
+                    {{-- <div data-splide-hash="02" class="col-xl-12 col-lg-12  splide__slide col-md-12">
                         <div style="max-width: 100% !important;" class="twm-bnr-left-section px-2">
                             <div class="twm-bnr-title-large text-primary">
                                 <h2 class="text-primary mb-1">
@@ -89,12 +217,22 @@
                                 <button data-bs-toggle="modal" data-bs-target="#waitlist"
                                     class="call-to-action-btn ">Waitlist for sellers</button>
                                 <button data-bs-toggle="modal" data-bs-target="#waitlist"
-                                    class="call-to-action-btn outline">Waitlist for clients</button>
+                                    class="call-to-action-btn">Waitlist for clients</button>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
+            <span class="scroll-btn">
+                <a href="#about">
+                    <span class="mouse">
+                        <span>
+                        </span>
+                    </span>
+                </a>
+                <p>scroll down</p>
+
+            </span>
 
         </div>
 
@@ -620,8 +758,8 @@
                     </div>
                     <div class="col-12 text-end">
                         <small>
-                            To know more about how Obillia works for clients please <a class="text-danger"
-                                href="#">please read here</a>.
+                            To know more about how Obillia works for clients <a
+                                class="text-info text-decoration-underline" href="#">please read here</a>.
                             <br>
 
                         </small>
@@ -677,7 +815,7 @@
                     ]" />
                 </div>
 
-                <div class="col-md-12">
+                <div id="exp-parent" class="col-md-12">
                     <x-utils.select :maxSelect="3" :multiple="true" name="expertise" :options="[
                         'Design',
                         'Writing',
@@ -788,8 +926,15 @@
             $('[data-wish-for]').click(function(e) {
                 e.preventDefault();
                 const wishFor = $(this).data('wish-for');
-                $('#wish-for').val(
-                    wishFor);
+                $('#wish-for').val(wishFor);
+
+                if (wishFor === 'seller') {
+                    $('#exp-parent').removeClass('d-none');
+                    $('#exp-parent').find('select').attr('required', true);
+                } else {
+                    $('#exp-parent').addClass('d-none');
+                    $('#exp-parent').find('select').attr('required', false);
+                }
 
                 $('#waitlist').find('.modal-title').text(`Waitlist request for ${wishFor}`);
 

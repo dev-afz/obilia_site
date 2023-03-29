@@ -29,6 +29,7 @@
     </style>
     <link rel="stylesheet" href="{{ asset(mix('css/bs-override.css')) }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
+
     {{--
     <link rel="stylesheet" href="{{ asset(mix('css/bootstrap.min.css')) }}" /> --}}
     <link rel="stylesheet" href="{{ asset(mix('css/font-awesome.min.css')) }}" />

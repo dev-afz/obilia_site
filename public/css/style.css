@@ -1,7 +1,5 @@
-@import url(https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap);
-@charset "UTF-8";
-/*===GENERAL===*/
+@import url(https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&family=Montserrat:wght@100&family=Poppins:wght@300&display=swap);
+@charset "UTF-8"; /*===GENERAL===*/
 .site-text-primary {
   color: #09596f;
 }
@@ -56,7 +54,7 @@
 
 body {
   color: #3c3c3c;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
   line-height: 1.7;
   font-weight: 400;
   padding: 0px;
@@ -149,7 +147,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
   line-height: 1.2;
   color: #17171d;
 }
@@ -2856,7 +2854,7 @@ ol li {
   position: relative;
   margin: -10px 0px;
   padding: 10px 0px;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 @media (max-width: 991px) {
   .header-style-3 .header-nav .nav > li ul {
@@ -3434,6 +3432,9 @@ Mobile style's
 .navbar-nav .main.sub-menu {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
 }
+.navbar-nav .main.sub-menu a:hover {
+  font-size: 1.2rem !important;
+}
 
 .header-full-width {
   position: relative;
@@ -3766,7 +3767,7 @@ Mobile style's
   position: relative;
   margin: -10px 0px;
   padding: 10px 0px;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 @media (max-width: 991px) {
   .header-full-width .header-nav .nav > li ul {
@@ -4404,7 +4405,7 @@ Mobile style's
   position: relative;
   margin: -10px 0px;
   padding: 10px 0px;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 @media (max-width: 991px) {
   .header-style-light .header-nav .nav > li ul {
@@ -5216,7 +5217,7 @@ Mobile style's
 
 /*Title separators*/
 .wt-small-separator {
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
   margin-bottom: 10px;
   position: relative;
   display: inline-block;
@@ -5404,7 +5405,7 @@ img.header__logo {
   font-size: 38px;
   line-height: 38px;
   font-weight: 700;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 @media (max-width: 991px) {
   .counter-outer-two .tw-count-number {
@@ -5416,7 +5417,7 @@ img.header__logo {
   font-size: 46px;
   line-height: 50px;
   font-weight: 600;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 @media (max-width: 991px) {
   .counter-outer-two .counter {
@@ -5552,7 +5553,7 @@ img.header__logo {
   color: #fff;
   background-color: #09596f;
   border: none;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-weight: 600;
   padding: 9px 30px;
   border-radius: 0px 10px 10px 0px;
@@ -5619,7 +5620,7 @@ img.header__logo {
   font-weight: 500;
 }
 .footer-dark .widget-title {
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
   color: #FFF !important;
   font-weight: 400;
   font-size: 20px;
@@ -5717,7 +5718,7 @@ img.header__logo {
   color: #fff;
   background-color: #09596f;
   border: none;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-weight: 600;
   padding: 9px 30px;
   border-radius: 0px 10px 10px 0px;
@@ -5753,7 +5754,7 @@ img.header__logo {
   font-weight: 500;
 }
 .footer-light .widget-title {
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
   color: #09596f;
   font-weight: 400;
   font-size: 20px;
@@ -6026,7 +6027,7 @@ button.scroltop span {
   }
 }
 .pricing-table-1 .p-table-inner .p-table-price span {
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 38px;
   line-height: 56px;
   font-weight: 600;
@@ -6043,7 +6044,7 @@ button.scroltop span {
   font-size: 18px;
   margin-bottom: 0px;
   font-weight: 600;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 .pricing-table-1 .p-table-recommended {
   background-color: #2db346;
@@ -6109,7 +6110,7 @@ button.scroltop span {
   position: relative;
   display: inline-block;
   font-size: 18px;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-weight: 400;
   color: #09596f;
 }
@@ -6413,7 +6414,7 @@ button.scroltop span {
   text-align: center;
   display: inline-block;
   transition: 0.5s all ease;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-weight: 400;
   border-radius: 10px !important;
 }
@@ -6528,7 +6529,7 @@ button.scroltop span {
   margin-left: 0px;
   padding: 0px;
   display: inline-block;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 14px;
   font-weight: 600;
 }
@@ -6664,7 +6665,7 @@ ol.comment-list li.comment .fn {
   font-weight: 500;
   font-style: normal;
   margin-bottom: 10px;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 @media (max-width: 480px) {
   ol.comment-list li.comment .fn {
@@ -6892,7 +6893,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
   padding: 50px 80px 30px 80px;
   position: relative;
   overflow: hidden;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 @media (max-width: 400px) {
   .blog-post-single-outer .blog-post-single blockquote {
@@ -6910,7 +6911,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
   font-size: 48px;
   line-height: 40px;
   display: inline-block;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
   position: absolute;
   left: -20px;
   top: -20px;
@@ -7067,7 +7068,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
   font-size: 16px;
   line-height: 24px;
   color: #17171d;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 @media (max-width: 640px) {
   .post-navigation .post-nav-links .post-nav-item .nav-post-meta a {
@@ -9048,13 +9049,13 @@ ol.comment-list li.comment .comment-respond .comment-form p {
   font-size: 38px;
   line-height: 38px;
   font-weight: 700;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 .twm-explore-content-2 .twm-explore-bottom-section .counter-outer-two .counter {
   font-size: 46px;
   line-height: 50px;
   font-weight: 600;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 .twm-explore-content-2 .twm-explore-bottom-section .counter-outer-two .icon-content-info {
   color: #fff;
@@ -14663,13 +14664,13 @@ strong {
   font-size: 38px;
   line-height: 38px;
   font-weight: 700;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 .twm-for-employee-4 .twm-for-employee-content .twm-explore-right-section .counter-outer-two .counter {
   font-size: 46px;
   line-height: 50px;
   font-weight: 600;
-  font-family: "Rubik", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 .twm-for-employee-4 .twm-for-employee-content .twm-explore-right-section .counter-outer-two .icon-content-info {
   color: #17171d;
