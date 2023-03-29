@@ -8,9 +8,7 @@
             <div class="row align-items-baseline">
                 <div class="col-lg-12 col-md-12 mb-5">
                     <div class="section-head left wt-small-separator-outer">
-                        <div class="wt-small-separator site-text-primary">
-                            <div>How It Works </div>
-                        </div>
+
                         <h2 class="wt-title">
                             How does obillia work for clients?
                         </h2>

@@ -13916,7 +13916,7 @@ input[type=number] {
 
 .features-section {
     position: relative;
-    padding: 1rem 0;
+    padding: 1rem 0 0 0;
     transition: all 0.3s ease-in-out;
 
     .switch-container {
@@ -14088,7 +14088,7 @@ $bg-height: 50px;
 }
 
 .page-content {
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .animated-bg {

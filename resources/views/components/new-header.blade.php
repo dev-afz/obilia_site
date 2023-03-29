@@ -47,7 +47,7 @@
                         <li class=""><a href="{{ route('contact') }}">Contact us</a></li>
                     </ul>
 
-                    <ul class="mobile-sub-menu nav navbar-nav flex-row">
+                    {{-- <ul class="mobile-sub-menu nav navbar-nav flex-row">
                         <li>
                             <a href="javascript:void(0)">Browse Categories</a>
                             <ul class="sub-menu">
@@ -98,7 +98,7 @@
                                 @endforelse
                             </ul>
                         </li>
-                    </ul>
+                    </ul> --}}
 
                 </div>
 

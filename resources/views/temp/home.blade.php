@@ -121,7 +121,7 @@
         </div>
     </div>
     <x-section.category :categories="$industries" />
-    <div id="how-it-works" class="container my-5  features-section">
+    <div id="how-it-works" class="container mt-5  features-section">
         <div class="row py-4">
             <div class="col-12 my-3">
                 <div class="switch-container">
@@ -374,7 +374,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 text-end">
+                    {{-- <div class="col-12 text-end">
                         <small>
                             To know more about how Obillia works for Sellers <a class="text-danger"
                                 href="#">please read here</a>.
@@ -382,7 +382,7 @@
                             *Conditions vary for GST registered Sellers <a class="text-danger" href="#">please
                                 read here</a>.
                         </small>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div id="for-clients" class="col-12 d-none">
