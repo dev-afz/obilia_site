@@ -119,6 +119,15 @@ class BasicController extends Controller
         ];
 
 
+        if (auth()->check()) {
+            if (auth()->user()->isClient()) {
+                return redirect()->route('index');
+            }
+        }
+
+
+
+
         return view('plans', compact('packages'));
     }
 

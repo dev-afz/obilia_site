@@ -4,7 +4,6 @@
 
         <x-section.about />
 
-
         <section>
 
             <div class="container">
@@ -22,6 +21,7 @@
                             <h2 class="wt-title">
                                 Why Obillia?
                             </h2>
+                            <br>
                             <p>
                                 We strive to simplify the virtual services industry in India by giving clients instant
                                 access
@@ -41,6 +41,7 @@
                             <h2 class="wt-title">
                                 Our Priority - User Satisfaction
                             </h2>
+                            <br>
                             <p>
                                 Obillia values feedback from all the users and is committed to continuously
                                 improving to create a better experience for everyone

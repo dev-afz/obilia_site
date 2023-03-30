@@ -8,151 +8,13 @@
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
         <style>
-            .splide__pagination__page.is-active {
-                background: #09596f;
-                transform: scale(1.4);
-                opacity: 1;
-                z-index: 1;
-            }
 
-            .splide__pagination__page {
-                width: 1rem;
-                height: 1rem;
-            }
-
-
-            @-webkit-keyframes ani-mouse {
-                0% {
-                    opacity: 1;
-                    top: 29%;
-                }
-
-                15% {
-                    opacity: 1;
-                    top: 50%;
-                }
-
-                50% {
-                    opacity: 0;
-                    top: 50%;
-                }
-
-                100% {
-                    opacity: 0;
-                    top: 29%;
-                }
-            }
-
-            @-moz-keyframes ani-mouse {
-                0% {
-                    opacity: 1;
-                    top: 29%;
-                }
-
-                15% {
-                    opacity: 1;
-                    top: 50%;
-                }
-
-                50% {
-                    opacity: 0;
-                    top: 50%;
-                }
-
-                100% {
-                    opacity: 0;
-                    top: 29%;
-                }
-            }
-
-            @keyframes ani-mouse {
-                0% {
-                    opacity: 1;
-                    top: 29%;
-                }
-
-                15% {
-                    opacity: 1;
-                    top: 50%;
-                }
-
-                50% {
-                    opacity: 0;
-                    top: 50%;
-                }
-
-                100% {
-                    opacity: 0;
-                    top: 29%;
-                }
-            }
-
-            .scroll-btn {
-                display: grid;
-                position: absolute;
-                left: 0;
-                right: 0;
-                bottom: -10rem;
-                text-align: center;
-            }
-
-            .scroll-btn>* {
-                display: inline-block;
-                line-height: 18px;
-                font-size: 13px;
-                font-weight: normal;
-                color: #09596f;
-                font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-                letter-spacing: 2px;
-            }
-
-            .scroll-btn>*:hover,
-            .scroll-btn>*:focus,
-            .scroll-btn>*.active {
-                color: #09596f;
-            }
-
-            .scroll-btn>*:hover,
-            .scroll-btn>*:focus,
-            .scroll-btn>*:active,
-            .scroll-btn>*.active {
-                opacity: 0.8;
-                filter: alpha(opacity=80);
-            }
-
-            .scroll-btn .mouse {
-                position: relative;
-                display: block;
-                width: 35px;
-                height: 55px;
-                margin: 0 auto 20px;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-                border: 3px solid #09596f;
-                border-radius: 23px;
-            }
-
-            .scroll-btn .mouse>* {
-                position: absolute;
-                display: block;
-                top: 29%;
-                left: 50%;
-                width: 8px;
-                height: 8px;
-                margin: -4px 0 0 -4px;
-                background: #09596f;
-                border-radius: 50%;
-                -webkit-animation: ani-mouse 2.5s linear infinite;
-                -moz-animation: ani-mouse 2.5s linear infinite;
-                animation: ani-mouse 2.5s linear infinite;
-            }
         </style>
 
     </x-slot>
 
 
-    <div style="min-height:100vh;" class="twm-home4-banner-section position-relative ">
+    <div class="twm-home4-banner-section position-relative ">
         <div class="row splide">
             <!--Left Section-->
             <div class="splide__track">
@@ -223,6 +85,13 @@
                     </div> --}}
                 </div>
             </div>
+
+
+        </div>
+
+    </div>
+    <div style="margin-bottom: 10rem" class="row">
+        <div class="col-12 position-relative">
             <span class="scroll-btn">
                 <a href="#about">
                     <span class="mouse">
@@ -233,9 +102,7 @@
                 <p>scroll down</p>
 
             </span>
-
         </div>
-
     </div>
     <div id="about" class="container my-5 hide-nav-on-view">
         <div class="row">
@@ -759,7 +626,7 @@
                     <div class="col-12 text-end">
                         <small>
                             To know more about how Obillia works for clients <a
-                                class="text-info text-decoration-underline" href="#">please read here</a>.
+                                class="text-dark text-decoration-underline" href="#">read here</a>.
                             <br>
 
                         </small>

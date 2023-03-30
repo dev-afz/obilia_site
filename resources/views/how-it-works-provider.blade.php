@@ -2,7 +2,7 @@
 
 
 
-    <div class="section-full p-t120 p-b90 site-bg-white twm-how-it-work-area2 overflow-hidden">
+    <div class="section-full pt-5 p-b90 site-bg-white twm-how-it-work-area2 overflow-hidden">
 
         <div class="container">
             <div class="row align-items-baseline">

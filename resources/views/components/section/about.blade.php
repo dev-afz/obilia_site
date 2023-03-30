@@ -27,18 +27,18 @@
                                 freelance work in India for digital and on-site on-demand professional services.
                                 Our mission is to build a comprehensive freelance marketplace in India by
                                 providing a solid, trustworthy, and secure platform for clients and sellers
-                            </p>
-                            <p>
+                                <br>
                                 Whether you're a freelancer or an agency, Obillia is the perfect platform to
                                 monetise your skills, find new clients, and grow your career
                             </p>
+
 
                         </div>
                         <!-- TITLE END-->
                         <ul class="description-list">
                             <li>
                                 <i class="feather-check"></i>
-                                15GB+ of storage
+                                Verified Sellers
                             </li>
                             <li>
                                 <i class="feather-check"></i>
@@ -57,6 +57,21 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-12 position-relative">
+                <span class="scroll-btn">
+                    <a href="#about">
+                        <span class="mouse">
+                            <span>
+                            </span>
+                        </span>
+                    </a>
+                    <p>scroll down</p>
+
+                </span>
             </div>
         </div>
         {{-- <div class="twm-about-1-bottom-wrap">
