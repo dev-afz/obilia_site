@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Package;
 use App\Models\Category;
 use App\Models\Industry;
+use App\Models\Wishlist;
+use App\Models\ContactData;
 use App\Models\SubCategory;
 use App\Models\UserService;
 use Illuminate\Support\Str;
@@ -14,10 +16,9 @@ use Illuminate\Http\Request;
 use App\Services\SearchService;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Models\ContactData;
-use App\Models\Wishlist;
-use App\Services\RazorpayX\CreateContactService;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
+use App\Services\RazorpayX\CreateContactService;
 
 class BasicController extends Controller
 {
@@ -210,7 +211,18 @@ class BasicController extends Controller
             ->with(['sub_category'])
             ->take(6)->get();
 
-        $packages = Package::active()->with(['perks'])->get();
+        $monthly_packages = Package::active()
+            ->monthly()
+            ->with(['perks'])->get();
+
+        $yearly_packages = Package::active()
+            ->yearly()
+            ->with(['perks'])->get();
+
+        $packages = [
+            'monthly' => $monthly_packages,
+            'yearly' => $yearly_packages,
+        ];
 
         return view('index', compact('industries', 'jobs', 'packages', 'categories'));
     }
