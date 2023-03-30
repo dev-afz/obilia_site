@@ -36,10 +36,10 @@
                         <li class=""><a href="#">How it works</a>
                             <ul class="main sub-menu">
                                 <li>
-                                    <a href="{{ route('how-it-works', 'client') }}">For Client</a>
+                                    <a href="{{ route('how-it-works', 'client') }}">For Clients</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('how-it-works', 'seller') }}"> For seller</a>
+                                    <a href="{{ route('how-it-works', 'seller') }}"> For sellers</a>
                                 </li>
                             </ul>
 

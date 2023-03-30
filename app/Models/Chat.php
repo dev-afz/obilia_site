@@ -46,6 +46,12 @@ class Chat extends Model
     }
 
 
+    public function usages()
+    {
+        return $this->morphMany(Usage::class, 'usageable');
+    }
+
+
 
 
 

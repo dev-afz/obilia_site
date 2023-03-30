@@ -76,7 +76,7 @@
 
                                             <div class="c-info-column">
                                                 <div class="c-info-icon"><i class="fas fa-envelope"></i></div>
-                                                <h3 class="twm-title">Support</h3>
+                                                <h3 class="twm-title">Contact Support</h3>
                                                 <a href="mailto:support@obillia.com">support@obillia.com</a>
                                             </div>
 

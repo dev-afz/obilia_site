@@ -7,9 +7,11 @@ use App\Models\Workspace;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Managers\FileManager;
+use Illuminate\Support\Facades\DB;
 use Mews\Purifier\Facades\Purifier;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
+use Illuminate\Validation\ValidationException;
 
 class ServiceController extends Controller
 {
@@ -28,6 +30,19 @@ class ServiceController extends Controller
         ]);
 
         $user = $request->user();
+
+
+        $balance = $user->balance;
+
+        if ($balance->service_limit <= 0) {
+            throw ValidationException::withMessages([
+                'service_limit_reached' => 'You have reached your service limit for this month, please upgrade your plan to create more services',
+            ]);
+        }
+
+
+
+
         $sub_category = SubCategory::findOrFail($request->sub_category);
         $tags = json_decode($request->tags, true);
         $metadata_string = '';
@@ -35,6 +50,9 @@ class ServiceController extends Controller
             $metadata_string .= Str::slug($tag['value']) . ',' . strtolower($tag['value']) . ',';
         }
         // Str::markdown($request->description)
+
+        DB::beginTransaction();
+
         $service = $user->services()->create([
             'title' => $request->title,
             'slug' => Str::slug($request->title) . '-' . uniqid(),
@@ -54,6 +72,16 @@ class ServiceController extends Controller
             ]);
         }
 
+
+        $balance->decrement('service_limit', 1);
+
+        $user->usages()->create([
+            'usageable_type' => $service->getMorphClass(),
+            'usageable_id' => $service->id,
+            'usage' => 1,
+        ]);
+
+        DB::commit();
 
 
         return response()->json([

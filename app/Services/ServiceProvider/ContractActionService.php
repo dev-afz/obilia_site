@@ -81,12 +81,45 @@ class ContractActionService
             ]);
         }
 
+
+        $sender = User::find($this->contract->send_by);
+
+
+        $balance = $sender->balance;
+
+        $active_workspace_limit = $balance->active_workspace_limit;
+
+        $workspace_space_limit = $balance->workspace_space_limit;
+
+
+        $applicable_space = $workspace_space_limit * 1024;
+
+        if ($active_workspace_limit <= 0) {
+            $applicable_space = 512;
+        } else {
+            $balance->decrement('active_workspace_limit');
+        }
+
+
+
+
         $workspace =  $new_contract->workspaces()->create([
             'name' => $contractData['project_title'] . ' workspace',
             'slug' => Str::slug($contractData['project_title'] . ' workspace'),
             'user_id' => $this->contract->send_by,
             'client_id' => $this->contract->send_to,
+            'space_limit' => $applicable_space,
+            'remaining_space' => $applicable_space,
+            'commission' => $balance->commission,
         ]);
+
+
+        $workspace->usages()->create([
+            'user_id' => $this->contract->send_by,
+            'usage' => $applicable_space,
+        ]);
+
+
 
         $chat = $workspace->chat()->create([
             'name' => $contractData['project_title'] . ' chat',

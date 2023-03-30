@@ -96,11 +96,36 @@ class JobController extends Controller
             'status' => 'active',
         ]);
 
+        if ($user->isProvider()) {
+            $balance = $user->balance;
+
+            if ($balance->connection_limit <= 0) {
+                DB::rollBack();
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'You have reached your connection limit for this month. Please upgrade your plan to continue.',
+                ]);
+            }
+
+            $balance->decrement('connection_limit', 1);
+
+            $chat->usages()->create([
+                'user_id' => $user->id,
+                'usage' => 1,
+            ]);
+        }
+
+
+
+
+
 
         $chat->messages()->create([
             'sender_id' => $user->id,
             'message' => 'Hi, I am interested in your service.',
         ]);
+
+
 
         $chat->participants()->createMany([
             ['user_id' => $user->id, 'role' => 'owner'],

@@ -2,12 +2,13 @@
 
 namespace App\Services\Razorpay;
 
+use App\Action\ServiceProvider\ProviderAction;
 use Razorpay\Api\Api;
 use App\Models\RazorpayOrder;
 use App\Models\ContractMilestone;
 use Illuminate\Support\Facades\DB;
 use App\Jobs\Inspector\PaymentInspector;
-
+use App\Models\Package;
 
 class FetchOrderService
 {
@@ -152,6 +153,10 @@ class FetchOrderService
         ]);
         $this->user->subscription_status = 'subscribed';
         $this->user->save();
+
+        $package = Package::find($package['id']);
+        $action = new ProviderAction($this->user);
+        $action->rechargeBalance($package);
 
         return $subscription;
     }

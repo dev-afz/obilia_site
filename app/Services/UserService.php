@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Action\ServiceProvider\ProviderAction;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -35,11 +36,13 @@ class UserService
 
 
         switch ($request->role) {
-            case 'user':
-                $redirect = route('index');
+            case 'service_provider':
+                $action = new ProviderAction($user);
+                $action->rechargeBalance();
+                $redirect = route('service-provider.index');
                 break;
             case 'client':
-                $redirect = route('index');
+                $redirect = route('client.index');
                 break;
             default:
                 $redirect = route('index');

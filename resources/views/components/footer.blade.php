@@ -13,7 +13,7 @@
                         <ul class="ftr-list">
 
                             <li>
-                                <p><span>Email :</span>example@max.com</p>
+                                <p><span>Email :</span><a href="mailto:support@obillia.com">support@obillia.com</a></p>
                             </li>
 
                         </ul>

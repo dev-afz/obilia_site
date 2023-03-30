@@ -178,6 +178,16 @@ class User extends Authenticatable
         return $this->hasMany(UserSubscription::class, 'user_id');
     }
 
+    public function balance()
+    {
+        return $this->hasOne(PackageBalance::class, 'user_id');
+    }
+
+
+    public function usages()
+    {
+        return $this->hasMany(Usage::class, 'user_id');
+    }
 
     /*
     |--------------------------------------------------------------------------

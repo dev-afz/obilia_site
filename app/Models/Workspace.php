@@ -39,6 +39,11 @@ class Workspace extends Model
     }
 
 
+    public function usages()
+    {
+        return $this->morphMany(Usage::class, 'usageable');
+    }
+
 
 
 

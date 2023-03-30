@@ -91,6 +91,8 @@ namespace App\Models{
  * @property-read \App\Models\ChatParticipant|null $participant
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ChatParticipant> $participants
  * @property-read int|null $participants_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Usage> $usages
+ * @property-read int|null $usages_count
  * @property-read \App\Models\User|null $user
  * @property-read \App\Models\Workspace|null $workspace
  * @method static \Illuminate\Database\Eloquent\Builder|Chat active()
@@ -405,6 +407,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Job $job
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Usage> $usages
+ * @property-read int|null $usages_count
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|JobApplication newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|JobApplication newQuery()
@@ -727,6 +731,41 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\PackageBalance
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $commission
+ * @property int $application_limit
+ * @property int $connection_limit
+ * @property int $active_workspace_limit how many active workspaces can be created by provider every month
+ * @property float $workspace_space_limit in MB
+ * @property int $service_limit how many services can be created by provider every month
+ * @property mixed|null $client_benefits benefits by bringing clients
+ * @property string|null $last_reset last reset date for re-filling the limits
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance whereActiveWorkspaceLimit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance whereApplicationLimit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance whereClientBenefits($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance whereCommission($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance whereConnectionLimit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance whereLastReset($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance whereServiceLimit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PackageBalance whereWorkspaceSpaceLimit($value)
+ */
+	class PackageBalance extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\PackagePerk
  *
  * @property int $id
@@ -851,6 +890,34 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Usage
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $usageable_type
+ * @property int $usageable_id
+ * @property string|null $remark
+ * @property int $usage
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $usageable
+ * @method static \Illuminate\Database\Eloquent\Builder|Usage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Usage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Usage query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Usage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Usage whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Usage whereRemark($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Usage whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Usage whereUsage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Usage whereUsageableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Usage whereUsageableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Usage whereUserId($value)
+ */
+	class Usage extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @property int $id
@@ -871,6 +938,7 @@ namespace App\Models{
  * @property string|null $gender
  * @property string|null $state
  * @property string|null $city
+ * @property-read \App\Models\PackageBalance|null $balance
  * @property-read \App\Models\UserBank|null $bank
  * @property-read \App\Models\UserBusiness|null $business
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Chat> $chats
@@ -915,6 +983,8 @@ namespace App\Models{
  * @property-read int|null $subscriptions_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Usage> $usages
+ * @property-read int|null $usages_count
  * @method static \Illuminate\Database\Eloquent\Builder|User active()
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|User hasLikedJob()
@@ -1058,6 +1128,8 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserServiceImage> $images
  * @property-read int|null $images_count
  * @property-read \App\Models\SubCategory $sub_category
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Usage> $usages
+ * @property-read int|null $usages_count
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|UserService active()
  * @method static \Illuminate\Database\Eloquent\Builder|UserService category($category)
@@ -1174,11 +1246,13 @@ namespace App\Models{
  * @property string|null $from
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string $expertise
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist query()
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereExpertise($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereFrom($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Wishlist whereName($value)
@@ -1219,6 +1293,9 @@ namespace App\Models{
  * @property int $id
  * @property string $name
  * @property string $slug
+ * @property float $space_limit in MB
+ * @property float $remaining_space in MB
+ * @property float $commission
  * @property int $client_id
  * @property int $user_id
  * @property int $contract_id
@@ -1229,17 +1306,22 @@ namespace App\Models{
  * @property-read \App\Models\Contract $contract
  * @property-read \App\Models\User $owner
  * @property-read \App\Models\User $provider
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Usage> $usages
+ * @property-read int|null $usages_count
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace active()
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace query()
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace whereClientId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Workspace whereCommission($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace whereContractId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Workspace whereRemainingSpace($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Workspace whereSpaceLimit($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Workspace whereUserId($value)

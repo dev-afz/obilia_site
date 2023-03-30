@@ -61,7 +61,9 @@ Route::controller(BasicController::class)->group(function () {
                 ->middleware(['auth']);
         });
 });
-Route::controller(PaymentController::class)->prefix('payment')->name('payment.')->group(function () {
-    Route::post('create-order', 'createOrder')->name('create-order');
-    Route::post('fetch-order', 'fetchOrder')->name('fetch-order');
-});
+Route::controller(PaymentController::class)
+    ->middleware(['auth'])
+    ->prefix('payment')->name('payment.')->group(function () {
+        Route::post('create-order', 'createOrder')->name('create-order');
+        Route::post('fetch-order', 'fetchOrder')->name('fetch-order');
+    });

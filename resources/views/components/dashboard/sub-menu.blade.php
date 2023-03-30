@@ -20,6 +20,8 @@
         @if (isset($m->submenu))
             <ul class="sub-menu">
                 <x-dashboard.sub-menu :subMenu="$m->submenu" />
+
+
             </ul>
         @endif
     </li>

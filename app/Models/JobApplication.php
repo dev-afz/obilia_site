@@ -21,4 +21,10 @@ class JobApplication extends Model
     {
         return $this->belongsTo(Job::class);
     }
+
+
+    public function usages()
+    {
+        return $this->morphMany(Usage::class, 'usageable');
+    }
 }

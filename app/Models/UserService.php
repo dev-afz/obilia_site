@@ -32,6 +32,30 @@ class UserService extends Model
     }
 
 
+    public function usages()
+    {
+        return $this->morphMany(Usage::class, 'usageable');
+    }
+
+
+
+
+
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Scopes
+    |--------------------------------------------------------------------------
+    */
+
+
+
+
     public function scopeSearch($query, $search)
     {
         return $query->where('title', 'like', '%' . $search . '%')

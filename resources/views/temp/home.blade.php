@@ -379,15 +379,12 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="col-12 text-end">
+                    <div class="col-12 text-end">
                         <small>
-                            To know more about how Obillia works for Sellers <a class="text-danger"
-                                href="#">please read here</a>.
-                            <br>
-                            *Conditions vary for GST registered Sellers <a class="text-danger" href="#">please
-                                read here</a>.
+                            To know more about how Obillia works for Sellers <a
+                                class="text-warning text-decoration-underline" href="#">read here</a>.
                         </small>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
             <div id="for-clients" class="col-12 d-none">
@@ -585,7 +582,7 @@
                     </div>
                     <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12 my-3">
                         <div class="row justify-content-center">
-                            <div class="col-6">
+                            <div class="col-md-6">
                                 <div class="ob-feature_item">
                                     <div class="ob-feature-item_link">
                                         <div class="ob-feature-item_bg"></div>

@@ -26,15 +26,15 @@
                     color: inherit;
                 }
 
-                /* CARDS */
+                /* custom-CARDS */
 
-                .cards {
+                .custom-cards {
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-between;
                 }
 
-                .card {
+                .custom-card {
                     margin: 20px;
                     padding: 20px;
                     width: 500px;
@@ -48,20 +48,20 @@
                     outline: #05374d 2px solid;
                 }
 
-                .card:hover {
+                .custom-card:hover {
                     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
                     transform: scale(1.01);
                 }
 
-                .card__link,
-                .card__exit,
-                .card__icon {
+                .custom-card__link,
+                .custom-card__exit,
+                .custom-card__icon {
                     position: relative;
                     text-decoration: none;
                     color: #05374d;
                 }
 
-                .card__link::after {
+                .custom-card__link::after {
                     position: absolute;
                     top: 25px;
                     left: 0;
@@ -72,27 +72,27 @@
                     transition: all 0.5s;
                 }
 
-                .card__link:hover::after {
+                .custom-card__link:hover::after {
                     width: 100%;
                 }
 
-                .card__exit {
+                .custom-card__exit {
                     grid-row: 1/2;
                     justify-self: end;
                 }
 
-                .card__icon {
+                .custom-card__icon {
                     grid-row: 2/3;
                     font-size: 30px;
                 }
 
-                .card__title {
+                .custom-card__title {
                     grid-row: 3/4;
                     font-weight: 400;
                     color: #05374d !important;
                 }
 
-                .card__apply {
+                .custom-card__apply {
                     grid-row: 4/5;
                     align-self: center;
                 }
@@ -100,7 +100,7 @@
                 /* RESPONSIVE */
 
                 @media (max-width: 1600px) {
-                    .cards {
+                    .custom-cards {
                         justify-content: center;
                     }
                 }
@@ -123,17 +123,17 @@
                     <div class="panel-body wt-panel-body p-a20 m-b30 ">
                         <div class="main-container">
 
-                            <div class="cards row justify-content-start">
+                            <div class="custom-cards row justify-content-start">
                                 @forelse ($workspaces as $w)
                                     <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card__icon" style="color: {{ $w->color1 }}"><i
+                                        <div class="custom-card">
+                                            <div class="custom-card__icon" style="color: {{ $w->color1 }}"><i
                                                     class="fas fa-bolt"></i></div>
-                                            <h4 class="card__title">
+                                            <h4 class="custom-card__title">
                                                 {{ $w->name }}
                                             </h4>
-                                            <p class="card__apply">
-                                                <a class="card__link"
+                                            <p class="custom-card__apply">
+                                                <a class="custom-card__link"
                                                     href="{{ route('service-provider.workspace.show', $w->slug) }}">Open
                                                     <i class="fas fa-arrow-right"></i></a>
                                             </p>
