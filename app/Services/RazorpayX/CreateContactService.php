@@ -28,12 +28,13 @@ class CreateContactService
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
             echo 'Error:' . curl_error($ch);
+            \Log::error('Error:' . curl_error($ch));
         }
         curl_close($ch);
 
         $result = json_decode($result, true);
 
-        $user->rp_contact = $result['id'];
+        $user->rp_contact = $result['id'] ?? null;
         $user->save();
 
         return $result;
