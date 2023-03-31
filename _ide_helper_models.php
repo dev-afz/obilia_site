@@ -182,10 +182,12 @@ namespace App\Models{
  * @property int|null $job_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $client
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\NewMilestoneRequest> $milestone_requests
  * @property-read int|null $milestone_requests_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ContractMilestone> $milestones
  * @property-read int|null $milestones_count
+ * @property-read \App\Models\User $provider
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Workspace> $workspaces
  * @property-read int|null $workspaces_count
  * @method static \Illuminate\Database\Eloquent\Builder|Contract newModelQuery()

@@ -34,7 +34,7 @@ class InvoiceController extends Controller
         $order = $client->razorpay_orders()->where('order_id', $id)->firstOrFail();
 
 
-        return $to = Contract::where('id', json_decode($order->for_data, true)['contract_id'])->first()->user()->first();
+        return $to = Contract::where('id', json_decode($order->for_data, true)['contract_id'])->first();
 
         $from = $client;
 

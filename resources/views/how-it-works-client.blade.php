@@ -214,10 +214,10 @@
                     </div>
                 </div>
 
-                <div class="col-12 mt-5">
-                    <h2 class="mb-4">
+                <div style="padding-left:5rem;" class="col-12 mt-5">
+                    <h3 class="mb-4">
                         Creating contracts.
-                    </h2>
+                    </h3>
                     <p>
                         You can send contracts to your clients or sellers wishing to collaborate with you through
                         chat. Click on the contract creation icon and fill in the details.
@@ -239,9 +239,9 @@
                         You can refer to the link above to even calculate your application bids.
                     </p>
 
-                    <h2 class="mb-4 mt-4">
+                    <h3 class="mb-4 mt-4">
                         How do payments work?
-                    </h2>
+                    </h3>
                     <p>
                         All invoices to clients are automated by Obillia based on the milestones and/or projects. As a
                         freelancer not registered under GST you agree to self-billing invoices at Obillia that will
