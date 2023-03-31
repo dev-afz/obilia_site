@@ -213,6 +213,64 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-12 mt-5">
+                    <h2 class="mb-4">
+                        Creating contracts.
+                    </h2>
+                    <p>
+                        You can send contracts to your clients or sellers wishing to collaborate with you through
+                        chat. Click on the contract creation icon and fill in the details.
+                    </p>
+                    <p>
+                        The contract will show you a breakdown of the total cost and what is owed to you. You will be
+                        able to fix the prices accordingly.
+                    </p>
+                    <p>
+                        All amounts you enter in your contract will be inclusive of 18% GST.
+                    </p>
+                    <p>
+                        To know what to quote in the contract inclusive of GST use the GST calculator link below.
+                    </p>
+                    <a href="https://razorpay.com/gst-calculator/
+                    ">https://razorpay.com/gst-calculator/
+                    </a>
+                    <p>
+                        You can refer to the link above to even calculate your application bids.
+                    </p>
+
+                    <h2 class="mb-4 mt-4">
+                        How do payments work?
+                    </h2>
+                    <p>
+                        All invoices to clients are automated by Obillia based on the milestones and/or projects. As a
+                        freelancer not registered under GST you agree to self-billing invoices at Obillia that will
+                        raise
+                        invoices on your behalf to Obillia, you can use these invoices and bank statements for tax
+                        purposes.
+
+                    </p>
+                    <h3 class="mb-4 mt-4">
+                        When and How do I get paid?
+                    </h3>
+                    <p>
+                        Obillia only supports bank transfers to Indian accounts now. You will be paid within 14 days of
+                        the deadline day of your milestone/project based on approval by the client.
+
+                    </p>
+                    <h3 class="mb-4 mt-4">
+                        What are the charges at payouts?
+                    </h3>
+                    <p>
+                        Remember to always check the breakdown of payouts while you create a contract. All
+                        amounts you enter will be inclusive of 18% GST. You will be shown what you are owed while
+                        creating your contract. Obillia charges a platform fee while on Free or Extra Plan. No platform
+                        fees when in Obillia Plus. Read more about subscription plans here
+                    </p>
+                    <p>
+                        You can read more about payout calculation in the FAQ section by clicking here
+                    </p>
+                </div>
             </div>
 
 
