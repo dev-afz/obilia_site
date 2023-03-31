@@ -34,7 +34,8 @@
                         </div>
                         <div class="tm_invoice_info_list tm_accent_color">
                             <p class="tm_invoice_number tm_m0">Invoice No:
-                                <b>#OBL{{ Str::padLeft($order->id, 6, '0') }}</b></p>
+                                <b>#OBL{{ Str::padLeft($order->id, 6, '0') }}</b>
+                            </p>
                             <p class="tm_invoice_date tm_m0">Date: <b>
                                     {{ $order->created_at->format('d M, Y') }}
                                 </b></p>
@@ -45,18 +46,16 @@
                         <div class="tm_invoice_left">
                             <p class="tm_mb2"><b class="tm_primary_color">Invoice To:</b></p>
                             <p>
-                                Lowell H. Dominguez <br>
-                                84 Spilman Street, London <br>United Kingdom <br>
-                                lowell@gmail.com
+                                {{ $from->name }} <br>
+
+                                {{ $from->email }}
                             </p>
                         </div>
                         <div class="tm_invoice_right tm_text_right">
                             <p class="tm_mb2"><b class="tm_primary_color">Pay To:</b></p>
                             <p>
-                                Laralink Ltd <br>
-                                86-90 Paul Street, London<br>
-                                England EC2A 4NE <br>
-                                demo@gmail.com
+                                {{ $to->name }} <br>
+                                {{ $to->email }}<br>
                             </p>
                         </div>
                     </div>
@@ -67,47 +66,17 @@
                                     <thead>
                                         <tr class="tm_accent_bg_20">
                                             <th class="tm_width_2 tm_semi_bold tm_accent_color">No.</th>
-                                            <th class="tm_width_5 tm_semi_bold tm_accent_color">Item Description</th>
-                                            <th class="tm_width_2 tm_semi_bold tm_accent_color">Price</th>
-                                            <th class="tm_width_1 tm_semi_bold tm_accent_color">Qty</th>
-                                            <th class="tm_width_2 tm_semi_bold tm_accent_color tm_text_right">Total</th>
+                                            <th class="tm_width_5 tm_semi_bold tm_accent_color">Milestone</th>
+                                            <th style="text-align:end;" class="tm_width_2 tm_semi_bold tm_accent_color">
+                                                Price</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td class="tm_width_2 tm_border_top_0">1</td>
-                                            <td class="tm_width_5 tm_border_top_0">Finest Ramen</td>
-                                            <td class="tm_width_2 tm_border_top_0">$12.00</td>
-                                            <td class="tm_width_1 tm_border_top_0">4</td>
-                                            <td class="tm_width_2 tm_border_top_0 tm_text_right">$48.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tm_width_2 tm_border_top_0">2</td>
-                                            <td class="tm_width_5 tm_border_top_0">Sushi tray</td>
-                                            <td class="tm_width_2 tm_border_top_0">$9.00</td>
-                                            <td class="tm_width_1 tm_border_top_0">2</td>
-                                            <td class="tm_width_2 tm_border_top_0 tm_text_right">$18.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tm_width_2 tm_border_top_0">3</td>
-                                            <td class="tm_width_5 tm_border_top_0">Finest Gyoza</td>
-                                            <td class="tm_width_2 tm_border_top_0">$8.00</td>
-                                            <td class="tm_width_1 tm_border_top_0">5</td>
-                                            <td class="tm_width_2 tm_border_top_0 tm_text_right">$40.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tm_width_2 tm_border_top_0">4</td>
-                                            <td class="tm_width_5 tm_border_top_0">Extra Condiments</td>
-                                            <td class="tm_width_2 tm_border_top_0">$3.00</td>
-                                            <td class="tm_width_1 tm_border_top_0">3</td>
-                                            <td class="tm_width_2 tm_border_top_0 tm_text_right">$9.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tm_width_2 tm_border_top_0">5</td>
-                                            <td class="tm_width_5 tm_border_top_0">Cucumber Lemonade</td>
-                                            <td class="tm_width_2 tm_border_top_0">$6.00</td>
-                                            <td class="tm_width_1 tm_border_top_0">5</td>
-                                            <td class="tm_width_2 tm_border_top_0 tm_text_right">$30.00</td>
+                                            <td class="tm_width_5 tm_border_top_0">{{ $milestone['title'] }}</td>
+                                            <td style="text-align:end;" class="tm_width_2 tm_border_top_0">
+                                                ₹{{ $milestone['cost'] }}</td>
                                         </tr>
                                         <tr>
                                     </tbody>
@@ -117,14 +86,17 @@
                         <div class="tm_invoice_footer tm_border_top tm_mb15 tm_m0_md">
                             <div class="tm_left_footer">
                                 <p class="tm_mb2"><b class="tm_primary_color">Payment info:</b></p>
-                                <p class="tm_m0">Credit Card - 236***********928 <br>Amount: $145</p>
+                                <p class="tm_m0">Order ID : {{ $order->order_id }} <br>Amount:
+                                    ₹{{ $milestone['cost'] }}
+                                </p>
                             </div>
                             <div class="tm_right_footer">
                                 <table class="tm_mb15">
                                     <tbody>
                                         <tr>
                                             <td class="tm_width_3 tm_primary_color tm_bold">Subtoal</td>
-                                            <td class="tm_width_3 tm_primary_color tm_bold tm_text_right">$142.00</td>
+                                            <td class="tm_width_3 tm_primary_color tm_bold tm_text_right">
+                                                ₹{{ $milestone['cost'] }}</td>
                                         </tr>
                                         <tr>
                                             <td class="tm_width_3 tm_primary_color">Tax <span

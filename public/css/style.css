@@ -14207,7 +14207,9 @@ strong {
   text-align: center;
   height: 100%;
   top: 40px;
-  transition: 0.3s background-color ease-in-out;
+  transition: 0.3s all ease-in-out;
+  background-color: #09596f;
+  border: none;
 }
 .job-categories-3 .twm-media {
   width: 100px;
@@ -14247,6 +14249,7 @@ strong {
 .job-categories-3 .twm-content a {
   margin-bottom: 0px;
   display: block;
+  color: white;
 }
 .job-categories-3:hover {
   background-color: #09596f;

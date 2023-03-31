@@ -10345,7 +10345,9 @@ h3.twm-title {
     text-align: center;
     height: 100%;
     top: 40px;
-    transition: 0.3s background-color ease-in-out;
+    transition: 0.3s all ease-in-out;
+    background-color: #09596f;
+    border: none;
 
     .twm-media {
         width: 100px;
@@ -10364,6 +10366,7 @@ h3.twm-title {
 
         img {
             width: auto;
+            max-width: 80%;
         }
 
         [class*="flaticon-"] {
@@ -10390,6 +10393,7 @@ h3.twm-title {
         a {
             margin-bottom: 0px;
             display: block;
+            color: white;
         }
     }
 

@@ -33,12 +33,15 @@ class InvoiceController extends Controller
 
         $order = $client->razorpay_orders()->where('order_id', $id)->firstOrFail();
 
+        $milestone = json_decode($order->for_data, true);
 
-        return $to = Contract::where('id', json_decode($order->for_data, true)['contract_id'])->first();
+        $to = Contract::where('id', $milestone['contract_id'])
+            ->with(['provider'])
+            ->first()->provider;
 
         $from = $client;
 
 
-        return view('dashboard.client.print-invoice', compact('order'));
+        return view('dashboard.client.print-invoice', compact('order', 'to', 'from', 'milestone'));
     }
 }

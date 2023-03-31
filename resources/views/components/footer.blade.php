@@ -29,10 +29,16 @@
                             <div class="widget widget_services ftr-list-center">
                                 <h3 class="widget-title text-white">Social</h3>
                                 <ul>
-                                    <li><a href="#">Instagram</a></li>
-                                    <li><a href="#">Facebook</a></li>
-                                    <li><a href="#">Twitter</a></li>
-                                    <li><a href="#">Linkedin</a></li>
+                                    <li><a
+                                            href="https://instagram.com/obillia_official?igshid=OTJhZDVkZWE=">Instagram</a>
+                                    </li>
+                                    <li><a
+                                            href="https://www.facebook.com/profile.php?id=100085845788524&mibextid=ZbWKwL">Facebook</a>
+                                    </li>
+                                    <li><a
+                                            href="https://twitter.com/WeAreObillia?t=QJUEgK42ioAKcUgSpKJHbg&s=09">Twitter</a>
+                                    </li>
+                                    <li><a href="https://www.linkedin.com/company/89932523/admin/">Linkedin</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -78,10 +84,13 @@
                     <span class="copyrights-text">Copyright © 2022 by Obillia All Rights Reserved.</span>
                 </div>
                 <ul class="social-icons">
-                    <li><a href="javascript:void(0);" class="fab fa-facebook-f"></a></li>
-                    <li><a href="javascript:void(0);" class="fab fa-twitter"></a></li>
-                    <li><a href="javascript:void(0);" class="fab fa-instagram"></a></li>
-                    <li><a href="javascript:void(0);" class="fab fa-youtube"></a></li>
+                    <li><a href="https://instagram.com/obillia_official?igshid=OTJhZDVkZWE="
+                            class="fab fa-instagram"></a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100085845788524&mibextid=ZbWKwL"
+                            class="fab fa-facebook-f"></a></li>
+                    <li><a href="https://twitter.com/WeAreObillia?t=QJUEgK42ioAKcUgSpKJHbg&s=09"
+                            class="fab fa-twitter"></a></li>
+                    <li><a href="https://www.linkedin.com/company/89932523/admin/" class="fab fa-linkedin"></a></li>
                 </ul>
 
             </div>

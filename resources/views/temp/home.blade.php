@@ -34,7 +34,7 @@
                                         </h2>
                                     </div>
                                     <div class="twm-bnr-discription mb-2">Join the most comprehensive service
-                                        marketplace.</div>
+                                        marketplace</div>
 
                                     <h4 class="text-primary fs-4">
                                         Join the waitlist today and enjoy benefits
@@ -120,7 +120,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h2 class="text-orange">
-                    Hiring on-demand talent made easy.
+                    Hiring on-demand talent made easy
                 </h2>
                 <p class="text-primary fs-5">
                     Obillia is redefining the way freelance outsourcing is executed in India. With the rise of
