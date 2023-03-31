@@ -14201,15 +14201,19 @@ strong {
 
 .job-categories-3 {
   padding: 20px;
-  border: 2px solid #09596f;
   border-radius: 10px;
   position: relative;
   text-align: center;
   height: 100%;
   top: 40px;
   transition: 0.3s all ease-in-out;
-  background-color: #09596f;
-  border: none;
+  border: 2px solid #09596f;
+}
+.job-categories-3 hr {
+  border-top: 2px solid;
+}
+.job-categories-3:hover hr {
+  color: white;
 }
 .job-categories-3 .twm-media {
   width: 100px;
@@ -14228,7 +14232,7 @@ strong {
 }
 .job-categories-3 .twm-media img {
   width: auto;
-  max-width: 80%;
+  max-width: 65%;
 }
 .job-categories-3 .twm-media [class*=flaticon-] {
   color: #09596f;
@@ -14250,11 +14254,9 @@ strong {
 .job-categories-3 .twm-content a {
   margin-bottom: 0px;
   display: block;
-  color: white;
 }
 .job-categories-3:hover {
   background-color: #09596f;
-  border: none;
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 .job-categories-3:hover .twm-content .twm-jobs-available {

@@ -22,13 +22,17 @@
                             <a href="#" {{-- href="{{ route('categories', $cat->slug) }}" --}}>
                                 <div class="job-categories-3-wrap">
                                     <div class="job-categories-3">
-                                        <div class="twm-media">
+                                        <div class="">
                                             <div class="flaticon-user">
 
                                                 <img src="{{ $cat->image }}" height="100px" width="100px"
                                                     alt="{{ $cat->slug }}">
                                             </div>
+                                            <div class="px-4">
+                                                <hr>
+                                            </div>
                                         </div>
+
                                         <div class="twm-content">
                                             {{-- <div class="twm-jobs-available">{{ number_format(rand(1111, 9999)) }} Jobs</div> --}}
                                             <a href="#" {{-- href="{{ route('categories', $cat->slug) }}" --}}>{{ $cat->name }}</a>
