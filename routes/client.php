@@ -6,6 +6,7 @@ use App\Http\Controllers\Client\ChatController;
 use App\Http\Middleware\SanitizeInputMiddleware;
 use App\Http\Controllers\Client\ContractController;
 use App\Http\Controllers\Client\DashboardController;
+use App\Http\Controllers\Client\InvoiceController;
 use App\Http\Controllers\Client\JobApplicationController;
 use App\Http\Controllers\Client\Workspace\ChatController as WorkspaceChatController;
 use App\Http\Controllers\Client\Workspace\MilestoneController;
@@ -90,5 +91,11 @@ Route::controller(DashboardController::class)->middleware(['auth', 'client'])->p
             Route::post('create-order', 'createOrder')->name('create-order');
             Route::post('fetch', 'fetch')->name('fetch');
         });
+    });
+
+
+    Route::controller(InvoiceController::class)->prefix('invoice')->name('invoice.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('generate/{id}', 'generate')->name('generate');
     });
 });

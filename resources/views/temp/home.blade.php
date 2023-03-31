@@ -23,33 +23,45 @@
 
 
                     <div data-splide-hash="01" class="col-xl-12 col-lg-12 splide__slide col-md-12">
-                        <div style="max-width: 100% !important;" class="twm-bnr-left-section px-2">
-                            <div class="twm-bnr-title-large text-primary">
-                                <h2 class="text-primary mb-1">
-                                    Make <br>
-                                    ideas <br>
-                                    happen
-                                </h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="twm-bnr-left-section px-2">
+                                    <div class="twm-bnr-title-large text-primary">
+                                        <h2 class="text-primary mb-1">
+                                            Make <br>
+                                            ideas <br>
+                                            happen
+                                        </h2>
+                                    </div>
+                                    <div class="twm-bnr-discription mb-2">Join the most comprehensive service
+                                        marketplace.</div>
+
+                                    <h4 class="text-primary fs-4">
+                                        Join the waitlist today and enjoy benefits
+                                    </h4>
+                                    <p class="mb-1">
+                                        No service charge for client for first 5 projects
+                                    </p>
+                                    <p class="mb-2">
+                                        Get Obillia Extra free of cost for sellers for 3 months
+
+
+                                    </p>
+                                    <div class="btn-container mt-4">
+                                        <button data-bs-toggle="modal" data-wish-for="seller" data-bs-target="#waitlist"
+                                            class="call-to-action-btn ">Waitlist for sellers</button>
+                                        <button data-bs-toggle="modal" data-wish-for="client" data-bs-target="#waitlist"
+                                            class="call-to-action-btn">Waitlist for clients</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="twm-bnr-discription mb-2">Join the most comprehensive service
-                                marketplace.</div>
 
-                            <h4 class="text-primary fs-4">
-                                Join the waitlist today and enjoy benefits
-                            </h4>
-                            <p class="mb-1">
-                                No service charge for client for first 5 projects
-                            </p>
-                            <p class="mb-2">
-                                Get Obillia Extra free of cost for sellers for 3 months
-
-
-                            </p>
-                            <div class="btn-container mt-4">
-                                <button data-bs-toggle="modal" data-wish-for="seller" data-bs-target="#waitlist"
-                                    class="call-to-action-btn ">Waitlist for sellers</button>
-                                <button data-bs-toggle="modal" data-wish-for="client" data-bs-target="#waitlist"
-                                    class="call-to-action-btn">Waitlist for clients</button>
+                            <div class="col-md-6">
+                                <div class="">
+                                    <div class="twm-bnr-img">
+                                        <img src="{{ asset('images/svg/hero.svg') }}" alt="hero" class="img-fluid">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -118,9 +130,9 @@
                     occasion, we have it covered.
                 </p>
             </div>
-            <div class="col-md-6 col-sm-none">
+            <div class="col-md-6 col-sm-none text-center">
 
-                <img src="{{ asset('images/gallery/pic12.jpg') }}" alt="hero" class="img-fluid">
+                <img src="{{ asset('images/svg/hiring.svg') }}" alt="hero" class="img-fluid">
 
             </div>
         </div>

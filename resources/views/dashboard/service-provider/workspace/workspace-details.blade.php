@@ -595,6 +595,7 @@
                         data: {
                             milestone_id: milestone_id
                         },
+                        notification: false,
                         processData: true,
                         method: 'get',
                         successCallback: function(data) {

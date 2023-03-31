@@ -12,7 +12,7 @@
                         <div class="col-md-4">
                             <div class="twm-about-1-section">
                                 <div class="twm-media border-5">
-                                    <img style="border-radius:10px;" src="https://picsum.photos/seed/picsum/600/400"
+                                    <img style="border-radius:10px;" src="{{ asset('images/svg/why-obillia.svg') }}"
                                         alt="">
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                         <div class="col-md-4">
                             <div class="twm-about-1-section">
                                 <div class="twm-media border-5">
-                                    <img style="border-radius:10px;" src="https://picsum.photos/seed/priority/600/400"
+                                    <img style="border-radius:10px;" src="{{ asset('images/svg/satisfaction.svg') }}"
                                         alt="">
                                 </div>
                             </div>

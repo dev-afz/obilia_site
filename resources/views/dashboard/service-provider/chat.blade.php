@@ -301,6 +301,7 @@
                             $("[data-messages]").append(data.html);
                             var objDiv = document.getElementById("chat-holder");
                             objDiv.scrollTop = objDiv.scrollHeight;
+                            $('#contract-details-modal').modal('hide');
 
                         }
                     });

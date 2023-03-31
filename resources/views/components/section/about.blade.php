@@ -7,7 +7,7 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="twm-about-1-section">
                         <div class="twm-media">
-                            <img src="images/home-4/about/ab-1.png" alt="">
+                            <img src="{{ asset('images/svg/about.svg') }}" alt="">
                         </div>
                     </div>
                 </div>

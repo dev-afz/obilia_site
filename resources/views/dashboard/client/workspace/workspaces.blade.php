@@ -37,7 +37,7 @@
                 .card {
                     margin: 20px;
                     padding: 20px;
-                    width: 500px;
+                    width: auto;
                     min-height: 200px;
                     display: grid;
                     grid-template-rows: 20px 50px 1fr 50px;
