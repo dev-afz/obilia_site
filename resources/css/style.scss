@@ -10350,6 +10350,14 @@ h3.twm-title {
     // background-color: #09596f;
     // border: none;
 
+    .flaticon-user {
+        width: 100px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        padding: 10px;
+        transition: 0.3s all ease-in-out;
+    }
+
     hr {
         border-top: 2px solid;
     }
@@ -10357,6 +10365,11 @@ h3.twm-title {
     &:hover {
         hr {
             color: white;
+        }
+
+        .flaticon-user {
+            background-color: white;
+            width: 100px;
         }
     }
 

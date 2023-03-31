@@ -14209,11 +14209,22 @@ strong {
   transition: 0.3s all ease-in-out;
   border: 2px solid #09596f;
 }
+.job-categories-3 .flaticon-user {
+  width: 100px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  padding: 10px;
+  transition: 0.3s all ease-in-out;
+}
 .job-categories-3 hr {
   border-top: 2px solid;
 }
 .job-categories-3:hover hr {
   color: white;
+}
+.job-categories-3:hover .flaticon-user {
+  background-color: white;
+  width: 100px;
 }
 .job-categories-3 .twm-media {
   width: 100px;
