@@ -14228,6 +14228,7 @@ strong {
 }
 .job-categories-3 .twm-media img {
   width: auto;
+  max-width: 80%;
 }
 .job-categories-3 .twm-media [class*=flaticon-] {
   color: #09596f;

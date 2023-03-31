@@ -25,8 +25,8 @@
                                         <div class="twm-media">
                                             <div class="flaticon-user">
 
-                                                <img class="rounded-circle" src="{{ $cat->image }}" height="100px"
-                                                    width="100px" alt="{{ $cat->slug }}">
+                                                <img src="{{ $cat->image }}" height="100px" width="100px"
+                                                    alt="{{ $cat->slug }}">
                                             </div>
                                         </div>
                                         <div class="twm-content">
