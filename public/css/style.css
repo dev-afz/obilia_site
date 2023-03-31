@@ -14215,6 +14215,12 @@ strong {
   border-radius: 50%;
   padding: 10px;
   transition: 0.3s all ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.job-categories-3 .flaticon-user img {
+  width: 85%;
 }
 .job-categories-3 hr {
   border-top: 2px solid;

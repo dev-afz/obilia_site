@@ -219,7 +219,151 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr>
+                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12">
+                                <div class="d-flex gap-3">
 
+                                    <span class="text-primary svg-holder">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fa-regular"
+                                            data-icon="file-signature"
+                                            class="svg-inline--fa fa-file-signature fa-w-18" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                            <path
+                                                d="M48.02 448L48 64.13c0-8.836 7.164-16 16-16h160L224 128c0 17.67 14.33 32 32 32h79.1v94.18L384 206.5V138.6c0-16.98-6.742-33.26-18.74-45.26l-74.63-74.64C278.6 6.742 262.3 0 245.4 0H63.93C28.58 0 0 28.65 0 64l.0065 384c0 35.34 28.58 64 63.93 64H320c29.65 0 54.53-20.52 61.71-48H64.02C55.18 464 48.02 456.8 48.02 448zM292.7 342.3C289.7 345.3 288 349.4 288 353.7V383.9L272.8 384c-4.125 0-8.125-2.5-10.12-6.5c-11.88-23.88-46.25-30.38-66-14.12l-13.88-41.63C179.5 311.9 170.4 305.3 160 305.3s-19.5 6.625-22.75 16.5L119 376.4C117.5 380.9 113.3 384 108.4 384H96c-8.875 0-16 7.125-16 16S87.13 416 96 416h12.38c18.62 0 35.13-11.88 41-29.5L160 354.6L176.9 405c2 6.25 7.5 10.5 14 11H192c5.999 0 11.62-3.375 14.25-8.875l7.749-15.38C216.8 386.3 221.9 385.6 224 385.6s7.25 .625 10.12 6.5C241.5 406.9 256.4 416 272.8 416h77.59c4.264 0 8.35-1.703 11.35-4.727l156.9-158l-67.88-67.88L292.7 342.3zM568.5 167.4L536.6 135.5c-9.875-10-26-10-36 0l-27.25 27.25l67.88 67.88l27.25-27.25C578.5 193.4 578.5 177.3 568.5 167.4z"
+                                                fill="currentColor" />
+                                        </svg>
+                                    </span>
+                                    <div class="">
+                                        <h4 class="twm-title"> Creating contracts.
+                                        </h4>
+                                        <p>
+                                            You can send contracts to your clients or sellers wishing to collaborate
+                                            with you
+                                            through
+                                            chat. Click on the contract creation icon and fill in the details.
+                                            <br>
+                                            The contract will show you a breakdown of the total cost and what is owed to
+                                            you. You
+                                            will be
+                                            able to fix the prices accordingly.
+                                            <br>
+                                            All amounts you enter in your contract will be inclusive of 18% GST.
+                                            <br>
+                                            To know what to quote in the contract inclusive of GST use the GST
+                                            calculator link
+                                            below.
+                                            <br>
+                                            <a
+                                                href="https://razorpay.com/gst-calculator/
+                                    ">https://razorpay.com/gst-calculator/
+                                            </a>
+                                            <br>
+                                            You can refer to the link above to even calculate your application bids.
+
+                                        </p>
+
+                                        <p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12">
+                                <div class="d-flex gap-3">
+
+                                    <span class="text-primary svg-holder">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fa-regular"
+                                            data-icon="lightbulb-dollar"
+                                            class="svg-inline--fa fa-lightbulb-dollar fa-w-12" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                            <path
+                                                d="M112.1 454.4c0 6.297 1.825 12.4 5.294 17.65l17.15 25.71C139.8 505.6 151.7 512 161.2 512h61.68c9.438 0 21.36-6.388 26.61-14.26l17.09-25.7c2.938-4.438 5.361-12.34 5.361-17.67L272 415.1h-160L112.1 454.4zM192 0C90.02 .3203 16 82.98 16 175.1c0 44.38 16.4 84.82 43.52 115.8c16.53 18.84 42.36 58.26 52.24 91.48c.0313 .25 .1146 .4945 .1458 .7601h160.2c.0313-.2656 .1146-.4945 .1458-.7601c9.875-33.22 35.71-72.64 52.24-91.48C351.6 260.8 368 220.4 368 175.1C368 78.8 289.2 .0039 192 0zM288.4 260.1c-15.66 17.85-35.04 46.3-49.05 75.89h-94.61c-14.01-29.59-33.39-58.04-49.04-75.88C75.24 236.8 64 206.1 64 175.1C64 113.3 112.1 48.25 191.1 48C262.6 48 320 105.4 320 175.1C320 206.1 308.8 236.8 288.4 260.1zM197.5 164.8C184.5 161 168.1 157.3 169.6 148.5c1.375-7.812 16.59-9.719 30.27-7.625c5.594 .8438 11.73 2.812 17.59 4.844c10.39 3.594 21.83-1.938 25.45-12.34c3.625-10.44-1.891-21.84-12.33-25.47C223.3 105.4 217.5 103.8 212 102.6V96c0-11.03-8.953-20-20-20S172 84.97 172 96v5.992C149.6 106.8 133.8 120.8 130.2 141.7C122.8 184.5 163.4 196.4 180.7 201.5c25.02 7.264 35.13 9.83 33.73 17.97c-1.375 7.812-16.59 9.75-30.31 7.625c-4.469-.6643-9.099-1.738-28.12-8.656C145.6 214.9 134.2 220.3 130.5 230.7C126.8 241.1 132.3 252.5 142.7 256.2C148.9 258.4 159.1 262.6 172 265.2V272c0 11.03 8.953 20 20 20s20-8.969 20-20V265.7c22.36-4.793 38.21-18.53 41.83-39.43C261.3 183 219.8 171.1 197.5 164.8z"
+                                                fill="currentColor" />
+                                        </svg>
+
+                                    </span>
+                                    <div class="">
+                                        <h4 class="twm-title"> How do payments work?
+                                        </h4>
+                                        <p> All invoices to clients are automated by Obillia based on the milestones
+                                            and/or
+                                            projects. As a
+                                            freelancer not registered under GST you agree to self-billing invoices at
+                                            Obillia that
+                                            will
+                                            raise
+                                            invoices on your behalf to Obillia, you can use these invoices and bank
+                                            statements for
+                                            tax
+                                            purposes.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12">
+                                <div class="d-flex gap-3">
+
+                                    <span class="text-primary svg-holder">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fa-regular"
+                                            data-icon="circle-question"
+                                            class="svg-inline--fa fa-circle-question fa-w-16" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path
+                                                d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 464c-114.7 0-208-93.31-208-208S141.3 48 256 48s208 93.31 208 208S370.7 464 256 464zM256 336c-18 0-32 14-32 32s13.1 32 32 32c17.1 0 32-14 32-32S273.1 336 256 336zM289.1 128h-51.1C199 128 168 159 168 198c0 13 11 24 24 24s24-11 24-24C216 186 225.1 176 237.1 176h51.1C301.1 176 312 186 312 198c0 8-4 14.1-11 18.1L244 251C236 256 232 264 232 272V288c0 13 11 24 24 24S280 301 280 288V286l45.1-28c21-13 34-36 34-60C360 159 329 128 289.1 128z"
+                                                fill="currentColor" />
+                                        </svg>
+
+                                    </span>
+                                    <div class="">
+                                        <h4 class="twm-title"> When and How do I get paid?
+
+                                        </h4>
+                                        <p> Obillia only supports bank transfers to Indian accounts now. You will be
+                                            paid within 14
+                                            days of
+                                            the deadline day of your milestone/project based on approval by the client.
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="500" class="col-md-12">
+                                <div class="d-flex gap-3">
+
+                                    <span class="text-primary svg-holder">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fa-regular"
+                                            data-icon="file-invoice-dollar"
+                                            class="svg-inline--fa fa-file-invoice-dollar fa-w-12" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                            <path
+                                                d="M365.3 93.38l-74.63-74.64C278.6 6.742 262.3 0 245.4 0H64C28.65 0 0 28.65 0 64l.0065 384c0 35.34 28.65 64 64 64H320c35.2 0 64-28.8 64-64V138.6C384 121.7 377.3 105.4 365.3 93.38zM336 448c0 8.836-7.164 16-16 16H64.02c-8.838 0-16-7.164-16-16L48 64.13c0-8.836 7.164-16 16-16h160L224 128c0 17.67 14.33 32 32 32h79.1V448zM96 128h80C184.8 128 192 120.8 192 112S184.8 96 176 96H96C87.16 96 80 103.2 80 112S87.16 128 96 128zM192 176C192 167.2 184.8 160 176 160H96C87.16 160 80 167.2 80 176S87.16 192 96 192h80C184.8 192 192 184.8 192 176zM197.5 308.8L191.1 307.2C168.3 300.2 168.8 296.1 169.6 292.5c1.375-7.812 16.59-9.719 30.27-7.625c5.594 .8438 11.73 2.812 17.59 4.844c10.39 3.594 21.83-1.938 25.45-12.34c3.625-10.44-1.891-21.84-12.33-25.47c-7.219-2.484-13.11-4.078-18.56-5.273V240c0-11.03-8.953-20-20-20s-20 8.969-20 20v5.992C149.6 250.8 133.8 264.8 130.2 285.7c-7.406 42.84 33.19 54.75 50.52 59.84l5.812 1.688c29.28 8.375 28.8 11.19 27.92 16.28c-1.375 7.812-16.59 9.75-30.31 7.625c-6.938-1.031-15.81-4.219-23.66-7.031l-4.469-1.625c-10.41-3.594-21.83 1.812-25.52 12.22c-3.672 10.41 1.781 21.84 12.2 25.53l4.266 1.5c7.758 2.789 16.38 5.59 25.06 7.512V416c0 11.03 8.953 20 20 20s20-8.969 20-20v-6.254c22.36-4.793 38.21-18.53 41.83-39.43C261.3 327 219.8 315.1 197.5 308.8z"
+                                                fill="currentColor" />
+                                        </svg>
+
+                                    </span>
+                                    <div class="">
+                                        <h4 class="twm-title"> What are the charges at payouts?
+
+                                        </h4>
+                                        <p> Remember to always check the breakdown of payouts while you create a
+                                            contract. All
+                                            amounts you enter will be inclusive of 18% GST. You will be shown what you
+                                            are owed
+                                            while
+                                            creating your contract. Obillia charges a platform fee while on Free or
+                                            Extra Plan. No
+                                            platform
+                                            fees when in Obillia Plus. Read more about subscription plans here
+                                            <br>
+                                            You can read more about payout calculation in the FAQ section by clicking
+                                            here
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
 
 
 
@@ -227,106 +371,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 mt-5">
-                    <div class="d-flex gap-3 mt-4">
-                        <div class="svg-holder text-primary">
-                            <svg aria-hidden="true" focusable="false" data-prefix="fa-regular"
-                                data-icon="file-signature" class="svg-inline--fa fa-file-signature fa-w-18"
-                                role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                <path
-                                    d="M48.02 448L48 64.13c0-8.836 7.164-16 16-16h160L224 128c0 17.67 14.33 32 32 32h79.1v94.18L384 206.5V138.6c0-16.98-6.742-33.26-18.74-45.26l-74.63-74.64C278.6 6.742 262.3 0 245.4 0H63.93C28.58 0 0 28.65 0 64l.0065 384c0 35.34 28.58 64 63.93 64H320c29.65 0 54.53-20.52 61.71-48H64.02C55.18 464 48.02 456.8 48.02 448zM292.7 342.3C289.7 345.3 288 349.4 288 353.7V383.9L272.8 384c-4.125 0-8.125-2.5-10.12-6.5c-11.88-23.88-46.25-30.38-66-14.12l-13.88-41.63C179.5 311.9 170.4 305.3 160 305.3s-19.5 6.625-22.75 16.5L119 376.4C117.5 380.9 113.3 384 108.4 384H96c-8.875 0-16 7.125-16 16S87.13 416 96 416h12.38c18.62 0 35.13-11.88 41-29.5L160 354.6L176.9 405c2 6.25 7.5 10.5 14 11H192c5.999 0 11.62-3.375 14.25-8.875l7.749-15.38C216.8 386.3 221.9 385.6 224 385.6s7.25 .625 10.12 6.5C241.5 406.9 256.4 416 272.8 416h77.59c4.264 0 8.35-1.703 11.35-4.727l156.9-158l-67.88-67.88L292.7 342.3zM568.5 167.4L536.6 135.5c-9.875-10-26-10-36 0l-27.25 27.25l67.88 67.88l27.25-27.25C578.5 193.4 578.5 177.3 568.5 167.4z"
-                                    fill="currentColor" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="mb-4">
-                                Creating contracts.
-                            </h3>
-                            <p>
-                                You can send contracts to your clients or sellers wishing to collaborate with you
-                                through
-                                chat. Click on the contract creation icon and fill in the details.
-                            </p>
-                            <p>
-                                The contract will show you a breakdown of the total cost and what is owed to you. You
-                                will be
-                                able to fix the prices accordingly.
-                            </p>
-                            <p>
-                                All amounts you enter in your contract will be inclusive of 18% GST.
-                            </p>
-                            <p>
-                                To know what to quote in the contract inclusive of GST use the GST calculator link
-                                below.
-                            </p>
-                            <a href="https://razorpay.com/gst-calculator/
-                        ">https://razorpay.com/gst-calculator/
-                            </a>
-                            <p>
-                                You can refer to the link above to even calculate your application bids.
-                            </p>
-                        </div>
-                    </div>
 
-                    <div class="d-flex gap-3 mt-4">
-                        <div class="svg-holder text-primary">
-                            <svg aria-hidden="true" focusable="false" data-prefix="fa-regular" data-icon="lightbulb-dollar" class="svg-inline--fa fa-lightbulb-dollar fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M112.1 454.4c0 6.297 1.825 12.4 5.294 17.65l17.15 25.71C139.8 505.6 151.7 512 161.2 512h61.68c9.438 0 21.36-6.388 26.61-14.26l17.09-25.7c2.938-4.438 5.361-12.34 5.361-17.67L272 415.1h-160L112.1 454.4zM192 0C90.02 .3203 16 82.98 16 175.1c0 44.38 16.4 84.82 43.52 115.8c16.53 18.84 42.36 58.26 52.24 91.48c.0313 .25 .1146 .4945 .1458 .7601h160.2c.0313-.2656 .1146-.4945 .1458-.7601c9.875-33.22 35.71-72.64 52.24-91.48C351.6 260.8 368 220.4 368 175.1C368 78.8 289.2 .0039 192 0zM288.4 260.1c-15.66 17.85-35.04 46.3-49.05 75.89h-94.61c-14.01-29.59-33.39-58.04-49.04-75.88C75.24 236.8 64 206.1 64 175.1C64 113.3 112.1 48.25 191.1 48C262.6 48 320 105.4 320 175.1C320 206.1 308.8 236.8 288.4 260.1zM197.5 164.8C184.5 161 168.1 157.3 169.6 148.5c1.375-7.812 16.59-9.719 30.27-7.625c5.594 .8438 11.73 2.812 17.59 4.844c10.39 3.594 21.83-1.938 25.45-12.34c3.625-10.44-1.891-21.84-12.33-25.47C223.3 105.4 217.5 103.8 212 102.6V96c0-11.03-8.953-20-20-20S172 84.97 172 96v5.992C149.6 106.8 133.8 120.8 130.2 141.7C122.8 184.5 163.4 196.4 180.7 201.5c25.02 7.264 35.13 9.83 33.73 17.97c-1.375 7.812-16.59 9.75-30.31 7.625c-4.469-.6643-9.099-1.738-28.12-8.656C145.6 214.9 134.2 220.3 130.5 230.7C126.8 241.1 132.3 252.5 142.7 256.2C148.9 258.4 159.1 262.6 172 265.2V272c0 11.03 8.953 20 20 20s20-8.969 20-20V265.7c22.36-4.793 38.21-18.53 41.83-39.43C261.3 183 219.8 171.1 197.5 164.8z" fill="currentColor"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="mb-4 ">
-                                How do payments work?
-                            </h3>
-                            <p>
-                                All invoices to clients are automated by Obillia based on the milestones and/or
-                                projects. As a
-                                freelancer not registered under GST you agree to self-billing invoices at Obillia that
-                                will
-                                raise
-                                invoices on your behalf to Obillia, you can use these invoices and bank statements for
-                                tax
-                                purposes.
-
-                            </p>
-                        </div>
-                    </div>
-                    <div class="d-flex gap-3 mt-4">
-                        <div class="svg-holder text-primary">
-                            <svg aria-hidden="true" focusable="false" data-prefix="fa-regular" data-icon="circle-question" class="svg-inline--fa fa-circle-question fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 464c-114.7 0-208-93.31-208-208S141.3 48 256 48s208 93.31 208 208S370.7 464 256 464zM256 336c-18 0-32 14-32 32s13.1 32 32 32c17.1 0 32-14 32-32S273.1 336 256 336zM289.1 128h-51.1C199 128 168 159 168 198c0 13 11 24 24 24s24-11 24-24C216 186 225.1 176 237.1 176h51.1C301.1 176 312 186 312 198c0 8-4 14.1-11 18.1L244 251C236 256 232 264 232 272V288c0 13 11 24 24 24S280 301 280 288V286l45.1-28c21-13 34-36 34-60C360 159 329 128 289.1 128z" fill="currentColor"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="mb-4 ">
-                                When and How do I get paid?
-                            </h3>
-                            <p>
-                                Obillia only supports bank transfers to Indian accounts now. You will be paid within 14
-                                days of
-                                the deadline day of your milestone/project based on approval by the client.
-
-                            </p>
-                        </div>
-                    </div>
-                    <div class="d-flex gap-3 mt-4">
-                        <div class="svg-holder text-primary">
-                            <svg aria-hidden="true" focusable="false" data-prefix="fa-regular" data-icon="file-invoice-dollar" class="svg-inline--fa fa-file-invoice-dollar fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M365.3 93.38l-74.63-74.64C278.6 6.742 262.3 0 245.4 0H64C28.65 0 0 28.65 0 64l.0065 384c0 35.34 28.65 64 64 64H320c35.2 0 64-28.8 64-64V138.6C384 121.7 377.3 105.4 365.3 93.38zM336 448c0 8.836-7.164 16-16 16H64.02c-8.838 0-16-7.164-16-16L48 64.13c0-8.836 7.164-16 16-16h160L224 128c0 17.67 14.33 32 32 32h79.1V448zM96 128h80C184.8 128 192 120.8 192 112S184.8 96 176 96H96C87.16 96 80 103.2 80 112S87.16 128 96 128zM192 176C192 167.2 184.8 160 176 160H96C87.16 160 80 167.2 80 176S87.16 192 96 192h80C184.8 192 192 184.8 192 176zM197.5 308.8L191.1 307.2C168.3 300.2 168.8 296.1 169.6 292.5c1.375-7.812 16.59-9.719 30.27-7.625c5.594 .8438 11.73 2.812 17.59 4.844c10.39 3.594 21.83-1.938 25.45-12.34c3.625-10.44-1.891-21.84-12.33-25.47c-7.219-2.484-13.11-4.078-18.56-5.273V240c0-11.03-8.953-20-20-20s-20 8.969-20 20v5.992C149.6 250.8 133.8 264.8 130.2 285.7c-7.406 42.84 33.19 54.75 50.52 59.84l5.812 1.688c29.28 8.375 28.8 11.19 27.92 16.28c-1.375 7.812-16.59 9.75-30.31 7.625c-6.938-1.031-15.81-4.219-23.66-7.031l-4.469-1.625c-10.41-3.594-21.83 1.812-25.52 12.22c-3.672 10.41 1.781 21.84 12.2 25.53l4.266 1.5c7.758 2.789 16.38 5.59 25.06 7.512V416c0 11.03 8.953 20 20 20s20-8.969 20-20v-6.254c22.36-4.793 38.21-18.53 41.83-39.43C261.3 327 219.8 315.1 197.5 308.8z" fill="currentColor"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="mb-4 ">
-                                What are the charges at payouts?
-                            </h3>
-                            <p>
-                                Remember to always check the breakdown of payouts while you create a contract. All
-                                amounts you enter will be inclusive of 18% GST. You will be shown what you are owed
-                                while
-                                creating your contract. Obillia charges a platform fee while on Free or Extra Plan. No
-                                platform
-                                fees when in Obillia Plus. Read more about subscription plans here
-                            </p>
-                            <p>
-                                You can read more about payout calculation in the FAQ section by clicking here
-                            </p>
-                        </div>
-                    </div>
-                </div>
             </div>
 
 
