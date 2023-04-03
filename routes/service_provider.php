@@ -14,7 +14,7 @@ use App\Http\Controllers\ServiceProvider\Workspace\WorkspacesController;
 use App\Http\Controllers\ServiceProvider\Workspace\ChatController as WorkspaceChatController;
 
 Route::controller(DashboardController::class)
-    ->middleware(['auth', 'service_provider'])
+    ->middleware(['auth', 'service_provider', 'verified'])
     ->prefix('service-provider')
     ->name('service-provider.')
     ->group(function () {

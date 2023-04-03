@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div class="row mb-5">
+        <div class="row mb-5 d-none d-md-block">
             <div class="col-12 position-relative">
                 <span class="scroll-btn">
                     <a href="#about">

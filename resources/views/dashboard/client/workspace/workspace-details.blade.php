@@ -46,18 +46,15 @@
                 <ul class="timeline">
                     @forelse ($workspace->contract->milestones as $milestone)
                         @php
-
+                            
                             if ($latestMilestone !== $milestone->id && $milestone->escrow_fund_released_time === null && $found) {
                                 $latestMilestone = $milestone->id;
                                 $found = false;
                             }
-
+                            
                         @endphp
 
-                        <li @class([
-                            'timeline-item',
-                            'timeline-done' => $milestone->status == 'completed',
-                        ])>
+                        <li @class(['timeline-item', 'timeline-done' => $found == 'completed'])>
                             <span @class([
                                 'timeline-point timeline-point-indicator',
                                 'pulse' => $milestone->id == $latestMilestone,

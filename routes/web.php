@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\OauthController;
 use App\Http\Controllers\Site\BasicController;
 use App\Http\Controllers\Site\JobController;
 use App\Http\Controllers\Site\PaymentController;
+use App\Http\Controllers\Site\VerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,4 +67,11 @@ Route::controller(PaymentController::class)
     ->prefix('payment')->name('payment.')->group(function () {
         Route::post('create-order', 'createOrder')->name('create-order');
         Route::post('fetch-order', 'fetchOrder')->name('fetch-order');
+    });
+Route::controller(VerificationController::class)
+
+    ->prefix('verification')->name('verification.')->group(function () {
+        Route::post('send', 'send')->name('send')->middleware(['throttle:6,1', 'auth']);
+        Route::get('verify', 'verify')->name('verify')->middleware(['signed']);
+        Route::get('notice', 'notice')->name('notice')->middleware(['auth']);
     });

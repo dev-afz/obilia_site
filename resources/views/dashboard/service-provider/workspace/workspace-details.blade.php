@@ -157,10 +157,7 @@
                                 
                             @endphp
 
-                            <li @class([
-                                'timeline-item',
-                                'timeline-done' => $milestone->status == 'completed',
-                            ])>
+                            <li @class(['timeline-item', 'timeline-done' => $found == 'completed'])>
                                 <span @class([
                                     'timeline-point timeline-point-indicator',
                                     'pulse' => $milestone->id == $latestMilestone,

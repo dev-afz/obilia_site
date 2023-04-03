@@ -98,17 +98,17 @@
                                             <td class="tm_width_3 tm_primary_color tm_bold tm_text_right">
                                                 ₹{{ $milestone['cost'] }}</td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <td class="tm_width_3 tm_primary_color">Tax <span
                                                     class="tm_ternary_color">(2%)</span></td>
                                             <td class="tm_width_3 tm_primary_color tm_text_right">$3</td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr class="tm_accent_bg_20">
                                             <td class="tm_width_3 tm_border_top_0 tm_bold tm_f16 tm_accent_color">Grand
                                                 Total </td>
                                             <td
                                                 class="tm_width_3 tm_border_top_0 tm_bold tm_f16 tm_accent_color tm_text_right">
-                                                $145</td>
+                                                ₹{{ $milestone['cost'] }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -180,7 +180,7 @@
                             canvasImageHeight
                         );
                     }
-                    pdf.save('download.pdf');
+                    pdf.save('OBL-INV-{{ Str::padLeft($order->id, 6, '0') }}.pdf');
                 });
             });
 

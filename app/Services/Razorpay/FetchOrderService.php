@@ -135,6 +135,7 @@ class FetchOrderService
     {
         $milestone->escrow_fund_added_time = now();
         $milestone->razorpay_order_id = $order->id;
+        $milestone->status = 'active';
         $milestone->save();
 
         return $milestone;

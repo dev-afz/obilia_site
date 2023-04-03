@@ -5,10 +5,13 @@ namespace App\Services;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Mail\VerificationMail;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Action\ServiceProvider\ProviderAction;
 use App\Services\RazorpayX\CreateContactService;
 
@@ -36,8 +39,11 @@ class UserService
 
         $service->createRazorpayContact($user);
 
-
-
+        $signedUrl = URL::temporarySignedRoute(
+            'verification.verify',
+            now()->addMinutes(60),
+            ['user' => $user->email]
+        );
         switch ($request->role) {
             case 'service_provider':
                 $action = new ProviderAction($user);
@@ -52,6 +58,8 @@ class UserService
                 break;
         }
         DB::commit();
+
+        Mail::send(new VerificationMail($user, $signedUrl));
         return response()->json([
             'message' => 'You have successfully registered',
             'header' => 'Registration successful',

@@ -30,7 +30,8 @@
                                                 <td>{{ $payment->amount }}</td>
                                                 <td>{{ $payment->transaction_id ?? 'NA' }}</td>
                                                 <td>
-                                                    <a href="{{ route('client.invoice.generate', $payment->order_id) }}"
+                                                    <a target="_blank"
+                                                        href="{{ route('client.invoice.generate', $payment->order_id) }}"
                                                         class="btn btn-primary btn-sm">Generate Invoice</a>
                                                 </td>
                                             </tr>

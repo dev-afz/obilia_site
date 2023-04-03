@@ -87,8 +87,11 @@ aside {
         border-left: 5px solid #D9D9D9;
 
         &.timeline-done {
-            & {
-                border-color: #198754;
+
+            border-color: #198754;
+
+            .timeline-point-indicator {
+                background-color: #198754 !important;
             }
         }
 

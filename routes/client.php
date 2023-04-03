@@ -13,7 +13,7 @@ use App\Http\Controllers\Client\Workspace\MilestoneController;
 use App\Http\Controllers\Client\Workspace\PaymentController;
 use App\Http\Controllers\Client\Workspace\WorkspacesController;
 
-Route::controller(DashboardController::class)->middleware(['auth', 'client'])->prefix('client')->name('client.')->group(function () {
+Route::controller(DashboardController::class)->middleware(['auth', 'client', 'verified'])->prefix('client')->name('client.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('category', 'category')->name('category');
     Route::get('subcategories', 'subcategories')->name('subcategories');
