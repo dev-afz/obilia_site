@@ -11,7 +11,7 @@ window.Echo = new Echo({
     // wssPort: 6001,
     forceTLS: false,
     disableStats: true,
-    // enabledTransports: ["ws", "wss"],
+    enabledTransports: ["ws"],
 });
 
 const channel = window.Echo.private("chat." + window.me);
