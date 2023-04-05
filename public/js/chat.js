@@ -19,11 +19,8 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   key: "myKey",
   wsHost: window.location.hostname,
   wsPort: 6001,
-  // wssHost: window.location.hostname,
-  // wssPort: 6001,
   forceTLS: false,
-  disableStats: true,
-  enabledTransports: ["ws", "wss"]
+  disableStats: true
 });
 var channel = window.Echo["private"]("chat." + window.me);
 console.log(channel);
