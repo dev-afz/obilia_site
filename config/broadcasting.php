@@ -39,9 +39,9 @@ return [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
                 'encrypted' => false,
                 'useTLS' => false,
-                'host' => 'dental-friend.appdid.com',
+                'host' => '127.0.0.1',
                 'port' => 6001,
-                'scheme' => 'http'
+                'scheme' => 'https'
             ],
         ],
         'ably' => [
