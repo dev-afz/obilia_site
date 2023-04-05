@@ -19,7 +19,7 @@
                     @if ($f['type'] !== 'select')
                         <div class="col-md-{{ $f['col'] ?? 6 }} col-12 ">
                             <x-utils.input required="{{ $f['required'] ?? 'true' }}" type="{{ $f['type'] ?? 'text' }}"
-                                id="{{ $name }}_{{ $f['name'] }}"
+                                inputClass="{{ $f['class'] ?? '' }}" id="{{ $name }}_{{ $f['name'] }}"
                                 label="{{ ucwords(str_replace('_', ' ', $f['name'])) }}"
                                 placeholder="{{ ucwords(str_replace('_', ' ', $f['name'])) }}"
                                 name="{{ $name }}[][{{ $f['name'] }}]" />

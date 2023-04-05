@@ -88,10 +88,10 @@ aside {
 
         &.timeline-done {
 
-            border-color: #198754;
+            border-color: var(--bs-success);
 
             .timeline-point-indicator {
-                background-color: #198754 !important;
+                background-color: var(--bs-success) !important;
             }
         }
 

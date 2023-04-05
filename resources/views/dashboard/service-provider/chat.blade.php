@@ -8,6 +8,24 @@
                     width: 50%;
                 }
 
+                .price-detail {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 0.5rem;
+                }
+
+                .price-breakdown {
+                    padding: 1.5rem 2rem;
+                    border: 2px dashed #09596f;
+                    border-radius: 1rem;
+                    margin-bottom: 1rem;
+                    background: #f0f6fe;
+                }
+
+                .list-unstyled {
+                    margin-bottom: 0;
+                }
+
                 @media (max-width: 768px) {
                     .offcanvas-end {
                         width: 100%;
@@ -206,6 +224,7 @@
         </x-elements.modal>
 
 
+
         <x-utils.offcanvas id="create-contract" class="create-contract" position="end" title="Create Contract">
             <form id="create-contract-form">
                 <div class="row">
@@ -233,7 +252,7 @@
                             addButtonLabel="<i class='fa fa-plus'></i> Add Milestone"
                             :fields="[
                                 ['name' => 'title', 'col' => 12],
-                                ['name' => 'amount', 'type' => 'number', 'col' => 6],
+                                ['name' => 'amount', 'type' => 'number', 'col' => 6, 'class' => 'milestone-amount'],
                                 ['name' => 'due_date', 'type' => 'date', 'col' => 6],
                                 ['name' => 'description', 'type' => 'textarea', 'col' => 12],
                             ]" />
@@ -242,6 +261,35 @@
                     <div class="col-md-12">
                         <x-utils.input-file name="contract_file" />
                     </div>
+
+                    <div class="col-md-12">
+                        <div class="price-breakdown">
+
+                            <h4 class="price-title text-center">Price Details</h6>
+                                <ul class="list-unstyled">
+                                    <li class="price-detail">
+                                        <div class="detail-title  text-success">Total Contract Value</div>
+                                        <div data-contract-amount class="detail-amt  text-success">₹ 0</div>
+                                    </li>
+                                    <li class="price-detail">
+                                        <div class="detail-title">Commission(10%) </div>
+                                        <div data-commission class="detail-amt">₹ 0</div>
+                                    </li>
+
+                                </ul>
+                                <hr>
+                                <ul class="list-unstyled">
+                                    <li class="price-detail">
+                                        <div class="detail-title detail-total">Receivable Amount</div>
+                                        <div data-receivable-amount class="detail-amt fw-bolder">₹ 0</div>
+                                    </li>
+                                </ul>
+
+
+                        </div>
+                    </div>
+
+
 
                     <div class="col-12 text-center">
                         <button type="submit" class="btn btn-success btn-lg w-100">
@@ -305,6 +353,23 @@
 
                         }
                     });
+                });
+
+
+                $(document).on('change', '.milestone-amount', function(e) {
+                    const allAmounts = $('.milestone-amount').toArray().map((el) => {
+                        if (isNaN(parseInt($(el).val()))) {
+                            return 0;
+                        }
+                        return parseInt($(el).val());
+                    });
+                    const total = (allAmounts.reduce((a, b) => a + b, 0)).toFixed(2);
+                    const commission = (total * 0.1).toFixed(2);
+                    const receivable = (total - commission).toFixed(2);
+                    $('[data-contract-amount]').html('₹ ' + total);
+                    $('[data-commission]').html('₹ ' + commission);
+                    $('[data-receivable-amount]').html('₹ ' + receivable);
+
                 });
 
                 function milestonesRendereCallback() {

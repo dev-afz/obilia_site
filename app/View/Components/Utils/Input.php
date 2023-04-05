@@ -21,6 +21,7 @@ class Input extends Component
     public $required;
     public $disabled;
     public $class;
+    public $inputClass;
     public $icon;
     public $attrs;
     public $multiple;
@@ -36,6 +37,7 @@ class Input extends Component
         $required = true,
         $disabled = false,
         $class = '',
+        $inputClass = '',
         $icon = false,
         array $attrs = null,
         bool $multiple = false,
@@ -50,6 +52,7 @@ class Input extends Component
         $this->required = $required;
         $this->disabled = $disabled;
         $this->class = $class;
+        $this->inputClass = $inputClass;
         $this->icon = $icon;
         $this->attrs = $attrs;
         $this->multiple = $multiple;

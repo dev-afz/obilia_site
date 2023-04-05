@@ -5,7 +5,7 @@
     <div class=" @if ($icon) ls-inputicon-box @endif ">
 
         @if ($type !== 'textarea')
-            <input class="form-control "
+            <input class="form-control {{ $inputClass ?? '' }}"
                 @if ($multiple) name="{{ $name }}[]"@else name="{{ $name }}" @endif
                 type="{{ $type }}" @if ($value) value="{{ $value }}" @endif
                 @if ($required) required @endif id="{{ $id ?? $name }}"
