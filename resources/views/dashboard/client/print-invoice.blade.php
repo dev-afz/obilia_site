@@ -34,28 +34,28 @@
                         </div>
                         <div class="tm_invoice_info_list tm_accent_color">
                             <p class="tm_invoice_number tm_m0">Invoice No:
-                                <b>#OBL{{ Str::padLeft($order->id, 6, '0') }}</b>
+                                <b>#OBL-INV-{{ Str::padLeft($invoice->id, 6, '0') }}</b>
                             </p>
                             <p class="tm_invoice_date tm_m0">Date: <b>
-                                    {{ $order->created_at->format('d M, Y') }}
+                                    {{ $invoice->created_at->format('d M, Y') }}
                                 </b></p>
                         </div>
                         <div class="tm_invoice_seperator tm_accent_bg_20"></div>
                     </div>
                     <div class="tm_invoice_head tm_mb10">
                         <div class="tm_invoice_left">
-                            <p class="tm_mb2"><b class="tm_primary_color">Invoice To:</b></p>
+                            <p class="tm_mb2"><b class="tm_primary_color">From:</b></p>
                             <p>
-                                {{ $from->name }} <br>
+                                {{ $invoice->from->name }} <br>
 
-                                {{ $from->email }}
+                                {{ $invoice->from->email }}
                             </p>
                         </div>
                         <div class="tm_invoice_right tm_text_right">
-                            <p class="tm_mb2"><b class="tm_primary_color">Pay To:</b></p>
+                            <p class="tm_mb2"><b class="tm_primary_color">To:</b></p>
                             <p>
-                                {{ $to->name }} <br>
-                                {{ $to->email }}<br>
+                                Obillia <br>
+                                info.obillia@gmail.com<br>
                             </p>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                                     <thead>
                                         <tr class="tm_accent_bg_20">
                                             <th class="tm_width_2 tm_semi_bold tm_accent_color">No.</th>
-                                            <th class="tm_width_5 tm_semi_bold tm_accent_color">Milestone</th>
+                                            <th class="tm_width_5 tm_semi_bold tm_accent_color">Description</th>
                                             <th style="text-align:end;" class="tm_width_2 tm_semi_bold tm_accent_color">
                                                 Price</th>
                                         </tr>
@@ -74,9 +74,13 @@
                                     <tbody>
                                         <tr>
                                             <td class="tm_width_2 tm_border_top_0">1</td>
-                                            <td class="tm_width_5 tm_border_top_0">{{ $milestone['title'] }}</td>
+                                            <td class="tm_width_5 tm_border_top_0">
+
+                                                Payment for {{ $invoice->title }}
+
+                                            </td>
                                             <td style="text-align:end;" class="tm_width_2 tm_border_top_0">
-                                                ₹{{ $milestone['cost'] }}</td>
+                                                ₹{{ $invoice->amount }}</td>
                                         </tr>
                                         <tr>
                                     </tbody>
@@ -86,8 +90,8 @@
                         <div class="tm_invoice_footer tm_border_top tm_mb15 tm_m0_md">
                             <div class="tm_left_footer">
                                 <p class="tm_mb2"><b class="tm_primary_color">Payment info:</b></p>
-                                <p class="tm_m0">Order ID : {{ $order->order_id }} <br>Amount:
-                                    ₹{{ $milestone['cost'] }}
+                                <p class="tm_m0">Order ID : {{ $invoice->uuid }} <br>Amount:
+                                    ₹{{ $invoice->final_amount }}
                                 </p>
                             </div>
                             <div class="tm_right_footer">
@@ -96,19 +100,35 @@
                                         <tr>
                                             <td class="tm_width_3 tm_primary_color tm_bold">Subtoal</td>
                                             <td class="tm_width_3 tm_primary_color tm_bold tm_text_right">
-                                                ₹{{ $milestone['cost'] }}</td>
+                                                ₹{{ $invoice->amount }}</td>
                                         </tr>
-                                        {{-- <tr>
-                                            <td class="tm_width_3 tm_primary_color">Tax <span
-                                                    class="tm_ternary_color">(2%)</span></td>
-                                            <td class="tm_width_3 tm_primary_color tm_text_right">$3</td>
-                                        </tr> --}}
+
+                                        @if ($invoice->cgst > 0)
+                                            <tr>
+                                                <td class="tm_width_3 text-success">CGST <span
+                                                        class="tm_ternary_color">({{ $invoice->cgst }}%)</span></td>
+                                                <td class="tm_width_3 text-success tm_text_right">
+                                                    + ₹{{ ($invoice->amount * $invoice->cgst) / 100 }}</td>
+                                                </td>
+                                            </tr>
+                                        @endif
+
+                                        @if ($invoice->sgst > 0)
+                                            <tr>
+                                                <td class="tm_width_3 text-success">SGST <span
+                                                        class="tm_ternary_color">({{ $invoice->sgst }}%)</span></td>
+                                                <td class="tm_width_3 text-success tm_text_right">
+                                                    + ₹{{ ($invoice->amount * $invoice->sgst) / 100 }}</td>
+                                                </td>
+                                            </tr>
+                                        @endif
+
                                         <tr class="tm_accent_bg_20">
                                             <td class="tm_width_3 tm_border_top_0 tm_bold tm_f16 tm_accent_color">Grand
                                                 Total </td>
                                             <td
                                                 class="tm_width_3 tm_border_top_0 tm_bold tm_f16 tm_accent_color tm_text_right">
-                                                ₹{{ $milestone['cost'] }}</td>
+                                                ₹{{ $invoice->final_amount }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -180,7 +200,7 @@
                             canvasImageHeight
                         );
                     }
-                    pdf.save('OBL-INV-{{ Str::padLeft($order->id, 6, '0') }}.pdf');
+                    pdf.save('OBL-INV-{{ Str::padLeft($invoice->id, 6, '0') }}.pdf');
                 });
             });
 

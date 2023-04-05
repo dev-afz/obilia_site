@@ -8,7 +8,7 @@
         <ul>
             <x-dashboard.menu :menu="$menu_provider[auth()->user()->role]" />
         </ul>
-        @if (auth()->user()->isProvider())
+        {{-- @if (auth()->user()->isProvider())
             @if (auth()->user()->subscription_status == 'free')
                 <div style="position: sticky; bottom: 0;" class="me-3 card">
                     <div class="card-body">
@@ -18,6 +18,6 @@
                     </div>
                 </div>
             @endif
-        @endif
+        @endif --}}
     </div>
 </nav>

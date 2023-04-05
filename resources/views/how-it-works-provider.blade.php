@@ -234,31 +234,23 @@
                                         </svg>
                                     </span>
                                     <div class="">
-                                        <h4 class="twm-title"> Creating contracts.
+                                        <h4 class="twm-title"> Creating contracts
                                         </h4>
                                         <p>
                                             You can send contracts to your clients or sellers wishing to collaborate
-                                            with you
-                                            through
+                                            with you through
                                             chat. Click on the contract creation icon and fill in the details.
+
                                             <br>
                                             The contract will show you a breakdown of the total cost and what is owed to
                                             you. You
-                                            will be
-                                            able to fix the prices accordingly.
+                                            will be able to fix the prices accordingly
                                             <br>
-                                            All amounts you enter in your contract will be inclusive of 18% GST.
+                                            The amount you enter will be exclusive of GST, but inclusive of platform
+                                            fees or any
+                                            other charges.
+
                                             <br>
-                                            To know what to quote in the contract inclusive of GST use the GST
-                                            calculator link
-                                            below.
-                                            <br>
-                                            <a
-                                                href="https://razorpay.com/gst-calculator/
-                                    ">https://razorpay.com/gst-calculator/
-                                            </a>
-                                            <br>
-                                            You can refer to the link above to even calculate your application bids.
 
                                         </p>
 
@@ -286,16 +278,13 @@
                                         <h4 class="twm-title"> How do payments work?
                                         </h4>
                                         <p> All invoices to clients are automated by Obillia based on the milestones
-                                            and/or
-                                            projects. As a
-                                            freelancer not registered under GST you agree to self-billing invoices at
-                                            Obillia that
-                                            will
-                                            raise
-                                            invoices on your behalf to Obillia, you can use these invoices and bank
-                                            statements for
-                                            tax
-                                            purposes.
+                                            and/or projects.
+                                            As a freelancer not registered under GST you agree to self-billing invoices
+                                            at Obillia that
+                                            will raise invoices on your behalf to Obillia, you can use these invoices
+                                            and bank
+                                            statements for tax purposes.
+
                                         </p>
                                     </div>
                                 </div>
@@ -321,9 +310,8 @@
                                         </h4>
                                         <p> Obillia only supports bank transfers to Indian accounts now. You will be
                                             paid within 14
-                                            days of
-                                            the deadline day of your milestone/project based on approval by the client.
-
+                                            days of the deadline day of your milestone/project based on approval by the
+                                            client.
                                         </p>
                                     </div>
                                 </div>
@@ -348,19 +336,17 @@
 
                                         </h4>
                                         <p> Remember to always check the breakdown of payouts while you create a
-                                            contract. All
-                                            amounts you enter will be inclusive of 18% GST. You will be shown what you
-                                            are owed
-                                            while
-                                            creating your contract. Obillia charges a platform fee while on Free or
-                                            Extra Plan. No
-                                            platform
-                                            fees when in Obillia Plus. Read more about subscription plans here
-                                            <br>
-                                            You can read more about payout calculation in the FAQ section by clicking
-                                            here
+                                            contract. You
+                                            will be shown what you are owed while creating your contract. Obillia
+                                            charges a platform
+                                            fee while on Free or Extra Plan. No platform fees in Obillia Plus. Read more
+                                            about
+                                            subscription plans <a href="{{ route('plans') }}">here</a>.
+
 
                                         </p>
+                                        <small><i>*any payment processing fee or payout charges will be levied as
+                                                applicable</i></small>
                                     </div>
                                 </div>
                             </div>

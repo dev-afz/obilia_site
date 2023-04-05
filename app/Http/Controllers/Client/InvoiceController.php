@@ -4,24 +4,19 @@ namespace App\Http\Controllers\Client;
 
 
 use Illuminate\Http\Request;
-use App\Models\RazorpayOrder;
-use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
-use App\Models\Contract;
 
 class InvoiceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
 
-        $payments = RazorpayOrder::where('user_id', auth()->user()->id)
-            ->where('status', 'paid')
-            ->where('for', 'milestone')
-            ->orderBy('id', 'desc')
-            ->get();
+        $user = auth()->user();
 
-        return view('dashboard.client.payments', compact('payments'));
+        $invoices = $user->paid_invoice()->orderBy('id', 'desc')->get();
+
+        return view('dashboard.client.invoices', compact('invoices'));
     }
 
 
@@ -29,19 +24,19 @@ class InvoiceController extends Controller
         Request $request,
         $id
     ) {
+
         $client = auth()->user();
 
-        $order = $client->razorpay_orders()->where('order_id', $id)->firstOrFail();
-
-        $milestone = json_decode($order->for_data, true);
-
-        $to = Contract::where('id', $milestone['contract_id'])
-            ->with(['provider'])
-            ->first()->provider;
-
-        $from = $client;
 
 
-        return view('dashboard.client.print-invoice', compact('order', 'to', 'from', 'milestone'));
+
+        $invoice = $client->paid_invoice()->where('uuid', $id)
+            ->with(['milestone', 'from'])
+            ->firstOrFail();
+
+
+
+
+        return view('dashboard.client.print-invoice', compact('invoice'));
     }
 }

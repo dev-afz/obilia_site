@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\MilestoneWork;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Services\ServiceProvider\WorkService;
 
 class MilestoneController extends Controller
 {
@@ -40,26 +41,16 @@ class MilestoneController extends Controller
 
         $client = auth()->user();
 
-        $work = MilestoneWork::where('id', $request->work)
-            ->whereHas('milestone', function ($query) use ($client) {
-                $query->whereHas('contract', function ($query) use ($client) {
-                    $query->where('client_id', $client->id);
-                });
-            })
-            ->firstOrFail();
+        $service = new WorkService(
+            work_id: $request->work,
+            client: $client,
+        );
 
-        if ($request->action == 'approved') {
-            $work->milestone->update([
-                'escrow_fund_released_time' => now(),
-            ]);
-        }
-
-        $work->status = $request->action;
-        $work->save();
+        $res = $service->resolve($request->action);
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Action performed successfully',
+            'message' => 'Work ' . $res,
         ]);
     }
 

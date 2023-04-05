@@ -60,6 +60,7 @@
                                                         <div class="p-table-btn mb-3">
                                                             <button data-buy-plan="{{ $p->id }}" type="button"
                                                                 class="site-button">Purchase Now</button>
+
                                                         </div>
                                                     @else
                                                         <div class="p-table-btn mb-3">
@@ -82,6 +83,7 @@
                                                     @endif
 
                                                 @endguest
+
                                             </div>
                                         </div>
                                     </div>
@@ -89,7 +91,11 @@
                                     <span>No Packages Found</span>
                                 @endforelse
 
-
+                                <div class="col-12 text-end text-primary">
+                                    <small>
+                                        <i>* All incl of 18% GST</i>
+                                    </small>
+                                </div>
 
                             </div>
                         </div>
@@ -171,6 +177,7 @@
                                                     @endif
 
                                                 @endguest
+
                                             </div>
                                         </div>
                                     </div>
@@ -178,9 +185,14 @@
                                     <span>No Packages Found</span>
                                 @endforelse
 
-
+                                <div class="col-12 text-end text-primary">
+                                    <small>
+                                        <i>* All incl of 18% GST</i>
+                                    </small>
+                                </div>
 
                             </div>
+
                         </div>
                     </div>
 

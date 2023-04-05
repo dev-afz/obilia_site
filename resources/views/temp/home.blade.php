@@ -37,21 +37,19 @@
                                         marketplace</div>
 
                                     <h4 class="text-primary fs-4">
-                                        Join the waitlist today and enjoy benefits
+                                        Pre Register today and enjoy benefits
                                     </h4>
                                     <p class="mb-1">
-                                        No service charge for client for first 5 projects
+                                        No service charge for clients for 6 months
                                     </p>
                                     <p class="mb-2">
-                                        Get Obillia Extra free of cost for sellers for 3 months
-
-
+                                        Get extra features free of cost for sellers for 3 months
                                     </p>
                                     <div class="btn-container mt-4">
                                         <button data-bs-toggle="modal" data-wish-for="seller" data-bs-target="#waitlist"
-                                            class="call-to-action-btn ">Waitlist for sellers</button>
+                                            class="call-to-action-btn ">For sellers</button>
                                         <button data-bs-toggle="modal" data-wish-for="client" data-bs-target="#waitlist"
-                                            class="call-to-action-btn">Waitlist for clients</button>
+                                            class="call-to-action-btn">For clients</button>
                                     </div>
                                 </div>
                             </div>

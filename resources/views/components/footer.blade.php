@@ -9,7 +9,8 @@
                         <div class="logo-footer clearfix">
                             <a href="/"><img src="{{ asset('images/logo/logo.png') }}" alt=""></a>
                         </div>
-                        <p>Many desktop publishing packages and web page editors now.</p>
+                        <p>Making talent collaboration easy for freelancers,
+                            agencies and corporates.</p>
                         <ul class="ftr-list">
 
                             <li>
@@ -52,7 +53,6 @@
                                 <ul>
                                     <li><a href="#">Privacy Policy</a></li>
                                     <li><a href="#">T&C</a></li>
-                                    <li><a href="{{ route('contact') }}">Contact</a></li>
                                 </ul>
                             </div>
                         </div>

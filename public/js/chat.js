@@ -17,14 +17,16 @@ __webpack_require__.r(__webpack_exports__);
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: "pusher",
   key: "myKey",
-  wsHost: window.location.hostname,
+  wsHost: 'dental-friend.appdid.com',
+  // wsHost: window.location.hostname,
   wsPort: 6001,
-  wssHost: window.location.hostname,
-  wssPort: 6001,
+  // wssHost: window.location.hostname,
+  // wssPort: 6001,
   forceTLS: false,
-  disableStats: true,
-  enabledTransports: ["ws", "wss"]
+  disableStats: true
+  // enabledTransports: ["ws", "wss"],
 });
+
 var channel = window.Echo["private"]("chat." + window.me);
 console.log(channel);
 channel.listen(".message", function (e) {

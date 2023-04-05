@@ -21,10 +21,13 @@ class PaymentController extends Controller
 
         $milestone = $user->client_milestones()->findOrFail($request->milestone_id);
 
+
         $order = $service->createOrder(
             for: 'milestone',
             data: $milestone->toArray(),
             amount: $milestone->cost,
+            sgst: 9,
+            cgst: 9,
             user: $user,
         );
 

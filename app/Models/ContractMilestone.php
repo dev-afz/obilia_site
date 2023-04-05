@@ -20,4 +20,10 @@ class ContractMilestone extends Model
     {
         return $this->hasMany(MilestoneWork::class, 'milestone_id', 'id');
     }
+
+
+    public function razorpay_order()
+    {
+        return $this->belongsTo(RazorpayOrder::class, 'razorpay_order_id', 'id');
+    }
 }

@@ -4,13 +4,14 @@ import Pusher from "pusher-js";
 window.Echo = new Echo({
     broadcaster: "pusher",
     key: "myKey",
-    wsHost: window.location.hostname,
+    wsHost: 'dental-friend.appdid.com',
+    // wsHost: window.location.hostname,
     wsPort: 6001,
-    wssHost: window.location.hostname,
-    wssPort: 6001,
+    // wssHost: window.location.hostname,
+    // wssPort: 6001,
     forceTLS: false,
     disableStats: true,
-    enabledTransports: ["ws", "wss"],
+    // enabledTransports: ["ws", "wss"],
 });
 
 const channel = window.Echo.private("chat." + window.me);
