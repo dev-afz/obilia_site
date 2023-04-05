@@ -358,47 +358,47 @@
                             console.log(response);
                             // payOrder(user, response.order);
 
-                            const final_amount = response.order.amount;
-                            const cgst = response.order.cgst;
-                            const sgst = response.order.sgst;
-                            const amount = JSON.parse(response.order.for_data).cost;
+                            // const final_amount = response.order.amount;
+                            // const cgst = response.order.cgst;
+                            // const sgst = response.order.sgst;
+                            // const amount = JSON.parse(response.order.for_data).cost;
 
-                            const gst_amount = (amount * (cgst + sgst)) / 100;
-
-
-                            Notiflix.Confirm.show(
-                                'Price Breakdown',
-                                `<div class="price-breakdown">
-                                        <ul class="list-unstyled">
-                                            <li class="price-detail">
-                                                <div class="detail-title  text-success">Milestone Amount</div>
-                                                <div data-contract-amount class="detail-amt  text-success">₹ ${amount}</div>
-                                            </li>
-                                            <li class="price-detail">
-                                                <div class="detail-title">GST(${cgst+sgst}%) </div>
-                                                <div data-commission class="detail-amt">+₹ ${gst_amount}</div>
-                                            </li>
-
-                                        </ul>
-                                        <hr>
-                                        <ul class="list-unstyled">
-                                            <li class="price-detail">
-                                                <div class="detail-title detail-total">Payable Amount</div>
-                                                <div data-receivable-amount class="detail-amt fw-bolder">₹ ${final_amount}</div>
-                                            </li>
-                                        </ul>
-                                    </div>`,
-                                'Pay Now',
-                                'Cancel',
-                                function() {
-                                    payOrder(user, response.order);
-                                },
-                                function() {
-                                    Notiflix.Notify.failure('Payment Cancelled');
-                                }
-                            );
+                            // const gst_amount = (amount * (cgst + sgst)) / 100;
 
 
+                            // Notiflix.Confirm.show(
+                            //     'Price Breakdown',
+                            //     `<div class="price-breakdown">
+                //             <ul class="list-unstyled">
+                //                 <li class="price-detail">
+                //                     <div class="detail-title  text-success">Milestone Amount</div>
+                //                     <div data-contract-amount class="detail-amt  text-success">₹ ${amount}</div>
+                //                 </li>
+                //                 <li class="price-detail">
+                //                     <div class="detail-title">GST(${cgst+sgst}%) </div>
+                //                     <div data-commission class="detail-amt">+₹ ${gst_amount}</div>
+                //                 </li>
+
+                //             </ul>
+                //             <hr>
+                //             <ul class="list-unstyled">
+                //                 <li class="price-detail">
+                //                     <div class="detail-title detail-total">Payable Amount</div>
+                //                     <div data-receivable-amount class="detail-amt fw-bolder">₹ ${final_amount}</div>
+                //                 </li>
+                //             </ul>
+                //         </div>`,
+                            //     'Pay Now',
+                            //     'Cancel',
+                            //     function() {
+                            //         payOrder(user, response.order);
+                            //     },
+                            //     function() {
+                            //         Notiflix.Notify.failure('Payment Cancelled');
+                            //     }
+                            // );
+
+                            payOrder(user, response.order);
 
                         }
                     })

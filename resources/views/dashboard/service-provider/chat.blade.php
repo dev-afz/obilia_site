@@ -262,7 +262,7 @@
                         <x-utils.input-file name="contract_file" />
                     </div>
 
-                    <div class="col-md-12">
+                    {{-- <div class="col-md-12">
                         <div class="price-breakdown">
 
                             <h4 class="price-title text-center">Price Details</h6>
@@ -273,7 +273,7 @@
                                     </li>
                                     <li class="price-detail">
                                         <div class="detail-title">Commission(10%) </div>
-                                        <div data-commission class="detail-amt">₹ 0</div>
+                                        <div data-commission class="detail-amt">-₹ 0</div>
                                     </li>
 
                                 </ul>
@@ -287,7 +287,7 @@
 
 
                         </div>
-                    </div>
+                    </div> --}}
 
 
 
@@ -367,7 +367,7 @@
                     const commission = (total * 0.1).toFixed(2);
                     const receivable = (total - commission).toFixed(2);
                     $('[data-contract-amount]').html('₹ ' + total);
-                    $('[data-commission]').html('₹ ' + commission);
+                    $('[data-commission]').html('- ₹ ' + commission);
                     $('[data-receivable-amount]').html('₹ ' + receivable);
 
                 });
