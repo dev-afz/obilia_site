@@ -23,9 +23,7 @@
       function d() {
         this.constructor = a;
       }
-      for (var c in b) {
-        j.call(b, c) && (a[c] = b[c]);
-      }
+      for (var c in b) j.call(b, c) && (a[c] = b[c]);
       return d.prototype = b.prototype, a.prototype = new d(), a.__super__ = b.prototype, a;
     };
   g = function g() {}, b = function () {
@@ -34,20 +32,16 @@
       return this._callbacks = this._callbacks || {}, this._callbacks[a] || (this._callbacks[a] = []), this._callbacks[a].push(b), this;
     }, a.prototype.emit = function () {
       var a, b, c, d, e, f;
-      if (d = arguments[0], a = 2 <= arguments.length ? i.call(arguments, 1) : [], this._callbacks = this._callbacks || {}, c = this._callbacks[d]) for (e = 0, f = c.length; e < f; e++) {
-        b = c[e], b.apply(this, a);
-      }
+      if (d = arguments[0], a = 2 <= arguments.length ? i.call(arguments, 1) : [], this._callbacks = this._callbacks || {}, c = this._callbacks[d]) for (e = 0, f = c.length; e < f; e++) b = c[e], b.apply(this, a);
       return this;
     }, a.prototype.removeListener = a.prototype.off, a.prototype.removeAllListeners = a.prototype.off, a.prototype.removeEventListener = a.prototype.off, a.prototype.off = function (a, b) {
       var c, d, e, f, g;
       if (!this._callbacks || 0 === arguments.length) return this._callbacks = {}, this;
       if (d = this._callbacks[a], !d) return this;
       if (1 === arguments.length) return delete this._callbacks[a], this;
-      for (e = f = 0, g = d.length; f < g; e = ++f) {
-        if (c = d[e], c === b) {
-          d.splice(e, 1);
-          break;
-        }
+      for (e = f = 0, g = d.length; f < g; e = ++f) if (c = d[e], c === b) {
+        d.splice(e, 1);
+        break;
       }
       return this;
     }, a;
@@ -108,9 +102,7 @@
       forceFallback: !1,
       fallback: function fallback() {
         var a, b, c, d, f, g;
-        for (this.element.className = "" + this.element.className + " dz-browser-not-supported", g = this.element.getElementsByTagName("div"), d = 0, f = g.length; d < f; d++) {
-          a = g[d], /(^| )dz-message($| )/.test(a.className) && (b = a, a.className = "dz-message");
-        }
+        for (this.element.className = "" + this.element.className + " dz-browser-not-supported", g = this.element.getElementsByTagName("div"), d = 0, f = g.length; d < f; d++) a = g[d], /(^| )dz-message($| )/.test(a.className) && (b = a, a.className = "dz-message");
         return b || (b = e.createElement('<div class="dz-message"><span></span></div>'), this.element.appendChild(b)), c = b.getElementsByTagName("span")[0], c && (null != c.textContent ? c.textContent = this.options.dictFallbackMessage : null != c.innerText && (c.innerText = this.options.dictFallbackMessage)), this.element.appendChild(this.getFallbackForm());
       },
       resize: function resize(a) {
@@ -145,12 +137,8 @@
       addedfile: function addedfile(a) {
         var b, c, d, f, g, h, i, j, k, l, m, n, o;
         if (this.element === this.previewsContainer && this.element.classList.add("dz-started"), this.previewsContainer) {
-          for (a.previewElement = e.createElement(this.options.previewTemplate.trim()), a.previewTemplate = a.previewElement, this.previewsContainer.appendChild(a.previewElement), l = a.previewElement.querySelectorAll("[data-dz-name]"), f = 0, i = l.length; f < i; f++) {
-            b = l[f], b.textContent = this._renameFilename(a.name);
-          }
-          for (m = a.previewElement.querySelectorAll("[data-dz-size]"), g = 0, j = m.length; g < j; g++) {
-            b = m[g], b.innerHTML = this.filesize(a.size);
-          }
+          for (a.previewElement = e.createElement(this.options.previewTemplate.trim()), a.previewTemplate = a.previewElement, this.previewsContainer.appendChild(a.previewElement), l = a.previewElement.querySelectorAll("[data-dz-name]"), f = 0, i = l.length; f < i; f++) b = l[f], b.textContent = this._renameFilename(a.name);
+          for (m = a.previewElement.querySelectorAll("[data-dz-size]"), g = 0, j = m.length; g < j; g++) b = m[g], b.innerHTML = this.filesize(a.size);
           for (this.options.addRemoveLinks && (a._removeLink = e.createElement('<a class="dz-remove" href="javascript:undefined;" data-dz-remove>' + this.options.dictRemoveFile + "</a>"), a.previewElement.appendChild(a._removeLink)), c = function (b) {
             return function (c) {
               return c.preventDefault(), c.stopPropagation(), a.status === e.UPLOADING ? e.confirm(b.options.dictCancelUploadConfirmation, function () {
@@ -159,9 +147,7 @@
                 return b.removeFile(a);
               }) : b.removeFile(a);
             };
-          }(this), n = a.previewElement.querySelectorAll("[data-dz-remove]"), o = [], h = 0, k = n.length; h < k; h++) {
-            d = n[h], o.push(d.addEventListener("click", c));
-          }
+          }(this), n = a.previewElement.querySelectorAll("[data-dz-remove]"), o = [], h = 0, k = n.length; h < k; h++) d = n[h], o.push(d.addEventListener("click", c));
           return o;
         }
       },
@@ -172,9 +158,7 @@
       thumbnail: function thumbnail(a, b) {
         var c, d, e, f;
         if (a.previewElement) {
-          for (a.previewElement.classList.remove("dz-file-preview"), f = a.previewElement.querySelectorAll("[data-dz-thumbnail]"), d = 0, e = f.length; d < e; d++) {
-            c = f[d], c.alt = a.name, c.src = b;
-          }
+          for (a.previewElement.classList.remove("dz-file-preview"), f = a.previewElement.querySelectorAll("[data-dz-thumbnail]"), d = 0, e = f.length; d < e; d++) c = f[d], c.alt = a.name, c.src = b;
           return setTimeout(function (b) {
             return function () {
               return a.previewElement.classList.add("dz-image-preview");
@@ -185,9 +169,7 @@
       error: function error(a, b) {
         var c, d, e, f, g;
         if (a.previewElement) {
-          for (a.previewElement.classList.add("dz-error"), "String" != typeof b && b.error && (b = b.error), f = a.previewElement.querySelectorAll("[data-dz-errormessage]"), g = [], d = 0, e = f.length; d < e; d++) {
-            c = f[d], g.push(c.textContent = b);
-          }
+          for (a.previewElement.classList.add("dz-error"), "String" != typeof b && b.error && (b = b.error), f = a.previewElement.querySelectorAll("[data-dz-errormessage]"), g = [], d = 0, e = f.length; d < e; d++) c = f[d], g.push(c.textContent = b);
           return g;
         }
       },
@@ -199,9 +181,7 @@
       uploadprogress: function uploadprogress(a, b, c) {
         var d, e, f, g, h;
         if (a.previewElement) {
-          for (g = a.previewElement.querySelectorAll("[data-dz-uploadprogress]"), h = [], e = 0, f = g.length; e < f; e++) {
-            d = g[e], "PROGRESS" === d.nodeName ? h.push(d.value = b) : h.push(d.style.width = "" + b + "%");
-          }
+          for (g = a.previewElement.querySelectorAll("[data-dz-uploadprogress]"), h = [], e = 0, f = g.length; e < f; e++) d = g[e], "PROGRESS" === d.nodeName ? h.push(d.value = b) : h.push(d.style.width = "" + b + "%");
           return h;
         }
       },
@@ -229,28 +209,20 @@
       var a, b, c, d, e, f, g;
       for (d = arguments[0], c = 2 <= arguments.length ? i.call(arguments, 1) : [], f = 0, g = c.length; f < g; f++) {
         b = c[f];
-        for (a in b) {
-          e = b[a], d[a] = e;
-        }
+        for (a in b) e = b[a], d[a] = e;
       }
       return d;
     }, e.prototype.getAcceptedFiles = function () {
       var a, b, c, d, e;
-      for (d = this.files, e = [], b = 0, c = d.length; b < c; b++) {
-        a = d[b], a.accepted && e.push(a);
-      }
+      for (d = this.files, e = [], b = 0, c = d.length; b < c; b++) a = d[b], a.accepted && e.push(a);
       return e;
     }, e.prototype.getRejectedFiles = function () {
       var a, b, c, d, e;
-      for (d = this.files, e = [], b = 0, c = d.length; b < c; b++) {
-        a = d[b], a.accepted || e.push(a);
-      }
+      for (d = this.files, e = [], b = 0, c = d.length; b < c; b++) a = d[b], a.accepted || e.push(a);
       return e;
     }, e.prototype.getFilesWithStatus = function (a) {
       var b, c, d, e, f;
-      for (e = this.files, f = [], c = 0, d = e.length; c < d; c++) {
-        b = e[c], b.status === a && f.push(b);
-      }
+      for (e = this.files, f = [], c = 0, d = e.length; c < d; c++) b = e[c], b.status === a && f.push(b);
       return f;
     }, e.prototype.getQueuedFiles = function () {
       return this.getFilesWithStatus(e.QUEUED);
@@ -260,9 +232,7 @@
       return this.getFilesWithStatus(e.ADDED);
     }, e.prototype.getActiveFiles = function () {
       var a, b, c, d, f;
-      for (d = this.files, f = [], b = 0, c = d.length; b < c; b++) {
-        a = d[b], a.status !== e.UPLOADING && a.status !== e.QUEUED || f.push(a);
-      }
+      for (d = this.files, f = [], b = 0, c = d.length; b < c; b++) a = d[b], a.status !== e.UPLOADING && a.status !== e.QUEUED || f.push(a);
       return f;
     }, e.prototype.init = function () {
       var a, b, c, d, f, g, h;
@@ -270,15 +240,11 @@
         return function () {
           return a.hiddenFileInput && a.hiddenFileInput.parentNode.removeChild(a.hiddenFileInput), a.hiddenFileInput = document.createElement("input"), a.hiddenFileInput.setAttribute("type", "file"), (null == a.options.maxFiles || a.options.maxFiles > 1) && a.hiddenFileInput.setAttribute("multiple", "multiple"), a.hiddenFileInput.className = "dz-hidden-input", null != a.options.acceptedFiles && a.hiddenFileInput.setAttribute("accept", a.options.acceptedFiles), null != a.options.capture && a.hiddenFileInput.setAttribute("capture", a.options.capture), a.hiddenFileInput.style.visibility = "hidden", a.hiddenFileInput.style.position = "absolute", a.hiddenFileInput.style.top = "0", a.hiddenFileInput.style.left = "0", a.hiddenFileInput.style.height = "0", a.hiddenFileInput.style.width = "0", document.querySelector(a.options.hiddenInputContainer).appendChild(a.hiddenFileInput), a.hiddenFileInput.addEventListener("change", function () {
             var b, d, e, f;
-            if (d = a.hiddenFileInput.files, d.length) for (e = 0, f = d.length; e < f; e++) {
-              b = d[e], a.addFile(b);
-            }
+            if (d = a.hiddenFileInput.files, d.length) for (e = 0, f = d.length; e < f; e++) b = d[e], a.addFile(b);
             return a.emit("addedfiles", d), c();
           });
         };
-      }(this))(), this.URL = null != (g = window.URL) ? g : window.webkitURL, h = this.events, d = 0, f = h.length; d < f; d++) {
-        a = h[d], this.on(a, this.options[a]);
-      }
+      }(this))(), this.URL = null != (g = window.URL) ? g : window.webkitURL, h = this.events, d = 0, f = h.length; d < f; d++) a = h[d], this.on(a, this.options[a]);
       return this.on("uploadprogress", function (a) {
         return function () {
           return a.updateTotalUploadProgress();
@@ -355,9 +321,7 @@
     }, e.prototype.updateTotalUploadProgress = function () {
       var a, b, c, d, e, f, g, h;
       if (d = 0, c = 0, a = this.getActiveFiles(), a.length) {
-        for (h = this.getActiveFiles(), f = 0, g = h.length; f < g; f++) {
-          b = h[f], d += b.upload.bytesSent, c += b.upload.total;
-        }
+        for (h = this.getActiveFiles(), f = 0, g = h.length; f < g; f++) b = h[f], d += b.upload.bytesSent, c += b.upload.total;
         e = 100 * d / c;
       } else e = 100;
       return this.emit("totaluploadprogress", e, c, d);
@@ -372,45 +336,31 @@
       var a, b, c, d, e, f;
       for (b = function b(a) {
         var b, c, d;
-        for (c = 0, d = a.length; c < d; c++) {
-          if (b = a[c], /(^| )fallback($| )/.test(b.className)) return b;
-        }
-      }, f = ["div", "form"], d = 0, e = f.length; d < e; d++) {
-        if (c = f[d], a = b(this.element.getElementsByTagName(c))) return a;
-      }
+        for (c = 0, d = a.length; c < d; c++) if (b = a[c], /(^| )fallback($| )/.test(b.className)) return b;
+      }, f = ["div", "form"], d = 0, e = f.length; d < e; d++) if (c = f[d], a = b(this.element.getElementsByTagName(c))) return a;
     }, e.prototype.setupEventListeners = function () {
       var a, b, c, d, e, f, g;
-      for (f = this.listeners, g = [], d = 0, e = f.length; d < e; d++) {
-        a = f[d], g.push(function () {
-          var d, e;
-          d = a.events, e = [];
-          for (b in d) {
-            c = d[b], e.push(a.element.addEventListener(b, c, !1));
-          }
-          return e;
-        }());
-      }
+      for (f = this.listeners, g = [], d = 0, e = f.length; d < e; d++) a = f[d], g.push(function () {
+        var d, e;
+        d = a.events, e = [];
+        for (b in d) c = d[b], e.push(a.element.addEventListener(b, c, !1));
+        return e;
+      }());
       return g;
     }, e.prototype.removeEventListeners = function () {
       var a, b, c, d, e, f, g;
-      for (f = this.listeners, g = [], d = 0, e = f.length; d < e; d++) {
-        a = f[d], g.push(function () {
-          var d, e;
-          d = a.events, e = [];
-          for (b in d) {
-            c = d[b], e.push(a.element.removeEventListener(b, c, !1));
-          }
-          return e;
-        }());
-      }
+      for (f = this.listeners, g = [], d = 0, e = f.length; d < e; d++) a = f[d], g.push(function () {
+        var d, e;
+        d = a.events, e = [];
+        for (b in d) c = d[b], e.push(a.element.removeEventListener(b, c, !1));
+        return e;
+      }());
       return g;
     }, e.prototype.disable = function () {
       var a, b, c, d, e;
       for (this.clickableElements.forEach(function (a) {
         return a.classList.remove("dz-clickable");
-      }), this.removeEventListeners(), d = this.files, e = [], b = 0, c = d.length; b < c; b++) {
-        a = d[b], e.push(this.cancelUpload(a));
-      }
+      }), this.removeEventListeners(), d = this.files, e = [], b = 0, c = d.length; b < c; b++) a = d[b], e.push(this.cancelUpload(a));
       return e;
     }, e.prototype.enable = function () {
       return this.clickableElements.forEach(function (a) {
@@ -419,11 +369,9 @@
     }, e.prototype.filesize = function (a) {
       var b, c, d, e, f, g, h, i;
       if (d = 0, e = "b", a > 0) {
-        for (g = ["TB", "GB", "MB", "KB", "b"], c = h = 0, i = g.length; h < i; c = ++h) {
-          if (f = g[c], b = Math.pow(this.options.filesizeBase, 4 - c) / 10, a >= b) {
-            d = a / Math.pow(this.options.filesizeBase, 4 - c), e = f;
-            break;
-          }
+        for (g = ["TB", "GB", "MB", "KB", "b"], c = h = 0, i = g.length; h < i; c = ++h) if (f = g[c], b = Math.pow(this.options.filesizeBase, 4 - c) / 10, a >= b) {
+          d = a / Math.pow(this.options.filesizeBase, 4 - c), e = f;
+          break;
         }
         d = Math.round(10 * d) / 10;
       }
@@ -438,15 +386,11 @@
       if (null != (null != a && null != (c = a.clipboardData) ? c.items : void 0)) return this.emit("paste", a), b = a.clipboardData.items, b.length ? this._addFilesFromItems(b) : void 0;
     }, e.prototype.handleFiles = function (a) {
       var b, c, d, e;
-      for (e = [], c = 0, d = a.length; c < d; c++) {
-        b = a[c], e.push(this.addFile(b));
-      }
+      for (e = [], c = 0, d = a.length; c < d; c++) b = a[c], e.push(this.addFile(b));
       return e;
     }, e.prototype._addFilesFromItems = function (a) {
       var b, c, d, e, f;
-      for (f = [], d = 0, e = a.length; d < e; d++) {
-        c = a[d], null != c.webkitGetAsEntry && (b = c.webkitGetAsEntry()) ? b.isFile ? f.push(this.addFile(c.getAsFile())) : b.isDirectory ? f.push(this._addFilesFromDirectory(b, b.name)) : f.push(void 0) : null != c.getAsFile && (null == c.kind || "file" === c.kind) ? f.push(this.addFile(c.getAsFile())) : f.push(void 0);
-      }
+      for (f = [], d = 0, e = a.length; d < e; d++) c = a[d], null != c.webkitGetAsEntry && (b = c.webkitGetAsEntry()) ? b.isFile ? f.push(this.addFile(c.getAsFile())) : b.isDirectory ? f.push(this._addFilesFromDirectory(b, b.name)) : f.push(void 0) : null != c.getAsFile && (null == c.kind || "file" === c.kind) ? f.push(this.addFile(c.getAsFile())) : f.push(void 0);
       return f;
     }, e.prototype._addFilesFromDirectory = function (a, b) {
       var c, d, e;
@@ -457,11 +401,9 @@
           return c.readEntries(function (c) {
             var d, f, g;
             if (c.length > 0) {
-              for (f = 0, g = c.length; f < g; f++) {
-                d = c[f], d.isFile ? d.file(function (c) {
-                  if (!a.options.ignoreHiddenFiles || "." !== c.name.substring(0, 1)) return c.fullPath = "" + b + "/" + c.name, a.addFile(c);
-                }) : d.isDirectory && a._addFilesFromDirectory(d, "" + b + "/" + d.name);
-              }
+              for (f = 0, g = c.length; f < g; f++) d = c[f], d.isFile ? d.file(function (c) {
+                if (!a.options.ignoreHiddenFiles || "." !== c.name.substring(0, 1)) return c.fullPath = "" + b + "/" + c.name, a.addFile(c);
+              }) : d.isDirectory && a._addFilesFromDirectory(d, "" + b + "/" + d.name);
               e();
             }
             return null;
@@ -482,9 +424,7 @@
       }(this));
     }, e.prototype.enqueueFiles = function (a) {
       var b, c, d;
-      for (c = 0, d = a.length; c < d; c++) {
-        b = a[c], this.enqueueFile(b);
-      }
+      for (c = 0, d = a.length; c < d; c++) b = a[c], this.enqueueFile(b);
       return null;
     }, e.prototype.enqueueFile = function (a) {
       if (a.status !== e.ADDED || a.accepted !== !0) throw new Error("This file can't be queued because it has already been processed or was rejected.");
@@ -509,9 +449,7 @@
       if (a.status === e.UPLOADING && this.cancelUpload(a), this.files = h(this.files, a), this.emit("removedfile", a), 0 === this.files.length) return this.emit("reset");
     }, e.prototype.removeAllFiles = function (a) {
       var b, c, d, f;
-      for (null == a && (a = !1), f = this.files.slice(), c = 0, d = f.length; c < d; c++) {
-        b = f[c], (b.status !== e.UPLOADING || a) && this.removeFile(b);
-      }
+      for (null == a && (a = !1), f = this.files.slice(), c = 0, d = f.length; c < d; c++) b = f[c], (b.status !== e.UPLOADING || a) && this.removeFile(b);
       return null;
     }, e.prototype.createThumbnail = function (a, b) {
       var c;
@@ -541,28 +479,20 @@
       return this.processFiles([a]);
     }, e.prototype.processFiles = function (a) {
       var b, c, d;
-      for (c = 0, d = a.length; c < d; c++) {
-        b = a[c], b.processing = !0, b.status = e.UPLOADING, this.emit("processing", b);
-      }
+      for (c = 0, d = a.length; c < d; c++) b = a[c], b.processing = !0, b.status = e.UPLOADING, this.emit("processing", b);
       return this.options.uploadMultiple && this.emit("processingmultiple", a), this.uploadFiles(a);
     }, e.prototype._getFilesWithXhr = function (a) {
       var b, c;
       return c = function () {
         var c, d, e, f;
-        for (e = this.files, f = [], c = 0, d = e.length; c < d; c++) {
-          b = e[c], b.xhr === a && f.push(b);
-        }
+        for (e = this.files, f = [], c = 0, d = e.length; c < d; c++) b = e[c], b.xhr === a && f.push(b);
         return f;
       }.call(this);
     }, e.prototype.cancelUpload = function (a) {
       var b, c, d, f, g, h, i;
       if (a.status === e.UPLOADING) {
-        for (c = this._getFilesWithXhr(a.xhr), d = 0, g = c.length; d < g; d++) {
-          b = c[d], b.status = e.CANCELED;
-        }
-        for (a.xhr.abort(), f = 0, h = c.length; f < h; f++) {
-          b = c[f], this.emit("canceled", b);
-        }
+        for (c = this._getFilesWithXhr(a.xhr), d = 0, g = c.length; d < g; d++) b = c[d], b.status = e.CANCELED;
+        for (a.xhr.abort(), f = 0, h = c.length; f < h; f++) b = c[f], this.emit("canceled", b);
         this.options.uploadMultiple && this.emit("canceledmultiple", c);
       } else (i = a.status) !== e.ADDED && i !== e.QUEUED || (a.status = e.CANCELED, this.emit("canceled", a), this.options.uploadMultiple && this.emit("canceledmultiple", [a]));
       if (this.options.autoProcessQueue) return this.processQueue();
@@ -573,35 +503,25 @@
       return this.uploadFiles([a]);
     }, e.prototype.uploadFiles = function (a) {
       var b, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L;
-      for (w = new XMLHttpRequest(), x = 0, B = a.length; x < B; x++) {
-        b = a[x], b.xhr = w;
-      }
+      for (w = new XMLHttpRequest(), x = 0, B = a.length; x < B; x++) b = a[x], b.xhr = w;
       p = d(this.options.method, a), u = d(this.options.url, a), w.open(p, u, !0), w.withCredentials = !!this.options.withCredentials, s = null, g = function (c) {
         return function () {
           var d, e, f;
-          for (f = [], d = 0, e = a.length; d < e; d++) {
-            b = a[d], f.push(c._errorProcessing(a, s || c.options.dictResponseError.replace("{{statusCode}}", w.status), w));
-          }
+          for (f = [], d = 0, e = a.length; d < e; d++) b = a[d], f.push(c._errorProcessing(a, s || c.options.dictResponseError.replace("{{statusCode}}", w.status), w));
           return f;
         };
       }(this), t = function (c) {
         return function (d) {
           var e, f, g, h, i, j, k, l, m;
-          if (null != d) for (f = 100 * d.loaded / d.total, g = 0, j = a.length; g < j; g++) {
-            b = a[g], b.upload = {
-              progress: f,
-              total: d.total,
-              bytesSent: d.loaded
-            };
-          } else {
-            for (e = !0, f = 100, h = 0, k = a.length; h < k; h++) {
-              b = a[h], 100 === b.upload.progress && b.upload.bytesSent === b.upload.total || (e = !1), b.upload.progress = f, b.upload.bytesSent = b.upload.total;
-            }
+          if (null != d) for (f = 100 * d.loaded / d.total, g = 0, j = a.length; g < j; g++) b = a[g], b.upload = {
+            progress: f,
+            total: d.total,
+            bytesSent: d.loaded
+          };else {
+            for (e = !0, f = 100, h = 0, k = a.length; h < k; h++) b = a[h], 100 === b.upload.progress && b.upload.bytesSent === b.upload.total || (e = !1), b.upload.progress = f, b.upload.bytesSent = b.upload.total;
             if (e) return;
           }
-          for (m = [], i = 0, l = a.length; i < l; i++) {
-            b = a[i], m.push(c.emit("uploadprogress", b, f, b.upload.bytesSent));
-          }
+          for (m = [], i = 0, l = a.length; i < l; i++) b = a[i], m.push(c.emit("uploadprogress", b, f, b.upload.bytesSent));
           return m;
         };
       }(this), w.onload = function (b) {
@@ -625,40 +545,24 @@
         "Cache-Control": "no-cache",
         "X-Requested-With": "XMLHttpRequest"
       }, this.options.headers && c(j, this.options.headers);
-      for (h in j) {
-        i = j[h], i && w.setRequestHeader(h, i);
-      }
+      for (h in j) i = j[h], i && w.setRequestHeader(h, i);
       if (f = new FormData(), this.options.params) {
         H = this.options.params;
-        for (o in H) {
-          v = H[o], f.append(o, v);
-        }
+        for (o in H) v = H[o], f.append(o, v);
       }
-      for (y = 0, C = a.length; y < C; y++) {
-        b = a[y], this.emit("sending", b, w, f);
-      }
-      if (this.options.uploadMultiple && this.emit("sendingmultiple", a, w, f), "FORM" === this.element.tagName) for (I = this.element.querySelectorAll("input, textarea, select, button"), z = 0, D = I.length; z < D; z++) {
-        if (l = I[z], m = l.getAttribute("name"), n = l.getAttribute("type"), "SELECT" === l.tagName && l.hasAttribute("multiple")) for (J = l.options, A = 0, E = J.length; A < E; A++) {
-          q = J[A], q.selected && f.append(m, q.value);
-        } else (!n || "checkbox" !== (K = n.toLowerCase()) && "radio" !== K || l.checked) && f.append(m, l.value);
-      }
-      for (k = F = 0, L = a.length - 1; 0 <= L ? F <= L : F >= L; k = 0 <= L ? ++F : --F) {
-        f.append(this._getParamName(k), a[k], this._renameFilename(a[k].name));
-      }
+      for (y = 0, C = a.length; y < C; y++) b = a[y], this.emit("sending", b, w, f);
+      if (this.options.uploadMultiple && this.emit("sendingmultiple", a, w, f), "FORM" === this.element.tagName) for (I = this.element.querySelectorAll("input, textarea, select, button"), z = 0, D = I.length; z < D; z++) if (l = I[z], m = l.getAttribute("name"), n = l.getAttribute("type"), "SELECT" === l.tagName && l.hasAttribute("multiple")) for (J = l.options, A = 0, E = J.length; A < E; A++) q = J[A], q.selected && f.append(m, q.value);else (!n || "checkbox" !== (K = n.toLowerCase()) && "radio" !== K || l.checked) && f.append(m, l.value);
+      for (k = F = 0, L = a.length - 1; 0 <= L ? F <= L : F >= L; k = 0 <= L ? ++F : --F) f.append(this._getParamName(k), a[k], this._renameFilename(a[k].name));
       return this.submitRequest(w, f, a);
     }, e.prototype.submitRequest = function (a, b, c) {
       return a.send(b);
     }, e.prototype._finished = function (a, b, c) {
       var d, f, g;
-      for (f = 0, g = a.length; f < g; f++) {
-        d = a[f], d.status = e.SUCCESS, this.emit("success", d, b, c), this.emit("complete", d);
-      }
+      for (f = 0, g = a.length; f < g; f++) d = a[f], d.status = e.SUCCESS, this.emit("success", d, b, c), this.emit("complete", d);
       if (this.options.uploadMultiple && (this.emit("successmultiple", a, b, c), this.emit("completemultiple", a)), this.options.autoProcessQueue) return this.processQueue();
     }, e.prototype._errorProcessing = function (a, b, c) {
       var d, f, g;
-      for (f = 0, g = a.length; f < g; f++) {
-        d = a[f], d.status = e.ERROR, this.emit("error", d, b, c), this.emit("complete", d);
-      }
+      for (f = 0, g = a.length; f < g; f++) d = a[f], d.status = e.ERROR, this.emit("error", d, b, c), this.emit("complete", d);
       if (this.options.uploadMultiple && (this.emit("errormultiple", a, b, c), this.emit("completemultiple", a)), this.options.autoProcessQueue) return this.processQueue();
     }, e;
   }(b), a.version = "4.3.0", a.options = {}, a.optionsForElement = function (b) {
@@ -670,27 +574,19 @@
     var b, c, d, e, f, g;
     for (document.querySelectorAll ? d = document.querySelectorAll(".dropzone") : (d = [], b = function b(a) {
       var b, c, e, f;
-      for (f = [], c = 0, e = a.length; c < e; c++) {
-        b = a[c], /(^| )dropzone($| )/.test(b.className) ? f.push(d.push(b)) : f.push(void 0);
-      }
+      for (f = [], c = 0, e = a.length; c < e; c++) b = a[c], /(^| )dropzone($| )/.test(b.className) ? f.push(d.push(b)) : f.push(void 0);
       return f;
-    }, b(document.getElementsByTagName("div")), b(document.getElementsByTagName("form"))), g = [], e = 0, f = d.length; e < f; e++) {
-      c = d[e], a.optionsForElement(c) !== !1 ? g.push(new a(c)) : g.push(void 0);
-    }
+    }, b(document.getElementsByTagName("div")), b(document.getElementsByTagName("form"))), g = [], e = 0, f = d.length; e < f; e++) c = d[e], a.optionsForElement(c) !== !1 ? g.push(new a(c)) : g.push(void 0);
     return g;
   }, a.blacklistedBrowsers = [/opera.*Macintosh.*version\/12/i], a.isBrowserSupported = function () {
     var b, c, d, e, f;
     if (b = !0, window.File && window.FileReader && window.FileList && window.Blob && window.FormData && document.querySelector) {
-      if ("classList" in document.createElement("a")) for (f = a.blacklistedBrowsers, d = 0, e = f.length; d < e; d++) {
-        c = f[d], c.test(navigator.userAgent) && (b = !1);
-      } else b = !1;
+      if ("classList" in document.createElement("a")) for (f = a.blacklistedBrowsers, d = 0, e = f.length; d < e; d++) c = f[d], c.test(navigator.userAgent) && (b = !1);else b = !1;
     } else b = !1;
     return b;
   }, h = function h(a, b) {
     var c, d, e, f;
-    for (f = [], d = 0, e = a.length; d < e; d++) {
-      c = a[d], c !== b && f.push(c);
-    }
+    for (f = [], d = 0, e = a.length; d < e; d++) c = a[d], c !== b && f.push(c);
     return f;
   }, c = function c(a) {
     return a.replace(/[\-_](\w)/g, function (a) {
@@ -701,9 +597,7 @@
     return b = document.createElement("div"), b.innerHTML = a, b.childNodes[0];
   }, a.elementInside = function (a, b) {
     if (a === b) return !0;
-    for (; a = a.parentNode;) {
-      if (a === b) return !0;
-    }
+    for (; a = a.parentNode;) if (a === b) return !0;
     return !1;
   }, a.getElement = function (a, b) {
     var c;
@@ -714,15 +608,11 @@
     if (a instanceof Array) {
       e = [];
       try {
-        for (f = 0, h = a.length; f < h; f++) {
-          d = a[f], e.push(this.getElement(d, b));
-        }
+        for (f = 0, h = a.length; f < h; f++) d = a[f], e.push(this.getElement(d, b));
       } catch (a) {
         c = a, e = null;
       }
-    } else if ("string" == typeof a) for (e = [], j = document.querySelectorAll(a), g = 0, i = j.length; g < i; g++) {
-      d = j[g], e.push(d);
-    } else null != a.nodeType && (e = [a]);
+    } else if ("string" == typeof a) for (e = [], j = document.querySelectorAll(a), g = 0, i = j.length; g < i; g++) d = j[g], e.push(d);else null != a.nodeType && (e = [a]);
     if (null == e || !e.length) throw new Error("Invalid `" + b + "` option provided. Please provide a CSS selector, a plain HTML element or a list of those.");
     return e;
   }, a.confirm = function (a, b, c) {
@@ -730,13 +620,11 @@
   }, a.isValidFile = function (a, b) {
     var c, d, e, f, g;
     if (!b) return !0;
-    for (b = b.split(","), d = a.type, c = d.replace(/\/.*$/, ""), f = 0, g = b.length; f < g; f++) {
-      if (e = b[f], e = e.trim(), "." === e.charAt(0)) {
-        if (a.name.toLowerCase().indexOf(e.toLowerCase(), a.name.length - e.length) !== -1) return !0;
-      } else if (/\/\*$/.test(e)) {
-        if (c === e.replace(/\/.*$/, "")) return !0;
-      } else if (d === e) return !0;
-    }
+    for (b = b.split(","), d = a.type, c = d.replace(/\/.*$/, ""), f = 0, g = b.length; f < g; f++) if (e = b[f], e = e.trim(), "." === e.charAt(0)) {
+      if (a.name.toLowerCase().indexOf(e.toLowerCase(), a.name.length - e.length) !== -1) return !0;
+    } else if (/\/\*$/.test(e)) {
+      if (c === e.replace(/\/.*$/, "")) return !0;
+    } else if (d === e) return !0;
     return !1;
   }, "undefined" != typeof jQuery && null !== jQuery && (jQuery.fn.dropzone = function (b) {
     return this.each(function () {
@@ -744,9 +632,7 @@
     });
   }),  true && null !== module ? module.exports = a : window.Dropzone = a, a.ADDED = "added", a.QUEUED = "queued", a.ACCEPTED = a.QUEUED, a.UPLOADING = "uploading", a.PROCESSING = a.UPLOADING, a.CANCELED = "canceled", a.ERROR = "error", a.SUCCESS = "success", e = function e(a) {
     var b, c, d, e, f, g, h, i, j, k;
-    for (h = a.naturalWidth, g = a.naturalHeight, c = document.createElement("canvas"), c.width = 1, c.height = g, d = c.getContext("2d"), d.drawImage(a, 0, 0), e = d.getImageData(0, 0, 1, g).data, k = 0, f = g, i = g; i > k;) {
-      b = e[4 * (i - 1) + 3], 0 === b ? f = i : k = i, i = f + k >> 1;
-    }
+    for (h = a.naturalWidth, g = a.naturalHeight, c = document.createElement("canvas"), c.width = 1, c.height = g, d = c.getContext("2d"), d.drawImage(a, 0, 0), e = d.getImageData(0, 0, 1, g).data, k = 0, f = g, i = g; i > k;) b = e[4 * (i - 1) + 3], 0 === b ? f = i : k = i, i = f + k >> 1;
     return j = i / g, 0 === j ? 1 : j;
   }, f = function f(a, b, c, d, _f, g, h, i, j, k) {
     var l;

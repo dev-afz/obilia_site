@@ -776,7 +776,7 @@ button:focus {
 .share__btn,
 .share__link {
   border-radius: 0.25rem;
-  color: hsl(0deg, 0%, 100%);
+  color: hsl(0, 0%, 100%);
   display: grid;
   place-items: center;
   transition: background-color 0.15s linear;

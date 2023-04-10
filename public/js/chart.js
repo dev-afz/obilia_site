@@ -13,7 +13,7 @@ function _get2() { if (typeof Reflect !== "undefined" && Reflect.get) { _get2 = 
 function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0) { ; } } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
@@ -29,7 +29,7 @@ function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread n
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -126,9 +126,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           var o,
             a = n.length - 1,
             r = !1;
-          for (; a >= 0; --a) {
-            o = n[a], o._active ? (o._total > i.duration && (i.duration = o._total), o.tick(t), r = !0) : (n[a] = n[n.length - 1], n.pop());
-          }
+          for (; a >= 0; --a) o = n[a], o._active ? (o._total > i.duration && (i.duration = o._total), o.tick(t), r = !0) : (n[a] = n[n.length - 1], n.pop());
           r && (s.draw(), _this2._notify(s, i, t, "progress")), n.length || (i.running = !1, _this2._notify(s, i, t, "complete"), i.initial = !1), e += n.length;
         }), this._lastDate = t, 0 === e && (this._running = !1);
       }
@@ -185,9 +183,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         if (!e || !e.items.length) return;
         var i = e.items;
         var s = i.length - 1;
-        for (; s >= 0; --s) {
-          i[s].cancel();
-        }
+        for (; s >= 0; --s) i[s].cancel();
         e.items = [], this._notify(t, e, Date.now(), "complete");
       }
     }, {
@@ -283,9 +279,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
   function w(t, e, i) {
     var s = y(t, 1, .5);
     var n;
-    for (e + i > 1 && (n = 1 / (e + i), e *= n, i *= n), n = 0; n < 3; n++) {
-      s[n] *= 1 - e - i, s[n] += e;
-    }
+    for (e + i > 1 && (n = 1 / (e + i), e *= n, i *= n), n = 0; n < 3; n++) s[n] *= 1 - e - i, s[n] += e;
     return s;
   }
   function M(t) {
@@ -516,9 +510,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         i = Object.keys(C);
       var s, n, o, a, r;
       for (s = 0; s < e.length; s++) {
-        for (a = r = e[s], n = 0; n < i.length; n++) {
-          o = i[n], r = r.replace(o, C[o]);
-        }
+        for (a = r = e[s], n = 0; n < i.length; n++) o = i[n], r = r.replace(o, C[o]);
         o = parseInt(O[a], 16), t[r] = [o >> 16 & 255, o >> 8 & 255, 255 & o];
       }
       return t;
@@ -792,21 +784,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
   function et(t, e, i, s) {
     var n, o, a;
     if (X(t)) {
-      if (o = t.length, s) for (n = o - 1; n >= 0; n--) {
-        e.call(i, t[n], n);
-      } else for (n = 0; n < o; n++) {
-        e.call(i, t[n], n);
-      }
-    } else if (q(t)) for (a = Object.keys(t), o = a.length, n = 0; n < o; n++) {
-      e.call(i, t[a[n]], a[n]);
-    }
+      if (o = t.length, s) for (n = o - 1; n >= 0; n--) e.call(i, t[n], n);else for (n = 0; n < o; n++) e.call(i, t[n], n);
+    } else if (q(t)) for (a = Object.keys(t), o = a.length, n = 0; n < o; n++) e.call(i, t[a[n]], a[n]);
   }
   function it(t, e) {
     var i, s, n, o;
     if (!t || !e || t.length !== e.length) return !1;
-    for (i = 0, s = t.length; i < s; ++i) {
-      if (n = t[i], o = e[i], n.datasetIndex !== o.datasetIndex || n.index !== o.index) return !1;
-    }
+    for (i = 0, s = t.length; i < s; ++i) if (n = t[i], o = e[i], n.datasetIndex !== o.datasetIndex || n.index !== o.index) return !1;
     return !0;
   }
   function st(t) {
@@ -816,9 +800,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         _i3 = Object.keys(t),
         _s5 = _i3.length;
       var _n3 = 0;
-      for (; _n3 < _s5; ++_n3) {
-        _e3[_i3[_n3]] = st(t[_i3[_n3]]);
-      }
+      for (; _n3 < _s5; ++_n3) _e3[_i3[_n3]] = st(t[_i3[_n3]]);
       return _e3;
     }
     return t;
@@ -840,9 +822,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     for (var _a3 = 0; _a3 < n; ++_a3) {
       if (!q(e = s[_a3])) continue;
       var _n4 = Object.keys(e);
-      for (var _s6 = 0, _a4 = _n4.length; _s6 < _a4; ++_s6) {
-        o(_n4[_s6], t, e, i);
-      }
+      for (var _s6 = 0, _a4 = _n4.length; _s6 < _a4; ++_s6) o(_n4[_s6], t, e, i);
     }
     return t;
   }
@@ -865,9 +845,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     if ("" === e) return t;
     var i = 0,
       s = ht(e, i);
-    for (; t && s > i;) {
-      t = t[e.slice(i, s)], i = s + 1, s = ht(e, i);
-    }
+    for (; t && s > i;) t = t[e.slice(i, s)], i = s + 1, s = ht(e, i);
     return t;
   }
   function dt(t) {
@@ -1001,9 +979,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     var s,
       n = t.length - 1,
       o = 0;
-    for (; n - o > 1;) {
-      s = o + n >> 1, i(s) ? o = s : n = s;
-    }
+    for (; n - o > 1;) s = o + n >> 1, i(s) ? o = s : n = s;
     return {
       lo: o,
       hi: n
@@ -1022,12 +998,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
   function kt(t, e, i) {
     var s = 0,
       n = t.length;
-    for (; s < n && t[s] < e;) {
-      s++;
-    }
-    for (; n > s && t[n - 1] > i;) {
-      n--;
-    }
+    for (; s < n && t[s] < e;) s++;
+    for (; n > s && t[n - 1] > i;) n--;
     return s > 0 || n < t.length ? t.slice(s, n) : t;
   }
   var St = ["push", "pop", "shift", "splice", "unshift"];
@@ -1068,9 +1040,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
   function Ct(t) {
     var e = new Set();
     var i, s;
-    for (i = 0, s = t.length; i < s; ++i) {
-      e.add(t[i]);
-    }
+    for (i = 0, s = t.length; i < s; ++i) e.add(t[i]);
     return e.size === s ? t : Array.from(e);
   }
   var Ot = Math.PI,
@@ -1094,9 +1064,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     var e = [],
       i = Math.sqrt(t);
     var s;
-    for (s = 1; s < i; s++) {
-      t % s == 0 && (e.push(s), e.push(t / s));
-    }
+    for (s = 1; s < i; s++) t % s == 0 && (e.push(s), e.push(t / s));
     return i === (0 | i) && e.push(i), e.sort(function (t, e) {
       return t - e;
     }).pop(), e;
@@ -1113,9 +1081,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
   }
   function $t(t, e, i) {
     var s, n, o;
-    for (s = 0, n = t.length; s < n; s++) {
-      o = t[s][i], isNaN(o) || (e.min = Math.min(e.min, o), e.max = Math.max(e.max, o));
-    }
+    for (s = 0, n = t.length; s < n; s++) o = t[s][i], isNaN(o) || (e.min = Math.min(e.min, o), e.max = Math.max(e.max, o));
   }
   function Yt(t) {
     return t * (Ot / 180);
@@ -1127,9 +1093,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     if (!K(t)) return;
     var e = 1,
       i = 0;
-    for (; Math.round(t * e) / e !== t;) {
-      e *= 10, i++;
-    }
+    for (; Math.round(t * e) / e !== t;) e *= 10, i++;
     return i;
   }
   function qt(t, e) {
@@ -1316,17 +1280,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     var a = 0;
     var r = i.length;
     var l, h, c, d, u;
-    for (l = 0; l < r; l++) {
-      if (d = i[l], null != d && !0 !== X(d)) a = me(t, n, o, a, d);else if (X(d)) for (h = 0, c = d.length; h < c; h++) {
-        u = d[h], null == u || X(u) || (a = me(t, n, o, a, u));
-      }
-    }
+    for (l = 0; l < r; l++) if (d = i[l], null != d && !0 !== X(d)) a = me(t, n, o, a, d);else if (X(d)) for (h = 0, c = d.length; h < c; h++) u = d[h], null == u || X(u) || (a = me(t, n, o, a, u));
     t.restore();
     var f = o.length / 2;
     if (f > i.length) {
-      for (l = 0; l < f; l++) {
-        delete n[o[l]];
-      }
+      for (l = 0; l < f; l++) delete n[o[l]];
       o.splice(0, f);
     }
     return a;
@@ -1415,9 +1373,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       e.color && (t.fillStyle = e.color);
       e.textAlign && (t.textAlign = e.textAlign);
       e.textBaseline && (t.textBaseline = e.textBaseline);
-    }(t, o), l = 0; l < a.length; ++l) {
-      h = a[l], r && (o.strokeColor && (t.strokeStyle = o.strokeColor), U(o.strokeWidth) || (t.lineWidth = o.strokeWidth), t.strokeText(h, i, s, o.maxWidth)), t.fillText(h, i, s, o.maxWidth), De(t, i, s, h, o), s += n.lineHeight;
-    }
+    }(t, o), l = 0; l < a.length; ++l) h = a[l], r && (o.strokeColor && (t.strokeStyle = o.strokeColor), U(o.strokeWidth) || (t.lineWidth = o.strokeWidth), t.strokeText(h, i, s, o.maxWidth)), t.fillText(h, i, s, o.maxWidth), De(t, i, s, h, o), s += n.lineHeight;
     t.restore();
   }
   function De(t, e, i, s, n) {
@@ -1658,9 +1614,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     });
   }
   function Ve(t, e, i, s, n) {
-    for (; i;) {
-      i = Fe(t, e, i, s, n);
-    }
+    for (; i;) i = Fe(t, e, i, s, n);
     return i;
   }
   function Ne(t, e) {
@@ -1717,11 +1671,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       o = _this$_parsing$key === void 0 ? "r" : _this$_parsing$key,
       a = new Array(s);
     var r, l, h, c;
-    for (r = 0, l = s; r < l; ++r) {
-      h = r + i, c = e[h], a[r] = {
-        r: n.parse(ct(c, o), h)
-      };
-    }
+    for (r = 0, l = s; r < l; ++r) h = r + i, c = e[h], a[r] = {
+      r: n.parse(ct(c, o), h)
+    };
     return a;
   }
   var je = Number.EPSILON || 1e-14,
@@ -1763,14 +1715,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       r,
       l,
       h = $e(t, 0);
-    for (a = 0; a < s; ++a) {
-      if (r = l, l = h, h = $e(t, a + 1), l) {
-        if (h) {
-          var _t7 = h[e] - l[e];
-          n[a] = 0 !== _t7 ? (h[i] - l[i]) / _t7 : 0;
-        }
-        o[a] = r ? h ? Bt(n[a - 1]) !== Bt(n[a]) ? 0 : (n[a - 1] + n[a]) / 2 : n[a - 1] : n[a];
+    for (a = 0; a < s; ++a) if (r = l, l = h, h = $e(t, a + 1), l) {
+      if (h) {
+        var _t7 = h[e] - l[e];
+        n[a] = 0 !== _t7 ? (h[i] - l[i]) / _t7 : 0;
       }
+      o[a] = r ? h ? Bt(n[a - 1]) !== Bt(n[a]) ? 0 : (n[a - 1] + n[a]) / 2 : n[a - 1] : n[a];
     }
     !function (t, e, i) {
       var s = t.length;
@@ -1780,9 +1730,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         r,
         l,
         h = $e(t, 0);
-      for (var _c2 = 0; _c2 < s - 1; ++_c2) {
-        l = h, h = $e(t, _c2 + 1), l && h && (Ht(e[_c2], 0, je) ? i[_c2] = i[_c2 + 1] = 0 : (n = i[_c2] / e[_c2], o = i[_c2 + 1] / e[_c2], r = Math.pow(n, 2) + Math.pow(o, 2), r <= 9 || (a = 3 / Math.sqrt(r), i[_c2] = n * a * e[_c2], i[_c2 + 1] = o * a * e[_c2])));
-      }
+      for (var _c2 = 0; _c2 < s - 1; ++_c2) l = h, h = $e(t, _c2 + 1), l && h && (Ht(e[_c2], 0, je) ? i[_c2] = i[_c2 + 1] = 0 : (n = i[_c2] / e[_c2], o = i[_c2 + 1] / e[_c2], r = Math.pow(n, 2) + Math.pow(o, 2), r <= 9 || (a = 3 / Math.sqrt(r), i[_c2] = n * a * e[_c2], i[_c2 + 1] = o * a * e[_c2])));
     }(t, n, o), function (t, e) {
       var i = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "x";
       var s = Ye(i),
@@ -1808,9 +1756,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       return !t.skip;
     })), "monotone" === e.cubicInterpolationMode) Xe(t, n);else {
       var _i9 = s ? t[t.length - 1] : t[0];
-      for (o = 0, a = t.length; o < a; ++o) {
-        r = t[o], l = Ue(_i9, r, t[Math.min(o + 1, a - (s ? 0 : 1)) % a], e.tension), r.cp1x = l.previous.x, r.cp1y = l.previous.y, r.cp2x = l.next.x, r.cp2y = l.next.y, _i9 = r;
-      }
+      for (o = 0, a = t.length; o < a; ++o) r = t[o], l = Ue(_i9, r, t[Math.min(o + 1, a - (s ? 0 : 1)) % a], e.tension), r.cp1x = l.previous.x, r.cp1y = l.previous.y, r.cp2x = l.next.x, r.cp2y = l.next.y, _i9 = r;
     }
     e.capBezierPoints && function (t, e) {
       var i,
@@ -1819,9 +1765,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         o,
         a,
         r = ve(t[0], e);
-      for (i = 0, s = t.length; i < s; ++i) {
-        a = o, o = r, r = i < s - 1 && ve(t[i + 1], e), o && (n = t[i], a && (n.cp1x = qe(n.cp1x, e.left, e.right), n.cp1y = qe(n.cp1y, e.top, e.bottom)), r && (n.cp2x = qe(n.cp2x, e.left, e.right), n.cp2y = qe(n.cp2y, e.top, e.bottom)));
-      }
+      for (i = 0, s = t.length; i < s; ++i) a = o, o = r, r = i < s - 1 && ve(t[i + 1], e), o && (n = t[i], a && (n.cp1x = qe(n.cp1x, e.left, e.right), n.cp1y = qe(n.cp1y, e.top, e.bottom)), r && (n.cp2x = qe(n.cp2x, e.left, e.right), n.cp2y = qe(n.cp2y, e.top, e.bottom)));
     }(t, i);
   }
   var Ge = function Ge(t) {
@@ -2045,9 +1989,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       o,
       a,
       r = !0;
-    for (n = 0, o = t.length; n < o; ++n) {
-      if (a = t[n], void 0 !== a && (void 0 !== e && "function" == typeof a && (a = a(e), r = !1), void 0 !== i && X(a) && (a = a[i % a.length], r = !1), void 0 !== a)) return s && !r && (s.cacheable = !1), a;
-    }
+    for (n = 0, o = t.length; n < o; ++n) if (a = t[n], void 0 !== a && (void 0 !== e && "function" == typeof a && (a = a(e), r = !1), void 0 !== i && X(a) && (a = a[i % a.length], r = !1), void 0 !== a)) return s && !r && (s.cacheable = !1), a;
   }
   function gi(t, e, i) {
     var s = t.min,
@@ -2158,9 +2100,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           u = t.end,
           f = t.loop;
         if (f) {
-          for (d += l, u += l, h = 0, c = l; h < c && a(r(e[d % l][s]), n, o); ++h) {
-            d--, u--;
-          }
+          for (d += l, u += l, h = 0, c = l; h < c && a(r(e[d % l][s]), n, o); ++h) d--, u--;
           d %= l, u %= l;
         }
         return u < d && (u += l), {
@@ -2186,15 +2126,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       v = function v() {
         return !x || 0 === r(o, p) || l(o, b, p);
       };
-    for (var _t9 = c, _i12 = c; _t9 <= d; ++_t9) {
-      m = e[_t9 % a], m.skip || (p = h(m[s]), p !== b && (x = l(p, n, o), null === _ && y() && (_ = 0 === r(p, n) ? _t9 : _i12), null !== _ && v() && (g.push(yi({
-        start: _,
-        end: _t9,
-        loop: u,
-        count: a,
-        style: f
-      })), _ = null), _i12 = _t9, b = p));
-    }
+    for (var _t9 = c, _i12 = c; _t9 <= d; ++_t9) m = e[_t9 % a], m.skip || (p = h(m[s]), p !== b && (x = l(p, n, o), null === _ && y() && (_ = 0 === r(p, n) ? _t9 : _i12), null !== _ && v() && (g.push(yi({
+      start: _,
+      end: _t9,
+      loop: u,
+      count: a,
+      style: f
+    })), _ = null), _i12 = _t9, b = p));
     return null !== _ && g.push(yi({
       start: _,
       end: d,
@@ -2221,15 +2159,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       _ref4 = function (t, e, i, s) {
         var n = 0,
           o = e - 1;
-        if (i && !s) for (; n < e && !t[n].skip;) {
-          n++;
-        }
-        for (; n < e && t[n].skip;) {
-          n++;
-        }
-        for (n %= e, i && (o += n); o > n && t[o % e].skip;) {
-          o--;
-        }
+        if (i && !s) for (; n < e && !t[n].skip;) n++;
+        for (; n < e && t[n].skip;) n++;
+        for (n %= e, i && (o += n); o > n && t[o % e].skip;) o--;
         return o %= e, {
           start: n,
           end: o
@@ -2277,12 +2209,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       function f(t, e, s, n) {
         var o = r ? -1 : 1;
         if (t !== e) {
-          for (t += l; i[t % l].skip;) {
-            t -= o;
-          }
-          for (; i[e % l].skip;) {
-            e += o;
-          }
+          for (t += l; i[t % l].skip;) t -= o;
+          for (; i[e % l].skip;) e += o;
           t % l != e % l && (h.push({
             start: t % l,
             end: e % l,
@@ -2600,13 +2528,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           var _e11 = r[0].datasetIndex,
             _i16 = t.getDatasetMeta(_e11).data;
           r = [];
-          for (var _t14 = 0; _t14 < _i16.length; ++_t14) {
-            r.push({
-              element: _i16[_t14],
-              datasetIndex: _e11,
-              index: _t14
-            });
-          }
+          for (var _t14 = 0; _t14 < _i16.length; ++_t14) r.push({
+            element: _i16[_t14],
+            datasetIndex: _e11,
+            index: _t14
+          });
         }
         return r;
       },
@@ -3270,9 +3196,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       value: function _notify(t) {
         var e = t ? "res" : "rej",
           i = this._promises || [];
-        for (var _t17 = 0; _t17 < i.length; _t17++) {
-          i[_t17][e]();
-        }
+        for (var _t17 = 0; _t17 < i.length; _t17++) i[_t17][e]();
       }
     }]);
     return gs;
@@ -3356,17 +3280,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           var s = t[i];
           if (!q(s)) return;
           var n = {};
-          var _iterator15 = _createForOfIteratorHelper(ps),
-            _step15;
-          try {
-            for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
-              var _t18 = _step15.value;
-              n[_t18] = s[_t18];
-            }
-          } catch (err) {
-            _iterator15.e(err);
-          } finally {
-            _iterator15.f();
+          for (var _i21 = 0, _ps = ps; _i21 < _ps.length; _i21++) {
+            var _t18 = _ps[_i21];
+            n[_t18] = s[_t18];
           }
           (X(s.properties) && s.properties || [i]).forEach(function (t) {
             t !== i && e.has(t) || e.set(t, n);
@@ -3455,9 +3371,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     var i = [],
       s = t._getSortedDatasetMetas(e);
     var n, o;
-    for (n = 0, o = s.length; n < o; ++n) {
-      i.push(s[n].index);
-    }
+    for (n = 0, o = s.length; n < o; ++n) i.push(s[n].index);
     return i;
   }
   function _s(t, e, i) {
@@ -3485,18 +3399,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     return s[i] || (s[i] = {});
   }
   function ws(t, e, i, s) {
-    var _iterator16 = _createForOfIteratorHelper(e.getMatchingVisibleMetas(s).reverse()),
-      _step16;
+    var _iterator15 = _createForOfIteratorHelper(e.getMatchingVisibleMetas(s).reverse()),
+      _step15;
     try {
-      for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
-        var _n13 = _step16.value;
+      for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
+        var _n13 = _step15.value;
         var _e16 = t[_n13.index];
         if (i && _e16 > 0 || !i && _e16 < 0) return _n13.index;
       }
     } catch (err) {
-      _iterator16.e(err);
+      _iterator15.e(err);
     } finally {
-      _iterator16.f();
+      _iterator15.f();
     }
     return null;
   }
@@ -3515,10 +3429,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       d = e.length;
     var u;
     for (var _t19 = 0; _t19 < d; ++_t19) {
-      var _i21 = e[_t19],
-        _o15 = _i21[l],
-        _d3 = _i21[h];
-      u = (_i21._stacks || (_i21._stacks = {}))[h] = vs(n, c, _o15), u[r] = _d3, u._top = ws(u, a, !0, s.type), u._bottom = ws(u, a, !1, s.type);
+      var _i22 = e[_t19],
+        _o15 = _i22[l],
+        _d3 = _i22[h];
+      u = (_i22._stacks || (_i22._stacks = {}))[h] = vs(n, c, _o15), u[r] = _d3, u._top = ws(u, a, !0, s.type), u._bottom = ws(u, a, !1, s.type);
     }
   }
   function ks(t, e) {
@@ -3532,19 +3446,19 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       s = t.vScale && t.vScale.axis;
     if (s) {
       e = e || t._parsed;
-      var _iterator17 = _createForOfIteratorHelper(e),
-        _step17;
+      var _iterator16 = _createForOfIteratorHelper(e),
+        _step16;
       try {
-        for (_iterator17.s(); !(_step17 = _iterator17.n()).done;) {
-          var _t20 = _step17.value;
+        for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
+          var _t20 = _step16.value;
           var _e17 = _t20._stacks;
           if (!_e17 || void 0 === _e17[s] || void 0 === _e17[s][i]) return;
           delete _e17[s][i];
         }
       } catch (err) {
-        _iterator17.e(err);
+        _iterator16.e(err);
       } finally {
-        _iterator17.f();
+        _iterator16.f();
       }
     }
   }
@@ -3629,12 +3543,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           var e = Object.keys(t),
             i = new Array(e.length);
           var s, n, o;
-          for (s = 0, n = e.length; s < n; ++s) {
-            o = e[s], i[s] = {
-              x: o,
-              y: t[o]
-            };
-          }
+          for (s = 0, n = e.length; s < n; ++s) o = e[s], i[s] = {
+            x: o,
+            y: t[o]
+          };
           return i;
         }(e);else if (i !== e) {
           if (i) {
@@ -3687,9 +3599,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           var _n14 = function _n14() {
             return null === l[a] || d && l[a] < d[a];
           };
-          for (r = 0; r < e; ++r) {
-            i._parsed[r + t] = l = h[r], c && (_n14() && (c = !1), d = l);
-          }
+          for (r = 0; r < e; ++r) i._parsed[r + t] = l = h[r], c && (_n14() && (c = !1), d = l);
           i._sorted = c;
         }
         o && Ms(this, h);
@@ -3718,12 +3628,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           o = t.yScale,
           a = new Array(s);
         var r, l, h, c;
-        for (r = 0, l = s; r < l; ++r) {
-          h = r + i, c = e[h], a[r] = {
-            x: n.parse(c[0], h),
-            y: o.parse(c[1], h)
-          };
-        }
+        for (r = 0, l = s; r < l; ++r) h = r + i, c = e[h], a[r] = {
+          x: n.parse(c[0], h),
+          y: o.parse(c[1], h)
+        };
         return a;
       }
     }, {
@@ -3738,12 +3646,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           r = _this$_parsing$yAxisK === void 0 ? "y" : _this$_parsing$yAxisK,
           l = new Array(s);
         var h, c, d, u;
-        for (h = 0, c = s; h < c; ++h) {
-          d = h + i, u = e[d], l[h] = {
-            x: n.parse(ct(u, a), d),
-            y: o.parse(ct(u, r), d)
-          };
-        }
+        for (h = 0, c = s; h < c; ++h) d = h + i, u = e[d], l[h] = {
+          x: n.parse(ct(u, a), d),
+          y: o.parse(ct(u, r), d)
+        };
         return l;
       }
     }, {
@@ -3814,14 +3720,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           var e = u[a.axis];
           return !K(u[t.axis]) || h > e || c < e;
         }
-        for (d = 0; d < o && (f() || (this.updateRangeFromParsed(l, t, u, r), !n)); ++d) {
-          ;
-        }
-        if (n) for (d = o - 1; d >= 0; --d) {
-          if (!f()) {
-            this.updateRangeFromParsed(l, t, u, r);
-            break;
-          }
+        for (d = 0; d < o && (f() || (this.updateRangeFromParsed(l, t, u, r), !n)); ++d);
+        if (n) for (d = o - 1; d >= 0; --d) if (!f()) {
+          this.updateRangeFromParsed(l, t, u, r);
+          break;
         }
         return l;
       }
@@ -3831,9 +3733,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         var e = this._cachedMeta._parsed,
           i = [];
         var s, n, o;
-        for (s = 0, n = e.length; s < n; ++s) {
-          o = e[s][t.axis], K(o) && i.push(o);
-        }
+        for (s = 0, n = e.length; s < n; ++s) o = e[s][t.axis], K(o) && i.push(o);
         return i;
       }
     }, {
@@ -3898,9 +3798,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           var _e18 = s[h];
           _e18.hidden || (_e18.active && l ? o.push(_e18) : _e18.draw(t, n));
         }
-        for (h = 0; h < o.length; ++h) {
-          o[h].draw(t, n);
-        }
+        for (h = 0; h < o.length; ++h) o[h].draw(t, n);
       }
     }, {
       key: "getStyle",
@@ -4045,20 +3943,20 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       value: function _resyncElements(t) {
         var e = this._data,
           i = this._cachedMeta.data;
-        var _iterator18 = _createForOfIteratorHelper(this._syncList),
-          _step18;
+        var _iterator17 = _createForOfIteratorHelper(this._syncList),
+          _step17;
         try {
-          for (_iterator18.s(); !(_step18 = _iterator18.n()).done;) {
-            var _step18$value = _slicedToArray(_step18.value, 3),
-              _t22 = _step18$value[0],
-              _e20 = _step18$value[1],
-              _i22 = _step18$value[2];
-            this[_t22](_e20, _i22);
+          for (_iterator17.s(); !(_step17 = _iterator17.n()).done;) {
+            var _step17$value = _slicedToArray(_step17.value, 3),
+              _t22 = _step17$value[0],
+              _e20 = _step17$value[1],
+              _i23 = _step17$value[2];
+            this[_t22](_e20, _i23);
           }
         } catch (err) {
-          _iterator18.e(err);
+          _iterator17.e(err);
         } finally {
-          _iterator18.f();
+          _iterator17.f();
         }
         this._syncList = [];
         var s = i.length,
@@ -4075,13 +3973,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           o = t + e;
         var a;
         var r = function r(t) {
-          for (t.length += e, a = t.length - 1; a >= o; a--) {
-            t[a] = t[a - e];
-          }
+          for (t.length += e, a = t.length - 1; a >= o; a--) t[a] = t[a - e];
         };
-        for (r(n), a = t; a < o; ++a) {
-          n[a] = new this.dataElementType();
-        }
+        for (r(n), a = t; a < o; ++a) n[a] = new this.dataElementType();
         this._parsing && r(s._parsed), this.parse(t, e), i && this.updateElements(n, t, e, "reset");
       }
     }, {
@@ -4103,9 +3997,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         if (this._parsing) this._syncList.push(t);else {
           var _t23 = _slicedToArray(t, 3),
             _e21 = _t23[0],
-            _i23 = _t23[1],
+            _i24 = _t23[1],
             _s20 = _t23[2];
-          this[_e21](_i23, _s20);
+          this[_e21](_i24, _s20);
         }
         this.chart._dataChanges.push([this.index].concat(_toConsumableArray(t)));
       }
@@ -4224,9 +4118,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       n = i.major.enabled ? function (t) {
         var e = [];
         var i, s;
-        for (i = 0, s = t.length; i < s; i++) {
-          t[i].major && e.push(i);
-        }
+        for (i = 0, s = t.length; i < s; i++) t[i].major && e.push(i);
         return e;
       }(e) : [],
       o = n.length,
@@ -4237,18 +4129,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       var n,
         o = 0,
         a = i[0];
-      for (s = Math.ceil(s), n = 0; n < t.length; n++) {
-        n === a && (e.push(t[n]), o++, a = i[o * s]);
-      }
+      for (s = Math.ceil(s), n = 0; n < t.length; n++) n === a && (e.push(t[n]), o++, a = i[o * s]);
     }(e, l, n, o / s), l;
     var h = function (t, e, i) {
       var s = function (t) {
           var e = t.length;
           var i, s;
           if (e < 2) return !1;
-          for (s = t[0], i = 1; i < e; ++i) {
-            if (t[i] - t[i - 1] !== s) return !1;
-          }
+          for (s = t[0], i = 1; i < e; ++i) if (t[i] - t[i - 1] !== s) return !1;
           return s;
         }(t),
         n = e.length / i;
@@ -4261,11 +4149,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       return Math.max(n, 1);
     }(n, e, s);
     if (o > 0) {
-      var _t25, _i24;
+      var _t25, _i25;
       var _s21 = o > 1 ? Math.round((r - a) / (o - 1)) : null;
-      for (Rs(e, l, h, U(_s21) ? 0 : a - _s21, a), _t25 = 0, _i24 = o - 1; _t25 < _i24; _t25++) {
-        Rs(e, l, h, n[_t25], n[_t25 + 1]);
-      }
+      for (Rs(e, l, h, U(_s21) ? 0 : a - _s21, a), _t25 = 0, _i25 = o - 1; _t25 < _i25; _t25++) Rs(e, l, h, n[_t25], n[_t25 + 1]);
       return Rs(e, l, h, r, U(_s21) ? e.length : r + _s21), l;
     }
     return Rs(e, l, h), l;
@@ -4277,12 +4163,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       l,
       h,
       c = 0;
-    for (i = Math.ceil(i), n && (r = n - s, i = r / Math.floor(r / i)), h = o; h < 0;) {
-      c++, h = Math.round(o + c * i);
-    }
-    for (l = Math.max(o, 0); l < a; l++) {
-      l === h && (e.push(t[l]), c++, h = Math.round(o + c * i));
-    }
+    for (i = Math.ceil(i), n && (r = n - s, i = r / Math.floor(r / i)), h = o; h < 0;) c++, h = Math.round(o + c * i);
+    for (l = Math.max(o, 0); l < a; l++) l === h && (e.push(t[l]), c++, h = Math.round(o + c * i));
   }
   yt.set("scale", {
     display: !0,
@@ -4363,9 +4245,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       s = t.length / e,
       n = t.length;
     var o = 0;
-    for (; o < n; o += s) {
-      i.push(t[Math.floor(o)]);
-    }
+    for (; o < n; o += s) i.push(t[Math.floor(o)]);
     return i;
   }
   function zs(t, e, i) {
@@ -4445,9 +4325,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           max: s
         };
         var a = this.getMatchingVisibleMetas();
-        for (var _r7 = 0, _l9 = a.length; _r7 < _l9; ++_r7) {
-          e = a[_r7].controller.getMinMax(this, t), n || (i = Math.min(i, e.min)), o || (s = Math.max(s, e.max));
-        }
+        for (var _r7 = 0, _l9 = a.length; _r7 < _l9; ++_r7) e = a[_r7].controller.getMinMax(this, t), n || (i = Math.min(i, e.min)), o || (s = Math.max(s, e.max));
         return i = o && i > s ? s : i, s = n && i > s ? i : s, {
           min: G(i, G(s, i)),
           max: G(s, G(i, s))
@@ -4572,9 +4450,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       value: function generateTickLabels(t) {
         var e = this.options.ticks;
         var i, s, n;
-        for (i = 0, s = t.length; i < s; i++) {
-          n = t[i], n.label = tt(e.callback, [n.value, i, t], this);
-        }
+        for (i = 0, s = t.length; i < s; i++) n = t[i], n.label = tt(e.callback, [n.value, i, t], this);
       }
     }, {
       key: "afterTickToLabelConversion",
@@ -4673,9 +4549,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
             _d4 = 0;
           r ? l ? (_c6 = s * t.width, _d4 = i * e.height) : (_c6 = i * t.height, _d4 = s * e.width) : "start" === n ? _d4 = e.width : "end" === n ? _c6 = t.width : "inner" !== n && (_c6 = t.width / 2, _d4 = e.width / 2), this.paddingLeft = Math.max((_c6 - _a11 + o) * this.width / (this.width - _a11), 0), this.paddingRight = Math.max((_d4 - _h8 + o) * this.width / (this.width - _h8), 0);
         } else {
-          var _i25 = e.height / 2,
+          var _i26 = e.height / 2,
             _s23 = t.height / 2;
-          "start" === n ? (_i25 = 0, _s23 = t.height) : "end" === n && (_i25 = e.height, _s23 = 0), this.paddingTop = _i25 + o, this.paddingBottom = _s23 + o;
+          "start" === n ? (_i26 = 0, _s23 = t.height) : "end" === n && (_i26 = e.height, _s23 = 0), this.paddingTop = _i26 + o, this.paddingBottom = _s23 + o;
         }
       }
     }, {
@@ -4705,9 +4581,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       key: "_convertTicksToLabels",
       value: function _convertTicksToLabels(t) {
         var e, i;
-        for (this.beforeTickToLabelConversion(), this.generateTickLabels(t), e = 0, i = t.length; e < i; e++) {
-          U(t[e].label) && (t.splice(e, 1), i--, e--);
-        }
+        for (this.beforeTickToLabelConversion(), this.generateTickLabels(t), e = 0, i = t.length; e < i; e++) U(t[e].label) && (t.splice(e, 1), i--, e--);
         this.afterTickToLabelConversion();
       }
     }, {
@@ -4716,8 +4590,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         var t = this._labelSizes;
         if (!t) {
           var _e28 = this.options.ticks.sampleSize;
-          var _i26 = this.ticks;
-          _e28 < _i26.length && (_i26 = Is(_i26, _e28)), this._labelSizes = t = this._computeLabelSizes(_i26, _i26.length);
+          var _i27 = this.ticks;
+          _e28 < _i27.length && (_i27 = Is(_i27, _e28)), this._labelSizes = t = this._computeLabelSizes(_i27, _i27.length);
         }
         return t;
       }
@@ -4746,9 +4620,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
             data: {},
             gc: []
           }, f = c.lineHeight, g = p = 0, U(h) || X(h)) {
-            if (X(h)) for (r = 0, l = h.length; r < l; ++r) {
-              m = h[r], U(m) || X(m) || (g = me(i, u.data, u.gc, g, m), p += f);
-            }
+            if (X(h)) for (r = 0, l = h.length; r < l; ++r) m = h[r], U(m) || X(m) || (g = me(i, u.data, u.gc, g, m), p += f);
           } else g = me(i, u.data, u.gc, g, h), p = f;
           n.push(g), o.push(p), b = Math.max(g, b), x = Math.max(p, x);
         }
@@ -4758,9 +4630,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
               s = i.length / 2;
             var n;
             if (s > e) {
-              for (n = 0; n < s; ++n) {
-                delete t.data[i[n]];
-              }
+              for (n = 0; n < s; ++n) delete t.data[i[n]];
               i.splice(0, s);
             }
           });
@@ -4831,14 +4701,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       value: function getContext(t) {
         var e = this.ticks || [];
         if (t >= 0 && t < e.length) {
-          var _i27 = e[t];
-          return _i27.$context || (_i27.$context = function (t, e, i) {
+          var _i28 = e[t];
+          return _i28.$context || (_i28.$context = function (t, e, i) {
             return pi(t, {
               tick: i,
               index: e,
               type: "tick"
             });
-          }(this.getContext(), t, _i27));
+          }(this.getContext(), t, _i28));
         }
         return this.$context || (this.$context = pi(this.chart.getContext(), {
           scale: this,
@@ -4991,23 +4861,23 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           var _t33 = n.setContext(this.getContext(m));
           M = this.getPixelForTick(m) + n.labelOffset, k = this._resolveTickFontOptions(m), S = k.lineHeight, P = X(_) ? _.length : 1;
           var _e34 = P / 2,
-            _i28 = _t33.color,
+            _i29 = _t33.color,
             _r9 = _t33.textStrokeColor,
             _h10 = _t33.textStrokeWidth;
           var _d6 = void 0,
             _u2 = w;
           if (o ? (y = M, "inner" === w && (_u2 = m === b - 1 ? this.options.reverse ? "left" : "right" : 0 === m ? this.options.reverse ? "right" : "left" : "center"), D = "top" === s ? "near" === l || 0 !== g ? -P * S + S / 2 : "center" === l ? -O.highest.height / 2 - _e34 * S + S : -O.highest.height + S / 2 : "near" === l || 0 !== g ? S / 2 : "center" === l ? O.highest.height / 2 - _e34 * S : O.highest.height - P * S, c && (D *= -1)) : (v = M, D = (1 - P) * S / 2), _t33.showLabelBackdrop) {
             var _e35 = di(_t33.backdropPadding),
-              _i29 = O.heights[m],
+              _i30 = O.heights[m],
               _s25 = O.widths[m];
             var _n17 = v + D - _e35.top,
               _o20 = y - _e35.left;
             switch (C) {
               case "middle":
-                _n17 -= _i29 / 2;
+                _n17 -= _i30 / 2;
                 break;
               case "bottom":
-                _n17 -= _i29;
+                _n17 -= _i30;
             }
             switch (w) {
               case "center":
@@ -5020,7 +4890,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
               left: _o20,
               top: _n17,
               width: _s25 + _e35.width,
-              height: _i29 + _e35.height,
+              height: _i30 + _e35.height,
               color: _t33.backdropColor
             };
           }
@@ -5028,7 +4898,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
             rotation: g,
             label: _,
             font: k,
-            color: _i28,
+            color: _i29,
             strokeColor: _r9,
             strokeWidth: _h10,
             textOffset: D,
@@ -5166,9 +5036,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         var n, o;
         for (n = 0, o = s.length; n < o; ++n) {
           var _t35 = s[n],
-            _i30 = _t35.font,
+            _i31 = _t35.font,
             _o21 = _t35.label;
-          _t35.backdrop && (e.fillStyle = _t35.backdrop.color, e.fillRect(_t35.backdrop.left, _t35.backdrop.top, _t35.backdrop.width, _t35.backdrop.height)), Pe(e, _o21, 0, _t35.textOffset, _i30, _t35);
+          _t35.backdrop && (e.fillStyle = _t35.backdrop.color, e.fillRect(_t35.backdrop.left, _t35.backdrop.top, _t35.backdrop.width, _t35.backdrop.height)), Pe(e, _o21, 0, _t35.textOffset, _i31, _t35);
         }
         i && Me(e);
       }
@@ -5477,8 +5347,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       key: "_getRegistryForType",
       value: function _getRegistryForType(t) {
         for (var _e36 = 0; _e36 < this._typedRegistries.length; _e36++) {
-          var _i31 = this._typedRegistries[_e36];
-          if (_i31.isForType(t)) return _i31;
+          var _i32 = this._typedRegistries[_e36];
+          if (_i32.isForType(t)) return _i32;
         }
         return this.plugins;
       }
@@ -5509,18 +5379,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       key: "_notify",
       value: function _notify(t, e, i, s) {
         s = s || {};
-        var _iterator19 = _createForOfIteratorHelper(t),
-          _step19;
+        var _iterator18 = _createForOfIteratorHelper(t),
+          _step18;
         try {
-          for (_iterator19.s(); !(_step19 = _iterator19.n()).done;) {
-            var _n18 = _step19.value;
+          for (_iterator18.s(); !(_step18 = _iterator18.n()).done;) {
+            var _n18 = _step18.value;
             var _t38 = _n18.plugin;
             if (!1 === tt(_t38[i], [e, s, _n18.options], _t38) && s.cancelable) return !1;
           }
         } catch (err) {
-          _iterator19.e(err);
+          _iterator18.e(err);
         } finally {
-          _iterator19.f();
+          _iterator18.f();
         }
         return !0;
       }
@@ -5544,13 +5414,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           n = function (t) {
             var e = [],
               i = Object.keys(Hs.plugins.items);
-            for (var _t39 = 0; _t39 < i.length; _t39++) {
-              e.push(Hs.getPlugin(i[_t39]));
-            }
+            for (var _t39 = 0; _t39 < i.length; _t39++) e.push(Hs.getPlugin(i[_t39]));
             var s = t.plugins || [];
             for (var _t40 = 0; _t40 < s.length; _t40++) {
-              var _i32 = s[_t40];
-              -1 === e.indexOf(_i32) && e.push(_i32);
+              var _i33 = s[_t40];
+              -1 === e.indexOf(_i33) && e.push(_i33);
             }
             return e;
           }(i);
@@ -5797,37 +5665,37 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           var _Te = Te(t),
             i = _Te.isScriptable,
             s = _Te.isIndexable;
-          var _iterator20 = _createForOfIteratorHelper(e),
-            _step20;
+          var _iterator19 = _createForOfIteratorHelper(e),
+            _step19;
           try {
-            for (_iterator20.s(); !(_step20 = _iterator20.n()).done;) {
-              var _n19 = _step20.value;
+            for (_iterator19.s(); !(_step19 = _iterator19.n()).done;) {
+              var _n19 = _step19.value;
               var _e37 = i(_n19),
                 _o23 = s(_n19),
                 _a13 = (_o23 || _e37) && t[_n19];
               if (_e37 && (ft(_a13) || sn(_a13)) || _o23 && X(_a13)) return !0;
             }
           } catch (err) {
-            _iterator20.e(err);
+            _iterator19.e(err);
           } finally {
-            _iterator20.f();
+            _iterator19.f();
           }
           return !1;
         }(o, e)) {
           n.$shared = !1;
           r = Ae(o, i = ft(i) ? i() : i, this.createResolver(t, i, a));
         }
-        var _iterator21 = _createForOfIteratorHelper(e),
-          _step21;
+        var _iterator20 = _createForOfIteratorHelper(e),
+          _step20;
         try {
-          for (_iterator21.s(); !(_step21 = _iterator21.n()).done;) {
-            var _t41 = _step21.value;
+          for (_iterator20.s(); !(_step20 = _iterator20.n()).done;) {
+            var _t41 = _step20.value;
             n[_t41] = r[_t41];
           }
         } catch (err) {
-          _iterator21.e(err);
+          _iterator20.e(err);
         } finally {
-          _iterator21.f();
+          _iterator20.f();
         }
         return n;
       }
@@ -5894,8 +5762,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     };
   function un(t, e, i) {
     var s = Object.keys(t);
-    for (var _i33 = 0, _s28 = s; _i33 < _s28.length; _i33++) {
-      var _n20 = _s28[_i33];
+    for (var _i34 = 0, _s28 = s; _i34 < _s28.length; _i34++) {
+      var _n20 = _s28[_i34];
       var _s29 = +_n20;
       if (_s29 >= e) {
         var _o24 = t[_n20];
@@ -6043,9 +5911,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         if (t.sort(function (t, e) {
           return t.index - e.index;
         }), i > e) {
-          for (var _t42 = e; _t42 < i; ++_t42) {
-            this._destroyDatasetMeta(_t42);
-          }
+          for (var _t42 = e; _t42 < i; ++_t42) this._destroyDatasetMeta(_t42);
           t.splice(e, i - e);
         }
         this._sortedMetasets = t.slice(0).sort(an("order", "index"));
@@ -6115,8 +5981,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         for (var _t43 = 0, _e39 = this.data.datasets.length; _t43 < _e39; _t43++) {
           var _this$getDatasetMeta = this.getDatasetMeta(_t43),
             _e40 = _this$getDatasetMeta.controller,
-            _i34 = !s && -1 === n.indexOf(_e40);
-          _e40.buildOrUpdateElements(_i34), o = Math.max(+_e40.getMaxOverflow(), o);
+            _i35 = !s && -1 === n.indexOf(_e40);
+          _e40.buildOrUpdateElements(_i35), o = Math.max(+_e40.getMaxOverflow(), o);
         }
         o = this._minPadding = i.layout.autoPadding ? o : 0, this._updateLayout(o), s || et(n, function (t) {
           t.reset();
@@ -6148,20 +6014,20 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       value: function _updateHiddenIndices() {
         var t = this._hiddenIndices,
           e = this._getUniformDataChanges() || [];
-        var _iterator22 = _createForOfIteratorHelper(e),
-          _step22;
+        var _iterator21 = _createForOfIteratorHelper(e),
+          _step21;
         try {
-          for (_iterator22.s(); !(_step22 = _iterator22.n()).done;) {
-            var _step22$value = _step22.value,
-              _i35 = _step22$value.method,
-              _s32 = _step22$value.start,
-              _n22 = _step22$value.count;
-            un(t, _s32, "_removeElements" === _i35 ? -_n22 : _n22);
+          for (_iterator21.s(); !(_step21 = _iterator21.n()).done;) {
+            var _step21$value = _step21.value,
+              _i36 = _step21$value.method,
+              _s32 = _step21$value.start,
+              _n22 = _step21$value.count;
+            un(t, _s32, "_removeElements" === _i36 ? -_n22 : _n22);
           }
         } catch (err) {
-          _iterator22.e(err);
+          _iterator21.e(err);
         } finally {
-          _iterator22.f();
+          _iterator21.f();
         }
       }
     }, {
@@ -6179,9 +6045,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
             }));
           },
           s = i(0);
-        for (var _t44 = 1; _t44 < e; _t44++) {
-          if (!gt(s, i(_t44))) return;
-        }
+        for (var _t44 = 1; _t44 < e; _t44++) if (!gt(s, i(_t44))) return;
         return Array.from(s).map(function (t) {
           return t.split(",");
         }).map(function (t) {
@@ -6216,14 +6080,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           mode: t,
           cancelable: !0
         })) {
-          for (var _t45 = 0, _e41 = this.data.datasets.length; _t45 < _e41; ++_t45) {
-            this.getDatasetMeta(_t45).controller.configure();
-          }
-          for (var _e42 = 0, _i36 = this.data.datasets.length; _e42 < _i36; ++_e42) {
-            this._updateDataset(_e42, ft(t) ? t({
-              datasetIndex: _e42
-            }) : t);
-          }
+          for (var _t45 = 0, _e41 = this.data.datasets.length; _t45 < _e41; ++_t45) this.getDatasetMeta(_t45).controller.configure();
+          for (var _e42 = 0, _i37 = this.data.datasets.length; _e42 < _i37; ++_e42) this._updateDataset(_e42, ft(t) ? t({
+            datasetIndex: _e42
+          }) : t);
           this.notifyPlugins("afterDatasetsUpdate", {
             mode: t
           });
@@ -6265,12 +6125,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           cancelable: !0
         })) return;
         var e = this._layers;
-        for (t = 0; t < e.length && e[t].z <= 0; ++t) {
-          e[t].draw(this.chartArea);
-        }
-        for (this._drawDatasets(); t < e.length; ++t) {
-          e[t].draw(this.chartArea);
-        }
+        for (t = 0; t < e.length && e[t].z <= 0; ++t) e[t].draw(this.chartArea);
+        for (this._drawDatasets(); t < e.length; ++t) e[t].draw(this.chartArea);
         this.notifyPlugins("afterDraw");
       }
     }, {
@@ -6297,9 +6153,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           cancelable: !0
         })) return;
         var t = this.getSortedVisibleDatasetMetas();
-        for (var _e44 = t.length - 1; _e44 >= 0; --_e44) {
-          this._drawDataset(t[_e44]);
-        }
+        for (var _e44 = t.length - 1; _e44 >= 0; --_e44) this._drawDataset(t[_e44]);
         this.notifyPlugins("afterDatasetsDraw");
       }
     }, {
@@ -6423,9 +6277,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       key: "_stop",
       value: function _stop() {
         var t, e;
-        for (this.stop(), a.remove(this), t = 0, e = this.data.datasets.length; t < e; ++t) {
-          this._destroyDatasetMeta(t);
-        }
+        for (this.stop(), a.remove(this), t = 0, e = this.data.datasets.length; t < e; ++t) this._destroyDatasetMeta(t);
       }
     }, {
       key: "destroy",
@@ -6452,8 +6304,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         var _this14 = this;
         var t = this._listeners,
           e = this.platform,
-          i = function i(_i37, s) {
-            e.addEventListener(_this14, _i37, s), t[_i37] = s;
+          i = function i(_i38, s) {
+            e.addEventListener(_this14, _i38, s), t[_i38] = s;
           },
           s = function s(t, e, i) {
             t.offsetX = e, t.offsetY = i, _this14._eventHandler(t);
@@ -6469,8 +6321,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         this._responsiveListeners || (this._responsiveListeners = {});
         var t = this._responsiveListeners,
           e = this.platform,
-          i = function i(_i38, s) {
-            e.addEventListener(_this15, _i38, s), t[_i38] = s;
+          i = function i(_i39, s) {
+            e.addEventListener(_this15, _i39, s), t[_i39] = s;
           },
           s = function s(i, _s33) {
             t[i] && (e.removeEventListener(_this15, i, _s33), delete t[i]);
@@ -6694,11 +6546,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     var e = t.iScale,
       i = function (t, e) {
         if (!t._cache.$bar) {
-          var _i39 = t.getMatchingVisibleMetas(e);
+          var _i40 = t.getMatchingVisibleMetas(e);
           var _s34 = [];
-          for (var _e46 = 0, _n24 = _i39.length; _e46 < _n24; _e46++) {
-            _s34 = _s34.concat(_i39[_e46].controller.getAllParsedValues(t));
-          }
+          for (var _e46 = 0, _n24 = _i40.length; _e46 < _n24; _e46++) _s34 = _s34.concat(_i40[_e46].controller.getAllParsedValues(t));
           t._cache.$bar = Ct(_s34.sort(function (t, e) {
             return t - e;
           }));
@@ -6713,12 +6563,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     var l = function l() {
       32767 !== o && -32768 !== o && (ut(a) && (r = Math.min(r, Math.abs(o - a) || r)), a = o);
     };
-    for (s = 0, n = i.length; s < n; ++s) {
-      o = e.getPixelForValue(i[s]), l();
-    }
-    for (a = void 0, s = 0, n = e.ticks.length; s < n; ++s) {
-      o = e.getPixelForTick(s), l();
-    }
+    for (s = 0, n = i.length; s < n; ++s) o = e.getPixelForValue(i[s]), l();
+    for (a = void 0, s = 0, n = e.ticks.length; s < n; ++s) o = e.getPixelForTick(s), l();
     return r;
   }
   function yn(t, e, i, s) {
@@ -6746,9 +6592,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       r = n === o,
       l = [];
     var h, c, d, u;
-    for (h = i, c = i + s; h < c; ++h) {
-      u = e[h], d = {}, d[n.axis] = r || n.parse(a[h], h), l.push(yn(u, d, o, h));
-    }
+    for (h = i, c = i + s; h < c; ++h) u = e[h], d = {}, d[n.axis] = r || n.parse(a[h], h), l.push(yn(u, d, o, h));
     return l;
   }
   function wn(t) {
@@ -6817,9 +6661,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           h = "x" === o.axis ? a : r,
           c = [];
         var d, u, f, g;
-        for (d = i, u = i + s; d < u; ++d) {
-          g = e[d], f = {}, f[n.axis] = n.parse(ct(g, l), d), c.push(yn(ct(g, h), f, o, d));
-        }
+        for (d = i, u = i + s; d < u; ++d) g = e[d], f = {}, f[n.axis] = n.parse(ct(g, l), d), c.push(yn(ct(g, h), f, o, d));
         return c;
       }
     }, {
@@ -6875,7 +6717,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         this.updateSharedOptions(d, s, c);
         for (var _c7 = e; _c7 < e + i; _c7++) {
           var _e47 = this.getParsed(_c7),
-            _i40 = n || U(_e47[a.axis]) ? {
+            _i41 = n || U(_e47[a.axis]) ? {
               base: r,
               head: r
             } : this._calculateBarValuePixels(_c7),
@@ -6883,12 +6725,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
             _g = (_e47._stacks || {})[a.axis],
             _p = {
               horizontal: l,
-              base: _i40.base,
+              base: _i41.base,
               enableBorderRadius: !_g || wn(_e47._custom) || o === _g._top || o === _g._bottom,
-              x: l ? _i40.head : _f2.center,
-              y: l ? _f2.center : _i40.head,
-              height: l ? _f2.size : Math.abs(_i40.size),
-              width: l ? Math.abs(_i40.size) : _f2.size
+              x: l ? _i41.head : _f2.center,
+              y: l ? _f2.center : _i41.head,
+              height: l ? _f2.size : Math.abs(_i41.size),
+              width: l ? Math.abs(_i41.size) : _f2.size
             };
           u && (_p.options = d || this.resolveDataElementOptions(_c7, t[_c7].active ? "active" : s));
           var _m = _p.options || t[_c7].options;
@@ -6904,14 +6746,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           o = s.length,
           a = [];
         var r, l;
-        for (r = 0; r < o; ++r) {
-          if (l = s[r], l.controller.options.grouped) {
-            if (void 0 !== e) {
-              var _t47 = l.controller.getParsed(e)[l.controller._cachedMeta.vScale.axis];
-              if (U(_t47) || isNaN(_t47)) continue;
-            }
-            if ((!1 === n || -1 === a.indexOf(l.stack) || void 0 === n && void 0 === l.stack) && a.push(l.stack), l.index === t) break;
+        for (r = 0; r < o; ++r) if (l = s[r], l.controller.options.grouped) {
+          if (void 0 !== e) {
+            var _t47 = l.controller.getParsed(e)[l.controller._cachedMeta.vScale.axis];
+            if (U(_t47) || isNaN(_t47)) continue;
           }
+          if ((!1 === n || -1 === a.indexOf(l.stack) || void 0 === n && void 0 === l.stack) && a.push(l.stack), l.index === t) break;
         }
         return a.length || a.push(void 0), a;
       }
@@ -6935,9 +6775,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           i = e.iScale,
           s = [];
         var n, o;
-        for (n = 0, o = e.data.length; n < o; ++n) {
-          s.push(i.getPixelForValue(this.getParsed(n)[i.axis], n));
-        }
+        for (n = 0, o = e.data.length; n < o; ++n) s.push(i.getPixelForValue(this.getParsed(n)[i.axis], n));
         var a = t.barThickness;
         return {
           min: a || _n(e),
@@ -6976,9 +6814,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
             return 0 !== t ? Bt(t) : (e.isHorizontal() ? 1 : -1) * (e.min >= i ? 1 : -1);
           }(c, e, o) * n, d === o && (p -= c / 2);
           var _t48 = e.getPixelForDecimal(0),
-            _i41 = e.getPixelForDecimal(1),
-            _s35 = Math.min(_t48, _i41),
-            _a15 = Math.max(_t48, _i41);
+            _i42 = e.getPixelForDecimal(1),
+            _s35 = Math.min(_t48, _i42),
+            _a15 = Math.max(_t48, _i42);
           p = Math.max(Math.min(p, _a15), _s35), h = p + c;
         }
         if (p === e.getPixelForValue(o)) {
@@ -7001,7 +6839,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           o = Z(s.maxBarThickness, 1 / 0);
         var a, r;
         if (e.grouped) {
-          var _i42 = n ? this._getStackCount(t) : e.stackCount,
+          var _i43 = n ? this._getStackCount(t) : e.stackCount,
             _l13 = "flex" === s.barThickness ? function (t, e, i, s) {
               var n = e.pixels,
                 o = n[t];
@@ -7015,7 +6853,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
                 ratio: i.barPercentage,
                 start: h
               };
-            }(t, e, s, _i42) : function (t, e, i, s) {
+            }(t, e, s, _i43) : function (t, e, i, s) {
               var n = i.barThickness;
               var o, a;
               return U(n) ? (o = e.min * i.categoryPercentage, a = i.barPercentage) : (o = n * s, a = 1), {
@@ -7023,7 +6861,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
                 ratio: a,
                 start: e.pixels[t] - o / 2
               };
-            }(t, e, s, _i42),
+            }(t, e, s, _i43),
             _h11 = this._getStackIndex(this.index, this._cachedMeta.stack, n ? t : void 0);
           a = _l13.start + _l13.chunk * _h11 + _l13.chunk / 2, r = Math.min(o, _l13.chunk * _l13.ratio);
         } else a = i.getPixelForValue(this.getParsed(t)[i.axis], t), r = Math.min(o, e.min * e.ratio);
@@ -7042,9 +6880,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           i = t.data,
           s = i.length;
         var n = 0;
-        for (; n < s; ++n) {
-          null !== this.getParsed(n)[e.axis] && i[n].draw(this._ctx);
-        }
+        for (; n < s; ++n) null !== this.getParsed(n)[e.axis] && i[n].draw(this._ctx);
       }
     }]);
     return Dn;
@@ -7092,9 +6928,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       key: "parsePrimitiveData",
       value: function parsePrimitiveData(t, e, i, s) {
         var n = _get2(_getPrototypeOf(Cn.prototype), "parsePrimitiveData", this).call(this, t, e, i, s);
-        for (var _t50 = 0; _t50 < n.length; _t50++) {
-          n[_t50]._custom = this.resolveDataElementOptions(_t50 + i).radius;
-        }
+        for (var _t50 = 0; _t50 < n.length; _t50++) n[_t50]._custom = this.resolveDataElementOptions(_t50 + i).radius;
         return n;
       }
     }, {
@@ -7122,9 +6956,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       value: function getMaxOverflow() {
         var t = this._cachedMeta.data;
         var e = 0;
-        for (var _i43 = t.length - 1; _i43 >= 0; --_i43) {
-          e = Math.max(e, t[_i43].size(this.resolveDataElementOptions(_i43)) / 2);
-        }
+        for (var _i44 = t.length - 1; _i44 >= 0; --_i44) e = Math.max(e, t[_i44].size(this.resolveDataElementOptions(_i44)) / 2);
         return e > 0 && e;
       }
     }, {
@@ -7162,10 +6994,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           d = a.axis;
         for (var _r11 = e; _r11 < e + i; _r11++) {
           var _e48 = t[_r11],
-            _i44 = !n && this.getParsed(_r11),
+            _i45 = !n && this.getParsed(_r11),
             _l14 = {},
-            _u3 = _l14[c] = n ? o.getPixelForDecimal(.5) : o.getPixelForValue(_i44[c]),
-            _f3 = _l14[d] = n ? a.getBasePixel() : a.getPixelForValue(_i44[d]);
+            _u3 = _l14[c] = n ? o.getPixelForDecimal(.5) : o.getPixelForValue(_i45[c]),
+            _f3 = _l14[d] = n ? a.getBasePixel() : a.getPixelForValue(_i45[d]);
           _l14.skip = isNaN(_u3) || isNaN(_f3), h && (_l14.options = this.resolveDataElementOptions(_r11, _e48.active ? "active" : s), n && (_l14.options.radius = 0)), this.updateElement(_e48, _r11, _l14, s);
         }
         this.updateSharedOptions(l, s, r);
@@ -7242,9 +7074,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
               return +ct(i[e], _t53);
             };
           }
-          for (_n25 = t, _o26 = t + e; _n25 < _o26; ++_n25) {
-            s._parsed[_n25] = _a16(_n25);
-          }
+          for (_n25 = t, _o26 = t + e; _n25 < _o26; ++_n25) s._parsed[_n25] = _a16(_n25);
         }
       }
     }, {
@@ -7262,13 +7092,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       value: function _getRotationExtents() {
         var t = At,
           e = -At;
-        for (var _i45 = 0; _i45 < this.chart.data.datasets.length; ++_i45) {
-          if (this.chart.isDatasetVisible(_i45)) {
-            var _s38 = this.chart.getDatasetMeta(_i45).controller,
-              _n26 = _s38._getRotation(),
-              _o27 = _s38._getCircumference();
-            t = Math.min(t, _n26), e = Math.max(e, _n26 + _o27);
-          }
+        for (var _i46 = 0; _i46 < this.chart.data.datasets.length; ++_i46) if (this.chart.isDatasetVisible(_i46)) {
+          var _s38 = this.chart.getDatasetMeta(_i46).controller,
+            _n26 = _s38._getRotation(),
+            _o27 = _s38._getCircumference();
+          t = Math.min(t, _n26), e = Math.max(e, _n26 + _o27);
         }
         return {
           rotation: t,
@@ -7356,12 +7184,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           p = this.includeOptions(s, g);
         var m,
           b = this._getRotation();
-        for (m = 0; m < e; ++m) {
-          b += this._circumference(m, n);
-        }
+        for (m = 0; m < e; ++m) b += this._circumference(m, n);
         for (m = e; m < e + i; ++m) {
           var _e49 = this._circumference(m, n),
-            _i46 = t[m],
+            _i47 = t[m],
             _o28 = {
               x: l + this.offsetX,
               y: h + this.offsetY,
@@ -7371,7 +7197,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
               outerRadius: u,
               innerRadius: d
             };
-          p && (_o28.options = g || this.resolveDataElementOptions(m, _i46.active ? "active" : s)), b += _e49, this.updateElement(_i46, m, _o28, s);
+          p && (_o28.options = g || this.resolveDataElementOptions(m, _i47.active ? "active" : s)), b += _e49, this.updateElement(_i47, m, _o28, s);
         }
         this.updateSharedOptions(g, s, f);
       }
@@ -7412,24 +7238,20 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         var e = 0;
         var i = this.chart;
         var s, n, o, a, r;
-        if (!t) for (s = 0, n = i.data.datasets.length; s < n; ++s) {
-          if (i.isDatasetVisible(s)) {
-            o = i.getDatasetMeta(s), t = o.data, a = o.controller;
-            break;
-          }
+        if (!t) for (s = 0, n = i.data.datasets.length; s < n; ++s) if (i.isDatasetVisible(s)) {
+          o = i.getDatasetMeta(s), t = o.data, a = o.controller;
+          break;
         }
         if (!t) return 0;
-        for (s = 0, n = t.length; s < n; ++s) {
-          r = a.resolveDataElementOptions(s), "inner" !== r.borderAlign && (e = Math.max(e, r.borderWidth || 0, r.hoverBorderWidth || 0));
-        }
+        for (s = 0, n = t.length; s < n; ++s) r = a.resolveDataElementOptions(s), "inner" !== r.borderAlign && (e = Math.max(e, r.borderWidth || 0, r.hoverBorderWidth || 0));
         return e;
       }
     }, {
       key: "getMaxOffset",
       value: function getMaxOffset(t) {
         var e = 0;
-        for (var _i47 = 0, _s39 = t.length; _i47 < _s39; ++_i47) {
-          var _t54 = this.resolveDataElementOptions(_i47);
+        for (var _i48 = 0, _s39 = t.length; _i48 < _s39; ++_i48) {
+          var _t54 = this.resolveDataElementOptions(_i48);
           e = Math.max(e, _t54.offset || 0, _t54.hoverOffset || 0);
         }
         return e;
@@ -7438,9 +7260,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       key: "_getRingWeightOffset",
       value: function _getRingWeightOffset(t) {
         var e = 0;
-        for (var _i48 = 0; _i48 < t; ++_i48) {
-          this.chart.isDatasetVisible(_i48) && (e += this._getRingWeight(_i48));
-        }
+        for (var _i49 = 0; _i49 < t; ++_i49) this.chart.isDatasetVisible(_i49) && (e += this._getRingWeight(_i49));
         return e;
       }
     }, {
@@ -7490,7 +7310,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           generateLabels: function generateLabels(t) {
             var e = t.data;
             if (e.labels.length && e.datasets.length) {
-              var _i49 = t.legend.options.labels.pointStyle;
+              var _i50 = t.legend.options.labels.pointStyle;
               return e.labels.map(function (e, s) {
                 var n = t.getDatasetMeta(0).controller.getStyle(s);
                 return {
@@ -7498,7 +7318,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
                   fillStyle: n.backgroundColor,
                   strokeStyle: n.borderColor,
                   lineWidth: n.borderWidth,
-                  pointStyle: _i49,
+                  pointStyle: _i50,
                   hidden: !t.getDataVisibility(s),
                   index: s
                 };
@@ -7554,11 +7374,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
               var _a17 = t.iScale,
                 _r13 = t._parsed,
                 _l16 = _a17.axis,
-                _a17$getUserBounds = _a17.getUserBounds(),
-                _h13 = _a17$getUserBounds.min,
-                _c9 = _a17$getUserBounds.max,
-                _d8 = _a17$getUserBounds.minDefined,
-                _u5 = _a17$getUserBounds.maxDefined;
+                _a$getUserBounds = _a17.getUserBounds(),
+                _h13 = _a$getUserBounds.min,
+                _c9 = _a$getUserBounds.max,
+                _d8 = _a$getUserBounds.minDefined,
+                _u5 = _a$getUserBounds.maxDefined;
               _d8 && (n = Qt(Math.min(wt(_r13, _a17.axis, _h13).lo, i ? s : wt(e, _l16, _a17.getPixelForValue(_h13)).lo), 0, s - 1)), o = _u5 ? Qt(Math.max(wt(_r13, _a17.axis, _c9).hi + 1, i ? 0 : wt(e, _l16, _a17.getPixelForValue(_c9)).hi + 1), n, s) - n : s - n;
             }
             return {
@@ -7610,12 +7430,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         var x = e > 0 && this.getParsed(e - 1);
         for (var _h14 = e; _h14 < e + i; ++_h14) {
           var _e50 = t[_h14],
-            _i50 = this.getParsed(_h14),
+            _i51 = this.getParsed(_h14),
             _g3 = b ? _e50 : {},
-            _2 = U(_i50[f]),
-            _y = _g3[u] = o.getPixelForValue(_i50[u], _h14),
-            _v = _g3[f] = n || _2 ? a.getBasePixel() : a.getPixelForValue(r ? this.applyStack(a, _i50, r) : _i50[f], _h14);
-          _g3.skip = isNaN(_y) || isNaN(_v) || _2, _g3.stop = _h14 > 0 && Math.abs(_i50[u] - x[u]) > m, p && (_g3.parsed = _i50, _g3.raw = l.data[_h14]), d && (_g3.options = c || this.resolveDataElementOptions(_h14, _e50.active ? "active" : s)), b || this.updateElement(_e50, _h14, _g3, s), x = _i50;
+            _2 = U(_i51[f]),
+            _y = _g3[u] = o.getPixelForValue(_i51[u], _h14),
+            _v = _g3[f] = n || _2 ? a.getBasePixel() : a.getPixelForValue(r ? this.applyStack(a, _i51, r) : _i51[f], _h14);
+          _g3.skip = isNaN(_y) || isNaN(_v) || _2, _g3.stop = _h14 > 0 && Math.abs(_i51[u] - x[u]) > m, p && (_g3.parsed = _i51, _g3.raw = l.data[_h14]), d && (_g3.options = c || this.resolveDataElementOptions(_h14, _e50.active ? "active" : s)), b || this.updateElement(_e50, _h14, _g3, s), x = _i51;
         }
         this.updateSharedOptions(c, s, h);
       }
@@ -7725,21 +7545,19 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         var d,
           u = c;
         var f = 360 / this.countVisibleElements();
-        for (d = 0; d < e; ++d) {
-          u += this._computeAngle(d, s, f);
-        }
+        for (d = 0; d < e; ++d) u += this._computeAngle(d, s, f);
         for (d = e; d < e + i; d++) {
           var _e51 = t[d];
-          var _i51 = u,
+          var _i52 = u,
             _g4 = u + this._computeAngle(d, s, f),
             _p3 = o.getDataVisibility(d) ? r.getDistanceFromCenterForValue(this.getParsed(d).r) : 0;
-          u = _g4, n && (a.animateScale && (_p3 = 0), a.animateRotate && (_i51 = _g4 = c));
+          u = _g4, n && (a.animateScale && (_p3 = 0), a.animateRotate && (_i52 = _g4 = c));
           var _m3 = {
             x: l,
             y: h,
             innerRadius: 0,
             outerRadius: _p3,
-            startAngle: _i51,
+            startAngle: _i52,
             endAngle: _g4,
             options: this.resolveDataElementOptions(d, _e51.active ? "active" : s)
           };
@@ -7786,7 +7604,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           generateLabels: function generateLabels(t) {
             var e = t.data;
             if (e.labels.length && e.datasets.length) {
-              var _i52 = t.legend.options.labels.pointStyle;
+              var _i53 = t.legend.options.labels.pointStyle;
               return e.labels.map(function (e, s) {
                 var n = t.getDatasetMeta(0).controller.getStyle(s);
                 return {
@@ -7794,7 +7612,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
                   fillStyle: n.backgroundColor,
                   strokeStyle: n.borderColor,
                   lineWidth: n.borderWidth,
-                  pointStyle: _i52,
+                  pointStyle: _i53,
                   hidden: !t.getDataVisibility(s),
                   index: s
                 };
@@ -7898,7 +7716,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           o = "reset" === s;
         for (var _a18 = e; _a18 < e + i; _a18++) {
           var _e53 = t[_a18],
-            _i53 = this.resolveDataElementOptions(_a18, _e53.active ? "active" : s),
+            _i54 = this.resolveDataElementOptions(_a18, _e53.active ? "active" : s),
             _r14 = n.getPointPositionForValue(_a18, this.getParsed(_a18).r),
             _l17 = o ? n.xCenter : _r14.x,
             _h15 = o ? n.yCenter : _r14.y,
@@ -7907,7 +7725,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
               y: _h15,
               angle: _r14.angle,
               skip: isNaN(_l17) || isNaN(_h15),
-              options: _i53
+              options: _i54
             };
           this.updateElement(_e53, _a18, _c10, s);
         }
@@ -8076,12 +7894,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         l = Math.max(e.outerRadius - a, 0),
         h = e.innerRadius + a;
       var c;
-      for (i && zn(t, e, o + At), t.beginPath(), t.arc(s, n, h, o + At, o, !0), c = 0; c < r; ++c) {
-        t.stroke();
-      }
-      for (t.beginPath(), t.arc(s, n, l, o, o + At), c = 0; c < r; ++c) {
-        t.stroke();
-      }
+      for (i && zn(t, e, o + At), t.beginPath(), t.arc(s, n, h, o + At, o, !0), c = 0; c < r; ++c) t.stroke();
+      for (t.beginPath(), t.arc(s, n, l, o, o + At), c = 0; c < r; ++c) t.stroke();
     }(t, e, l), l && zn(t, e, n), Vn(t, e, i, s, n), t.stroke());
   }
   var Wn = /*#__PURE__*/function (_Os2) {
@@ -8162,9 +7976,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           var r = e.endAngle;
           if (n) {
             Vn(t, e, i, s, o + At);
-            for (var _e59 = 0; _e59 < n; ++_e59) {
-              t.fill();
-            }
+            for (var _e59 = 0; _e59 < n; ++_e59) t.fill();
             isNaN(a) || (r = o + a % At, a % At == 0 && (r += At));
           }
           return Vn(t, e, i, s, r), t.fill(), r;
@@ -8218,9 +8030,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       _ref12$move = _ref12.move,
       g = _ref12$move === void 0 ? !0 : _ref12$move,
       p = _ref12.reverse;
-    for (d = 0; d <= h; ++d) {
-      u = n[(r + (p ? h - d : d)) % a], u.skip || (g ? (t.moveTo(u.x, u.y), g = !1) : c(t, f, u, p, o.stepped), f = u);
-    }
+    for (d = 0; d <= h; ++d) u = n[(r + (p ? h - d : d)) % a], u.skip || (g ? (t.moveTo(u.x, u.y), g = !1) : c(t, f, u, p, o.stepped), f = u);
     return l && (u = n[(r + (p ? h : 0)) % a], c(t, f, u, p, o.stepped)), !!l;
   }
   function Un(t, e, i, s) {
@@ -8250,9 +8060,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     for (l && (d = n[x(0)], t.moveTo(d.x, d.y)), c = 0; c <= r; ++c) {
       if (d = n[x(c)], d.skip) continue;
       var _e60 = d.x,
-        _i54 = d.y,
+        _i55 = d.y,
         _s40 = 0 | _e60;
-      _s40 === u ? (_i54 < f ? f = _i54 : _i54 > g && (g = _i54), m = (b * m + _e60) / ++b) : (_(), t.lineTo(_e60, _i54), u = _s40, b = 0, f = g = _i54), p = _i54;
+      _s40 === u ? (_i55 < f ? f = _i55 : _i55 > g && (g = _i55), m = (b * m + _e60) / ++b) : (_(), t.lineTo(_e60, _i55), u = _s40, b = 0, f = g = _i55), p = _i55;
     }
     _();
   }
@@ -8282,20 +8092,20 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       var n = e.segments,
         o = e.options,
         a = Xn(e);
-      var _iterator23 = _createForOfIteratorHelper(n),
-        _step23;
+      var _iterator22 = _createForOfIteratorHelper(n),
+        _step22;
       try {
-        for (_iterator23.s(); !(_step23 = _iterator23.n()).done;) {
-          var _r15 = _step23.value;
+        for (_iterator22.s(); !(_step22 = _iterator22.n()).done;) {
+          var _r15 = _step22.value;
           Hn(t, o, _r15.style), t.beginPath(), a(t, e, _r15, {
             start: i,
             end: i + s - 1
           }) && t.closePath(), t.stroke();
         }
       } catch (err) {
-        _iterator23.e(err);
+        _iterator22.e(err);
       } finally {
-        _iterator23.f();
+        _iterator22.f();
       }
     }(t, e, i, s);
   }
@@ -8389,20 +8199,20 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           n = Xn(this);
         var o = this._loop;
         e = e || 0, i = i || this.points.length - e;
-        var _iterator24 = _createForOfIteratorHelper(s),
-          _step24;
+        var _iterator23 = _createForOfIteratorHelper(s),
+          _step23;
         try {
-          for (_iterator24.s(); !(_step24 = _iterator24.n()).done;) {
-            var _a19 = _step24.value;
+          for (_iterator23.s(); !(_step23 = _iterator23.n()).done;) {
+            var _a19 = _step23.value;
             o &= n(t, this, _a19, {
               start: e,
               end: e + i - 1
             });
           }
         } catch (err) {
-          _iterator24.e(err);
+          _iterator23.e(err);
         } finally {
-          _iterator24.f();
+          _iterator23.f();
         }
         return !!o;
       }
@@ -8766,18 +8576,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
                 var _h17 = Math.floor((c + 1) * r) + 1 + e,
                   _m4 = Math.min(Math.floor((c + 2) * r) + 1, i) + e,
                   _b2 = _m4 - _h17;
-                for (_s42 = _h17; _s42 < _m4; _s42++) {
-                  _n28 += t[_s42].x, _o30 += t[_s42].y;
-                }
+                for (_s42 = _h17; _s42 < _m4; _s42++) _n28 += t[_s42].x, _o30 += t[_s42].y;
                 _n28 /= _b2, _o30 /= _b2;
                 var _x3 = Math.floor(c * r) + 1 + e,
                   _3 = Math.min(Math.floor((c + 1) * r) + 1, i) + e,
                   _t$p = t[p],
                   _y2 = _t$p.x,
                   _v2 = _t$p.y;
-                for (u = f = -1, _s42 = _x3; _s42 < _3; _s42++) {
-                  f = .5 * Math.abs((_y2 - _n28) * (t[_s42].y - _v2) - (_y2 - t[_s42].x) * (_o30 - _v2)), f > u && (u = f, d = t[_s42], g = _s42);
-                }
+                for (u = f = -1, _s42 = _x3; _s42 < _3; _s42++) f = .5 * Math.abs((_y2 - _n28) * (t[_s42].y - _v2) - (_y2 - t[_s42].x) * (_o30 - _v2)), f > u && (u = f, d = t[_s42], g = _s42);
                 a[l++] = d, p = g;
               }
               return a[l++] = t[h], a;
@@ -8805,17 +8611,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
                 o = t[n], a = (o.x - x) / _ * s, r = o.y;
                 var _e62 = 0 | a;
                 if (_e62 === l) r < u ? (u = r, h = n) : r > f && (f = r, c = n), g = (p * g + o.x) / ++p;else {
-                  var _i55 = n - 1;
+                  var _i56 = n - 1;
                   if (!U(h) && !U(c)) {
                     var _e63 = Math.min(h, c),
                       _s43 = Math.max(h, c);
-                    _e63 !== d && _e63 !== _i55 && m.push(_objectSpread(_objectSpread({}, t[_e63]), {}, {
+                    _e63 !== d && _e63 !== _i56 && m.push(_objectSpread(_objectSpread({}, t[_e63]), {}, {
                       x: g
-                    })), _s43 !== d && _s43 !== _i55 && m.push(_objectSpread(_objectSpread({}, t[_s43]), {}, {
+                    })), _s43 !== d && _s43 !== _i56 && m.push(_objectSpread(_objectSpread({}, t[_s43]), {}, {
                       x: g
                     }));
                   }
-                  n > 0 && _i55 !== d && m.push(t[_i55]), m.push(o), l = _e62, p = 0, u = f = r, h = c = d = n;
+                  n > 0 && _i56 !== d && m.push(t[_i56]), m.push(o), l = _e62, p = 0, u = f = r, h = c = d = n;
                 }
               }
               return m;
@@ -9020,9 +8826,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       }, s));
       for (var _t59 = 0; _t59 < o.length; _t59++) {
         var _e65 = o[_t59];
-        for (var _t60 = _e65.start; _t60 <= _e65.end; _t60++) {
-          bo(n, a[_t60], r);
-        }
+        for (var _t60 = _e65.start; _t60 <= _e65.end; _t60++) bo(n, a[_t60], r);
       }
       return new Gn({
         points: n,
@@ -9050,9 +8854,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
             radius: e.getDistanceFromCenterForValue(a)
           });
         }
-        for (var _t62 = 0; _t62 < n; ++_t62) {
-          r.push(e.getPointPositionForValue(_t62, a));
-        }
+        for (var _t62 = 0; _t62 < n; ++_t62) r.push(e.getPointPositionForValue(_t62, a));
         return r;
       }(t);
       return function (t) {
@@ -9126,11 +8928,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     var o = !0,
       a = !1;
     t.beginPath();
-    var _iterator25 = _createForOfIteratorHelper(s),
-      _step25;
+    var _iterator24 = _createForOfIteratorHelper(s),
+      _step24;
     try {
-      for (_iterator25.s(); !(_step25 = _iterator25.n()).done;) {
-        var _r17 = _step25.value;
+      for (_iterator24.s(); !(_step24 = _iterator24.n()).done;) {
+        var _r17 = _step24.value;
         var _s45 = _r17.start,
           _l19 = _r17.end,
           _h19 = n[_s45],
@@ -9140,9 +8942,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         }), a ? t.closePath() : t.lineTo(_c12.x, i);
       }
     } catch (err) {
-      _iterator25.e(err);
+      _iterator24.e(err);
     } finally {
-      _iterator25.f();
+      _iterator24.f();
     }
     t.lineTo(e.first().x, i), t.closePath(), t.clip();
   }
@@ -9157,11 +8959,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           n = t.points,
           o = e.points,
           a = [];
-        var _iterator26 = _createForOfIteratorHelper(s),
-          _step26;
+        var _iterator25 = _createForOfIteratorHelper(s),
+          _step25;
         try {
-          for (_iterator26.s(); !(_step26 = _iterator26.n()).done;) {
-            var _t64 = _step26.value;
+          for (_iterator25.s(); !(_step25 = _iterator25.n()).done;) {
+            var _t64 = _step25.value;
             var _s46 = _t64.start,
               _r18 = _t64.end;
             _r18 = uo(_s46, _r18, n);
@@ -9176,18 +8978,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
               continue;
             }
             var _h20 = wi(e, _l20);
-            var _iterator27 = _createForOfIteratorHelper(_h20),
-              _step27;
+            var _iterator26 = _createForOfIteratorHelper(_h20),
+              _step26;
             try {
-              for (_iterator27.s(); !(_step27 = _iterator27.n()).done;) {
-                var _e66 = _step27.value;
+              for (_iterator26.s(); !(_step26 = _iterator26.n()).done;) {
+                var _e66 = _step26.value;
                 var _s47 = co(i, o[_e66.start], o[_e66.end], _e66.loop),
                   _r19 = vi(_t64, n, _s47);
-                var _iterator28 = _createForOfIteratorHelper(_r19),
-                  _step28;
+                var _iterator27 = _createForOfIteratorHelper(_r19),
+                  _step27;
                 try {
-                  for (_iterator28.s(); !(_step28 = _iterator28.n()).done;) {
-                    var _t65 = _step28.value;
+                  for (_iterator27.s(); !(_step27 = _iterator27.n()).done;) {
+                    var _t65 = _step27.value;
                     a.push({
                       source: _t65,
                       target: _e66,
@@ -9196,37 +8998,37 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
                     });
                   }
                 } catch (err) {
-                  _iterator28.e(err);
+                  _iterator27.e(err);
                 } finally {
-                  _iterator28.f();
+                  _iterator27.f();
                 }
               }
             } catch (err) {
-              _iterator27.e(err);
+              _iterator26.e(err);
             } finally {
-              _iterator27.f();
+              _iterator26.f();
             }
           }
         } catch (err) {
-          _iterator26.e(err);
+          _iterator25.e(err);
         } finally {
-          _iterator26.f();
+          _iterator25.f();
         }
         return a;
       }(i, s, n);
-    var _iterator29 = _createForOfIteratorHelper(r),
-      _step29;
+    var _iterator28 = _createForOfIteratorHelper(r),
+      _step28;
     try {
-      for (_iterator29.s(); !(_step29 = _iterator29.n()).done;) {
-        var _step29$value = _step29.value,
-          _e67 = _step29$value.source,
-          _l21 = _step29$value.target,
-          _h21 = _step29$value.start,
-          _c13 = _step29$value.end;
-        var _e67$style = _e67.style;
-        _e67$style = _e67$style === void 0 ? {} : _e67$style;
-        var _e67$style$background = _e67$style.backgroundColor,
-          _r20 = _e67$style$background === void 0 ? o : _e67$style$background,
+      for (_iterator28.s(); !(_step28 = _iterator28.n()).done;) {
+        var _step28$value = _step28.value,
+          _e67 = _step28$value.source,
+          _l21 = _step28$value.target,
+          _h21 = _step28$value.start,
+          _c13 = _step28$value.end;
+        var _e67$style = _e67.style,
+          _e67$style2 = _e67$style === void 0 ? {} : _e67$style,
+          _e67$style2$backgroun = _e67$style2.backgroundColor,
+          _r20 = _e67$style2$backgroun === void 0 ? o : _e67$style2$backgroun,
           _d10 = !0 !== s;
         t.save(), t.fillStyle = _r20, ko(t, a, _d10 && co(n, _h21, _c13)), t.beginPath();
         var _u7 = !!i.pathSegment(t, _e67);
@@ -9242,9 +9044,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         t.closePath(), t.fill(_f6 ? "evenodd" : "nonzero"), t.restore();
       }
     } catch (err) {
-      _iterator29.e(err);
+      _iterator28.e(err);
     } finally {
-      _iterator29.f();
+      _iterator28.f();
     }
   }
   function ko(t, e, i) {
@@ -9267,36 +9069,32 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       var s = (t.data.datasets || []).length,
         n = [];
       var o, a, r, l;
-      for (a = 0; a < s; ++a) {
-        o = t.getDatasetMeta(a), r = o.dataset, l = null, r && r.options && r instanceof Gn && (l = {
-          visible: t.isDatasetVisible(a),
-          index: a,
-          fill: mo(r, a, s),
-          chart: t,
-          axis: o.controller.options.indexAxis,
-          scale: o.vScale,
-          line: r
-        }), o.$filler = l, n.push(l);
-      }
-      for (a = 0; a < s; ++a) {
-        l = n[a], l && !1 !== l.fill && (l.fill = po(n, a, i.propagate));
-      }
+      for (a = 0; a < s; ++a) o = t.getDatasetMeta(a), r = o.dataset, l = null, r && r.options && r instanceof Gn && (l = {
+        visible: t.isDatasetVisible(a),
+        index: a,
+        fill: mo(r, a, s),
+        chart: t,
+        axis: o.controller.options.indexAxis,
+        scale: o.vScale,
+        line: r
+      }), o.$filler = l, n.push(l);
+      for (a = 0; a < s; ++a) l = n[a], l && !1 !== l.fill && (l.fill = po(n, a, i.propagate));
     },
     beforeDraw: function beforeDraw(t, e, i) {
       var s = "beforeDraw" === i.drawTime,
         n = t.getSortedVisibleDatasetMetas(),
         o = t.chartArea;
       for (var _e69 = n.length - 1; _e69 >= 0; --_e69) {
-        var _i56 = n[_e69].$filler;
-        _i56 && (_i56.line.updateControlPoints(o, _i56.axis), s && vo(t.ctx, _i56, o));
+        var _i57 = n[_e69].$filler;
+        _i57 && (_i57.line.updateControlPoints(o, _i57.axis), s && vo(t.ctx, _i57, o));
       }
     },
     beforeDatasetsDraw: function beforeDatasetsDraw(t, e, i) {
       if ("beforeDatasetsDraw" !== i.drawTime) return;
       var s = t.getSortedVisibleDatasetMetas();
       for (var _e70 = s.length - 1; _e70 >= 0; --_e70) {
-        var _i57 = s[_e70].$filler;
-        _i57 && vo(t.ctx, _i57, t.chartArea);
+        var _i58 = s[_e70].$filler;
+        _i58 && vo(t.ctx, _i58, t.chartArea);
       }
     },
     beforeDatasetDraw: function beforeDatasetDraw(t, e, i) {
@@ -9435,32 +9233,32 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         if (this.isHorizontal()) {
           var _o32 = 0,
             _r21 = n(i, this.left + s, this.right - this.lineWidths[_o32]);
+          var _iterator29 = _createForOfIteratorHelper(e),
+            _step29;
+          try {
+            for (_iterator29.s(); !(_step29 = _iterator29.n()).done;) {
+              var _l22 = _step29.value;
+              _o32 !== _l22.row && (_o32 = _l22.row, _r21 = n(i, this.left + s, this.right - this.lineWidths[_o32])), _l22.top += this.top + t + s, _l22.left = a.leftForLtr(a.x(_r21), _l22.width), _r21 += _l22.width + s;
+            }
+          } catch (err) {
+            _iterator29.e(err);
+          } finally {
+            _iterator29.f();
+          }
+        } else {
+          var _o33 = 0,
+            _r22 = n(i, this.top + t + s, this.bottom - this.columnSizes[_o33].height);
           var _iterator30 = _createForOfIteratorHelper(e),
             _step30;
           try {
             for (_iterator30.s(); !(_step30 = _iterator30.n()).done;) {
-              var _l22 = _step30.value;
-              _o32 !== _l22.row && (_o32 = _l22.row, _r21 = n(i, this.left + s, this.right - this.lineWidths[_o32])), _l22.top += this.top + t + s, _l22.left = a.leftForLtr(a.x(_r21), _l22.width), _r21 += _l22.width + s;
+              var _l23 = _step30.value;
+              _l23.col !== _o33 && (_o33 = _l23.col, _r22 = n(i, this.top + t + s, this.bottom - this.columnSizes[_o33].height)), _l23.top = _r22, _l23.left += this.left + s, _l23.left = a.leftForLtr(a.x(_l23.left), _l23.width), _r22 += _l23.height + s;
             }
           } catch (err) {
             _iterator30.e(err);
           } finally {
             _iterator30.f();
-          }
-        } else {
-          var _o33 = 0,
-            _r22 = n(i, this.top + t + s, this.bottom - this.columnSizes[_o33].height);
-          var _iterator31 = _createForOfIteratorHelper(e),
-            _step31;
-          try {
-            for (_iterator31.s(); !(_step31 = _iterator31.n()).done;) {
-              var _l23 = _step31.value;
-              _l23.col !== _o33 && (_o33 = _l23.col, _r22 = n(i, this.top + t + s, this.bottom - this.columnSizes[_o33].height)), _l23.top = _r22, _l23.left += this.left + s, _l23.left = a.leftForLtr(a.x(_l23.left), _l23.width), _r22 += _l23.height + s;
-            }
-          } catch (err) {
-            _iterator31.e(err);
-          } finally {
-            _iterator31.f();
           }
         }
       }
@@ -9593,9 +9391,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       key: "_getLegendItemAt",
       value: function _getLegendItemAt(t, e) {
         var i, s, n;
-        if (ee(t, this.left, this.right) && ee(e, this.top, this.bottom)) for (n = this.legendHitBoxes, i = 0; i < n.length; ++i) {
-          if (s = n[i], ee(t, s.left, s.left + s.width) && ee(e, s.top, s.top + s.height)) return this.legendItems[i];
-        }
+        if (ee(t, this.left, this.right) && ee(e, this.top, this.bottom)) for (n = this.legendHitBoxes, i = 0; i < n.length; ++i) if (s = n[i], ee(t, s.left, s.left + s.width) && ee(e, s.top, s.top + s.height)) return this.legendItems[i];
         return null;
       }
     }, {
@@ -9872,9 +9668,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         n = 0,
         o = 0;
       for (e = 0, i = t.length; e < i; ++e) {
-        var _i58 = t[e].element;
-        if (_i58 && _i58.hasValue()) {
-          var _t67 = _i58.tooltipPosition();
+        var _i59 = t[e].element;
+        if (_i59 && _i59.hasValue()) {
+          var _t67 = _i59.tooltipPosition();
           s += _t67.x, n += _t67.y, ++o;
         }
       }
@@ -10125,9 +9921,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         var a,
           r,
           l = [];
-        for (a = 0, r = e.length; a < r; ++a) {
-          l.push(Fo(this.chart, e[a]));
-        }
+        for (a = 0, r = e.length; a < r; ++a) l.push(Fo(this.chart, e[a]));
         return t.filter && (l = l.filter(function (e, s, n) {
           return t.filter(e, s, n, i);
         })), t.itemSort && (l = l.sort(function (e, s) {
@@ -10209,9 +10003,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         var o, a, r;
         if (n) {
           var _l25 = mi(i.rtl, this.x, this.width);
-          for (t.x = Ho(this, i.titleAlign, i), e.textAlign = _l25.textAlign(i.titleAlign), e.textBaseline = "middle", o = ui(i.titleFont), a = i.titleSpacing, e.fillStyle = i.titleColor, e.font = o.string, r = 0; r < n; ++r) {
-            e.fillText(s[r], _l25.x(t.x), t.y + o.lineHeight / 2), t.y += o.lineHeight + a, r + 1 === n && (t.y += i.titleMarginBottom - a);
-          }
+          for (t.x = Ho(this, i.titleAlign, i), e.textAlign = _l25.textAlign(i.titleAlign), e.textBaseline = "middle", o = ui(i.titleFont), a = i.titleSpacing, e.fillStyle = i.titleColor, e.font = o.string, r = 0; r < n; ++r) e.fillText(s[r], _l25.x(t.x), t.y + o.lineHeight / 2), t.y += o.lineHeight + a, r + 1 === n && (t.y += i.titleMarginBottom - a);
         }
       }
     }, {
@@ -10234,13 +10026,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
               rotation: a.rotation,
               borderWidth: 1
             },
-            _i59 = s.leftForLtr(u, l) + l / 2,
+            _i60 = s.leftForLtr(u, l) + l / 2,
             _h22 = g + r / 2;
-          t.strokeStyle = n.multiKeyBackground, t.fillStyle = n.multiKeyBackground, ye(t, _e73, _i59, _h22), t.strokeStyle = o.borderColor, t.fillStyle = o.backgroundColor, ye(t, _e73, _i59, _h22);
+          t.strokeStyle = n.multiKeyBackground, t.fillStyle = n.multiKeyBackground, ye(t, _e73, _i60, _h22), t.strokeStyle = o.borderColor, t.fillStyle = o.backgroundColor, ye(t, _e73, _i60, _h22);
         } else {
           t.lineWidth = o.borderWidth || 1, t.strokeStyle = o.borderColor, t.setLineDash(o.borderDash || []), t.lineDashOffset = o.borderDashOffset || 0;
           var _e74 = s.leftForLtr(u, l - h),
-            _i60 = s.leftForLtr(s.xPlus(u, 1), l - h - 2),
+            _i61 = s.leftForLtr(s.xPlus(u, 1), l - h - 2),
             _a25 = ci(o.borderRadius);
           Object.values(_a25).some(function (t) {
             return 0 !== t;
@@ -10251,12 +10043,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
             h: r,
             radius: _a25
           }), t.fill(), t.stroke(), t.fillStyle = o.backgroundColor, t.beginPath(), Ce(t, {
-            x: _i60,
+            x: _i61,
             y: g + 1,
             w: l - 2,
             h: r - 2,
             radius: _a25
-          }), t.fill()) : (t.fillStyle = n.multiKeyBackground, t.fillRect(_e74, g, l, r), t.strokeRect(_e74, g, l, r), t.fillStyle = o.backgroundColor, t.fillRect(_i60, g + 1, l - 2, r - 2));
+          }), t.fill()) : (t.fillStyle = n.multiKeyBackground, t.fillRect(_e74, g, l, r), t.strokeRect(_e74, g, l, r), t.fillStyle = o.backgroundColor, t.fillRect(_i61, g + 1, l - 2, r - 2));
         }
         t.fillStyle = this.labelTextColors[i];
       }
@@ -10280,9 +10072,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           p = f.textAlign(o);
         var m, b, x, _, y, v, w;
         for (e.textAlign = o, e.textBaseline = "middle", e.font = c.string, t.x = Ho(this, p, i), e.fillStyle = i.bodyColor, et(this.beforeBody, g), u = a && "right" !== p ? "center" === o ? l / 2 + h : l + 2 + h : 0, _ = 0, v = s.length; _ < v; ++_) {
-          for (m = s[_], b = this.labelTextColors[_], e.fillStyle = b, et(m.before, g), x = m.lines, a && x.length && (this._drawColorBox(e, t, _, f, i), d = Math.max(c.lineHeight, r)), y = 0, w = x.length; y < w; ++y) {
-            g(x[y]), d = c.lineHeight;
-          }
+          for (m = s[_], b = this.labelTextColors[_], e.fillStyle = b, et(m.before, g), x = m.lines, a && x.length && (this._drawColorBox(e, t, _, f, i), d = Math.max(c.lineHeight, r)), y = 0, w = x.length; y < w; ++y) g(x[y]), d = c.lineHeight;
           et(m.after, g);
         }
         u = 0, d = c.lineHeight, et(this.afterBody, g), t.y -= n;
@@ -10295,9 +10085,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         var o, a;
         if (n) {
           var _r25 = mi(i.rtl, this.x, this.width);
-          for (t.x = Ho(this, i.footerAlign, i), t.y += i.footerMarginTop, e.textAlign = _r25.textAlign(i.footerAlign), e.textBaseline = "middle", o = ui(i.footerFont), e.fillStyle = i.footerColor, e.font = o.string, a = 0; a < n; ++a) {
-            e.fillText(s[a], _r25.x(t.x), t.y + o.lineHeight / 2), t.y += o.lineHeight + i.footerSpacing;
-          }
+          for (t.x = Ho(this, i.footerAlign, i), t.y += i.footerMarginTop, e.textAlign = _r25.textAlign(i.footerAlign), e.textBaseline = "middle", o = ui(i.footerFont), e.fillStyle = i.footerColor, e.font = o.string, a = 0; a < n; ++a) e.fillText(s[a], _r25.x(t.x), t.y + o.lineHeight / 2), t.y += o.lineHeight + i.footerSpacing;
         }
       }
     }, {
@@ -10324,13 +10112,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           s = i && i.x,
           n = i && i.y;
         if (s || n) {
-          var _i61 = Eo[t.position].call(this, this._active, this._eventPosition);
-          if (!_i61) return;
+          var _i62 = Eo[t.position].call(this, this._active, this._eventPosition);
+          if (!_i62) return;
           var _o37 = this._size = Bo(this, t),
-            _a26 = Object.assign({}, _i61, this._size),
+            _a26 = Object.assign({}, _i62, this._size),
             _r26 = No(e, t, _a26),
             _l26 = Wo(t, _a26, _r26, e);
-          s._to === _l26.x && n._to === _l26.y || (this.xAlign = _r26.xAlign, this.yAlign = _r26.yAlign, this.width = _o37.width, this.height = _o37.height, this.caretX = _i61.x, this.caretY = _i61.y, this._resolveAnimations().update(this, _l26));
+          s._to === _l26.x && n._to === _l26.y || (this.xAlign = _r26.xAlign, this.yAlign = _r26.yAlign, this.width = _o37.width, this.height = _o37.height, this.caretX = _i62.x, this.caretY = _i62.y, this._resolveAnimations().update(this, _l26));
         }
       }
     }, {
@@ -10440,17 +10228,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       afterDraw: function afterDraw(t) {
         var e = t.tooltip;
         if (e && e._willRender()) {
-          var _i62 = {
+          var _i63 = {
             tooltip: e
           };
-          if (!1 === t.notifyPlugins("beforeTooltipDraw", _i62)) return;
-          e.draw(t.ctx), t.notifyPlugins("afterTooltipDraw", _i62);
+          if (!1 === t.notifyPlugins("beforeTooltipDraw", _i63)) return;
+          e.draw(t.ctx), t.notifyPlugins("afterTooltipDraw", _i63);
         }
       },
       afterEvent: function afterEvent(t, e) {
         if (t.tooltip) {
-          var _i63 = e.replay;
-          t.tooltip.handleEvent(e.event, _i63, e.inChartArea) && (e.changed = !0);
+          var _i64 = e.replay;
+          t.tooltip.handleEvent(e.event, _i64, e.inChartArea) && (e.changed = !0);
         }
       },
       defaults: {
@@ -10510,11 +10298,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           title: function title(t) {
             if (t.length > 0) {
               var _e75 = t[0],
-                _i64 = _e75.chart.data.labels,
-                _s49 = _i64 ? _i64.length : 0;
+                _i65 = _e75.chart.data.labels,
+                _s49 = _i65 ? _i65.length : 0;
               if (this && this.options && "dataset" === this.options.mode) return _e75.dataset.label || "";
               if (_e75.label) return _e75.label;
-              if (_s49 > 0 && _e75.dataIndex < _s49) return _i64[_e75.dataIndex];
+              if (_s49 > 0 && _e75.dataIndex < _s49) return _i65[_e75.dataIndex];
             }
             return "";
           },
@@ -10613,19 +10401,19 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         var e = this._addedLabels;
         if (e.length) {
           var _t71 = this.getLabels();
-          var _iterator32 = _createForOfIteratorHelper(e),
-            _step32;
+          var _iterator31 = _createForOfIteratorHelper(e),
+            _step31;
           try {
-            for (_iterator32.s(); !(_step32 = _iterator32.n()).done;) {
-              var _step32$value = _step32.value,
-                _i65 = _step32$value.index,
-                _s50 = _step32$value.label;
-              _t71[_i65] === _s50 && _t71.splice(_i65, 1);
+            for (_iterator31.s(); !(_step31 = _iterator31.n()).done;) {
+              var _step31$value = _step31.value,
+                _i66 = _step31$value.index,
+                _s50 = _step31$value.label;
+              _t71[_i66] === _s50 && _t71.splice(_i66, 1);
             }
           } catch (err) {
-            _iterator32.e(err);
+            _iterator31.e(err);
           } finally {
-            _iterator32.f();
+            _iterator31.f();
           }
           this._addedLabels = [];
         }
@@ -10660,11 +10448,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           s = [];
         var n = this.getLabels();
         n = 0 === t && e === n.length - 1 ? n : n.slice(t, e + 1), this._valueRange = Math.max(n.length - (i ? 0 : 1), 1), this._startValue = this.min - (i ? .5 : 0);
-        for (var _i66 = t; _i66 <= e; _i66++) {
-          s.push({
-            value: _i66
-          });
-        }
+        for (var _i67 = t; _i67 <= e; _i67++) s.push({
+          value: _i67
+        });
         return s;
       }
     }, {
@@ -10811,11 +10597,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           var P = 0;
           for (m && (d && v !== o ? (i.push({
             value: o
-          }), v < o && P++, Ht(Math.round((v + P * k) * y) / y, o, Go(o, _, t)) && P++) : v < o && P++); P < M; ++P) {
-            i.push({
-              value: Math.round((v + P * k) * y) / y
-            });
-          }
+          }), v < o && P++, Ht(Math.round((v + P * k) * y) / y, o, Go(o, _, t)) && P++) : v < o && P++); P < M; ++P) i.push({
+            value: Math.round((v + P * k) * y) / y
+          });
           return b && d && w !== a ? i.length && Ht(i[i.length - 1].value, a, Go(a, _, t)) ? i[i.length - 1].value = a : i.push({
             value: a
           }) : b && w !== a || i.push({
@@ -11093,11 +10877,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
   function la(t, e, i, s) {
     var n = t.ctx;
     if (i) n.arc(t.xCenter, t.yCenter, e, 0, At);else {
-      var _i67 = t.getPointPosition(0, e);
-      n.moveTo(_i67.x, _i67.y);
-      for (var _o40 = 1; _o40 < s; _o40++) {
-        _i67 = t.getPointPosition(_o40, e), n.lineTo(_i67.x, _i67.y);
-      }
+      var _i68 = t.getPointPosition(0, e);
+      n.moveTo(_i68.x, _i68.y);
+      for (var _o40 = 1; _o40 < s; _o40++) _i68 = t.getPointPosition(_o40, e), n.lineTo(_i68.x, _i68.y);
     }
   }
   ta.id = "logarithmic", ta.defaults = {
@@ -11184,14 +10966,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       value: function getPointLabelContext(t) {
         var e = this._pointLabels || [];
         if (t >= 0 && t < e.length) {
-          var _i68 = e[t];
+          var _i69 = e[t];
           return function (t, e, i) {
             return pi(t, {
               label: i,
               index: e,
               type: "pointLabel"
             });
-          }(this.getContext(), t, _i68);
+          }(this.getContext(), t, _i69);
         }
       }
     }, {
@@ -11237,8 +11019,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           t = _this$options14.backgroundColor,
           e = _this$options14.grid.circular;
         if (t) {
-          var _i69 = this.ctx;
-          _i69.save(), _i69.beginPath(), la(this, this.getDistanceFromCenterForValue(this._endValue), e, this._pointLabels.length), _i69.closePath(), _i69.fillStyle = t, _i69.fill(), _i69.restore();
+          var _i70 = this.ctx;
+          _i70.save(), _i70.beginPath(), la(this, this.getDistanceFromCenterForValue(this._endValue), e, this._pointLabels.length), _i70.closePath(), _i70.fillStyle = t, _i70.fill(), _i70.restore();
         }
       }
     }, {
@@ -11468,20 +11250,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       n = {},
       o = e.length;
     var a, r;
-    for (a = 0; a < o; ++a) {
-      r = e[a], n[r] = a, s.push({
-        value: r,
-        major: !1
-      });
-    }
+    for (a = 0; a < o; ++a) r = e[a], n[r] = a, s.push({
+      value: r,
+      major: !1
+    });
     return 0 !== o && i ? function (t, e, i, s) {
       var n = t._adapter,
         o = +n.startOf(e[0].value, s),
         a = e[e.length - 1].value;
       var r, l;
-      for (r = o; r <= a; r = +n.add(r, 1, s)) {
-        l = i[r], l >= 0 && (e[l].major = !0);
-      }
+      for (r = o; r <= a; r = +n.add(r, 1, s)) l = i[r], l >= 0 && (e[l].major = !0);
       return e;
     }(t, s, n, i) : s;
   }
@@ -11562,14 +11340,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           o = kt(s, n, this.max);
         return this._unit = e.unit || (i.autoSkip ? ga(e.minUnit, this.min, this.max, this._getLabelCapacity(n)) : function (t, e, i, s, n) {
           for (var _o44 = da.length - 1; _o44 >= da.indexOf(i); _o44--) {
-            var _i70 = da[_o44];
-            if (ca[_i70].common && t._adapter.diff(n, s, _i70) >= e - 1) return _i70;
+            var _i71 = da[_o44];
+            if (ca[_i71].common && t._adapter.diff(n, s, _i71) >= e - 1) return _i71;
           }
           return da[i ? da.indexOf(i) : 0];
         }(this, o.length, e.minUnit, this.min, this.max)), this._majorUnit = i.major.enabled && "year" !== this._unit ? function (t) {
-          for (var _e80 = da.indexOf(t) + 1, _i71 = da.length; _e80 < _i71; ++_e80) {
-            if (ca[da[_e80]].common) return da[_e80];
-          }
+          for (var _e80 = da.indexOf(t) + 1, _i72 = da.length; _e80 < _i72; ++_e80) if (ca[da[_e80]].common) return da[_e80];
         }(this._unit) : void 0, this.initOffsets(s), t.reverse && o.reverse(), ma(this, o, this._majorUnit);
       }
     }, {
@@ -11612,9 +11388,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           u = e;
         if (l && (u = +t.startOf(u, "isoWeek", r)), u = +t.startOf(u, l ? "day" : o), t.diff(i, e, o) > 1e5 * a) throw new Error(e + " and " + i + " are too far apart with stepSize of " + a + " " + o);
         var f = "data" === s.ticks.source && this.getDataTimestamps();
-        for (c = u, d = 0; c < i; c = +t.add(c, a, o), d++) {
-          pa(h, c, f);
-        }
+        for (c = u, d = 0; c < i; c = +t.add(c, a, o), d++) pa(h, c, f);
         return c !== i && "ticks" !== s.bounds && 1 !== d || pa(h, c, f), Object.keys(h).sort(function (t, e) {
           return t - e;
         }).map(function (t) {
@@ -11647,9 +11421,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       key: "generateTickLabels",
       value: function generateTickLabels(t) {
         var e, i, s;
-        for (e = 0, i = t.length; e < i; ++e) {
-          s = t[e], s.label = this._tickFormatFunction(s.value, e, t);
-        }
+        for (e = 0, i = t.length; e < i; ++e) s = t[e], s.label = this._tickFormatFunction(s.value, e, t);
       }
     }, {
       key: "getDecimalForValue",
@@ -11704,9 +11476,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         if (i.length) return i;
         var s = this.getMatchingVisibleMetas();
         if (this._normalized && s.length) return this._cache.data = s[0].controller.getAllParsedValues(this);
-        for (t = 0, e = s.length; t < e; ++t) {
-          i = i.concat(s[t].controller.getAllParsedValues(this));
-        }
+        for (t = 0, e = s.length; t < e; ++t) i = i.concat(s[t].controller.getAllParsedValues(this));
         return this._cache.data = this.normalize(i);
       }
     }, {
@@ -11716,9 +11486,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         var e, i;
         if (t.length) return t;
         var s = this.getLabels();
-        for (e = 0, i = s.length; e < i; ++e) {
-          t.push(fa(this, s[e]));
-        }
+        for (e = 0, i = s.length; e < i; ++e) t.push(fa(this, s[e]));
         return this._cache.labels = this._normalized ? t : this.normalize(t);
       }
     }, {
@@ -11783,9 +11551,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           s = [],
           n = [];
         var o, a, r, l, h;
-        for (o = 0, a = t.length; o < a; ++o) {
-          l = t[o], l >= e && l <= i && s.push(l);
-        }
+        for (o = 0, a = t.length; o < a; ++o) l = t[o], l >= e && l <= i && s.push(l);
         if (s.length < 2) return [{
           time: e,
           pos: 0
@@ -11793,12 +11559,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           time: i,
           pos: 1
         }];
-        for (o = 0, a = s.length; o < a; ++o) {
-          h = s[o + 1], r = s[o - 1], l = s[o], Math.round((h + r) / 2) !== l && n.push({
-            time: l,
-            pos: o / (a - 1)
-          });
-        }
+        for (o = 0, a = s.length; o < a; ++o) h = s[o + 1], r = s[o - 1], l = s[o], Math.round((h + r) / 2) !== l && n.push({
+          time: l,
+          pos: o / (a - 1)
+        });
         return n;
       }
     }, {

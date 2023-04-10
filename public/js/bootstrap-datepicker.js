@@ -49,9 +49,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         // Array.indexOf is not cross-browser;
         // $.inArray doesn't work with Dates
         var val = d && d.valueOf();
-        for (var i = 0, l = this.length; i < l; i++) {
-          if (this[i].valueOf() === val) return i;
-        }
+        for (var i = 0, l = this.length; i < l; i++) if (this[i].valueOf() === val) return i;
         return -1;
       },
       remove: function remove(i) {
@@ -843,9 +841,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       } else {
         this.dates.push(date);
       }
-      if (typeof this.o.multidate === 'number') while (this.dates.length > this.o.multidate) {
-        this.dates.remove(0);
-      }
+      if (typeof this.o.multidate === 'number') while (this.dates.length > this.o.multidate) this.dates.remove(0);
     },
     _setDate: function _setDate(date, which) {
       if (!which || which === 'date') this._toggle_multidate(date && new Date(date));
@@ -894,10 +890,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         if (new_month < 0 || new_month > 11) new_month = (new_month + 12) % 12;
       } else {
         // For magnitudes >1, move one month at a time...
-        for (var i = 0; i < mag; i++) {
-          // ...which might decrease the day (eg, Jan 31 to Feb 28, etc)...
-          new_date = this.moveMonth(new_date, dir);
-        }
+        for (var i = 0; i < mag; i++)
+        // ...which might decrease the day (eg, Jan 31 to Feb 28, etc)...
+        new_date = this.moveMonth(new_date, dir);
         // ...then reset the day, keeping it in the new month
         new_month = new_date.getUTCMonth();
         new_date.setUTCDate(day);
@@ -1113,11 +1108,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     function re_lower(_, a) {
       return a.toLowerCase();
     }
-    for (var key in data) {
-      if (prefix.test(key)) {
-        inkey = key.replace(replace, re_lower);
-        out[inkey] = data[key];
-      }
+    for (var key in data) if (prefix.test(key)) {
+      inkey = key.replace(replace, re_lower);
+      out[inkey] = data[key];
     }
     return out;
   }
@@ -1283,14 +1276,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           m: function m(d, v) {
             if (isNaN(d)) return d;
             v -= 1;
-            while (v < 0) {
-              v += 12;
-            }
+            while (v < 0) v += 12;
             v %= 12;
             d.setUTCMonth(v);
-            while (d.getUTCMonth() !== v) {
-              d.setUTCDate(d.getUTCDate() - 1);
-            }
+            while (d.getUTCMonth() !== v) d.setUTCDate(d.getUTCDate() - 1);
             return d;
           },
           d: function d(_d, v) {

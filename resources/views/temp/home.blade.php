@@ -380,7 +380,9 @@
                                                 resources on the free or extra plan, however, with Obillia Plus you can
                                                 do more
                                                 and cancel
-                                                the platform fees from each project. Read more about our plans here .
+                                                the platform fees from each project. Read more about our plans <a
+                                                    href="{{ route('plans') }}"
+                                                    class="text-warning text-decoration-underline">here</a>.
                                             </p>
 
                                         </div>
@@ -392,7 +394,9 @@
                     <div class="col-12 text-end">
                         <small>
                             To know more about how Obillia works for Sellers <a
-                                class="text-warning text-decoration-underline" href="#">read here</a>.
+                                class="text-warning text-decoration-underline"
+                                href="{{ route('how-it-works', 'seller') }}">read
+                                here</a>.
                         </small>
                     </div>
                 </div>
@@ -633,7 +637,8 @@
                     <div class="col-12 text-end">
                         <small>
                             To know more about how Obillia works for clients <a
-                                class="text-dark text-decoration-underline" href="#">read here</a>.
+                                class="text-dark text-decoration-underline"
+                                href="{{ route('how-it-works', 'client') }}">read here</a>.
                             <br>
 
                         </small>
