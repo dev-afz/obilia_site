@@ -44,10 +44,14 @@
                                                         <ul>
                                                             @foreach ($p->perks as $perk)
                                                                 <li><i class="feather-check"></i>
-                                                                    {{ $perk->value }}{{ $perk->name === 'commission' ? '%' : '' }}{{ $perk->name === 'bandwidth' ? 'GB' : '' }}
-
-
-                                                                    {{ Str::ucfirst(Str::replace('_', ' ', $perk->name)) }}
+                                                                    {{ $perk->value }}{{ $perk->name === 'commission' ? '% ' . str_replace('commission', 'Platform Fee', $perk->name) . '' : '' }}
+                                                                    {{ $perk->name === 'connection' ? str_replace('connection', 'Connections', $perk->name) . '' : '' }}
+                                                                    {{ $perk->name === 'job_applications' ? str_replace('job_applications', 'Job applications', $perk->name) . '' : '' }}
+                                                                    {{ $perk->name === 'active_workspace' ? str_replace('active_workspace', 'Workspaces', $perk->name) . '' : '' }}
+                                                                    {{ $perk->name === 'storage' ? str_replace('storage', ' GB Storage per workspace', $perk->name) . '' : '' }}
+                                                                    {{ $perk->name === 'service' ? str_replace('service', 'Services listing', $perk->name) . '' : '' }}
+                                                                    {{ $perk->name === 'bandwidth' ? 'GB' : '' }}
+                                                                    {{-- {{ Str::ucfirst(Str::replace('_', ' ', $perk->name)) }} --}}
                                                                 </li>
                                                             @endforeach
 
@@ -140,13 +144,16 @@
                                                         <ul>
                                                             @foreach ($p->perks as $perk)
                                                                 <li><i class="feather-check"></i>
-                                                                    {{ $perk->value }}{{ $perk->name === 'commission' ? '%' : '' }}{{ $perk->name === 'bandwidth' ? 'GB' : '' }}
-
-                                                                    {{ Str::ucfirst(Str::replace('_', ' ', $perk->name)) }}
+                                                                    {{ $perk->value }}{{ $perk->name === 'commission' ? '% ' . str_replace('commission', 'Platform Fee', $perk->name) . '' : '' }}
+                                                                    {{ $perk->name === 'connection' ? str_replace('connection', 'Connections', $perk->name) . '' : '' }}
+                                                                    {{ $perk->name === 'job_applications' ? str_replace('job_applications', 'Job applications', $perk->name) . '' : '' }}
+                                                                    {{ $perk->name === 'active_workspace' ? str_replace('active_workspace', 'Workspaces', $perk->name) . '' : '' }}
+                                                                    {{ $perk->name === 'storage' ? str_replace('storage', ' GB Storage per workspace', $perk->name) . '' : '' }}
+                                                                    {{ $perk->name === 'service' ? str_replace('service', 'Services listing', $perk->name) . '' : '' }}
+                                                                    {{ $perk->name === 'bandwidth' ? 'GB' : '' }}
+                                                                    {{-- {{ Str::ucfirst(Str::replace('_', ' ', $perk->name)) }} --}}
                                                                 </li>
                                                             @endforeach
-
-
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -204,6 +211,11 @@
 
         </div>
 
+    </div>
+    <div class="col-12 text-center text-primary">
+        <small>
+            <i>*connections and job applications credits are reloaded monthly.</i>
+        </small>
     </div>
 </div>
 
