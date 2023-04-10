@@ -25,9 +25,9 @@ class BasicController extends Controller
     public function index()
     {
 
-        $industries = Industry::active()->take(6)->get();
+        $industries = Industry::active()->take(8)->get();
 
-        $categories = Category::active()->take(6)->get();
+        $categories = Category::active()->take(8)->get();
 
 
 
