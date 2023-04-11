@@ -39,7 +39,6 @@ class BasicController extends Controller
         ));
     }
 
-
     public function wishlist(Request $request)
     {
         $request->validate([

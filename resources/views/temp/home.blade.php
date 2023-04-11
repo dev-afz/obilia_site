@@ -626,7 +626,8 @@
                                                 apply or message them directly, as a client you always have full access
                                                 to
                                                 every service
-                                                provider here.
+                                                provider <a href="{{ route('plans') }}"
+                                                    class="text-warning text-decoration-underline">here</a>.
                                             </p>
                                         </div>
                                     </div>
